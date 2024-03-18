@@ -1,0 +1,63 @@
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import {
+  Collapse,
+  Dropdown,
+  initTE,
+} from 'tw-elements';
+import { DropdownMenuComponent } from "../shared/dropdown-menu/dropdown-menu.component";
+
+@Component({
+    selector: 'app-navbar',
+    standalone: true,
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.css',
+    imports: [RouterLink, DropdownMenuComponent]
+})
+export class NavbarComponent {
+  @ViewChild('servicesDropdown') servicesDropdown!: ElementRef;
+  @ViewChild('tutorialsDropdown') tutorialsDropdown!: ElementRef;
+  @ViewChild('downloadsDropdown') downloadsDropdown!: ElementRef;
+
+  // Create variables to track dropdown visibility
+  isTutorialsDropdownVisible = false;
+  isDownloadsDropdownVisible = false;
+  isServicesDropdownVisible = false;
+
+  dropdownMenu1 = [
+    {
+      title : "কিতাব",
+      link : "kitab"
+    },
+    {
+      title : "নির্বাচিত প্রবন্ধসমূহ",
+      link : "selected-writings"
+    }
+  ]
+
+  constructor(private router: Router) {}
+
+
+  ngOnInit(): void {
+    initTE({ Collapse, Dropdown },
+      { allowReinits: true });
+  }
+
+  // Create methods to toggle dropdown visibility
+  toggleServicesDropdown() {
+    this.isServicesDropdownVisible = !this.isServicesDropdownVisible;
+  }
+  toggleTutorialsDropdown() {
+    this.isTutorialsDropdownVisible = !this.isTutorialsDropdownVisible;
+  }
+
+  toggleDownloadsDropdown() {
+    this.isDownloadsDropdownVisible = !this.isDownloadsDropdownVisible;
+  }
+
+  navigateToContact() {
+    // Use the navigate method to scroll to the #contact ID
+    this.router.navigate([], { fragment: 'contact' });
+  }
+
+}

@@ -1,0 +1,41 @@
+<div class="w-[100vw] h-[100vh] bg-gradient-to-r from-purple-500 to-pink-500">
+    <h1 class="text-7xl text-white text-center font-bold py-10">Arabic Learn</h1>
+    <div class="container mx-auto">
+  
+  
+      <div *ngFor="let data of arabicLanguage; let i = index" class="collapse collapse-plus bg-gradient-to-t from-slate-400 to-gray-600 my-2 text-white">
+          <input type="radio" name="arabic" [checked]="i === 0" /> 
+          <div class="collapse-title text-3xl font-bold">
+            {{data.arabic}}
+          </div>
+          <div class="collapse-content">
+            <div class="h-[2px] w-full my-1 bg-gradient-to-r from-purple-500 to-pink-500"></div> 
+            <p class="">{{data.bangla_meaning}}</p>
+            <div class="h-[2px] w-full my-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+            <p class="text-sm">{{data.bangla_explanation}}</p>
+            <div class="flex">
+              <div class="my-2 mr-1">
+                <button class="btn bg-gradient-to-l from-purple-500 hover:from-purple-700 to-pink-500 hover:to-pink-700 text-white border-0 h-10 flex flex-col justify-center items-center w-32">
+                  <svg class="h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
+                    <polygon class="fill-blue-100" points="9.33 6.69 9.33 19.39 19.3 13.04 9.33 6.69"/>
+                    <path class="fill-white" d="M26,13A13,13,0,1,1,13,0,13,13,0,0,1,26,13ZM13,2.18A10.89,10.89,0,1,0,23.84,13.06,10.89,10.89,0,0,0,13,2.18Z"/>
+                  </svg> 
+                  <p>Play</p>
+                </button>
+              </div>
+              <div class="my-2">
+                <button class="btn bg-gradient-to-l from-purple-500 hover:from-purple-700 to-pink-500 hover:to-pink-700 text-white border-0 h-10 flex flex-col justify-center items-center w-32">
+                  <svg class="h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> 
+                    <polygon fill="var(--ci-primary-color, currentColor)" points="208 312 208 344 320 344 320 312 280 312 280 176 248 176 248 200 216 200 216 232 248 232 248 312 208 312" class="ci-primary"/> <path fill="var(--ci-primary-color, currentColor)" d="M464,210.511V264A112.127,112.127,0,0,1,352,376H78.627l44.686-44.687-22.626-22.626L56,353.373l-4.415,4.414L18.019,391.354,92.041,474.63l23.918-21.26L75.63,408H352c79.4,0,144-64.6,144-144V178.511Z" class="ci-primary"/> <path fill="var(--ci-primary-color, currentColor)" d="M48,256A112.127,112.127,0,0,1,160,144H433.373l-44.686,44.687,22.626,22.626L456,166.627l4.117-4.116,33.864-33.865L419.959,45.37,396.041,66.63,436.37,112H160C80.6,112,16,176.6,16,256v85.787l32-32Z" class="ci-primary"/> 
+                  </svg>
+                  <p>Loop</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+    </div>
+  </div>
