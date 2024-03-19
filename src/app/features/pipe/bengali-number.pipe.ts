@@ -11,7 +11,7 @@ export class BengaliNumberPipe implements PipeTransform {
     const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
 
     let bengaliValue = '';
-    for (let i = 0; i < value.length; i++) {
+    for (let i = 0; i < value?.length; i++) {
       const char = value[i];
       const index = englishDigits.indexOf(char);
       bengaliValue += index !== -1 ? bengaliDigits[index] : char;
