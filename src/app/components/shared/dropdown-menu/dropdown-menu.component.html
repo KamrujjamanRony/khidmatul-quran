@@ -1,11 +1,39 @@
-<li
+<li class="dropdown dropdown-hover">
+  <div tabindex="0" role="button" class="group relative text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase">
+    <span class="mr-8 lg:mr-5">{{head}}</span>
+    <svg
+    class="transition-transform duration-200 transform absolute right-3 top-1/2 -mt-1 pointer-events-none"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 3L6 7L10 3"
+      [style.stroke]="'currentColor'"
+      [style.strokeWidth]="'2px'"
+      [style.strokeLinecap]="'round'"
+      [style.strokeLinejoin]="'round'"
+    ></path>
+  </svg></div>
+  <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    @for (data of menu; track $index) {
+      <li class="pl-2 py-2 hover:bg-rose-600">
+        <a [routerLink]="data?.link" class="ml-2">{{ data?.title }}</a>
+      </li>
+    }
+  </ul>
+</li>
+
+
+<!-- <li
   class="relative group"
   (mouseenter)="toggleDropdown()"
   (mouseleave)="toggleDropdown()"
-  (click)="toggleDropdown()"
 >
   <button class="group relative text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase">
-    <span class="mr-5">{{head}}</span>
+    <span class="mr-8 lg:mr-5">{{head}}</span>
     <svg
       [class.rotate-0]="!isOpen"
       [class.-rotate-180]="isOpen"
@@ -31,9 +59,9 @@
   >
   @for (data of menu; track $index) {
     <li class="pl-2 py-2 hover:bg-rose-600">
-      <a (click)="toggleDropdown()" [routerLink]="data?.link" class="ml-2">{{ data?.title }}</a>
+      <a (click)="hideDropdown()" [routerLink]="data?.link" class="ml-2">{{ data?.title }}</a>
     </li>
   }
   </ul>
   }
-</li>
+</li> -->

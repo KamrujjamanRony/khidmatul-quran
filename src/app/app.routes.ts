@@ -8,6 +8,8 @@ import { ZakatComponent } from './pages/zakat/zakat.component';
 import { Blog1Component } from './components/blogs/blog1/blog1.component';
 import { SelectedWritingComponent } from './pages/selected-writing/selected-writing.component';
 import { Blog2Component } from './components/blogs/blog2/blog2.component';
+import { ZakatCalculatorComponent } from './pages/zakat-calculator/zakat-calculator.component';
+import { ZakatMasalaComponent } from './pages/zakat-masala/zakat-masala.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,8 +30,16 @@ export const routes: Routes = [
     component: ForayezComponent
   },
   {
-    path: 'zakat',
+    path: 'gold-price',
     component: ZakatComponent
+  },
+  {
+    path: 'zakat-calculator',
+    component: ZakatCalculatorComponent
+  },
+  {
+    path: 'zakat-masala',
+    component: ZakatMasalaComponent
   },
   {
     path: 'kitab',

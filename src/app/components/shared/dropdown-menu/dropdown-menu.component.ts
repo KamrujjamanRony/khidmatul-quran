@@ -12,9 +12,12 @@ import { RouterLink } from '@angular/router';
 export class DropdownMenuComponent {
   @Input() head!: string;
   @Input() menu!: any;
-  isOpen: boolean = false;
+  // isOpen: boolean = false;
 
-  toggleDropdown() {
-    this.isOpen = !this.isOpen;
-  }
+  // toggleDropdown() {
+  //   this.isOpen = !this.isOpen;
+  // }
+  // hideDropdown() {
+  //   this.isOpen = false;
+  // }
 }

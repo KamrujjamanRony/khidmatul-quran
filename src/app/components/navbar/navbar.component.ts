@@ -35,6 +35,21 @@ export class NavbarComponent {
     }
   ]
 
+  dropdownMenu2 = [
+    {
+      title : "স্বর্ণ ও রুপার দাম",
+      link : "gold-price"
+    },
+    {
+      title : "যাকাত ক্যালকুলেটর",
+      link : "zakat-calculator"
+    },
+    {
+      title : "যাকাত মাসআলা",
+      link : "zakat-masala"
+    },
+  ]
+
   constructor(private router: Router) {}
 
 

@@ -58,7 +58,8 @@ export class HijriDateComponent {
     this.convertToHijri(this.selectedDate);
     const dateObject = new Date(this.selectedDate);
     this.setDatetimeHtml(dateObject);
-    console.log(this.selectedDate)
+    const hijriDate = this.getCurrentHijriDate(this.selectedDate);
+    console.log(hijriDate)
     // this.convertToBanglaDate(dateObject);
   }
 
@@ -335,14 +336,14 @@ export class HijriDateComponent {
   }
 
 
-  getCurrentHijriDate() {
+  getCurrentHijriDate(date: string) {
     const hijriDate = new Intl.DateTimeFormat('en-u-ca-islamic', {
-      day: 'numeric',
-      month: 'numeric',
-      year: 'numeric'
-    }).format(new Date("2026/01/19"));
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric'
+    }).format(new Date(date));
 
-    return hijriDate.replace(" AH", "");
-  }
+    return hijriDate.replace(" AH", "").split("/").map(d=> +d);
+}
 
 }

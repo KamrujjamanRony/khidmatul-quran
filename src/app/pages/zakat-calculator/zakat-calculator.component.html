@@ -1,0 +1,431 @@
+<section class="md-container mx-auto my-2">
+  <div class="py-5">
+    <h1 class="text-center text-2xl lg:text-5xl text-primary mb-2">
+      যাকাত ক্যালকুলেটর
+    </h1>
+    <p class="text-center text-blue-700 font-semibold">
+      বাজুসের {{ forayez?.date }} তারিখের মূল্য অনুযায়ী হিসাব করা হয়েছে।
+    </p>
+
+    <div class="hero">
+      <div class="hero-content flex-col lg:flex-row">
+        <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+          <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+            জুয়েলারি স্বর্ণের বিক্রয়মূল্য
+          </h1>
+          <form class="card-body">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl">গ্রাম</span>
+                <span class="label-text text-md lg:text-xl"
+                  >বিক্রয়মূল্য
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+                >
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">২২ ক্যারেট</span>
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="gold_22"
+                  [(ngModel)]="model.gold_22"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.gold_22 * forayez?.gold_22k * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">২১ ক্যারেট</span>
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="gold_21"
+                  [(ngModel)]="model.gold_21"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.gold_21 * forayez?.gold_21k * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">১৮ ক্যারেট</span>
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="gold_18"
+                  [(ngModel)]="model.gold_18"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.gold_18 * forayez?.gold_18k * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl"
+                  >সনাতনী &nbsp;&nbsp;&nbsp;&nbsp;</span
+                >
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="gold_td"
+                  [(ngModel)]="model.gold_td"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.gold_td * forayez?.gold_traditional * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control mt-6 hidden">
+              <button class="btn btn-primary">Calculate</button>
+            </div>
+            <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+              জুয়েলারি স্বর্ণের মূল্য {{ totalGold | bangla }} টাকা
+            </h1>
+          </form>
+        </div>
+        <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+          <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+            জুয়েলারি রূপার বিক্রয়মূল্য
+          </h1>
+          <form class="card-body">
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl">গ্রাম</span>
+                <span class="label-text text-md lg:text-xl"
+                  >বিক্রয়মূল্য
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+                >
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">২২ ক্যারেট</span>
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="silver_22"
+                  [(ngModel)]="model.silver_22"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.silver_22 * forayez?.silver_22k * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">২১ ক্যারেট</span>
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="silver_21"
+                  [(ngModel)]="model.silver_21"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.silver_21 * forayez?.silver_21k * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl">১৮ ক্যারেট</span>
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="silver_18"
+                  [(ngModel)]="model.silver_18"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.silver_18 * forayez?.silver_18k * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text text-md lg:text-xl"
+                  >সনাতনী &nbsp;&nbsp;&nbsp;&nbsp;</span
+                >
+                <input
+                  type="number"
+                  placeholder=""
+                  class="input input-bordered max-w-[150px]"
+                  name="silver_td"
+                  [(ngModel)]="model.silver_td"
+                  (ngModelChange)="onInputChange($event)"
+                />
+                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                  model.silver_td * forayez?.silver_traditional * 0.8 | bangla
+                }}</span>
+              </label>
+            </div>
+            <div class="form-control mt-6 hidden">
+              <button class="btn btn-primary">Calculate</button>
+            </div>
+            <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+              জুয়েলারি রূপার মূল্য {{ totalSilver | bangla }} টাকা
+            </h1>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-lg md:max-w-xl lg:max-w-5xl mx-auto">
+        <!-- card 03 -->
+      <div
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto"
+      >
+        <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+          টাকা-পয়সা+ব্যবসায়িক সম্পদ
+        </h1>
+
+        <div class="overflow-x-auto">
+          <table class="table table-lg table-zebra-zebra">
+            <tbody>
+              <!-- row 1 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোট ক্যাশ টাকাঃ</td>
+                <td class="text-center text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full"
+                    name="totalCashTk"
+                    [(ngModel)]="model.totalCashTk"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                </td>
+              </tr>
+              <!-- row 2 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোট পাওনা টাকাঃ</td>
+                <td class="text-center text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full"
+                    name="totalPawnaTk"
+                    [(ngModel)]="model.totalPawnaTk"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                </td>
+              </tr>
+              <!-- row 3 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">ব্যবসায়িক সম্পদঃ</td>
+                <td class="text-center text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full"
+                    name="businessWealth"
+                    [(ngModel)]="model.businessWealth"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+        <!-- card 04 -->
+      <div
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto my-5"
+      >
+        <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+            ব্যাংক ও মোবাইল ব্যাংকিং
+        </h1>
+
+        <div class="overflow-x-auto">
+          <table class="table table-lg table-zebra-zebra">
+            <tbody>
+              <!-- row 1 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">ব্যাংক অ্যাকাউন্টঃ</td>
+                <td class="text-center text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full"
+                    name="bankAccount"
+                    [(ngModel)]="model.bankAccount"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                </td>
+              </tr>
+              <!-- row 2 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোবাইল ব্যাংকিংঃ</td>
+                <td class="text-center text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full"
+                    name="mobileBanking"
+                    [(ngModel)]="model.mobileBanking"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td class="text-center text-xl lg:text-2xl"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+        <!-- card 05 -->
+      <div
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto my-5"
+      >
+        <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+            যাকাতের সম্পদ থেকে বিয়োগযোগ্য
+        </h1>
+
+        <div class="overflow-x-auto">
+          <table class="table table-lg table-zebra-zebra">
+            <tbody>
+              <!-- row 1 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">ঋণ ও দায়ঃ</td>
+                <td class="">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full"
+                    name="debt"
+                    [(ngModel)]="model.debt"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                </td>
+              </tr>
+              <!-- row 2 -->
+              <tr class="hidden">
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div id="MakePdf" #MakePdf>
+        <!-- card 06 -->
+        <div
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto"
+      >
+        <h1 class="text-center text-xl lg:text-2xl pt-5">
+            যাকাত হিসাবের তারিখ {{today | bengaliNumber}}
+        </h1>
+
+        <div class="overflow-x-auto">
+          <table class="table table-lg table-zebra-zebra">
+            <tbody>
+              <!-- row 1 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোট জুয়েলারি মূল্যঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{totalGold + totalSilver | bangla}}</td>
+              </tr>
+              <!-- row 2 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোট ক্যাশ টাকাঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{model.totalCashTk*1 | bangla}}</td>
+              </tr>
+              <!-- row 3 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোট পাওনা টাকাঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{model.totalPawnaTk*1 | bangla}}</td>
+              </tr>
+              <!-- row 4 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোট ব্যবসায়িক সম্পদঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{model.businessWealth*1 | bangla}}</td>
+              </tr>
+              <!-- row 5 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">ব্যাংক অ্যাকাউন্টে জমাঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{model.bankAccount*1 | bangla}}</td>
+              </tr>
+              <!-- row 6 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">মোবাইল ব্যাংকিং এ জমাঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{model.mobileBanking*1 | bangla}}</td>
+              </tr>
+              <!-- row 7 -->
+              <tr>
+                <td class="text-center text-xl lg:text-2xl">বিয়োগযোগ্য ঋণ ও দায়ঃ</td>
+                <td class="text-center text-xl lg:text-2xl">{{model.debt*1 | bangla}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+        <!-- card 05 -->
+        <div
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto my-5"
+      >
+        <h1 class="text-center text-xl lg:text-2xl pt-5">
+            যাকাতের হিসাবযোগ্য সম্পদের পরিমান = {{totalWealth | bangla}} টাকা
+        </h1>
+        <h1 class="text-center text-xl lg:text-2xl py-5">
+            মোট যাকাত = {{totalZakat | bangla}} টাকা
+        </h1>
+
+      </div>
+      </div>
+
+      <div id="MakePdf" #MakePdf></div>
+        
+    </div>
+  </div>
+
+  <button class="btn btn-primary" (click)="generatePDF()">Download PDF</button>
+  <button class="btn btn-primary" (click)="captureScreen()">Download PDF 2</button>
+</section>
+
+<!-- <script>
+  //------------Generate PDF-work only Index Page-------------------------------
+  window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("MakePdf");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'MyZakad.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+  }
+  </script>  -->
