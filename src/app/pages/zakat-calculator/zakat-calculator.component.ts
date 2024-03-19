@@ -4,13 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ForayezService } from '../../features/services/forayez.service';
 import { DatePipe } from '@angular/common';
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
-// @ts-ignore
-import * as html2pdf from 'html2pdf.js';
-// import * as html2canvas from 'html2canvas';
 
-import jspdf from 'jspdf';  
-import html2canvas from 'html2canvas'; 
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas-pro';
 
 @Component({
     selector: 'app-zakat-calculator',
@@ -29,27 +25,6 @@ export class ZakatCalculatorComponent {
   totalWealth: number = 0;
   totalZakat: number = 0;
   today: any;
-
-  @ViewChild('MakePdf')
-  MakePdf!: ElementRef;
-
-  public captureScreen()  
-  {  
-    var data = document.getElementById('MakePdf');  //Id of the table
-    html2canvas(data!).then(canvas => {  
-      // Few necessary setting options  
-      let imgWidth = 208;   
-      let pageHeight = 295;    
-      let imgHeight = canvas.height * imgWidth / canvas.width;  
-      let heightLeft = imgHeight;  
-
-      const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 0;  
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-      pdf.save('MYPdf.pdf'); // Generated PDF   
-    });  
-  }  
   
 
   constructor(){
@@ -89,17 +64,14 @@ export class ZakatCalculatorComponent {
   }
 
   generatePDF() {
-    const invoice = document.getElementById("MakePdf");
-    console.log(invoice);
-    console.log(this.MakePdf)
-    const opt = {
-      margin: 1,
-      filename: 'MyZakad.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-    html2pdf().from(invoice).set(opt).save("myPDF");
+    var data:any = document.getElementById('MakePdf');  //Id of the table
+    
+    html2canvas(data, {scale:2}).then(canvas => {
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+      pdf.setFontSize(12);
+      pdf.save('MYPdf.pdf'); // Generated PDF   
+    }); 
   }
 
 

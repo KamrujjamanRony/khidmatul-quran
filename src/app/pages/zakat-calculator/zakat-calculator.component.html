@@ -335,97 +335,75 @@
         </div>
       </div>
       
-      <div id="MakePdf" #MakePdf>
-        <!-- card 06 -->
-        <div
-        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto"
-      >
-        <h1 class="text-center text-xl lg:text-2xl pt-5">
-            যাকাত হিসাবের তারিখ {{today | bengaliNumber}}
-        </h1>
-
-        <div class="overflow-x-auto">
-          <table class="table table-lg table-zebra-zebra">
-            <tbody>
-              <!-- row 1 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">মোট জুয়েলারি মূল্যঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{totalGold + totalSilver | bangla}}</td>
-              </tr>
-              <!-- row 2 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">মোট ক্যাশ টাকাঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{model.totalCashTk*1 | bangla}}</td>
-              </tr>
-              <!-- row 3 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">মোট পাওনা টাকাঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{model.totalPawnaTk*1 | bangla}}</td>
-              </tr>
-              <!-- row 4 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">মোট ব্যবসায়িক সম্পদঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{model.businessWealth*1 | bangla}}</td>
-              </tr>
-              <!-- row 5 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">ব্যাংক অ্যাকাউন্টে জমাঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{model.bankAccount*1 | bangla}}</td>
-              </tr>
-              <!-- row 6 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">মোবাইল ব্যাংকিং এ জমাঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{model.mobileBanking*1 | bangla}}</td>
-              </tr>
-              <!-- row 7 -->
-              <tr>
-                <td class="text-center text-xl lg:text-2xl">বিয়োগযোগ্য ঋণ ও দায়ঃ</td>
-                <td class="text-center text-xl lg:text-2xl">{{model.debt*1 | bangla}}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div id="MakePdf">
+          <!-- card 06 -->
+          <div
+          class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto"
+        >
+          <h1 class="text-center text-xl lg:text-2xl pt-5">
+              যাকাত হিসাবের তারিখ {{today | bengaliNumber}}
+          </h1>
+  
+          <div class="overflow-x-auto">
+            <table class="table table-lg">
+              <tbody>
+                <!-- row 1 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">মোট জুয়েলারি মূল্যঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{totalGold + totalSilver | bangla}}</td>
+                </tr>
+                <!-- row 2 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">মোট ক্যাশ টাকাঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{model.totalCashTk*1 | bangla}}</td>
+                </tr>
+                <!-- row 3 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">মোট পাওনা টাকাঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{model.totalPawnaTk*1 | bangla}}</td>
+                </tr>
+                <!-- row 4 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">মোট ব্যবসায়িক সম্পদঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{model.businessWealth*1 | bangla}}</td>
+                </tr>
+                <!-- row 5 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">ব্যাংক অ্যাকাউন্টে জমাঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{model.bankAccount*1 | bangla}}</td>
+                </tr>
+                <!-- row 6 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">মোবাইল ব্যাংকিং এ জমাঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{model.mobileBanking*1 | bangla}}</td>
+                </tr>
+                <!-- row 7 -->
+                <tr>
+                  <td class="text-center text-xl lg:text-2xl">বিয়োগযোগ্য ঋণ ও দায়ঃ</td>
+                  <td class="text-center text-xl lg:text-2xl">{{model.debt*1 | bangla}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+          <!-- card 05 -->
+          <div
+          class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto my-5"
+        >
+          <h1 class="text-center text-xl lg:text-2xl pt-5">
+              যাকাতের হিসাবযোগ্য সম্পদের পরিমান = {{totalWealth | bangla}} টাকা
+          </h1>
+          <h1 class="text-center text-xl lg:text-2xl py-5">
+              মোট যাকাত = {{totalZakat | bangla}} টাকা
+          </h1>
+  
         </div>
       </div>
-
-        <!-- card 05 -->
-        <div
-        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto my-5"
-      >
-        <h1 class="text-center text-xl lg:text-2xl pt-5">
-            যাকাতের হিসাবযোগ্য সম্পদের পরিমান = {{totalWealth | bangla}} টাকা
-        </h1>
-        <h1 class="text-center text-xl lg:text-2xl py-5">
-            মোট যাকাত = {{totalZakat | bangla}} টাকা
-        </h1>
-
-      </div>
-      </div>
-
-      <div id="MakePdf" #MakePdf></div>
         
     </div>
   </div>
 
   <button class="btn btn-primary" (click)="generatePDF()">Download PDF</button>
-  <button class="btn btn-primary" (click)="captureScreen()">Download PDF 2</button>
 </section>
 
-<!-- <script>
-  //------------Generate PDF-work only Index Page-------------------------------
-  window.onload = function () {
-    document.getElementById("download")
-        .addEventListener("click", () => {
-            const invoice = this.document.getElementById("MakePdf");
-            console.log(invoice);
-            console.log(window);
-            var opt = {
-                margin: 1,
-                filename: 'MyZakad.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().from(invoice).set(opt).save();
-        })
-  }
-  </script>  -->
