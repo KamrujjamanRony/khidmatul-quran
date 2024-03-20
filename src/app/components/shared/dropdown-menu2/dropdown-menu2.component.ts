@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-dropdown-menu',
-  templateUrl: './dropdown-menu.component.html',
-  styleUrls: ['./dropdown-menu.component.css'],
+  selector: 'app-dropdown-menu2',
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink],
+  templateUrl: './dropdown-menu2.component.html',
+  styleUrl: './dropdown-menu2.component.css'
 })
-export class DropdownMenuComponent {
+export class DropdownMenu2Component {
+
   @Input() head!: string;
   @Input() menu!: any;
   isOpen: boolean = false;

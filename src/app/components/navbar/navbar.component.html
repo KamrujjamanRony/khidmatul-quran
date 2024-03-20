@@ -1,6 +1,6 @@
 <!-- Main navigation container -->
 <nav
-  class="flex-no-wrap sticky top-0 flex w-full items-center justify-between bg-transparent py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start z-50 bg-white"
+  class="flex-no-wrap sticky top-0 flex w-full items-center justify-between bg-transparent py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start z-50 bg-white lg:hidden"
 >
   <div
     class="flex w-full flex-wrap items-center justify-between px-3 container mx-auto"
@@ -50,6 +50,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400 font-bold uppercase"
             routerLink="/"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >হোম</a
           >
         </li>
@@ -59,6 +62,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="arabic"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >আরবী</a
           >
         </li>
@@ -68,6 +74,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="salat-times"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >সালাতের সময়</a
           >
         </li>
@@ -77,6 +86,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="hijri-date"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >হিজরী তারিখ</a
           >
         </li>
@@ -86,6 +98,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="forayez"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >ফরায়েজ</a
           >
         </li>
@@ -95,6 +110,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="hijri-date"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >তাবলীগ</a
           >
         </li>
@@ -107,11 +125,17 @@
 
        
         <!-- বয়ান -->
-        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref 
+        data-te-collapse-init
+  data-te-target="#navbarSupportedContent12"
+  aria-controls="navbarSupportedContent12">
           <a
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="hijri-date"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >বয়ান</a
           >
         </li>
@@ -121,6 +145,9 @@
             class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
             routerLink="hijri-date"
             data-te-nav-link-ref
+            data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
             >নোটিশ</a
           >
         </li>
@@ -141,3 +168,159 @@
   </div>
 </nav>
 
+
+
+<nav
+  class="flex-no-wrap sticky top-0 lg:flex w-full items-center justify-between bg-transparent py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start z-50 bg-white hidden"
+>
+  <div
+    class="flex w-full flex-wrap items-center justify-between px-3 container mx-auto"
+  >
+    <!-- Hamburger button for mobile view -->
+    <button
+      class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+      type="button"
+      data-te-collapse-init
+      data-te-target="#navbarSupportedContent12"
+      aria-controls="navbarSupportedContent12"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <!-- Hamburger icon -->
+      <span class="[&>svg]:w-7">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="h-7 w-7"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+
+    <!-- Collapsible navigation container -->
+    <div
+      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+      id="navbarSupportedContent12"
+      data-te-collapse-item
+    >
+      
+      <!-- Left navigation links -->
+      <ul
+        class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row lg:max-w-full py-5"
+        data-te-navbar-nav-ref
+      >
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <!-- Home link -->
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400 font-bold uppercase"
+            routerLink="/"
+            data-te-nav-link-ref
+           
+            >হোম</a
+          >
+        </li>
+        <!-- arabic -->
+        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="arabic"
+            data-te-nav-link-ref
+           
+            >আরবী</a
+          >
+        </li>
+        <!-- salat times -->
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="salat-times"
+            data-te-nav-link-ref
+           
+            >সালাতের সময়</a
+          >
+        </li>
+        <!-- Hijri Date -->
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="hijri-date"
+            data-te-nav-link-ref
+           
+            >হিজরী তারিখ</a
+          >
+        </li>
+        <!-- ফরায়েজ -->
+        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="forayez"
+            data-te-nav-link-ref
+           
+            >ফরায়েজ</a
+          >
+        </li>
+        <!-- তাবলীগ -->
+        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="hijri-date"
+            data-te-nav-link-ref
+           
+            >তাবলীগ</a
+          >
+        </li>
+
+        <!-- বিভাগ -->
+        <app-dropdown-menu2 head="বিভাগ" [menu]="dropdownMenu1" />
+        
+        <!-- যাকাত -->
+        <app-dropdown-menu2 head="যাকাত" [menu]="dropdownMenu2" />
+
+       
+        <!-- বয়ান -->
+        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref 
+        data-te-collapse-init
+  data-te-target="#navbarSupportedContent12"
+  aria-controls="navbarSupportedContent12">
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="hijri-date"
+            data-te-nav-link-ref
+           
+            >বয়ান</a
+          >
+        </li>
+        <!-- নোটিশ -->
+        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+          <a
+            class="text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 font-bold uppercase"
+            routerLink="hijri-date"
+            data-te-nav-link-ref
+           
+            >নোটিশ</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right elements -->
+    <div class="relative flex items-center lg:hidden xl:flex">
+      <!-- Second dropdown container -->
+      <button
+      (click)="navigateToContact()"
+        type="button"
+        class="inline-block text-sm bg-red-500 px-6 py-2 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+      >
+        contact us
+      </button>
+    </div>
+  </div>
+</nav>
+
+  

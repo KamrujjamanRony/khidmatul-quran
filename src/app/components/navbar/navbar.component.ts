@@ -6,13 +6,14 @@ import {
   initTE,
 } from 'tw-elements';
 import { DropdownMenuComponent } from "../shared/dropdown-menu/dropdown-menu.component";
+import { DropdownMenu2Component } from "../shared/dropdown-menu2/dropdown-menu2.component";
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css',
-    imports: [RouterLink, DropdownMenuComponent]
+    imports: [RouterLink, DropdownMenuComponent, DropdownMenu2Component]
 })
 export class NavbarComponent {
   @ViewChild('servicesDropdown') servicesDropdown!: ElementRef;
@@ -49,6 +50,13 @@ export class NavbarComponent {
       link : "zakat-masala"
     },
   ]
+
+  hideNavMenu() {
+    const navMenu = document.getElementById('menubar');
+    if (navMenu) {
+      navMenu.classList.add('hidden');
+    }
+  }
 
   constructor(private router: Router) {}
 
