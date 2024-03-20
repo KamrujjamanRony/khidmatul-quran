@@ -10,6 +10,7 @@ import { Head1Component } from './H1';
     <div>
         @if(heading){<H1 class="text-center text-rose-600" [text]="heading"></H1>}
         @if(head){<H1 class="text-accent" [text]="head"></H1>}
+        @if(title){<P [text]="title"></P>}
         @if(arabic){<p class="text-right font-bold text-black text-xl py-1">{{arabic}}</p>}
         @if(bangla){<P [text]="bangla"></P>}
         @if(bangla1){<P [text]="bangla1"></P>}
@@ -28,6 +29,7 @@ import { Head1Component } from './H1';
 export class Card1Component {
     @Input() heading!: any;
     @Input() head!: any;
+    @Input() title!: any;
     @Input() arabic!: any;
     @Input() bangla!: any;
     @Input() bangla1!: any;

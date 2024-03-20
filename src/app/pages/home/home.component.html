@@ -1,1 +1,31 @@
 
+<section class="container mx-auto py-5">
+
+    <div class="card w-full max-w-[300px] shadow-xl text-2xl bg-green-300 text-black">
+        <div class="card-body">
+            
+            @if(locationName){
+                <h1 class="text-center text-2xl">
+                  City :
+                  <span class="roboto font-bold text-rose-500">{{
+                    locationName?.address?.city || locationName?.address?.state
+                  }}</span>
+                </h1>
+              } @else {
+                <h1 class="text-center text-2xl">
+                  City :
+                  <span class="roboto font-bold text-rose-500">Dhaka</span>
+                </h1>
+              }
+          <h2 class="text-3xl text-center">আজকের সময়সূচী</h2>
+          <p class="ml-10">সাহরি : {{todaySalatTime.Shari | bengaliNumber}}</p>
+          <p class="ml-10">ফজর : {{todaySalatTime.fajrT | bengaliNumber}}</p>
+          <p class="ml-10">সূর্যোদয় : {{todaySalatTime.sunrise | bengaliNumber}}</p>
+          <p class="ml-10">যুহর : {{todaySalatTime.dhuhrT | bengaliNumber}}</p>
+          <p class="ml-10">আসর : {{todaySalatTime.asr | bengaliNumber}}</p>
+          <p class="ml-10">মাগরিব : {{todaySalatTime.maghrib | bengaliNumber}}</p>
+          <p class="ml-10">ইশা : {{todaySalatTime.isha | bengaliNumber}}</p>
+          <p class="ml-10">মধ্যরাত : {{todaySalatTime.midnight | bengaliNumber}}</p>
+        </div>
+    </div>
+</section>

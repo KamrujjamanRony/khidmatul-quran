@@ -9,16 +9,16 @@
 
     <div class="hero">
       <div class="hero-content flex-col lg:flex-row">
-        <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+        <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-green-200">
           <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
             জুয়েলারি স্বর্ণের বিক্রয়মূল্য
           </h1>
           <form class="card-body">
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">ক্যারেট</span>
-                <span class="label-text text-md lg:text-xl">গ্রাম</span>
-                <span class="label-text text-md lg:text-xl"
+                <span class="label-text text-md lg:text-xl text-black">ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">গ্রাম</span>
+                <span class="label-text text-md lg:text-xl text-black"
                   >বিক্রয়মূল্য
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
@@ -26,66 +26,66 @@
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">২২ ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">২২ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="gold_22"
                   [(ngModel)]="model.gold_22"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.gold_22 * forayez?.gold_22k * 0.8 | bangla
                 }}</span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">২১ ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">২১ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="gold_21"
                   [(ngModel)]="model.gold_21"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.gold_21 * forayez?.gold_21k * 0.8 | bangla
                 }}</span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">১৮ ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">১৮ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="gold_18"
                   [(ngModel)]="model.gold_18"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.gold_18 * forayez?.gold_18k * 0.8 | bangla
                 }}</span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl"
+                <span class="label-text text-md lg:text-xl text-black"
                   >সনাতনী &nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="gold_td"
                   [(ngModel)]="model.gold_td"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.gold_td * forayez?.gold_traditional * 0.8 | bangla
                 }}</span>
               </label>
@@ -98,7 +98,7 @@
             </h1>
           </form>
         </div>
-        <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
+        <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-green-200 text-black">
           <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
             জুয়েলারি রূপার বিক্রয়মূল্য
           </h1>
@@ -119,7 +119,7 @@
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="silver_22"
                   [(ngModel)]="model.silver_22"
                   (ngModelChange)="onInputChange($event)"
@@ -135,7 +135,7 @@
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="silver_21"
                   [(ngModel)]="model.silver_21"
                   (ngModelChange)="onInputChange($event)"
@@ -151,7 +151,7 @@
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="silver_18"
                   [(ngModel)]="model.silver_18"
                   (ngModelChange)="onInputChange($event)"
@@ -169,7 +169,7 @@
                 <input
                   type="number"
                   placeholder=""
-                  class="input input-bordered max-w-[150px]"
+                  class="input input-bordered max-w-[150px] bg-yellow-100 text-black border-black"
                   name="silver_td"
                   [(ngModel)]="model.silver_td"
                   (ngModelChange)="onInputChange($event)"
@@ -193,14 +193,14 @@
     <div class="max-w-lg md:max-w-xl lg:max-w-5xl mx-auto">
         <!-- card 03 -->
       <div
-        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto"
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-green-200 mx-auto text-black"
       >
         <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
           টাকা-পয়সা+ব্যবসায়িক সম্পদ
         </h1>
 
         <div class="overflow-x-auto">
-          <table class="table table-lg table-zebra-zebra">
+          <table class="table table-lg">
             <tbody>
               <!-- row 1 -->
               <tr>
@@ -209,7 +209,7 @@
                   <input
                     type="number"
                     placeholder=""
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full bg-yellow-100 border-black"
                     name="totalCashTk"
                     [(ngModel)]="model.totalCashTk"
                     (ngModelChange)="onInputChange($event)"
@@ -223,7 +223,7 @@
                   <input
                     type="number"
                     placeholder=""
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full bg-yellow-100 border-black"
                     name="totalPawnaTk"
                     [(ngModel)]="model.totalPawnaTk"
                     (ngModelChange)="onInputChange($event)"
@@ -237,7 +237,7 @@
                   <input
                     type="number"
                     placeholder=""
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full bg-yellow-100 border-black"
                     name="businessWealth"
                     [(ngModel)]="model.businessWealth"
                     (ngModelChange)="onInputChange($event)"
@@ -251,14 +251,14 @@
 
         <!-- card 04 -->
       <div
-        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto my-5"
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl text-black bg-green-200 mx-auto my-5"
       >
         <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
             ব্যাংক ও মোবাইল ব্যাংকিং
         </h1>
 
         <div class="overflow-x-auto">
-          <table class="table table-lg table-zebra-zebra">
+          <table class="table table-lg">
             <tbody>
               <!-- row 1 -->
               <tr>
@@ -267,7 +267,7 @@
                   <input
                     type="number"
                     placeholder=""
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full bg-yellow-100 border-black"
                     name="bankAccount"
                     [(ngModel)]="model.bankAccount"
                     (ngModelChange)="onInputChange($event)"
@@ -281,16 +281,12 @@
                   <input
                     type="number"
                     placeholder=""
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full bg-yellow-100 border-black"
                     name="mobileBanking"
                     [(ngModel)]="model.mobileBanking"
                     (ngModelChange)="onInputChange($event)"
                   />
                 </td>
-              </tr>
-              <tr>
-                <th></th>
-                <td class="text-center text-xl lg:text-2xl"></td>
               </tr>
             </tbody>
           </table>
@@ -298,37 +294,28 @@
       </div>
         <!-- card 05 -->
       <div
-        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-base-100 mx-auto my-5"
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl text-black bg-green-200 mx-auto my-5"
       >
         <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
             যাকাতের সম্পদ থেকে বিয়োগযোগ্য
         </h1>
 
         <div class="overflow-x-auto">
-          <table class="table table-lg table-zebra-zebra">
+          <table class="table table-lg">
             <tbody>
               <!-- row 1 -->
-              <tr>
+              <tr class="border-b-0">
                 <td class="text-center text-xl lg:text-2xl">ঋণ ও দায়ঃ</td>
-                <td class="">
+                <td>
                   <input
                     type="number"
                     placeholder=""
-                    class="input input-bordered w-full"
+                    class="input input-bordered w-full bg-yellow-100 border-black"
                     name="debt"
                     [(ngModel)]="model.debt"
                     (ngModelChange)="onInputChange($event)"
                   />
                 </td>
-              </tr>
-              <!-- row 2 -->
-              <tr class="hidden">
-                <th></th>
-                <td></td>
-              </tr>
-              <tr>
-                <th></th>
-                <td></td>
               </tr>
             </tbody>
           </table>
@@ -339,7 +326,7 @@
       <div class="max-w-lg md:max-w-xl lg:max-w-5xl mx-auto py-5">
         <!-- card 06 -->
       <div
-      class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto"
+      class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto text-black bg-green-200"
     >
       <h1 class="text-center text-xl lg:text-2xl pt-5">
           যাকাত হিসাবের তারিখ {{today | bengaliNumber}}
@@ -390,7 +377,7 @@
 
       <!-- card 05 -->
       <div
-      class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto my-5"
+      class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto my-5 text-black bg-green-200"
     >
       <h1 class="text-center text-xl lg:text-2xl pt-5">
           যাকাতের হিসাবযোগ্য সম্পদের পরিমান = {{totalWealth | bangla}} টাকা

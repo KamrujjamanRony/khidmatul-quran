@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
     imports: [],
     template: `
     <div class="card lg:card-side bg-slate-100 shadow-xl">
-        <div class="text-left w-full flex justify-between px-3 md:px-5 lg:px-10 py-5 md:py-7 lg:py-10">
+        <div class="text-left w-full flex flex-col md:flex-row justify-between px-3 md:px-5 lg:px-10 py-5 md:py-7 lg:py-10">
           <div>
           <h2 class="text-2xl text-primary">{{title}}</h2>
           <span class="text-accent text-sm">@if(writer){( {{writer}}  )}</span>
           </div>
           
-          <div class="flex justify-end">
-            <button (click)="scrollToTopAndNavigate(link)" class="btn btn-primary text-white font-thin uppercase rounded-sm monospace">view details</button>
+          <div class="flex justify-center">
+            <button (click)="scrollToTopAndNavigate(link)" class="btn btn-success text-white text-xl uppercase rounded-sm monospace">বিস্তারিত</button>
           </div>
         </div>
     </div>

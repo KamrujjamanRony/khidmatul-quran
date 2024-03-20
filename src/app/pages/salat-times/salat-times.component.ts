@@ -5,13 +5,14 @@ import axios from 'axios';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollComponent } from "../../components/scroll/scroll.component";
+import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 
 @Component({
     selector: 'app-salat-times',
     standalone: true,
     templateUrl: './salat-times.component.html',
     styleUrl: './salat-times.component.css',
-    imports: [CommonModule, FormsModule, ScrollComponent]
+    imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]
 })
 export class SalatTimesComponent {
   model: LocationModel = {
@@ -57,7 +58,10 @@ export class SalatTimesComponent {
 
   isToday(day: any): boolean {
     const today = new Date();
-    return day && day.day === today.getDate() && today.getMonth() === this.currentDate.getMonth();
+    const todaySalatTime = day
+
+    console.log(day)
+    return day && day.day == today.getDate() && today.getMonth() === this.currentDate.getMonth();
   }
 
   makeTable(year: number, month: number) {
@@ -75,8 +79,10 @@ export class SalatTimesComponent {
         this.dst,
         format
       );
-      times['day'] = startDate.getDate();
+      times['day'] = startDate.getDate().toFixed();
       this.timetableData.push(times); // Push the day's data into the timetableData array
+      console.log(this.timetableData)
+
       startDate.setDate(startDate.getDate() + 1); // next day
     }
   }
