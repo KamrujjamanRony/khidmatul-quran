@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { BanglaPipe } from '../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
 import { ForayezService } from '../../features/services/forayez.service';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 
 import jsPDF from 'jspdf';
@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas-pro';
     standalone: true,
     templateUrl: './zakat-calculator.component.html',
     styleUrl: './zakat-calculator.component.css',
-    imports: [BanglaPipe, FormsModule, BengaliNumberPipe]
+    imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule]
 })
 export class ZakatCalculatorComponent {
   datePipe: DatePipe = new DatePipe('en-US');
@@ -25,6 +25,7 @@ export class ZakatCalculatorComponent {
   totalWealth: number = 0;
   totalZakat: number = 0;
   today: any;
+  isPrint: boolean = false;
   
 
   constructor(){
@@ -63,15 +64,32 @@ export class ZakatCalculatorComponent {
     this.totalZakat = this.totalWealth / 40;
   }
 
-  generatePDF() {
-    var data:any = document.getElementById('MakePdf');  //Id of the table
+  // generatePDF() {
+  //   this.isPrint = true;
+  //   var data:any = document.getElementById('MakePdf');  //Id of the table
     
-    html2canvas(data, {scale:2}).then(canvas => {
-      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
-      pdf.setFontSize(20);
-      pdf.save('MYPdf.pdf'); // Generated PDF   
-    }); 
+  //   html2canvas(data, {scale:2}).then(canvas => {
+  //     let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+  //     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+  //     // pdf.setFontSize(12);
+  //     pdf.save('MYPdf.pdf'); // Generated PDF   
+  //   });
+  //   this.isPrint = false; 
+  // }
+
+  generatePDF(): void {
+    this.isPrint = true;
+    setTimeout(() => {
+      var data: any = document.getElementById('MakePdf'); //Id of the table
+      
+      html2canvas(data, { scale: 2 }).then(canvas => {
+        let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+        // pdf.setFontSize(20);
+        pdf.save('MYPdf.pdf'); // Generated PDF   
+      });
+      this.isPrint = false;
+    }, 10);
   }
 
 

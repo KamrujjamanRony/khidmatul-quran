@@ -1,4 +1,4 @@
-<section class="md-container mx-auto my-2">
+<section class="my-2">
   <div class="py-5">
     <h1 class="text-center text-2xl lg:text-5xl text-primary mb-2">
       যাকাত ক্যালকুলেটর
@@ -323,10 +323,13 @@
       </div>
     </div>
     <div id="MakePdf">
-      <div class="max-w-lg md:max-w-xl lg:max-w-5xl mx-auto py-5">
+      
+  
+      <div class=" mx-auto py-5">
         <!-- card 06 -->
       <div
       class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto text-black bg-green-200"
+      [ngClass]="{ 'print': isPrint }"
     >
       <h1 class="text-center text-xl lg:text-2xl pt-5">
           যাকাত হিসাবের তারিখ {{today | bengaliNumber}}
@@ -378,6 +381,7 @@
       <!-- card 05 -->
       <div
       class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto my-5 text-black bg-green-200"
+      [ngClass]="{ 'print': isPrint }"
     >
       <h1 class="text-center text-xl lg:text-2xl pt-5">
           যাকাতের হিসাবযোগ্য সম্পদের পরিমান = {{totalWealth | bangla}} টাকা
@@ -391,6 +395,8 @@
   </div>
   </div>
 
-  <button class="btn btn-primary" (click)="generatePDF()">Download PDF</button>
+  <div class="flex justify-center">
+    <button class="btn btn-success" (click)="generatePDF()">Download PDF</button>
+  </div>
 </section>
 
