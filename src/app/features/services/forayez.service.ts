@@ -10,7 +10,7 @@ export class ForayezService {
   http = inject(HttpClient)
 
   getForayez(): Observable<any[]> {
-    return this.http.get<any[]>(environment.forayezApi);
+    return this.http.get<any[]>(`${environment.forayezApi}/GetJewelryById?id=${environment.dataId}`);
   }
 
   updateForayez(id: string, updateData: any | FormData): Observable<any>{

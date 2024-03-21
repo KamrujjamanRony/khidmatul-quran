@@ -7,6 +7,8 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas-pro';
+import 'jspdf-autotable';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-zakat-calculator',
@@ -25,10 +27,9 @@ export class ZakatCalculatorComponent {
   totalWealth: number = 0;
   totalZakat: number = 0;
   today: any;
-  isPrint: boolean = false;
   
 
-  constructor(){
+  constructor(private readonly http: HttpClient){
     // Initialize model properties
     this.model = {
       gold_22: 0,
@@ -64,33 +65,173 @@ export class ZakatCalculatorComponent {
     this.totalZakat = this.totalWealth / 40;
   }
 
-  // generatePDF() {
-  //   this.isPrint = true;
-  //   var data:any = document.getElementById('MakePdf');  //Id of the table
+  generatePDF() {
+    var data:any = document.getElementById('MakePdf');  //Id of the table
     
-  //   html2canvas(data, {scale:2}).then(canvas => {
-  //     let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-  //     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
-  //     // pdf.setFontSize(12);
-  //     pdf.save('MYPdf.pdf'); // Generated PDF   
-  //   });
-  //   this.isPrint = false; 
-  // }
-
-  generatePDF(): void {
-    this.isPrint = true;
-    setTimeout(() => {
-      var data: any = document.getElementById('MakePdf'); //Id of the table
-      
-      html2canvas(data, { scale: 2 }).then(canvas => {
-        let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
-        // pdf.setFontSize(20);
-        pdf.save('MYPdf.pdf'); // Generated PDF   
-      });
-      this.isPrint = false;
-    }, 10);
+    html2canvas(data, {scale:2}).then(canvas => {
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+      pdf.setFontSize(100);
+      pdf.save('MYPdf.pdf'); // Generated PDF   
+    });
   }
+
+//   generatePDF(): void {
+//     // Assuming `this.today` is a Date object
+//     const bengaliNumberPipe = new BengaliNumberPipe(); // Instantiate the pipe
+//     const formattedDate = bengaliNumberPipe.transform(this.today);
+
+//     // Load font file and generate PDF after font is loaded
+//     this.loadFontFile().then((fontData) => {
+//         const doc = new jsPDF({filters: ['ASCIIHexEncode']});
+        
+
+//         // Add the font
+//         doc.addFileToVFS('kalpurushANSI.ttf', fontData);
+//         doc.addFont('kalpurushANSI.ttf', 'kalpurush', 'normal');
+//         // Set font
+//         doc.setFont('kalpurush', 'normal');
+//         doc.setFontSize(10);
+
+//         console.log(doc.getFontList());
+
+//         const rows = [
+//               ["যাকাত হিসাবের তারিখ", formattedDate],
+//               ["মোট জুয়েলারি মূল্যঃ", formattedDate],
+//               ["মোট ক্যাশ টাকাঃ", formattedDate],
+//               ["মোট পাওনা টাকাঃ", formattedDate],
+//               ["মোট ব্যবসায়িক সম্পদঃ", formattedDate],
+//               ["ব্যাংক অ্যাকাউন্টে জমাঃ", formattedDate],
+//               ["মোবাইল ব্যাংকিং এ জমাঃ", formattedDate],
+//               ["বিয়োগযোগ্য ঋণ ও দায়ঃ", formattedDate],
+//               ["যাকাতের হিসাবযোগ্য সম্পদের পরিমান = ০.০০ টাকা"],
+//               ["মোট যাকাত = ০.০০ টাকা"],
+//           ];
+
+        
+
+//         // Add table
+//         (doc as any).autoTable({
+//             head: [],
+//             body: rows,
+//             startY: 20,
+//             theme: 'grid',
+//         });
+
+//         // Save the PDF
+//         doc.save('table.pdf');
+//     }).catch(error => {
+//         console.error('Error loading font file:', error);
+//     });
+// }
+  
+//   // Function to load font file using HttpClient and convert it to base64
+//   private loadFontFile(): Promise<string> {
+//     const fontPath = 'assets/font/kalpurushANSI.ttf'; // Adjust the path to your font file
+//     return new Promise((resolve, reject) => {
+//         this.http.get(fontPath, { responseType: 'arraybuffer' }).subscribe(arrayBuffer => {
+//             const uint8Array = new Uint8Array(arrayBuffer);
+//             const binaryString = uint8Array.reduce((acc, byte) => acc + String.fromCharCode(byte), '');
+//             const fontData = btoa(binaryString);
+//             resolve(fontData);
+//         }, error => {
+//             console.error('Error loading font file:', error);
+//             reject(error);
+//         });
+//     });
+// }
+  
+
+
+// fontqPath = 'assets/font/NotoSerifBengali-Regular.ttf';
+  
+
+  // generatePDF2(): void {
+  //   // Assuming `this.today` is a Date object
+  //   const bengaliNumberPipe = new BengaliNumberPipe(); // Instantiate the pipe
+  //   const formattedDate = bengaliNumberPipe.transform(this.today);
+
+  //   // Embed the Bengali Unicode font
+  //   const fontPath = '../../features/font/kalpurushANSI.ttf'; // Adjust the path to your font file
+  //   const fontName = 'SolaimanLipi'; // Name for the font
+  //   const doc = new jsPDF('p', 'px', 'a4');
+    
+  //   // Read the font file's content
+  //   // const fontFileContent = this.readFileContent(fontPath);
+
+  //   // Add the font to virtual file system
+  //   // doc.addFileToVFS(fontName, fontFileContent);
+
+  //   doc.addFont(fontName, 'SolaimanLipi', 'normal');
+
+  //   const columns = "";
+  //   const rows = [
+  //     ["যাকাত হিসাবের তারিখ", formattedDate],
+  //     ["মোট জুয়েলারি মূল্যঃ", formattedDate],
+  //     ["মোট ক্যাশ টাকাঃ", formattedDate],
+  //     ["মোট পাওনা টাকাঃ", formattedDate],
+  //     ["মোট ব্যবসায়িক সম্পদঃ", formattedDate],
+  //     ["ব্যাংক অ্যাকাউন্টে জমাঃ", formattedDate],
+  //     ["মোবাইল ব্যাংকিং এ জমাঃ", formattedDate],
+  //     ["বিয়োগযোগ্য ঋণ ও দায়ঃ", formattedDate],
+  //     ["যাকাতের হিসাবযোগ্য সম্পদের পরিমান = ০.০০ টাকা"],
+  //     ["মোট যাকাত = ০.০০ টাকা"],
+  // ];
+
+  //   const options = {
+  //       font: fontName,
+  //   };
+
+  //   (doc as any).autoTable(columns, rows, options);
+  //   doc.save('table.pdf');
+
+
+
+
+
+    
+  //   // const bengaliNumberPipe = new BengaliNumberPipe(); // Instantiate the pipe
+  //   // const formattedDate = bengaliNumberPipe.transform(this.today);
+
+  //   // const banglaPipe = new BanglaPipe(); 
+
+  //   // let columns = "";
+  //   //     let rows = [
+  //   //         ["যাকাত হিসাবের তারিখ", formattedDate],
+  //   //         ["মোট জুয়েলারি মূল্যঃ", formattedDate],
+  //   //         ["মোট ক্যাশ টাকাঃ", formattedDate],
+  //   //         ["মোট পাওনা টাকাঃ", formattedDate],
+  //   //         ["মোট ব্যবসায়িক সম্পদঃ", formattedDate],
+  //   //         ["ব্যাংক অ্যাকাউন্টে জমাঃ", formattedDate],
+  //   //         ["মোবাইল ব্যাংকিং এ জমাঃ", formattedDate],
+  //   //         ["বিয়োগযোগ্য ঋণ ও দায়ঃ", formattedDate],
+  //   //         ["যাকাতের হিসাবযোগ্য সম্পদের পরিমান = ০.০০ টাকা"],
+  //   //         ["মোট যাকাত = ০.০০ টাকা"],
+  //   //     ];
+
+  //   //     // Embed the Bengali Unicode font
+  //   // const fontPath = 'path/to/kalpurushANSI.ttf'; // Adjust the path to your font file
+  //   // const fontName = 'SolaimanLipi'; // Name for the font
+  //   // let doc = new jsPDF('p', 'px', 'a4');
+  //   // doc.addFileToVFS(fontPath);
+  //   // doc.addFont(fontName, 'SolaimanLipi', 'normal');
+
+  //   //     // let doc = new jsPDF('p', 'px', 'a4');
+  //   //     (doc as any).autoTable(columns, rows);
+  //   //     doc.save('table.pdf');
+
+  //   // this.isPrint = true;
+  //   // setTimeout(() => {
+  //   //   var data: any = document.getElementById('MakePdf');
+      
+  //   //   html2canvas(data, { scale: 2 }).then(canvas => {
+  //   //     let pdf = new jsPDF('p', 'px', 'a4'); 
+  //   //     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+  //   //     pdf.save('MYPdf.pdf');  
+  //   //   });
+  //   //   this.isPrint = false;
+  //   // }, 1000);
+  // }
 
 
   onReset(){

@@ -98,6 +98,7 @@
             </h1>
           </form>
         </div>
+        <!-- card 2 -->
         <div class="card shrink-0 w-full max-w-lg shadow-2xl bg-green-200 text-black">
           <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
             জুয়েলারি রূপার বিক্রয়মূল্য
@@ -105,9 +106,9 @@
           <form class="card-body">
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">ক্যারেট</span>
-                <span class="label-text text-md lg:text-xl">গ্রাম</span>
-                <span class="label-text text-md lg:text-xl"
+                <span class="label-text text-md lg:text-xl text-black">ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">গ্রাম</span>
+                <span class="label-text text-md lg:text-xl text-black"
                   >বিক্রয়মূল্য
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
@@ -115,7 +116,7 @@
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">২২ ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">২২ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -124,14 +125,14 @@
                   [(ngModel)]="model.silver_22"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.silver_22 * forayez?.silver_22k * 0.8 | bangla
                 }}</span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">২১ ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">২১ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -140,14 +141,14 @@
                   [(ngModel)]="model.silver_21"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.silver_21 * forayez?.silver_21k * 0.8 | bangla
                 }}</span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl">১৮ ক্যারেট</span>
+                <span class="label-text text-md lg:text-xl text-black">১৮ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -156,14 +157,14 @@
                   [(ngModel)]="model.silver_18"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.silver_18 * forayez?.silver_18k * 0.8 | bangla
                 }}</span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl"
+                <span class="label-text text-md lg:text-xl text-black"
                   >সনাতনী &nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
                 <input
@@ -174,7 +175,7 @@
                   [(ngModel)]="model.silver_td"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px]">{{
+                <span class="label-text text-md lg:text-xl w-[120px] text-black">{{
                   model.silver_td * forayez?.silver_traditional * 0.8 | bangla
                 }}</span>
               </label>
@@ -329,7 +330,6 @@
         <!-- card 06 -->
       <div
       class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto text-black bg-green-200"
-      [ngClass]="{ 'print': isPrint }"
     >
       <h1 class="text-center text-xl lg:text-2xl pt-5">
           যাকাত হিসাবের তারিখ {{today | bengaliNumber}}
@@ -381,7 +381,6 @@
       <!-- card 05 -->
       <div
       class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto my-5 text-black bg-green-200"
-      [ngClass]="{ 'print': isPrint }"
     >
       <h1 class="text-center text-xl lg:text-2xl pt-5">
           যাকাতের হিসাবযোগ্য সম্পদের পরিমান = {{totalWealth | bangla}} টাকা
@@ -396,7 +395,7 @@
   </div>
 
   <div class="flex justify-center">
-    <button class="btn btn-success" (click)="generatePDF()">Download PDF</button>
+    <button class="btn btn-success mb-5 text-white" (click)="generatePDF()">Download PDF</button>
   </div>
 </section>
 

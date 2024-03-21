@@ -19,7 +19,8 @@ export class ZakatComponent {
   
   ngOnInit(): void {
     this.forayezService.getForayez().subscribe(Response => {
-      this.forayez = Response[0];
+      this.forayez = Response;
+      console.log(Response)
     })
   }
 
