@@ -51,16 +51,16 @@ export class ZakatCalculatorComponent {
   
   ngOnInit(): void {
     this.forayezService.getForayez().subscribe(Response => {
-      this.forayez = Response[0];
+      this.forayez = Response;
     })
     this.today = this.datePipe.transform(new Date(), 'dd/MM/yyyy');
   }
 
   onInputChange(event: any) {
     const {gold_22, gold_21, gold_18, gold_td, silver_22, silver_21, silver_18, silver_td, totalCashTk, totalPawnaTk, businessWealth, bankAccount, mobileBanking, debt} = this.model;
-    const {gold_22k, gold_21k, gold_18k, gold_traditional, silver_22k, silver_21k, silver_18k, silver_traditional} = this.forayez;
-    this.totalGold = (gold_22 * gold_22k * 0.8) + (gold_21 * gold_21k * 0.8) + (gold_18 * gold_18k * 0.8) + (gold_td * gold_traditional * 0.8);
-    this.totalSilver = (silver_22 * silver_22k * 0.8) + (silver_21 * silver_21k * 0.8) + (silver_18 * silver_18k * 0.8) + (silver_td * silver_traditional * 0.8);
+    const {gold22k, gold21k, gold18k, goldTd, silver22k, silver21k, silver18k, silverTd} = this.forayez;
+    this.totalGold = (gold_22 * gold22k * 0.8) + (gold_21 * gold21k * 0.8) + (gold_18 * gold18k * 0.8) + (gold_td * goldTd * 0.8);
+    this.totalSilver = (silver_22 * silver22k * 0.8) + (silver_21 * silver21k * 0.8) + (silver_18 * silver18k * 0.8) + (silver_td * silverTd * 0.8);
     this.totalWealth = (this.totalGold + this.totalSilver + totalCashTk + totalPawnaTk + businessWealth + bankAccount + mobileBanking) - debt;
     this.totalZakat = this.totalWealth / 40;
   }
