@@ -24,9 +24,8 @@ export class ZakatCalculatorComponent {
   model: any;
   totalGold: number = 0;
   totalSilver: number = 0;
-  totalWealth: number = 0;
-  totalZakat: number = 0;
   today: any;
+  selectedUnit: string = 'ভরি';
   
 
   constructor(private readonly http: HttpClient){
@@ -57,12 +56,12 @@ export class ZakatCalculatorComponent {
   }
 
   onInputChange(event: any) {
-    const {gold_22, gold_21, gold_18, gold_td, silver_22, silver_21, silver_18, silver_td, totalCashTk, totalPawnaTk, businessWealth, bankAccount, mobileBanking, debt} = this.model;
+    const {gold_22, gold_21, gold_18, gold_td, silver_22, silver_21, silver_18, silver_td} = this.model;
     const {gold22k, gold21k, gold18k, goldTd, silver22k, silver21k, silver18k, silverTd} = this.forayez;
     this.totalGold = (gold_22 * gold22k * 0.8) + (gold_21 * gold21k * 0.8) + (gold_18 * gold18k * 0.8) + (gold_td * goldTd * 0.8);
     this.totalSilver = (silver_22 * silver22k * 0.8) + (silver_21 * silver21k * 0.8) + (silver_18 * silver18k * 0.8) + (silver_td * silverTd * 0.8);
-    this.totalWealth = (this.totalGold + this.totalSilver + totalCashTk + totalPawnaTk + businessWealth + bankAccount + mobileBanking) - debt;
-    this.totalZakat = this.totalWealth / 40;
+    // this.totalWealth = (this.totalGold + this.totalSilver + totalCashTk + totalPawnaTk + businessWealth + bankAccount + mobileBanking) - debt;
+    // this.totalZakat = this.totalWealth / 40;
   }
 
   generatePDF() {
@@ -252,9 +251,7 @@ export class ZakatCalculatorComponent {
       debt: 0,
     };
     this.totalGold = 0,
-    this.totalSilver = 0,
-    this.totalWealth = 0,
-    this.totalZakat = 0
+    this.totalSilver = 0
   }
 
 }
