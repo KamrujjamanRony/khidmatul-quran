@@ -59,7 +59,6 @@ export class HijriDateComponent {
     const dateObject = new Date(this.selectedDate);
     this.setDatetimeHtml(dateObject);
     const hijriDate = this.getCurrentHijriDate(this.selectedDate);
-    console.log(hijriDate)
     // this.convertToBanglaDate(dateObject);
   }
 
@@ -253,7 +252,6 @@ export class HijriDateComponent {
   getActualDateAfterSunSet(gregorianDate: Date): any {
     const { year, month, day } = this.getBangladeshTime(gregorianDate);
     const ddd = `${year}/${month + 1}/${day}`;
-    console.log(ddd)
     this.isSunset$ = this.sunsetService.isSunset(ddd);
     this.isSunset$.subscribe(value => {
       if (value) {
@@ -338,12 +336,31 @@ export class HijriDateComponent {
 
   getCurrentHijriDate(date: string) {
     const hijriDate = new Intl.DateTimeFormat('en-u-ca-islamic', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric'
+    }).format(new Date(date));
+
+    return hijriDate.replace(" AH", "").split("/").map(d => +d);
+  }
+
+  hijriToGregorian(hijriYear: number, hijriMonth: number, hijriDay: number | undefined) {
+    // Create a Hijri date object
+    const hijriDate = new Intl.DateTimeFormat('islamic-u-ca-en-US', {
         day: 'numeric',
         month: 'numeric',
         year: 'numeric'
-    }).format(new Date(date));
+    }).format(new Date(hijriYear, hijriMonth - 1, hijriDay));
 
-    return hijriDate.replace(" AH", "").split("/").map(d=> +d);
+    // Parse the formatted date to extract Gregorian components
+    const [gregorianMonth, gregorianDay, gregorianYear] = hijriDate.replace(" AH", "").split('/').map(Number);
+    console.log({ year: gregorianYear, month: gregorianMonth, day: gregorianDay })
+
+    return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
 }
+
+// Example usage:
+hijriDate = { year: 1443, month: 7, day: 16 }; // Hijri date: 16th day of the 7th month of the year 1443 AH
+gregorianDate = this.hijriToGregorian(this.hijriDate.year, this.hijriDate.month, this.hijriDate.day);
 
 }

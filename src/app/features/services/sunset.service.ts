@@ -55,14 +55,13 @@ export class SunsetService {
   isSunset(ddd: any): Observable<boolean> {
     return this.getSunsetTime(ddd).pipe(
       map((response: any) => {
-        console.log(response)
         const sunsetTimeUTC = new Date(response.results.sunset);
         
         // Convert UTC time to BDT
         const sunsetTimeBDT = new Date(sunsetTimeUTC.getTime() + (this.BDT_OFFSET * 60000));
 
         const currentTimeBDT = new Date();
-        console.log(sunsetTimeBDT);
+        // console.log(sunsetTimeBDT);
         // console.log(currentTimeBDT);
 
         // Check if the current time is after sunset in BDT

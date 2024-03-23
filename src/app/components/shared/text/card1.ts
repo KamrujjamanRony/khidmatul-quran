@@ -10,19 +10,19 @@ import { Head1Component } from './H1';
     <div>
         @if(heading){<H1 class="text-center text-rose-600" [text]="heading"></H1>}
         @if(head){<H1 class="text-accent" [text]="head"></H1>}
-        @if(title){<P [text]="title"></P>}
+        @if(title){<P class="text-justify" [text]="title"></P>}
         @if(arabic){<p class="text-right font-bold text-black text-xl py-1">{{arabic}}</p>}
-        @if(bangla){<P [text]="bangla"></P>}
-        @if(bangla1){<P [text]="bangla1"></P>}
-        @if(bangla2){<P [text]="bangla2"></P>}
-        @if(bangla3){<P [text]="bangla3"></P>}
-        @if(bangla4){<P [text]="bangla4"></P>}
-        @if(bangla5){<P [text]="bangla5"></P>}
-        @if(bangla6){<P [text]="bangla6"></P>}
-        @if(bangla7){<P [text]="bangla7"></P>}
-        @if(bangla8){<P [text]="bangla8"></P>}
-        @if(bangla9){<P [text]="bangla9"></P>}
-        @if(bangla10){<P [text]="bangla10"></P>}
+        @if(bangla){<P class="text-justify" [text]="bangla"></P>}
+        @if(bangla1){<P class="text-justify" [text]="bangla1"></P>}
+        @if(bangla2){<P class="text-justify" [text]="bangla2"></P>}
+        @if(bangla3){<P class="text-justify" [text]="bangla3"></P>}
+        @if(bangla4){<P class="text-justify" [text]="bangla4"></P>}
+        @if(bangla5){<P class="text-justify" [text]="bangla5"></P>}
+        @if(bangla6){<P class="text-justify" [text]="bangla6"></P>}
+        @if(bangla7){<P class="text-justify" [text]="bangla7"></P>}
+        @if(bangla8){<P class="text-justify" [text]="bangla8"></P>}
+        @if(bangla9){<P class="text-justify" [text]="bangla9"></P>}
+        @if(bangla10){<P class="text-justify" [text]="bangla10"></P>}
     </div>
   `
 })

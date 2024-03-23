@@ -11,6 +11,8 @@ import { Blog2Component } from './components/blogs/blog2/blog2.component';
 import { ZakatCalculatorComponent } from './pages/zakat-calculator/zakat-calculator.component';
 import { ZakatMasalaComponent } from './pages/zakat-masala/zakat-masala.component';
 import { NoticeComponent } from './pages/notice/notice.component';
+import { Blog3Component } from './components/blogs/blog3/blog3.component';
+import { KitabComponent } from './pages/kitab/kitab.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,8 +45,12 @@ export const routes: Routes = [
     component: ZakatMasalaComponent
   },
   {
+    path: 'zakat-masala/1',
+    component: Blog3Component
+  },
+  {
     path: 'kitab',
-    component: Blog1Component
+    component: KitabComponent
   },
   {
     path: 'selected-writings',
