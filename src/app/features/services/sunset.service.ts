@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 export class SunsetService {
   private latitude: any;
   private longitude: any;
-  // private readonly BDT_OFFSET = 6 * 60;
+  private readonly BDT_OFFSET = 6 * 60;
 
   constructor(private http: HttpClient) {
     this.getCurrentLocation().then(
@@ -55,14 +55,15 @@ export class SunsetService {
   isSunset(ddd: any): Observable<boolean> {
     return this.getSunsetTime(ddd).pipe(
       map((response: any) => {
+        console.log(response)
         const sunsetTimeUTC = new Date(response.results.sunset);
         
         // Convert UTC time to BDT
-        const sunsetTimeBDT = new Date(sunsetTimeUTC.getTime());  //  + (this.BDT_OFFSET * 60000)
+        const sunsetTimeBDT = new Date(sunsetTimeUTC.getTime() + (this.BDT_OFFSET * 60000));
 
         const currentTimeBDT = new Date();
         console.log(sunsetTimeBDT);
-        console.log(currentTimeBDT);
+        // console.log(currentTimeBDT);
 
         // Check if the current time is after sunset in BDT
         return currentTimeBDT > sunsetTimeBDT;

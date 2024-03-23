@@ -12,13 +12,13 @@
       <div class="form-control">
         <label class="label cursor-pointer gap-1">
           <input type="radio" name="unit" class="radio checked:bg-red-500" [(ngModel)]="selectedUnit" value="ভরি" />
-          <span class="label-text text-md lg:text-xl text-red-500 text-2xl">ভরি</span> 
+          <span class="label-text lg:text-2xl text-red-500 text-2xl">ভরি</span> 
         </label>
       </div>
       <div class="form-control">
         <label class="label cursor-pointer gap-1">
           <input type="radio" name="unit" class="radio checked:bg-blue-500" [(ngModel)]="selectedUnit" value="গ্রাম" />
-          <span class="label-text text-md lg:text-xl text-blue-500 text-2xl">গ্রাম</span> 
+          <span class="label-text lg:text-2xl text-blue-500 text-2xl">গ্রাম</span> 
         </label>
       </div>
     </div>
@@ -32,9 +32,9 @@
           <form class="card-body">
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">ক্যারেট</span>
-                <span class="label-text text-md lg:text-xl text-black">{{selectedUnit}}</span>
-                <span class="label-text text-md lg:text-xl text-black"
+                <span class="label-text text-xl lg:text-2xl text-black">ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black">{{selectedUnit}}</span>
+                <span class="label-text text-xl lg:text-2xl text-black"
                   >বিক্রয়মূল্য
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
@@ -42,7 +42,7 @@
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">২২ ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black mr-2">২২ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -51,14 +51,14 @@
                   [(ngModel)]="model.gold_22"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.gold_22 * forayez?.gold22k * 0.8 * 11.664 | bangla}}} @else {{{model.gold_22 * forayez?.gold22k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">২১ ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black mr-2">২১ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -67,14 +67,14 @@
                   [(ngModel)]="model.gold_21"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.gold_21 * forayez?.gold21k * 0.8 * 11.664 | bangla}}} @else {{{model.gold_21 * forayez?.gold21k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">১৮ ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black mr-2">১৮ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -83,14 +83,14 @@
                   [(ngModel)]="model.gold_18"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.gold_18 * forayez?.gold18k * 0.8 * 11.664 | bangla}}} @else {{{model.gold_18 * forayez?.gold18k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black"
+                <span class="label-text text-xl lg:text-2xl text-black mr-2"
                   >সনাতনী &nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
                 <input
@@ -101,7 +101,7 @@
                   [(ngModel)]="model.gold_td"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.gold_td * forayez?.goldTd * 0.8 * 11.664 | bangla}}} @else {{{model.gold_td * forayez?.goldTd * 0.8 | bangla}}}
                 </span>
               </label>
@@ -122,9 +122,9 @@
           <form class="card-body">
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">ক্যারেট</span>
-                <span class="label-text text-md lg:text-xl text-black">{{selectedUnit}}</span>
-                <span class="label-text text-md lg:text-xl text-black"
+                <span class="label-text text-xl lg:text-2xl text-black">ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black">{{selectedUnit}}</span>
+                <span class="label-text text-xl lg:text-2xl text-black"
                   >বিক্রয়মূল্য
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
@@ -132,7 +132,7 @@
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">২২ ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black mr-2">২২ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -141,14 +141,14 @@
                   [(ngModel)]="model.silver_22"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.silver_22 * forayez?.silver22k * 0.8 * 11.664 | bangla}}} @else {{{model.silver_22 * forayez?.silver22k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">২১ ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black mr-2">২১ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -157,14 +157,14 @@
                   [(ngModel)]="model.silver_21"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.silver_21 * forayez?.silver21k * 0.8 * 11.664 | bangla}}} @else {{{model.silver_21 * forayez?.silver21k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black">১৮ ক্যারেট</span>
+                <span class="label-text text-xl lg:text-2xl text-black mr-2">১৮ ক্যারেট</span>
                 <input
                   type="number"
                   placeholder=""
@@ -173,14 +173,14 @@
                   [(ngModel)]="model.silver_18"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.silver_18 * forayez?.silver18k * 0.8 * 11.664 | bangla}}} @else {{{model.silver_18 * forayez?.silver18k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
             <div class="form-control">
               <label class="label">
-                <span class="label-text text-md lg:text-xl text-black"
+                <span class="label-text text-xl lg:text-2xl text-black mr-2"
                   >সনাতনী &nbsp;&nbsp;&nbsp;&nbsp;</span
                 >
                 <input
@@ -191,7 +191,7 @@
                   [(ngModel)]="model.silver_td"
                   (ngModelChange)="onInputChange($event)"
                 />
-                <span class="label-text text-md lg:text-xl w-[120px] text-black">
+                <span class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2">
                   @if(selectedUnit === "ভরি"){{{model.silver_td * forayez?.silverTd * 0.8 * 11.664 | bangla}}} @else {{{model.silver_td * forayez?.silverTd * 0.8 | bangla}}}
                 </span>
               </label>

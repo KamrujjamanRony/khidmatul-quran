@@ -33,7 +33,7 @@ export class HijriDateComponent {
   hijri3!: any;
   dateEn: any;
   dateBd: any;
-  controlDay: number = 0;
+  controlDay: number = -1;
   controlMonth: number = 0;
   hijriMonth!: any;
   englishMonth!: any;
@@ -210,7 +210,6 @@ export class HijriDateComponent {
   }
 
   setDateEng(tarik: Date): any {
-    console.log(tarik)
     const dayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const arg = {
@@ -253,7 +252,8 @@ export class HijriDateComponent {
 
   getActualDateAfterSunSet(gregorianDate: Date): any {
     const { year, month, day } = this.getBangladeshTime(gregorianDate);
-    const ddd = `${year}-${month + 1}-${day}`;
+    const ddd = `${year}/${month + 1}/${day}`;
+    console.log(ddd)
     this.isSunset$ = this.sunsetService.isSunset(ddd);
     this.isSunset$.subscribe(value => {
       if (value) {
@@ -312,8 +312,8 @@ export class HijriDateComponent {
     this.aiyameBiz = [arabicDay13.gd.toFixed(), arabicDay14.gd.toFixed(), arabicDay15.gd.toFixed()];
 
     this.englishMonth = arabicDay13.gm;
-    console.log(hijriObject);
-    console.log(arabicDay13);
+    // console.log(hijriObject);
+    // console.log(arabicDay13);
 
     // if (todayArabic.gd >= day0.gd && todayArabic.gd < day4.gd) {
     //   this.isTrue = true;

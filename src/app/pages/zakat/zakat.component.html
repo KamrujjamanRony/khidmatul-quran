@@ -1,4 +1,4 @@
-<section class="md-container mx-auto my-2">
+<section class="md-container mx-auto my-2 ml-2 mr-2">
     <div class="flex justify-center items-center font-bold my-2 text-2xl">
       <h1 class="text-gray-600 mr-1">ভরি/গ্রাম নির্বাচন করুনঃ </h1>
       <div class="form-control">
@@ -15,20 +15,23 @@
       </div>
     </div>
 
-    <p class="text-center text-blue-700 font-semibold">বাজুসের {{forayez?.updateDate}} তারিখের মূল্য অনুযায়ী হিসাব করা হয়েছে।</p>
+    <p class="text-center text-blue-700 font-semibold">বাজুসের {{forayez?.updateDate | bengaliDate}} তারিখের মূল্য অনুযায়ী হিসাব করা হয়েছে।</p>
 
-    <div class="max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto my-2 md:my-5">
-        <img class="w-full" [src]="forayez?.goldImageUrl" alt="gold image">
+    <div class="max-w-xm md:max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto my-5 md:my-10">
+        <!-- <img class="w-full" [src]="forayez?.goldImageUrl" alt="gold image"> -->
+        <div class="flex justify-center items-center h-12 md:h-20 lg:h-28 rounded-t-lg bg-yellow-600">
+          <h1 class="text-2xl md:text-3xl lg:text-5xl text-white">স্বর্ণের যাকাত হিসাব</h1>
+        </div>
         <!-- gold table -->
         <div class="overflow-x-auto">
-            <table class="table text-center">
+            <table class="table text-center table-xss md:table-md lg:table-lg gap-0">
               <!-- head -->
               <thead>
-                <tr class="bg-slate-900 text-yellow-600 text-md lg:text-xl">
-                  <th>প্রতি {{selectedUnit}}</th>
-                  <th>ক্রয় মূল্য</th>
-                  <th>বিক্রি মূল্য</th>
-                  <th>যাকাত ২.৫% (৩৫৪দিনের)</th>
+                <tr class="bg-slate-900 text-yellow-600">
+                  <th class="text-lg">প্রতি {{selectedUnit}}</th>
+                  <th class="text-lg">ক্রয় মূল্য</th>
+                  <th class="text-lg">বিক্রি মূল্য</th>
+                  <th class="text-md md:text-lg">যাকাত ২.৫% (৩৫৪দিনের)</th>
                 </tr>
               </thead>
               <tbody class="font-bold">
@@ -66,17 +69,20 @@
     </div>
 
     <div class="max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto my-2 md:my-5">
-        <img class="w-full" [src]="forayez?.silverImageUrl" alt="silver image">
+        <!-- <img class="w-full" [src]="forayez?.silverImageUrl" alt="silver image"> -->
+        <div class="flex justify-center items-center h-12 md:h-20 lg:h-28 rounded-t-lg bg-gray-500">
+          <h1 class="text-2xl md:text-3xl lg:text-5xl text-white">রুপার যাকাত হিসাব</h1>
+        </div>
         <!-- silver table -->
         <div class="overflow-x-auto">
-            <table class="table text-center">
+            <table class="table text-center table-xss md:table-md lg:table-lg">
               <!-- head -->
               <thead>
                 <tr class="bg-slate-900 text-yellow-600 text-md lg:text-xl">
-                  <th>প্রতি {{selectedUnit}}</th>
-                  <th>ক্রয় মূল্য</th>
-                  <th>বিক্রি মূল্য</th>
-                  <th>যাকাত ২.৫% (৩৫৪দিনের)</th>
+                  <th class="text-lg">প্রতি {{selectedUnit}}</th>
+                  <th class="text-lg">ক্রয় মূল্য</th>
+                  <th class="text-lg">বিক্রি মূল্য</th>
+                  <th class="text-md md:text-lg">যাকাত ২.৫% (৩৫৪দিনের)</th>
                 </tr>
               </thead>
               <tbody class="font-bold">

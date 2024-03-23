@@ -10,6 +10,7 @@ import { SelectedWritingComponent } from './pages/selected-writing/selected-writ
 import { Blog2Component } from './components/blogs/blog2/blog2.component';
 import { ZakatCalculatorComponent } from './pages/zakat-calculator/zakat-calculator.component';
 import { ZakatMasalaComponent } from './pages/zakat-masala/zakat-masala.component';
+import { NoticeComponent } from './pages/notice/notice.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -60,5 +61,9 @@ export const routes: Routes = [
   {
     path: 'arabic',
     component: ArabicComponent
+  },
+  {
+    path: 'notice',
+    component: NoticeComponent
   },
 ];

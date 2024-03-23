@@ -31,20 +31,20 @@ export class ZakatCalculatorComponent {
   constructor(private readonly http: HttpClient){
     // Initialize model properties
     this.model = {
-      gold_22: 0,
-      gold_21: 0,
-      gold_18: 0,
-      gold_td: 0,
-      silver_22: 0,
-      silver_21: 0,
-      silver_18: 0,
-      silver_td: 0,
-      totalCashTk: 0,
-      totalPawnaTk: 0,
-      businessWealth: 0,
-      bankAccount: 0,
-      mobileBanking: 0,
-      debt: 0,
+      gold_22: null,
+      gold_21: null,
+      gold_18: null,
+      gold_td: null,
+      silver_22: null,
+      silver_21: null,
+      silver_18: null,
+      silver_td: null,
+      totalCashTk: null,
+      totalPawnaTk: null,
+      businessWealth: null,
+      bankAccount: null,
+      mobileBanking: null,
+      debt: null,
     };
   }
   

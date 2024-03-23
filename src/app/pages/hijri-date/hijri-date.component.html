@@ -1,4 +1,4 @@
-<section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto mt-10">
+<section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto mt-10 ml-2 mr-2">
     <div
       class="relative mb-3 hidden"
       data-te-datepicker-init
@@ -22,7 +22,7 @@
     </div>
   
     <div
-      class="mt-4 bg-orange-400 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
     >
       <p [ngClass]="{ 'text-center': true, 'line-through': isSunset$ | async }">
         @if (hijri2) {{{ hijri2 | bengaliNumber }}}
@@ -33,12 +33,10 @@
     </div>
     @if (dateBd) {
     <div
-      class="mt-4 bg-orange-400 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
     >
       <p class="text-center">
         {{
-          dateBd.day +
-            ", " +
             dateBd.date +
             " " +
             dateBd.month +
@@ -52,7 +50,7 @@
     }
     @if (dateEn) {
       <div
-        class="mt-4 bg-orange-400 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
+        class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
       >
         <p class="text-center">
           {{
