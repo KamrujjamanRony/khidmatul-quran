@@ -9,13 +9,14 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas-pro';
 import 'jspdf-autotable';
 import { HttpClient } from '@angular/common/http';
+import { BengaliDatePipe } from "../../features/pipe/bengali-date.pipe";
 
 @Component({
     selector: 'app-zakat-calculator',
     standalone: true,
     templateUrl: './zakat-calculator.component.html',
     styleUrl: './zakat-calculator.component.css',
-    imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule]
+    imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe]
 })
 export class ZakatCalculatorComponent {
   datePipe: DatePipe = new DatePipe('en-US');

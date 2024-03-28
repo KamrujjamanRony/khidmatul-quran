@@ -14,6 +14,9 @@ export class DropdownMenuComponent {
   @Input() menu!: any;
   isOpen: boolean = false;
 
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
   openDropdown() {
     this.isOpen = true;
   }
