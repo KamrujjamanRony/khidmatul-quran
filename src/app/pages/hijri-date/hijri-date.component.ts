@@ -33,7 +33,7 @@ export class HijriDateComponent {
   hijri3!: any;
   dateEn: any;
   dateBd: any;
-  controlDay: number = -1;
+  controlDay: number = 1;
   controlMonth: number = 0;
   hijriMonth!: any;
   englishMonth!: any;
