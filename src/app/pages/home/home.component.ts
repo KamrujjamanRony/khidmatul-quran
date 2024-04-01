@@ -32,7 +32,6 @@ export class HomeComponent {
     }
     ngOnInit(): void {
       this.getPreciseLocation();
-    //   console.log(this.model.latitude, this.model.longitude)
     }
   
     onInputFocus(): void {
@@ -79,7 +78,6 @@ export class HomeComponent {
 
         const today = new Date();
         this.todaySalatTime = this.timetableData.find(d => d.day == today.getDate() && today.getMonth() === this.currentDate.getMonth());
-        console.log(this.todaySalatTime)
   
         startDate.setDate(startDate.getDate() + 1); // next day
       }
@@ -112,11 +110,11 @@ export class HomeComponent {
             x.showExactPosition(position);
           },
           (error) => {
-            this.errorText = 'Geolocation error: ' + error.message;
+            this.errorText = 'location not found!';
           }
         );
       } else {
-        this.errorText = 'Geolocation is not supported';
+        this.errorText = 'Geolocation is not supported!';
       }
     }
   

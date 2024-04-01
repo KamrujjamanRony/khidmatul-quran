@@ -8,7 +8,7 @@
                 <h1 class="text-center text-2xl">
                   City :
                   <span class="roboto font-bold text-rose-500">{{
-                    locationName?.address?.city || locationName?.address?.state
+                    locationName?.address?.city || locationName?.address?.state || "dhaka"
                   }}</span>
                 </h1>
               } @else {
@@ -17,6 +17,7 @@
                   <span class="roboto font-bold text-rose-500">Dhaka</span>
                 </h1>
               }
+          <span class="text-red-600 py-2">{{ errorText }}</span>
           <h2 class="text-3xl text-center">আজকের সময়সূচী</h2>
           <p class="ml-10">সাহরি : {{todaySalatTime.Shari | bengaliNumber}}</p>
           <p class="ml-10">ফজর : {{todaySalatTime.fajrT | bengaliNumber}}</p>

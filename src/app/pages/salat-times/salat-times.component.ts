@@ -16,8 +16,8 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 })
 export class SalatTimesComponent {
   model: LocationModel = {
-    latitude: 23,
-    longitude: 93,
+    latitude: 23.75,
+    longitude: 90.383333,
   };
   timezone: number = 6;
   dst: string = 'auto';
@@ -34,7 +34,6 @@ export class SalatTimesComponent {
   }
   ngOnInit(): void {
     this.getPreciseLocation();
-    console.log(this.model.latitude, this.model.longitude)
   }
 
   onInputFocus(): void {
@@ -58,9 +57,6 @@ export class SalatTimesComponent {
 
   isToday(day: any): boolean {
     const today = new Date();
-    const todaySalatTime = day
-
-    console.log(day)
     return day && day.day == today.getDate() && today.getMonth() === this.currentDate.getMonth();
   }
 
@@ -81,7 +77,6 @@ export class SalatTimesComponent {
       );
       times['day'] = startDate.getDate().toFixed();
       this.timetableData.push(times); // Push the day's data into the timetableData array
-      console.log(this.timetableData)
 
       startDate.setDate(startDate.getDate() + 1); // next day
     }
@@ -111,15 +106,14 @@ export class SalatTimesComponent {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
-          console.log(position);
           x.showExactPosition(position);
         },
         (error) => {
-          this.errorText = 'Geolocation error: ' + error.message;
+          this.errorText = 'location not found!';
         }
       );
     } else {
-      this.errorText = 'Geolocation is not supported';
+      this.errorText = 'location is not supported!';
     }
   }
 
@@ -136,7 +130,6 @@ export class SalatTimesComponent {
     axios
       .get(nominatimURL)
       .then((response) => {
-        console.log(response)
         if (response.data.display_name) {
           this.locationName = response.data;
         } else {
