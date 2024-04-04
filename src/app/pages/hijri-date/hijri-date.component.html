@@ -25,12 +25,17 @@
     <div
       class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
     >
-      <p [ngClass]="{ 'text-center': true, 'line-through': isSunset$ | async }">
-        @if (hijri2) {{{ hijri2 | bengaliNumber }}}
-      </p>
-      @if(hijri3){
-      <p>{{ hijri3 | bengaliNumber }}</p>
+      @if (notice) {
+        <p>{{notice}}</p>
+      } @else {
+        <p [ngClass]="{ 'text-center': true, 'line-through': hijri3}">
+          @if (hijri2) {{{ hijri2 | bengaliNumber }}}
+        </p>
+        @if(hijri3){
+        <p>{{ hijri3 | bengaliNumber }}</p>
+        }
       }
+      
     </div>
     @if (dateBd) {
     <div

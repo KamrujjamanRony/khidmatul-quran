@@ -33,6 +33,7 @@ export class HijriDateComponent {
   hijri3!: any;
   dateEn: any;
   dateBd: any;
+  notice: any = "";
   controlDay: number = 1;
   controlMonth: number = 0;
   hijriMonth!: any;
@@ -250,28 +251,21 @@ export class HijriDateComponent {
   }
 
   getActualDateAfterSunSet(gregorianDate: Date): any {
-    const { year, month, day } = this.getBangladeshTime(gregorianDate);
+    const gregorian = gregorianDate;
+    const { year, month, day } = this.getBangladeshTime(gregorian);
     const ddd = `${year}/${month + 1}/${day}`;
     this.isSunset$ = this.sunsetService.isSunset(ddd);
     this.isSunset$.subscribe(value => {
       if (value) {
-        const { year, month, day } = this.getBangladeshTime(gregorianDate);
-        const nextDay = day + 1;
-        const ActualHijriObject = toHijri(year, month, nextDay);
+        const { year, month, day } = this.getBangladeshTime(gregorian);
+        const hd = this.getCurrentHijriDate(`${year}/${month}/${day}`);
+        const nextDay = hd[1] + 1;
+        console.log(hd);
         const monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"]
-        const hijriDate = ActualHijriObject.hd;
-        const hijriMonth = ActualHijriObject.hm;
-        const hijriYear = ActualHijriObject.hy;
+        const hijriDate = nextDay;
+        const hijriMonth = hd[0];
+        const hijriYear = hd[2];
         this.hijri3 = `${hijriDate}, ${monthName[hijriMonth]}, ${hijriYear} হিঃ`;
-        // if (hijriDate == 1) {
-        //   this.hijri3 = `${hijriDate}st , ${monthName[hijriMonth]} , ${hijriYear}`;
-        // } else if (hijriDate == 2) {
-        //   this.hijri3 = `${hijriDate}nd , ${monthName[hijriMonth]} , ${hijriYear}`;
-        // } else if (hijriDate == 3) {
-        //   this.hijri3 = `${hijriDate}rd , ${monthName[hijriMonth]} , ${hijriYear}`;
-        // } else {
-        //   this.hijri3 = `${hijriDate}th , ${monthName[hijriMonth]} , ${hijriYear}`;
-        // }
       }
     })
   }
@@ -350,11 +344,11 @@ export class HijriDateComponent {
         day: 'numeric',
         month: 'numeric',
         year: 'numeric'
-    }).format(new Date(hijriYear, hijriMonth - 1, hijriDay));
+    }).format(new Date(hijriYear, hijriMonth, hijriDay));
 
     // Parse the formatted date to extract Gregorian components
     const [gregorianMonth, gregorianDay, gregorianYear] = hijriDate.replace(" AH", "").split('/').map(Number);
-    console.log({ year: gregorianYear, month: gregorianMonth, day: gregorianDay })
+    // console.log({ year: gregorianYear, month: gregorianMonth, day: gregorianDay })
 
     return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
 }

@@ -4,15 +4,18 @@ import { ArabicComponent } from './pages/arabic/arabic.component';
 import { SalatTimesComponent } from './pages/salat-times/salat-times.component';
 import { HijriDateComponent } from './pages/hijri-date/hijri-date.component';
 import { ForayezComponent } from './pages/forayez/forayez.component';
-import { ZakatComponent } from './pages/zakat/zakat.component';
+import { ZakatComponent } from './pages/zakat-page/zakat/zakat.component';
 import { Blog1Component } from './components/blogs/blog1/blog1.component';
-import { SelectedWritingComponent } from './pages/selected-writing/selected-writing.component';
+import { SelectedWritingComponent } from './pages/bivhag/selected-writing/selected-writing.component';
 import { Blog2Component } from './components/blogs/blog2/blog2.component';
-import { ZakatCalculatorComponent } from './pages/zakat-calculator/zakat-calculator.component';
-import { ZakatMasalaComponent } from './pages/zakat-masala/zakat-masala.component';
+import { ZakatCalculatorComponent } from './pages/zakat-page/zakat-calculator/zakat-calculator.component';
+import { ZakatMasalaComponent } from './pages/zakat-page/zakat-masala/zakat-masala.component';
 import { NoticeComponent } from './pages/notice/notice.component';
 import { Blog3Component } from './components/blogs/blog3/blog3.component';
-import { KitabComponent } from './pages/kitab/kitab.component';
+import { KitabComponent } from './pages/bivhag/kitab/kitab.component';
+import { AudioComponent } from './pages/boyan/audio/audio.component';
+import { VideoComponent } from './pages/boyan/video/video.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -71,5 +74,17 @@ export const routes: Routes = [
   {
     path: 'notice',
     component: NoticeComponent
+  },
+  {
+    path: 'audio',
+    component: AudioComponent
+  },
+  {
+    path: 'video',
+    component: VideoComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
 ];

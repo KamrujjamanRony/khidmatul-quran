@@ -1,15 +1,15 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { BanglaPipe } from '../../features/pipe/bangla.pipe';
+import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
-import { ForayezService } from '../../features/services/forayez.service';
+import { ForayezService } from '../../../features/services/forayez.service';
 import { CommonModule, DatePipe } from '@angular/common';
-import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
+import { BengaliNumberPipe } from "../../../features/pipe/bengali-number.pipe";
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas-pro';
 import 'jspdf-autotable';
 import { HttpClient } from '@angular/common/http';
-import { BengaliDatePipe } from "../../features/pipe/bengali-date.pipe";
+import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 
 @Component({
     selector: 'app-zakat-calculator',

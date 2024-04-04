@@ -36,12 +36,12 @@ export class BengaliDatePipe implements PipeTransform {
     // Replace English digits with Bengali digits
     for (let i = 0; i < englishDigits.length; i++) {
       const regex = new RegExp(englishDigits[i], 'g');
-      bengaliDate = bengaliDate.replace(regex, bengaliDigits[i]);
+      bengaliDate = bengaliDate?.replace(regex, bengaliDigits[i]);
     }
   
     // Replace English words with Bengali equivalents
     for (const [english, bengali] of Object.entries(this.englishToBengaliMap)) {
-      bengaliDate = bengaliDate.replace(new RegExp(english, 'g'), bengali as string);
+      bengaliDate = bengaliDate?.replace(new RegExp(english, 'g'), bengali as string);
     }
   
     return bengaliDate;

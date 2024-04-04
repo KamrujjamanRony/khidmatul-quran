@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Card2Component } from '../../components/shared/text/card2';
+import { Card2Component } from '../../../components/shared/text/card2';
 
 @Component({
   selector: 'app-selected-writing',

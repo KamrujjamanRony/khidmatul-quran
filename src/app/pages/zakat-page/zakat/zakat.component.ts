@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { ForayezService } from '../../features/services/forayez.service';
-import { BanglaPipe } from '../../features/pipe/bangla.pipe';
+import { ForayezService } from '../../../features/services/forayez.service';
+import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
-import { BengaliDatePipe } from "../../features/pipe/bengali-date.pipe";
+import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 
 @Component({
     selector: 'app-zakat',
@@ -21,7 +21,6 @@ export class ZakatComponent {
   ngOnInit(): void {
     this.forayezService.getForayez().subscribe(Response => {
       this.forayez = Response;
-      console.log(Response)
     })
   }
 

@@ -51,6 +51,17 @@ export class NavbarComponent {
     },
   ]
 
+  dropdownMenu3 = [
+    {
+      title : "অডিও",
+      link : "audio"
+    },
+    {
+      title : "ভিডিও",
+      link : "video"
+    },
+  ]
+
   hideNavMenu() {
     const navMenu = document.getElementById('menubar');
     if (navMenu) {
@@ -79,8 +90,7 @@ export class NavbarComponent {
   }
 
   navigateToContact() {
-    // Use the navigate method to scroll to the #contact ID
-    this.router.navigate([], { fragment: 'contact' });
+    this.router.navigate(["about"]);
   }
 
 }
