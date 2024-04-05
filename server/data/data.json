@@ -1,7 +1,7 @@
 {
-  "forayez": [
+  "JewelryPrice": [
     {
-      "id" : "24acaad3-737c-403a-95a2-85ad0b592e27",
+      "id" : "24acaad3-737c-403a-95a2-85ad0b592e47",
       "gold_22k" : 9680,
       "gold_21k" : 9240,
       "gold_18k" : 7920,
@@ -13,6 +13,38 @@
       "gold_img" : "https://i.ibb.co/MMKrfCj/gold-zakat.png",
       "silver_img" : "https://i.ibb.co/tcyMP92/silver-zakat.png",
       "date" : "12/03/2024"
+    }
+  ]
+  ,
+  "HijriDateAdj": [
+    {
+      "id" : "24acaad3-737c-403a-95a2-85ad0b592e37",
+      "dateAdj" : 1,
+      "noteDate" : "",
+      "others1" : "",
+      "others2" : ""
+    }
+  ]
+  ,
+  "Notice": [
+    {
+      "id" : "24acaad3-737c-403a-95a2-85ad0b592e17",
+      "serial" : "",
+      "title" : "",
+      "description" : "",
+      "note" : ""
+    }
+  ]
+  ,
+  "Boyan": [
+    {
+      "id" : "24acaad3-737c-403a-95a2-85ad0b592e07",
+      "type" : "",
+      "serial" : "",
+      "title" : "",
+      "description" : "",
+      "others" : "",
+      "url" : ""
     }
   ]
 }

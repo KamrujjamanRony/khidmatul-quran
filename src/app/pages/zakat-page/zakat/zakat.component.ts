@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { ForayezService } from '../../../features/services/forayez.service';
 import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
+import { ZakatService } from '../../../features/services/zakat.service';
 
 @Component({
     selector: 'app-zakat',
@@ -13,13 +13,13 @@ import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 })
 export class ZakatComponent {
   forayez: any;
-  forayezService = inject(ForayezService);
+  ZakatService = inject(ZakatService);
   selectedUnit: string = 'ভরি';
 
   constructor(){}
   
   ngOnInit(): void {
-    this.forayezService.getForayez().subscribe(Response => {
+    this.ZakatService.getZakat().subscribe(Response => {
       this.forayez = Response;
     })
   }

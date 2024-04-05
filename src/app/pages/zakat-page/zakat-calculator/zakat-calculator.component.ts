@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
-import { ForayezService } from '../../../features/services/forayez.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { BengaliNumberPipe } from "../../../features/pipe/bengali-number.pipe";
 
@@ -10,6 +9,7 @@ import html2canvas from 'html2canvas-pro';
 import 'jspdf-autotable';
 import { HttpClient } from '@angular/common/http';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
+import { ZakatService } from '../../../features/services/zakat.service';
 
 @Component({
     selector: 'app-zakat-calculator',
@@ -21,7 +21,7 @@ import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 export class ZakatCalculatorComponent {
   datePipe: DatePipe = new DatePipe('en-US');
   forayez: any;
-  forayezService = inject(ForayezService);
+  ZakatService = inject(ZakatService);
   model: any;
   totalGold: number = 0;
   totalSilver: number = 0;
@@ -50,7 +50,7 @@ export class ZakatCalculatorComponent {
   }
   
   ngOnInit(): void {
-    this.forayezService.getForayez().subscribe(Response => {
+    this.ZakatService.getZakat().subscribe(Response => {
       this.forayez = Response;
     })
     this.today = this.datePipe.transform(new Date(), 'dd/MM/yyyy');
@@ -141,97 +141,6 @@ export class ZakatCalculatorComponent {
 //     });
 // }
   
-
-
-// fontqPath = 'assets/font/NotoSerifBengali-Regular.ttf';
-  
-
-  // generatePDF2(): void {
-  //   // Assuming `this.today` is a Date object
-  //   const bengaliNumberPipe = new BengaliNumberPipe(); // Instantiate the pipe
-  //   const formattedDate = bengaliNumberPipe.transform(this.today);
-
-  //   // Embed the Bengali Unicode font
-  //   const fontPath = '../../features/font/kalpurushANSI.ttf'; // Adjust the path to your font file
-  //   const fontName = 'SolaimanLipi'; // Name for the font
-  //   const doc = new jsPDF('p', 'px', 'a4');
-    
-  //   // Read the font file's content
-  //   // const fontFileContent = this.readFileContent(fontPath);
-
-  //   // Add the font to virtual file system
-  //   // doc.addFileToVFS(fontName, fontFileContent);
-
-  //   doc.addFont(fontName, 'SolaimanLipi', 'normal');
-
-  //   const columns = "";
-  //   const rows = [
-  //     ["যাকাত হিসাবের তারিখ", formattedDate],
-  //     ["মোট জুয়েলারি মূল্যঃ", formattedDate],
-  //     ["মোট ক্যাশ টাকাঃ", formattedDate],
-  //     ["মোট পাওনা টাকাঃ", formattedDate],
-  //     ["মোট ব্যবসায়িক সম্পদঃ", formattedDate],
-  //     ["ব্যাংক অ্যাকাউন্টে জমাঃ", formattedDate],
-  //     ["মোবাইল ব্যাংকিং এ জমাঃ", formattedDate],
-  //     ["বিয়োগযোগ্য ঋণ ও দায়ঃ", formattedDate],
-  //     ["যাকাতের হিসাবযোগ্য সম্পদের পরিমান = ০.০০ টাকা"],
-  //     ["মোট যাকাত = ০.০০ টাকা"],
-  // ];
-
-  //   const options = {
-  //       font: fontName,
-  //   };
-
-  //   (doc as any).autoTable(columns, rows, options);
-  //   doc.save('table.pdf');
-
-
-
-
-
-    
-  //   // const bengaliNumberPipe = new BengaliNumberPipe(); // Instantiate the pipe
-  //   // const formattedDate = bengaliNumberPipe.transform(this.today);
-
-  //   // const banglaPipe = new BanglaPipe(); 
-
-  //   // let columns = "";
-  //   //     let rows = [
-  //   //         ["যাকাত হিসাবের তারিখ", formattedDate],
-  //   //         ["মোট জুয়েলারি মূল্যঃ", formattedDate],
-  //   //         ["মোট ক্যাশ টাকাঃ", formattedDate],
-  //   //         ["মোট পাওনা টাকাঃ", formattedDate],
-  //   //         ["মোট ব্যবসায়িক সম্পদঃ", formattedDate],
-  //   //         ["ব্যাংক অ্যাকাউন্টে জমাঃ", formattedDate],
-  //   //         ["মোবাইল ব্যাংকিং এ জমাঃ", formattedDate],
-  //   //         ["বিয়োগযোগ্য ঋণ ও দায়ঃ", formattedDate],
-  //   //         ["যাকাতের হিসাবযোগ্য সম্পদের পরিমান = ০.০০ টাকা"],
-  //   //         ["মোট যাকাত = ০.০০ টাকা"],
-  //   //     ];
-
-  //   //     // Embed the Bengali Unicode font
-  //   // const fontPath = 'path/to/kalpurushANSI.ttf'; // Adjust the path to your font file
-  //   // const fontName = 'SolaimanLipi'; // Name for the font
-  //   // let doc = new jsPDF('p', 'px', 'a4');
-  //   // doc.addFileToVFS(fontPath);
-  //   // doc.addFont(fontName, 'SolaimanLipi', 'normal');
-
-  //   //     // let doc = new jsPDF('p', 'px', 'a4');
-  //   //     (doc as any).autoTable(columns, rows);
-  //   //     doc.save('table.pdf');
-
-  //   // this.isPrint = true;
-  //   // setTimeout(() => {
-  //   //   var data: any = document.getElementById('MakePdf');
-      
-  //   //   html2canvas(data, { scale: 2 }).then(canvas => {
-  //   //     let pdf = new jsPDF('p', 'px', 'a4'); 
-  //   //     pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
-  //   //     pdf.save('MYPdf.pdf');  
-  //   //   });
-  //   //   this.isPrint = false;
-  //   // }, 1000);
-  // }
 
 
   onReset(){
