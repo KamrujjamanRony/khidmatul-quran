@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BengaliCalendarService } from '../../features/services/bengali-calendar.service';
 import { SunsetService } from '../../features/services/sunset.service';
@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { BengaliDatePipe } from "../../features/pipe/bengali-date.pipe";
 import { BanglaPipe } from "../../features/pipe/bangla.pipe";
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
+import { HijriDateAdjService } from '../../features/services/hijri-date-adj.service';
 
 @Component({
   selector: 'app-hijri-date',
@@ -24,6 +25,8 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
   imports: [CommonModule, FormsModule, BengaliDatePipe, BanglaPipe, BengaliNumberPipe]
 })
 export class HijriDateComponent {
+  dateAdj: any;
+  HijriDateAdjService = inject(HijriDateAdjService);
   isSunset$!: Observable<boolean>;
   currentDate: Date = new Date();
   datePipe: DatePipe = new DatePipe('en-US');
@@ -34,7 +37,7 @@ export class HijriDateComponent {
   dateEn: any;
   dateBd: any;
   notice: any = "";
-  controlDay: number = 1;
+  controlDay: any = 0;
   controlMonth: number = 0;
   hijriMonth!: any;
   englishMonth!: any;
@@ -47,6 +50,11 @@ export class HijriDateComponent {
   constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) { }
 
   ngOnInit(): void {
+    this.HijriDateAdjService.getHijriDate().subscribe(Response => {
+      this.dateAdj = Response;
+      this.controlDay = this.dateAdj.dateAdj;
+      this.notice = this.dateAdj.note1Date;
+    })
     initTE({ Datepicker, Input },
       { allowReinits: true });
     this.selectedDate = this.datePipe.transform(this.currentDate, 'yyyy/MM/dd');
@@ -260,8 +268,7 @@ export class HijriDateComponent {
         const { year, month, day } = this.getBangladeshTime(gregorian);
         const hd = this.getCurrentHijriDate(`${year}/${month}/${day}`);
         const nextDay = hd[1] + 1;
-        console.log(hd);
-        const monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"]
+        const monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
         const hijriDate = nextDay;
         const hijriMonth = hd[0];
         const hijriYear = hd[2];

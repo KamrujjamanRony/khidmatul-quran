@@ -13,7 +13,7 @@ export class ZakatService {
     return this.http.get<any[]>(`${environment.zakatApi}/GetJewelryById?id=${environment.zakatDataId}`);
   }
 
-  updateZakat(id: string, updateData: any | FormData): Observable<any>{
-    return this.http.put<any>(`${environment.zakatApi}/${id}`, updateData);
+  updateZakat(updateData: any | FormData): Observable<any>{
+    return this.http.put<any>(`${environment.zakatApi}/${environment.zakatDataId}`, updateData);
   }
 }
