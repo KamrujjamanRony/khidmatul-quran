@@ -16,6 +16,9 @@ import { KitabComponent } from './pages/bivhag/kitab/kitab.component';
 import { AudioComponent } from './pages/boyan/audio/audio.component';
 import { VideoComponent } from './pages/boyan/video/video.component';
 import { AboutComponent } from './pages/about/about.component';
+import { KhankaComponent } from './pages/about/khanka/khanka.component';
+import { ShayekComponent } from './pages/about/shayek/shayek.component';
+import { ShajaraComponent } from './pages/about/shajara/shajara.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -86,5 +89,17 @@ export const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'about/খানকার_পরিচয়',
+    component: KhankaComponent
+  },
+  {
+    path: 'about/শায়খের_জীবনী',
+    component: ShayekComponent
+  },
+  {
+    path: 'about/শাজারা',
+    component: ShajaraComponent
   },
 ];

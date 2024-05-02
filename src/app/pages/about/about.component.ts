@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { environment } from '../../../environments/environments';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })

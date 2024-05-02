@@ -8,8 +8,8 @@ import { Head1Component } from './H1';
     imports: [Head1Component, PComponent],
     template: `
     <div>
-        @if(heading){<H1 class="text-center text-rose-600" [text]="heading"></H1>}
-        @if(head){<H1 class="text-accent" [text]="head"></H1>}
+        @if(heading){<H1 class="text-center text-green-500 font-bold" [text]="heading"></H1>}
+        @if(head){<H1 class="text-rose-600" [text]="head"></H1>}
         @if(title){<P class="text-justify" [text]="title"></P>}
         @if(arabic){<p class="text-right font-bold text-black text-xl py-1">{{arabic}}</p>}
         @if(bangla){<P class="text-justify" [text]="bangla"></P>}
