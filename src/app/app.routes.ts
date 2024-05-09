@@ -19,6 +19,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { KhankaComponent } from './pages/about/khanka/khanka.component';
 import { ShayekComponent } from './pages/about/shayek/shayek.component';
 import { ShajaraComponent } from './pages/about/shajara/shajara.component';
+import { Blog4Component } from './components/blogs/blog4/blog4.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -51,7 +52,7 @@ export const routes: Routes = [
     component: ZakatMasalaComponent
   },
   {
-    path: 'zakat-masala/1',
+    path: 'zakat-masala/3',
     component: Blog3Component
   },
   {
@@ -69,6 +70,10 @@ export const routes: Routes = [
   {
     path: 'selected-writings/2',
     component: Blog2Component
+  },
+  {
+    path: 'selected-writings/4',
+    component: Blog4Component
   },
   {
     path: 'arabic',

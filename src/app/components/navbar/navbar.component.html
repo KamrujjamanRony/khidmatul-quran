@@ -124,7 +124,7 @@
         <app-dropdown-menu head="যাকাত" [menu]="dropdownMenu2" />
 
         <!-- বয়ান -->
-        <app-dropdown-menu head="বয়ান" [menu]="dropdownMenu3" />
+        <app-dropdown-menu class="hidden" head="বয়ান" [menu]="dropdownMenu3" />
 
        
         <!-- নোটিশ -->
@@ -143,7 +143,7 @@
     </div>
 
     <!-- Right elements -->
-    <div class="relative flex items-center lg:hidden xl:flex">
+    <div class="relative flex items-center">
       <!-- Second dropdown container -->
       <button
       (click)="navigateToContact()"
@@ -271,7 +271,7 @@
         <app-dropdown-menu2 head="যাকাত" [menu]="dropdownMenu2" />
 
         <!-- বয়ান -->
-        <app-dropdown-menu2 head="বয়ান" [menu]="dropdownMenu3" />
+        <app-dropdown-menu2 class="hidden" head="বয়ান" [menu]="dropdownMenu3" />
 
        
         <!-- নোটিশ -->
@@ -288,7 +288,7 @@
     </div>
 
     <!-- Right elements -->
-    <div class="relative flex items-center lg:hidden xl:flex">
+    <div class="relative flex items-center">
       <!-- Second dropdown container -->
       <button
       (click)="navigateToContact()"

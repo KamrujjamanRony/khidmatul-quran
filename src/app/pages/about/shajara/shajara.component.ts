@@ -10,7 +10,6 @@ import { Card1Component } from "../../../components/shared/text/card1";
 })
 export class ShajaraComponent {
     download(): void {
-        // Replace 'path_to_your_pdf_file.pdf' with the actual path or URL of your PDF file
         const pdfUrl = '../../../../assets/shajara.docx';
         const fileName = 'shajara.docx';
     
