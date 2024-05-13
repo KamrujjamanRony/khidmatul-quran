@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { BengaliCalendarService } from '../../features/services/bengali-calendar.service';
 import { SunsetService } from '../../features/services/sunset.service';
 import moment from 'moment';
+import 'moment/locale/ar'; // Import Arabic locale for Hijri dates
+import 'moment/locale/en-gb'; // Import English locale for Gregorian dates
+import 'moment-hijri'; // Hijri calendar support for moment.js
 import 'moment-timezone';
 import { toGregorian, toHijri } from 'hijri-converter';
 import {
@@ -47,7 +50,9 @@ export class HijriDateComponent {
   monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
   EngMonthName = ['জানুয়ারি', "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "অগাস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
 
-  constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) { }
+  constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) {
+    this.convertHijriToGregorian();
+   }
 
   ngOnInit(): void {
     this.HijriDateAdjService.getHijriDate().subscribe(Response => {
@@ -267,7 +272,9 @@ export class HijriDateComponent {
       if (value) {
         const { year, month, day } = this.getBangladeshTime(gregorian);
         const hd = this.getCurrentHijriDate(`${year}/${month}/${day}`);
-        const nextDay = hd[1] + 1;
+        console.log(hd);
+        console.log(day);
+        const nextDay = hd[1];
         const monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
         const hijriDate = nextDay;
         const hijriMonth = hd[0];
@@ -360,8 +367,15 @@ export class HijriDateComponent {
     return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
 }
 
-// Example usage:
-hijriDate = { year: 1443, month: 7, day: 16 }; // Hijri date: 16th day of the 7th month of the year 1443 AH
-gregorianDate = this.hijriToGregorian(this.hijriDate.year, this.hijriDate.month, this.hijriDate.day);
+hijriDate: string = '1445/11/25';
+convertHijriToGregorian() {
+  const gregorianDate = moment(this.hijriDate, 'iYYYY/iM/iD').format('YYYY-MM-DD');
+  console.log('Gregorian date:', gregorianDate);
+}
+gregorianDate: string = '2024-05-13';
+convertGregorianToHijri() {
+  const hijriDate = moment(this.gregorianDate, 'YYYY-MM-DD').format('iYYYY/iM/iD');
+  console.log('Hijri date:', hijriDate);
+}
 
 }
