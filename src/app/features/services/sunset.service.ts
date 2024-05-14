@@ -78,7 +78,9 @@ export class SunsetService {
           (response: any) => {
             const sunsetTimeUTC = new Date(response.results.sunset);
             const sunsetTimeBDT = new Date(sunsetTimeUTC.getTime());    //    + (this.BDT_OFFSET * 60000)
-            const currentTimeBDT = new Date();
+            const currentTimeBDT = new Date(ddd);
+            console.log(currentTimeBDT);
+            console.log(sunsetTimeBDT);
             resolve(currentTimeBDT > sunsetTimeBDT);
           },
           (error: any) => {

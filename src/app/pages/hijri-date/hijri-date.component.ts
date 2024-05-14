@@ -50,15 +50,14 @@ export class HijriDateComponent {
   monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
   EngMonthName = ['জানুয়ারি', "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "অগাস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
 
-  constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) {
-    this.convertHijriToGregorian();
-   }
+  constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) {}
 
   ngOnInit(): void {
     this.HijriDateAdjService.getHijriDate().subscribe(Response => {
       this.dateAdj = Response;
       this.controlDay = this.dateAdj.dateAdj;
       this.notice = this.dateAdj.note1Date;
+      this.onDateSelected()
     })
     initTE({ Datepicker, Input },
       { allowReinits: true });
@@ -273,7 +272,7 @@ export class HijriDateComponent {
         const { year, month, day } = this.getBangladeshTime(gregorian);
         const hd = this.getCurrentHijriDate(`${year}/${month}/${day}`);
         console.log(hd);
-        console.log(day);
+        console.log(`${year}/${month}/${day}`);
         const nextDay = hd[1];
         const monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
         const hijriDate = nextDay;
@@ -285,12 +284,13 @@ export class HijriDateComponent {
   }
 
   private convertToHijri(gregorianDate: Date): void {
-    // Set the time zone to Bangladesh time
-    const { year, month, day } = this.getBangladeshTime(gregorianDate);
-    // ---------------------------------------------------------------------------------------------------------------------------------------------------
-    const updatedDate = day + this.controlDay;
-    // Use hijri-converter to convert the date to Hijri
-    const hijriObject = toHijri(year, month, updatedDate);
+    let updatedGregorianDate = new Date(gregorianDate); // Create a new date object to avoid mutating the original date
+    updatedGregorianDate.setDate(updatedGregorianDate.getDate() + this.controlDay); // Update the date by adding or subtracting controlDay
+
+    const { year: updatedYear, month: updatedMonth, day: updatedDay } = this.getBangladeshTime(updatedGregorianDate);
+    
+    // Use hijri-converter to convert the updated date to Hijri
+    const hijriObject = toHijri(updatedYear, updatedMonth, updatedDay);
 
     // calculate aiyame biz
     this.calculateAiyameBiz(hijriObject);
@@ -312,6 +312,7 @@ export class HijriDateComponent {
     const d1 = new Date(`${arabicDay13.gy}/${arabicDay13.gm + 1}/${arabicDay13.gd}`)
     const d2 = new Date(`${arabicDay14.gy}/${arabicDay14.gm + 1}/${arabicDay14.gd}`)
     const d3 = new Date(`${arabicDay15.gy}/${arabicDay15.gm + 1}/${arabicDay15.gd}`)
+    console.log(hijriObject)
 
     this.englishDay = [this.setDateEng(d1), this.setDateEng(d2), this.setDateEng(d3)]
 
@@ -367,15 +368,5 @@ export class HijriDateComponent {
     return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
 }
 
-hijriDate: string = '1445/11/25';
-convertHijriToGregorian() {
-  const gregorianDate = moment(this.hijriDate, 'iYYYY/iM/iD').format('YYYY-MM-DD');
-  console.log('Gregorian date:', gregorianDate);
-}
-gregorianDate: string = '2024-05-13';
-convertGregorianToHijri() {
-  const hijriDate = moment(this.gregorianDate, 'YYYY-MM-DD').format('iYYYY/iM/iD');
-  console.log('Hijri date:', hijriDate);
-}
 
 }
