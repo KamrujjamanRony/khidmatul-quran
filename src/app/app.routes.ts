@@ -20,91 +20,111 @@ import { KhankaComponent } from './pages/about/khanka/khanka.component';
 import { ShayekComponent } from './pages/about/shayek/shayek.component';
 import { ShajaraComponent } from './pages/about/shajara/shajara.component';
 import { Blog4Component } from './components/blogs/blog4/blog4.component';
+import { MainComponent } from './layouts/main/main.component';
+import { AdminComponent } from './layouts/admin/admin.component';
+import { JewelryPriceComponent } from './pages/admin/jewelry-price/jewelry-price.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
-    component: HomeComponent
+    component: MainComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'salat-times',
+        component: SalatTimesComponent
+      },
+      {
+        path: 'hijri-date',
+        component: HijriDateComponent
+      },
+      {
+        path: 'forayez',
+        component: ForayezComponent
+      },
+      {
+        path: 'gold-price',
+        component: ZakatComponent
+      },
+      {
+        path: 'zakat-calculator',
+        component: ZakatCalculatorComponent
+      },
+      {
+        path: 'zakat-masala',
+        component: ZakatMasalaComponent
+      },
+      {
+        path: 'zakat-masala/3',
+        component: Blog3Component
+      },
+      {
+        path: 'kitab',
+        component: KitabComponent
+      },
+      {
+        path: 'selected-writings',
+        component: SelectedWritingComponent
+      },
+      {
+        path: 'selected-writings/1',
+        component: Blog1Component
+      },
+      {
+        path: 'selected-writings/2',
+        component: Blog2Component
+      },
+      {
+        path: 'selected-writings/4',
+        component: Blog4Component
+      },
+      {
+        path: 'arabic',
+        component: ArabicComponent
+      },
+      {
+        path: 'notice',
+        component: NoticeComponent
+      },
+      {
+        path: 'audio',
+        component: AudioComponent
+      },
+      {
+        path: 'video',
+        component: VideoComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'about/খানকার_পরিচয়',
+        component: KhankaComponent
+      },
+      {
+        path: 'about/শায়খের_জীবনী',
+        component: ShayekComponent
+      },
+      {
+        path: 'about/শাজারা',
+        component: ShajaraComponent
+      },
+    ]
   },
   {
-    path: 'salat-times',
-    component: SalatTimesComponent
+    path: 'a',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        component: JewelryPriceComponent
+      },
+    ]
   },
-  {
-    path: 'hijri-date',
-    component: HijriDateComponent
-  },
-  {
-    path: 'forayez',
-    component: ForayezComponent
-  },
-  {
-    path: 'gold-price',
-    component: ZakatComponent
-  },
-  {
-    path: 'zakat-calculator',
-    component: ZakatCalculatorComponent
-  },
-  {
-    path: 'zakat-masala',
-    component: ZakatMasalaComponent
-  },
-  {
-    path: 'zakat-masala/3',
-    component: Blog3Component
-  },
-  {
-    path: 'kitab',
-    component: KitabComponent
-  },
-  {
-    path: 'selected-writings',
-    component: SelectedWritingComponent
-  },
-  {
-    path: 'selected-writings/1',
-    component: Blog1Component
-  },
-  {
-    path: 'selected-writings/2',
-    component: Blog2Component
-  },
-  {
-    path: 'selected-writings/4',
-    component: Blog4Component
-  },
-  {
-    path: 'arabic',
-    component: ArabicComponent
-  },
-  {
-    path: 'notice',
-    component: NoticeComponent
-  },
-  {
-    path: 'audio',
-    component: AudioComponent
-  },
-  {
-    path: 'video',
-    component: VideoComponent
-  },
-  {
-    path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'about/খানকার_পরিচয়',
-    component: KhankaComponent
-  },
-  {
-    path: 'about/শায়খের_জীবনী',
-    component: ShayekComponent
-  },
-  {
-    path: 'about/শাজারা',
-    component: ShajaraComponent
-  },
+
 ];

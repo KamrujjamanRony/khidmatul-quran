@@ -4,15 +4,13 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import * as AOS from 'aos';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
-import { NavbarComponent } from "./components/navbar/navbar.component";
-import { HeaderComponent } from "./components/header/header.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, HttpClientModule, AngularQueryDevtools, NavbarComponent, HeaderComponent]
+    imports: [CommonModule, RouterOutlet, HttpClientModule, AngularQueryDevtools]
 })
 export class AppComponent implements OnInit {
   title = 'The khidmatul-quran';
