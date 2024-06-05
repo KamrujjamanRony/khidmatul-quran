@@ -15,7 +15,6 @@ import { CustomInputComponent } from '../../../components/shared/custom-input/cu
 })
 export class JewelryPriceComponent {
   jewelryPrice: any;
-  testModel: any;
   ZakatService = inject(ZakatService);
   confirmModal: boolean = false;
   private updateSubscription?: Subscription;
@@ -25,7 +24,7 @@ export class JewelryPriceComponent {
   }
 
   constructor() {
-    this.testModel = {
+    this.jewelryPrice = {
       gold18k : "",
       gold21k : "",
       gold22k : "",
@@ -50,21 +49,20 @@ export class JewelryPriceComponent {
 
   // Handle form submission
   onFormSubmit(): void {
-    console.log(this.testModel)
     const formData = new FormData();
 
-    formData.append('gold22k', this.jewelryPrice.gold22k);
-    formData.append('gold21k', this.jewelryPrice.gold21k);
-    formData.append('gold18k', this.jewelryPrice.gold18k);
-    formData.append('goldTd', this.jewelryPrice.goldTd);
-    formData.append('Silver22k', this.jewelryPrice.silver22k);
-    formData.append('Silver21k', this.jewelryPrice.silver21k);
-    formData.append('Silver18k', this.jewelryPrice.silver18k);
-    formData.append('SilverTd', this.jewelryPrice.silverTd);
-    formData.append('updateDate', this.jewelryPrice.updateDate);
-    formData.append('Nisab', this.jewelryPrice.nisab);
-    formData.append('Note', this.jewelryPrice.note);
-    formData.append('Note1', this.jewelryPrice.note1);
+    formData.append('gold22k', this.jewelryPrice.gold22k || '');
+    formData.append('gold21k', this.jewelryPrice.gold21k || '');
+    formData.append('gold18k', this.jewelryPrice.gold18k || '');
+    formData.append('goldTd', this.jewelryPrice.goldTd || '');
+    formData.append('silver22k', this.jewelryPrice.silver22k || '');
+    formData.append('silver21k', this.jewelryPrice.silver21k || '');
+    formData.append('silver18k', this.jewelryPrice.silver18k || '');
+    formData.append('silverTd', this.jewelryPrice.silverTd || '');
+    formData.append('updateDate', this.jewelryPrice.updateDate || '');
+    formData.append('nisab', this.jewelryPrice.nisab || '');
+    formData.append('note', this.jewelryPrice.note || '');
+    formData.append('note1', this.jewelryPrice.note1 || '');
 
     this.updateSubscription = this.ZakatService.updateZakat(formData)
       .subscribe({

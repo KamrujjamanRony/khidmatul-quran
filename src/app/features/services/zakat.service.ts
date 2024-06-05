@@ -14,6 +14,6 @@ export class ZakatService {
   }
 
   updateZakat(updateData: any | FormData): Observable<any>{
-    return this.http.put<any>(`${environment.zakatApi}/${environment.zakatDataId}`, updateData);
+    return this.http.put<any>(`${environment.zakatApi}/EditJewelryP/${environment.zakatDataId}`, updateData);
   }
 }

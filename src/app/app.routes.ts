@@ -23,13 +23,15 @@ import { Blog4Component } from './components/blogs/blog4/blog4.component';
 import { MainComponent } from './layouts/main/main.component';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { JewelryPriceComponent } from './pages/admin/jewelry-price/jewelry-price.component';
+import { HijriDateAdjComponent } from './pages/admin/hijri-date-adj/hijri-date-adj.component';
+import { BoyanAdminComponent } from './pages/admin/boyan-admin/boyan-admin.component';
+import { NoticeAdminComponent } from './pages/admin/notice-admin/notice-admin.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: MainComponent,
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: '',
         component: HomeComponent
@@ -120,9 +122,22 @@ export const routes: Routes = [
     path: 'a',
     component: AdminComponent,
     children: [
+      { path: '', redirectTo: 'jewelry-price', pathMatch: 'full' },
       {
-        path: '',
+        path: 'jewelry-price',
         component: JewelryPriceComponent
+      },
+      {
+        path: 'hijri-date-adj',
+        component: HijriDateAdjComponent
+      },
+      {
+        path: 'boyan-admin',
+        component: BoyanAdminComponent
+      },
+      {
+        path: 'notice-admin',
+        component: NoticeAdminComponent
       },
     ]
   },
