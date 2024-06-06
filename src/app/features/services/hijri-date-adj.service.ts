@@ -14,6 +14,6 @@ export class HijriDateAdjService {
   }
 
   updateHijriDate(updateData: any | FormData): Observable<any>{
-    return this.http.put<any>(`${environment.hijriDateApi}/${environment.hijriDateId}`, updateData);
+    return this.http.put<any>(`${environment.hijriDateApi}/EditHijriDateAdj/${environment.hijriDateId}`, updateData);
   }
 }

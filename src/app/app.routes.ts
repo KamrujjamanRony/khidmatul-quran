@@ -24,8 +24,12 @@ import { MainComponent } from './layouts/main/main.component';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { JewelryPriceComponent } from './pages/admin/jewelry-price/jewelry-price.component';
 import { HijriDateAdjComponent } from './pages/admin/hijri-date-adj/hijri-date-adj.component';
-import { BoyanAdminComponent } from './pages/admin/boyan-admin/boyan-admin.component';
-import { NoticeAdminComponent } from './pages/admin/notice-admin/notice-admin.component';
+import { BoyanListComponent } from './pages/admin/boyan-list/boyan-list.component';
+import { BoyanEditComponent } from './pages/admin/boyan-edit/boyan-edit.component';
+import { BoyanAddComponent } from './pages/admin/boyan-add/boyan-add.component';
+import { NoticeListComponent } from './pages/admin/notice-list/notice-list.component';
+import { NoticeAddComponent } from './pages/admin/notice-add/notice-add.component';
+import { NoticeEditComponent } from './pages/admin/notice-edit/notice-edit.component';
 
 export const routes: Routes = [
   {
@@ -132,12 +136,28 @@ export const routes: Routes = [
         component: HijriDateAdjComponent
       },
       {
-        path: 'boyan-admin',
-        component: BoyanAdminComponent
+        path: 'boyan-list',
+        component: BoyanListComponent
       },
       {
-        path: 'notice-admin',
-        component: NoticeAdminComponent
+        path: 'boyan-list/add',
+        component: BoyanAddComponent
+      },
+      {
+        path: 'boyan-list/edit/:id',
+        component: BoyanEditComponent
+      },
+      {
+        path: 'notice-list',
+        component: NoticeListComponent
+      },
+      {
+        path: 'notice-list/add',
+        component: NoticeAddComponent
+      },
+      {
+        path: 'notice-list/edit/:id',
+        component: NoticeEditComponent
       },
     ]
   },
