@@ -26,6 +26,6 @@ export class NoticeService {
   }
 
   deleteNotice(id: any): Observable<any>{
-    return this.http.delete<any>(`${environment.noticeApi}/DeleteNotice?id=${id}`);
+    return this.http.delete<any>(`${environment.noticeApi}/DeleteAddress?id=${id}`);
   }
 }
