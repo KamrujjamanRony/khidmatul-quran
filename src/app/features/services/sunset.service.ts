@@ -11,7 +11,7 @@ export class SunsetService {
   private DEFAULT_LATITUDE: any = 23.75;
   private DEFAULT_LONGITUDE: any = 90.383333;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   initialize(): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -43,7 +43,7 @@ export class SunsetService {
       }
     });
   }
-  
+
 
   getSunsetTime(ddd: any): Promise<any> {
     return new Promise<void>((resolve, reject) => {
@@ -78,9 +78,17 @@ export class SunsetService {
           (response: any) => {
             const sunsetTimeUTC = new Date(response.results.sunset);
             const sunsetTimeBDT = new Date(sunsetTimeUTC.getTime());    //    + (this.BDT_OFFSET * 60000)
-            const currentTimeBDT = new Date(ddd);
-            console.log(currentTimeBDT);
-            console.log(sunsetTimeBDT);
+            // Create a Date object for the specific date
+            const specificDate = new Date(ddd);
+            // Get the current time
+            const now = new Date();
+            // Set the time of the specific date to the current time
+            specificDate.setHours(now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+
+            const currentTimeBDT = specificDate;
+            // console.log(ddd, currentTimeBDT)
+            // console.log(currentTimeBDT);
+            // console.log(sunsetTimeBDT);
             resolve(currentTimeBDT > sunsetTimeBDT);
           },
           (error: any) => {

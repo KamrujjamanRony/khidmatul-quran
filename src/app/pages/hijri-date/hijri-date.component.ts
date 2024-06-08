@@ -42,6 +42,7 @@ export class HijriDateComponent {
   notice: any = "";
   controlDay: any = 0;
   controlMonth: number = 0;
+  ayameBijCalculate: any;
   hijriMonth!: any;
   englishMonth!: any;
   englishDay!: any;
@@ -50,7 +51,7 @@ export class HijriDateComponent {
   monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
   EngMonthName = ['জানুয়ারি', "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "অগাস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
 
-  constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) {}
+  constructor(private bengaliCalendarService: BengaliCalendarService, private sunsetService: SunsetService) { }
 
   ngOnInit(): void {
     this.HijriDateAdjService.getHijriDate().subscribe(Response => {
@@ -67,12 +68,14 @@ export class HijriDateComponent {
 
   onDateSelected(): void {
     this.hijri3 = null;
-    // Convert the selected date to Hijri using hijri-converter
-    this.convertToHijri(this.selectedDate);
     const dateObject = new Date(this.selectedDate);
-    this.setDatetimeHtml(dateObject);
-    const hijriDate = this.getCurrentHijriDate(this.selectedDate);
     // this.convertToBanglaDate(dateObject);
+    this.setDatetimeHtml(dateObject);
+    // Convert the selected date to Hijri using hijri-converter
+    const nextDate = new Date(dateObject);
+    // Add one day
+    nextDate.setDate(nextDate.getDate() + this.controlDay);
+    this.convertToHijri(nextDate);
   }
 
 
@@ -263,64 +266,59 @@ export class HijriDateComponent {
   }
 
   getActualDateAfterSunSet(gregorianDate: Date): any {
-    const gregorian = gregorianDate;
-    const { year, month, day } = this.getBangladeshTime(gregorian);
+    const { year, month, day } = this.getBangladeshTime(gregorianDate);
     const ddd = `${year}/${month + 1}/${day}`;
     this.isSunset$ = this.sunsetService.isSunset(ddd);
     this.isSunset$.subscribe(value => {
       if (value) {
-        const { year, month, day } = this.getBangladeshTime(gregorian);
+        // Create a Date object for the given date
+        const nextDate = new Date(gregorianDate);
+        // Add one day
+        nextDate.setDate(nextDate.getDate() + 1);
+        const { year, month, day } = this.getBangladeshTime(nextDate);
         const hd = this.getCurrentHijriDate(`${year}/${month}/${day}`);
-        console.log(hd);
-        console.log(`${year}/${month}/${day}`);
-        const nextDay = hd[1];
-        const monthName = ["মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
-        const hijriDate = nextDay;
-        const hijriMonth = hd[0];
-        const hijriYear = hd[2];
-        this.hijri3 = `${hijriDate}, ${monthName[hijriMonth]}, ${hijriYear} হিঃ`;
+        this.hijri3 = this.getHijriTimeFormat(hd);
       }
     })
   }
 
-  private convertToHijri(gregorianDate: Date): void {
-    let updatedGregorianDate = new Date(gregorianDate); // Create a new date object to avoid mutating the original date
-    updatedGregorianDate.setDate(updatedGregorianDate.getDate() + this.controlDay); // Update the date by adding or subtracting controlDay
-
-    const { year: updatedYear, month: updatedMonth, day: updatedDay } = this.getBangladeshTime(updatedGregorianDate);
-    
-    // Use hijri-converter to convert the updated date to Hijri
-    const hijriObject = toHijri(updatedYear, updatedMonth, updatedDay);
-
-    // calculate aiyame biz
-    this.calculateAiyameBiz(hijriObject);
-
-    // Process to Date Format
-    this.hijriDateFormate(hijriObject);
-    this.getActualDateAfterSunSet(gregorianDate)
+   // Set Hijri Date Format
+  getHijriTimeFormat(hd: any): any {
+    const monthName = ["","মুহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", "রজব", "শাবান", "রমজান", "শওয়াল", "জ্বিলকদ", "জ্বিলহজ্জ"];
+    const hijriDate = hd[1];
+    const hijriMonth = hd[0];
+    const hijriYear = hd[2];
+    return `${hijriDate}, ${monthName[hijriMonth]}, ${hijriYear} হিঃ`;
   }
 
-  calculateAiyameBiz(hijriObject: any): void {
-    // aiyame biz
-    const month = hijriObject.hm + this.controlMonth;
-    // const day0 = toGregorian(hijriObject.hy, month, 1 - this.controlDay);
-    const arabicDay13 = toGregorian(hijriObject.hy, month, 13 - this.controlDay);
-    const arabicDay14 = toGregorian(hijriObject.hy, month, 14 - this.controlDay);
-    const arabicDay15 = toGregorian(hijriObject.hy, month, 15 - this.controlDay);
-    // const day4 = toGregorian(hijriObject.hy, month, 16 - this.controlDay);
-    // const todayArabic = toGregorian(hijriObject.hy, month, hijriObject.hd - this.controlDay);
-    const d1 = new Date(`${arabicDay13.gy}/${arabicDay13.gm + 1}/${arabicDay13.gd}`)
-    const d2 = new Date(`${arabicDay14.gy}/${arabicDay14.gm + 1}/${arabicDay14.gd}`)
-    const d3 = new Date(`${arabicDay15.gy}/${arabicDay15.gm + 1}/${arabicDay15.gd}`)
-    console.log(hijriObject)
+  private convertToHijri(gregorianDate: Date): void {
+    const { year, month, day } = this.getBangladeshTime(gregorianDate);
+
+    // Use hijri-converter to convert the updated date to Hijri
+    const hijriObject = this.getCurrentHijriDate(`${year}/${month}/${day}`);
+
+    // calculate aiyame biz
+    this.calculateAiyameBiz(hijriObject, gregorianDate);
+
+    // Process to Date Format
+    this.hijri2 = this.getHijriTimeFormat(hijriObject);
+    this.getActualDateAfterSunSet(gregorianDate);
+  }
+
+  calculateAiyameBiz(hijriObject: any, englishDate: Date): void {
+    const month = hijriObject[0] -1;
+    const arabicDay13 = toGregorian(hijriObject[2], month, 13 - this.controlDay);
+    const arabicDay14 = toGregorian(hijriObject[2], month, 14 - this.controlDay);
+    const arabicDay15 = toGregorian(hijriObject[2], month, 15 - this.controlDay);
+    const d1 = new Date(`${arabicDay13.gy}/${arabicDay13.gm}/${arabicDay13.gd}`)
+    const d2 = new Date(`${arabicDay14.gy}/${arabicDay14.gm}/${arabicDay14.gd}`)
+    const d3 = new Date(`${arabicDay15.gy}/${arabicDay15.gm}/${arabicDay15.gd}`)
 
     this.englishDay = [this.setDateEng(d1), this.setDateEng(d2), this.setDateEng(d3)]
 
     this.aiyameBiz = [arabicDay13.gd.toFixed(), arabicDay14.gd.toFixed(), arabicDay15.gd.toFixed()];
 
     this.englishMonth = arabicDay13.gm;
-    // console.log(hijriObject);
-    // console.log(arabicDay13);
 
     // if (todayArabic.gd >= day0.gd && todayArabic.gd < day4.gd) {
     //   this.isTrue = true;
@@ -331,42 +329,17 @@ export class HijriDateComponent {
     this.hijriMonth = this.monthName[month];
   }
 
-
-  // Set Hijri Date Format
-  private hijriDateFormate(hijriObject: any): void {
-    const hijriDate = hijriObject.hd;
-    const hijriMonth = hijriObject.hm;
-    const hijriYear = hijriObject.hy;
-
-    this.hijri = `${hijriDate} / ${hijriMonth + 1} / ${hijriYear}`;
-    this.hijri2 = `${hijriDate}, ${this.monthName[hijriMonth]}, ${hijriYear} হিজরি`;
-  }
-
-
   getCurrentHijriDate(date: string) {
+    const dateSplit = date.split('/');
+    const newDate = `${dateSplit[0]}/${+dateSplit[1]+1}/${dateSplit[2]}`;
     const hijriDate = new Intl.DateTimeFormat('en-u-ca-islamic', {
       day: 'numeric',
       month: 'numeric',
       year: 'numeric'
-    }).format(new Date(date));
+    }).format(new Date(newDate));
 
     return hijriDate.replace(" AH", "").split("/").map(d => +d);
   }
-
-  hijriToGregorian(hijriYear: number, hijriMonth: number, hijriDay: number | undefined) {
-    // Create a Hijri date object
-    const hijriDate = new Intl.DateTimeFormat('islamic-u-ca-en-US', {
-        day: 'numeric',
-        month: 'numeric',
-        year: 'numeric'
-    }).format(new Date(hijriYear, hijriMonth, hijriDay));
-
-    // Parse the formatted date to extract Gregorian components
-    const [gregorianMonth, gregorianDay, gregorianYear] = hijriDate.replace(" AH", "").split('/').map(Number);
-    // console.log({ year: gregorianYear, month: gregorianMonth, day: gregorianDay })
-
-    return { year: gregorianYear, month: gregorianMonth, day: gregorianDay };
-}
 
 
 }
