@@ -306,7 +306,7 @@ export class HijriDateComponent {
   }
 
   calculateAiyameBiz(hijriObject: any, englishDate: Date): void {
-    const month = hijriObject[0] -1;
+    const month = hijriObject[0];
     const arabicDay13 = toGregorian(hijriObject[2], month, 13 - this.controlDay);
     const arabicDay14 = toGregorian(hijriObject[2], month, 14 - this.controlDay);
     const arabicDay15 = toGregorian(hijriObject[2], month, 15 - this.controlDay);
