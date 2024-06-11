@@ -53,11 +53,23 @@ export class NavbarComponent {
 
   dropdownMenu3 = [
     {
-      title : "অডিও",
-      link : "audio"
+      title : "কুরআনের তাফসীর",
+      link : "audio/1"
     },
     {
-      title : "ভিডিও",
+      title : "সংক্ষিপ্ত নসিয়ত",
+      link : "audio/2"
+    },
+    {
+      title : "ইসলাহী মজলিশ",
+      link : "audio/3"
+    },
+    {
+      title : "ইউটিউব অডিও",
+      link : "audio/4"
+    },
+    {
+      title : "ইউটিউব ভিডিও",
       link : "video"
     },
   ]

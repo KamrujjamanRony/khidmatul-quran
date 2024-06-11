@@ -5,6 +5,8 @@ import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CustomInputComponent } from '../../../components/shared/custom-input/custom-input.component';
+import { AuthService } from '../../../features/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jewelry-price',
@@ -16,6 +18,10 @@ import { CustomInputComponent } from '../../../components/shared/custom-input/cu
 export class JewelryPriceComponent {
   jewelryPrice: any;
   ZakatService = inject(ZakatService);
+  authService = inject(AuthService);
+  router = inject(Router);
+  user: any;
+  date: any = new Date();
   confirmModal: boolean = false;
   private updateSubscription?: Subscription;
 
@@ -41,10 +47,15 @@ export class JewelryPriceComponent {
   }
 
   ngOnInit(): void {
+    this.user = this.authService.getUser();
     this.ZakatService.getZakat().subscribe(Response => {
       this.jewelryPrice = Response;
-      console.log(this.jewelryPrice)
+      this.jewelryPrice.updateDate = `${this.date.getDate()}/${this.date.getMonth() > 9 ? this.date.getMonth()+1 : "0" +(this.date.getMonth()+1)}/${this.date.getFullYear()}`;
     })
+  }
+
+  hasRole(role: string): boolean {
+    return this.user.roles.includes(role);
   }
 
   // Handle form submission
@@ -67,7 +78,6 @@ export class JewelryPriceComponent {
     this.updateSubscription = this.ZakatService.updateZakat(formData)
       .subscribe({
         next: (response) => {
-          console.log(response)
           // toast
           this.confirmModal = true;
         },

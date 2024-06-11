@@ -8,7 +8,7 @@
   </div>
 </div>
 } @else {
-  <div class="hero min-h-screen bg-base-200">
+  <div class="hero min-h-screen bg-primary">
     <div class="hero-content">
       <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <form class="card-body" 
@@ -40,6 +40,7 @@
             </div>
             }
           </label>
+          @if (err) {<span class="label-text-alt text-rose-600">{{err}}</span>}
           <div class="form-control mt-6">
             <button class="btn btn-primary">Login</button>
           </div>

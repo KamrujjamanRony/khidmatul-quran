@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "person01",
+        "password": "1909",
+        "roles": ["jewelry", "hijri", "boyan", "notice"]
+    },
+    {
+        "id": 2,
+        "name": "person02",
+        "password": "2816",
+        "roles": ["jewelry"]
+    },
+    {
+        "id": 3,
+        "name": "person03",
+        "password": "3721",
+        "roles": ["hijri"]
+    },
+    {
+        "id": 4,
+        "name": "person04",
+        "password": "4624",
+        "roles": ["boyan"]
+    },
+    {
+        "id": 5,
+        "name": "person05",
+        "password": "5525",
+        "roles": ["notice"]
+    }
+]

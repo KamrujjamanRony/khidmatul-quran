@@ -5,31 +5,22 @@ import { environment } from '../../../environments/environments';
   providedIn: 'root'
 })
 export class AuthService {
+  private localStorageKey = 'user';
 
-  constructor() { }
-
-  private localStorageKey = 'userID';
-  private userID?: any;
-
-  setUserID(value: any) {
-    if (value.startsWith(environment.hospitalCode)) {
-      this.userID = value;
-    } else {
-      this.userID = environment.hospitalCode + value;
-    }
-    
+  setUser(value: any) {
     // Save userID to local storage
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.userID));
+    localStorage.setItem(this.localStorageKey, JSON.stringify(value));
   }
 
-  getUserID() {
+  getUser() {
     // Retrieve userID from local storage
-    const storedUserID = localStorage.getItem(this.localStorageKey);
-    return storedUserID ? JSON.parse(storedUserID) : null;
+    const storedUser = localStorage.getItem(this.localStorageKey);
+    return storedUser ? JSON.parse(storedUser) : null;
   }
 
-  deleteUserID() {
+  deleteUser() {
     // Remove userID from local storage
     localStorage.removeItem(this.localStorageKey);
+    window.location.reload();
   }
 }

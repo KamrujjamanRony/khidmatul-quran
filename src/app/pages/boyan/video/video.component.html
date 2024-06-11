@@ -1,7 +1,13 @@
 <section class="container mx-auto py-5">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <app-video-card title="video no 01" img="https://i.ytimg.com/vi/aYOKFFLOyzY/maxresdefault.jpg" videoId="6ESfDLugCfE" />
-        <app-video-card title="video no 02" img="https://i.ytimg.com/vi/aYOKFFLOyzY/maxresdefault.jpg" videoId="6ESfDLugCfE" />
-        <app-video-card title="video no 03" img="https://i.ytimg.com/vi/aYOKFFLOyzY/maxresdefault.jpg" videoId="6ESfDLugCfE" />
+    <app-cover title="ইউটিউব ভিডিও" sub1="হোম" sub2="বয়ান"></app-cover>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        @for (boyan of sortItems(allBoyan$ | async); track $index) {
+            <app-video-card [title]="boyan.title" img="https://img.youtube.com/vi/HwxQujzvAuo/maxresdefault.jpg" [videoId]="boyan.url" />
+        }
+        <app-video-card title="নামায এর গুরুত্ব" img="https://img.youtube.com/vi/HwxQujzvAuo/maxresdefault.jpg" videoId="6ESfDLugCfE" />
+        <app-video-card title="পরকালের ভাবনা" img="https://img.youtube.com/vi/ONV9N2GnEus/maxresdefault.jpg" videoId="6ESfDLugCfE" />
+        <app-video-card title="রমজানের শেষ দশকের গুরুত্ব" img="https://img.youtube.com/vi/NEH2FVib9kg/maxresdefault.jpg" videoId="NEH2FVib9kg" />
+        <app-video-card title="রমজানের শেষ দশকের গুরুত্ব" img="https://img.youtube.com/vi/NEH2FVib9kg/maxresdefault.jpg" videoId="NEH2FVib9kg" />
     </div>
 </section>

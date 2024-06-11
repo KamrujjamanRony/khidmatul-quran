@@ -97,7 +97,7 @@ export const routes: Routes = [
         component: NoticeComponent
       },
       {
-        path: 'audio',
+        path: 'audio/:type',
         component: AudioComponent
       },
       {

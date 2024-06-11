@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environments';
 
 @Injectable({
@@ -15,6 +15,25 @@ export class BoyanService {
 
   getAllBoyan(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.boyanApi}`);
+  }
+
+  getBoyanByType(type: any): Observable<any[]> {
+    return this.getAllBoyan().pipe(
+      map(data => {
+        return data.filter(boyan => {
+          switch (type) {
+            case "1":
+              return boyan.type === "কুরআনের তাফসীর";
+            case "2":
+              return boyan.type === "সংক্ষিপ্ত নসিয়ত";
+            case "3":
+              return boyan.type === "ইসলাহী মজলিশ";
+            default:
+              return boyan.type === "ইউটিউব অডিও";
+          }
+        });
+      })
+    );
   }
 
   getBoyan(id: any): Observable<any>{
