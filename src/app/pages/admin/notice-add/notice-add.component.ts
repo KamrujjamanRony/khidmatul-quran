@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmModalComponent } from '../../../components/shared/confirm-modal/confirm-modal.component';
 import { NoticeService } from '../../../features/services/notice.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
   selector: 'app-notice-add',
@@ -14,6 +15,8 @@ import { Subscription } from 'rxjs';
 })
 export class NoticeAddComponent {
   noticeService = inject(NoticeService);
+  authService = inject(AuthService);
+  user: any;
   
   model: any;
   private addCareerSubscription?: Subscription;
@@ -30,7 +33,12 @@ export class NoticeAddComponent {
       title: '',
       description: '',
       note1: '',
+      userName: '',
     };
+  }
+
+  ngOnInit(): void {
+    this.user = this.authService.getUser();
   }
 
   // Handle form submission
@@ -41,6 +49,7 @@ export class NoticeAddComponent {
     formData.append('title', this.model.title || '');
     formData.append('description', this.model.description || '');
     formData.append('note1', this.model.note1 || '');
+    formData.append('userName', this.user?.name || '');
 
     this.addCareerSubscription = this.noticeService.addNotice(formData)
       .subscribe({

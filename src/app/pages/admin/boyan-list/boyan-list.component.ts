@@ -28,7 +28,6 @@ export class BoyanListComponent {
   }
 
   sortItems(data: any = []): any {
-    console.log(data)
     if (data) {
       if (data?.length === 0) {
         return data;

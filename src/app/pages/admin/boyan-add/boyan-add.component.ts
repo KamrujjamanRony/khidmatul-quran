@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BoyanService } from '../../../features/services/boyan.service';
 import { Subscription } from 'rxjs';
 import { CoverComponent } from "../../../components/shared/cover/cover.component";
 import { FormsModule } from '@angular/forms';
 import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/confirm-modal.component";
+import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
     selector: 'app-boyan-add',
@@ -14,6 +15,8 @@ import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/
 })
 export class BoyanAddComponent {
   boyanService = inject(BoyanService);
+  authService = inject(AuthService);
+  user: any;
   
   model: any;
   private addCareerSubscription?: Subscription;
@@ -29,10 +32,16 @@ export class BoyanAddComponent {
       serial: 500,
       type: '',
       title: '',
-      decription: '',
+      description: '',
       url: '',
       others: '',
+      imageUrl: '',
+      userName: ''
     };
+  }
+
+  ngOnInit(): void {
+    this.user = this.authService.getUser();
   }
 
   // Handle form submission
@@ -42,9 +51,11 @@ export class BoyanAddComponent {
     formData.append('serial', this.model.serial);
     formData.append('type', this.model.type || '');
     formData.append('title', this.model.title || '');
-    formData.append('decription', this.model.decription || '');
+    formData.append('description', this.model.description || '');
     formData.append('url', this.model.url || '');
+    formData.append('imageUrl', this.model.imageUrl || '');
     formData.append('others', this.model.others || '');
+    formData.append('userName', this.user?.name || '');
 
     this.addCareerSubscription = this.boyanService.addBoyan(formData)
       .subscribe({

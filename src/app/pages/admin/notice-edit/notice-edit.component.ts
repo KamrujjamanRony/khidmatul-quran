@@ -5,6 +5,7 @@ import { ConfirmModalComponent } from '../../../components/shared/confirm-modal/
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NoticeService } from '../../../features/services/notice.service';
+import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
   selector: 'app-notice-edit',
@@ -16,6 +17,8 @@ import { NoticeService } from '../../../features/services/notice.service';
 export class NoticeEditComponent {
   noticeService = inject(NoticeService);
   route = inject(ActivatedRoute);
+  authService = inject(AuthService);
+  user: any;
   
   id: any = null;
   model?: any;
@@ -34,10 +37,12 @@ export class NoticeEditComponent {
       title: '',
       description: '',
       note1: '',
+      userName: ''
     };
   }
 
   ngOnInit(): void {
+    this.user = this.authService.getUser();
     this.paramsSubscription = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
@@ -61,6 +66,7 @@ export class NoticeEditComponent {
     formData.append('title', this.model.title || '');
     formData.append('description', this.model.description || '');
     formData.append('note1', this.model.note1 || '');
+    formData.append('userName', this.user?.name || '');
 
     if (this.id) {
       this.editSubscription = this.noticeService.updateNotice(this.id, formData)

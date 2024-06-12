@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LocationModel } from '../../features/model/method.model';
 import { PrayTimesService } from '../../features/services/pray-times.service';
 import axios from 'axios';
 import { CommonModule } from '@angular/common';
@@ -15,7 +14,7 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
     imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]
 })
 export class SalatTimesComponent {
-  model: LocationModel = {
+  model: any = {
     latitude: 23.75,
     longitude: 90.383333,
   };

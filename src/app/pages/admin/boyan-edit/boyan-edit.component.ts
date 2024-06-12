@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CoverComponent } from "../../../components/shared/cover/cover.component";
 import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/confirm-modal.component";
+import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
     selector: 'app-boyan-edit',
@@ -16,6 +17,8 @@ import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/
 export class BoyanEditComponent {
   boyanService = inject(BoyanService);
   route = inject(ActivatedRoute);
+  authService = inject(AuthService);
+  user: any;
   
   id: any = null;
   model?: any;
@@ -33,13 +36,16 @@ export class BoyanEditComponent {
       serial: 500,
       type: '',
       title: '',
-      decription: '',
+      description: '',
       url: '',
+      imageUrl: '',
       others: '',
+      userName: ''
     };
   }
 
   ngOnInit(): void {
+    this.user = this.authService.getUser();
     this.paramsSubscription = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
@@ -62,9 +68,11 @@ export class BoyanEditComponent {
     formData.append('serial', this.model.serial);
     formData.append('type', this.model.type || '');
     formData.append('title', this.model.title || '');
-    formData.append('decription', this.model.decription || '');
+    formData.append('description', this.model.description || '');
     formData.append('url', this.model.url || '');
+    formData.append('imageUrl', this.model.imageUrl || '');
     formData.append('others', this.model.others || '');
+    formData.append('userName', this.user?.name || '');
 
     if (this.id) {
       this.editSubscription = this.boyanService.updateBoyan(this.id, formData)

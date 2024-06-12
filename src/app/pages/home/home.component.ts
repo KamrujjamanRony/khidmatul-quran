@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
-import { LocationModel } from '../../features/model/method.model';
 import { PrayTimesService } from '../../features/services/pray-times.service';
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 
@@ -12,7 +11,7 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
     imports: [BengaliNumberPipe]
 })
 export class HomeComponent {
-    model: LocationModel = {
+    model: any = {
       latitude: 23,
       longitude: 93,
     };

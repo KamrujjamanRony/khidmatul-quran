@@ -42,7 +42,8 @@ export class JewelryPriceComponent {
       updateDate : "",
       nisab : "",
       note : "",
-      note1 : ""
+      note1 : "",
+      userName: ''
     }
   }
 
@@ -74,6 +75,7 @@ export class JewelryPriceComponent {
     formData.append('nisab', this.jewelryPrice.nisab || '');
     formData.append('note', this.jewelryPrice.note || '');
     formData.append('note1', this.jewelryPrice.note1 || '');
+    formData.append('userName', this.user?.name || '');
 
     this.updateSubscription = this.ZakatService.updateZakat(formData)
       .subscribe({

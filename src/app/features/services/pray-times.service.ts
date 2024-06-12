@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { PrayTimesParams, PrayerParams, PrayerTimesT } from '../model/method.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +26,7 @@ export class PrayTimesService {
   private timeZone!: string;
   private jDate!: number;
 
-  private methods: { name: string; params: PrayerParams };
+  private methods: { name: string; params: any };
 
 
 
@@ -46,7 +45,7 @@ export class PrayTimesService {
     }
   };
 
-  private setting: PrayTimesParams = {
+  private setting: any = {
     imsak: '10 min',
     dhuhr: '0 min',
     asr: 'Standard',
@@ -170,7 +169,7 @@ export class PrayTimesService {
     return JD;
   }
 
-  computePrayerTimes(times: PrayerTimesT) {
+  computePrayerTimes(times: any) {
     times = this.dayPortion(times);
     const params = this.setting;
     const imsak = this.sunAngleTime(Number(this.eval(params['imsak'])), times['imsak'], 'ccw');
@@ -226,7 +225,7 @@ export class PrayTimesService {
     return this.modifyFormats(times);
   }
 
-  adjustTimes(times: PrayerTimesT) {
+  adjustTimes(times: any) {
     const params = this.setting;
     for (const i in times) {
       times[i] += Number(this.timeZone) - this.lng / 15;
@@ -262,21 +261,21 @@ export class PrayTimesService {
     return 0.833 + angle;
   }
 
-  tuneTimes(times: PrayerTimesT) {
+  tuneTimes(times: any) {
     for (const i in times) {
       times[i] += this.offset[i] / 60;
     }
     return times;
   }
 
-  modifyFormats(times: PrayerTimesT) {
+  modifyFormats(times: any) {
     for (const i in times) {
       times[i] = this.getFormattedTime(times[i], this.timeFormat, undefined);
     }
     return times;
   }
 
-  adjustHighLats(times: PrayerTimesT) {
+  adjustHighLats(times: any) {
     const params = this.setting;
     const nightTime = this.timeDiff(times.sunset, times.sunrise);
     times.imsak = this.adjustHLTime(times.imsak, times.sunrise, Number(this.eval(params.imsak)), nightTime, 'ccw');
