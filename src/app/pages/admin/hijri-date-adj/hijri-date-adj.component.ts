@@ -44,7 +44,7 @@ export class HijriDateAdjComponent {
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
-    this.HijriDateAdjService.getHijriDate().subscribe(Response => {
+    this.HijriDateAdjService.getHijriDateAdj().subscribe(Response => {
       this.hijriDate = Response;
     })
   }
@@ -66,7 +66,7 @@ export class HijriDateAdjComponent {
     formData.append('others', this.hijriDate.others || '');
     formData.append('userName', this.user?.name || '');
 
-    this.updateSubscription = this.HijriDateAdjService.updateHijriDate(formData)
+    this.updateSubscription = this.HijriDateAdjService.updateHijriDateAdj(formData)
       .subscribe({
         next: (response) => {
           console.log(response)

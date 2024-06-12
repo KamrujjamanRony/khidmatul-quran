@@ -77,6 +77,10 @@ export class HomeComponent {
 
         const today = new Date();
         this.todaySalatTime = this.timetableData.find(d => d.day == today.getDate() && today.getMonth() === this.currentDate.getMonth());
+        // const sunset = this.todaySalatTime?.maghrib.split(':');
+        // if (sunset) {
+        //   const sunsetTime = `${sunset[0]+12}:${sunset[1]}`;
+        // }
   
         startDate.setDate(startDate.getDate() + 1); // next day
       }

@@ -19,7 +19,8 @@ export class VideoComponent {
   constructor() { }
 
   ngOnInit(): void {
-    this.allBoyan$ = this.boyanService.getBoyanByType("ইউটিউব ভিডিও");
+    this.allBoyan$ = this.boyanService.getBoyanByVideo();
+    // this.allBoyan$.subscribe(boyan => {console.log(boyan)});
   }
 
   sortItems(data: any = []): any {

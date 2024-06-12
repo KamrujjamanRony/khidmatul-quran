@@ -1,85 +1,47 @@
 <section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto py-10">
     <div class="mx-2">
-      <div
-      class="relative mb-3 hidden">
-      data-te-datepicker-init
-      data-te-input-wrapper-init
-      data-te-format="yyyy/mm/dd"
-    >
-      <input
-        type="text"
-        class="peer block min-h-[auto] w-full text-gray-700 rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 cursor-pointer"
-        placeholder="Select a date"
-        data-te-datepicker-toggle-ref
-        data-te-datepicker-toggle-button-ref
-        [(ngModel)]="selectedDate"
-        (ngModelChange)="onDateSelected()"
-      />
-      <label
-        for="floatingInput"
-        class="absolute left-3 top-0 max-w-[90%] origin-[0_0] translate-y-[-0.7rem] scale-[0.8] text-primary bg-white px-2 z-10"
-        >Select a date</label
-      >
-    </div>
   
     <div
       class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
     >
-      @if (notice) {
-        <p>{{notice}}</p>
-      } @else {
-        <p [ngClass]="{ 'text-center': true, 'line-through': hijri3}">
-          @if (hijri2) {{{ hijri2 | bengaliNumber }}}
+        <p [ngClass]="{ 'text-center': true, 'line-through': isSunset}">
+          @if (hijriDate) {{{ hijriDate }}}
         </p>
-        @if(hijri3){
-        <p>{{ hijri3 | bengaliNumber }}</p>
+        @if(isSunset){
+        <p>{{ hijriNextDay }}</p>
         }
-      }
       
     </div>
-    @if (dateBd) {
+    @if (banglaDate) {
     <div
       class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
     >
       <p class="text-center">
-        {{
-            dateBd.date +
-            " " +
-            dateBd.month +
-            ", " +
-            dateBd.year +
-            ", " +
-            dateBd.session
-        }}
+        {{ banglaDate }}
       </p>
     </div>
     }
-    @if (dateEn) {
+
+    @if (gregorianDate) {
       <div
         class="mt-4 bg-green-500 text-white w-full py-5 text-2xl font-bold rounded-md flex flex-col items-center justify-center"
       >
         <p class="text-center">
-          {{
-            (dateEn.day +
-              ", " +
-              dateEn.date +
-              " " +
-              dateEn.month + ", " +
-              dateEn.year + " খ্রিস্টাব্দ") | bengaliDate 
-          }}
+          {{ gregorianDate }}
         </p>
       </div>
     }
 
-    @if(isTrue){
+    @if (arabic13 && arabic14 && arabic15) {
       <div class="mt-4 bg-rose-200 text-white w-full py-5 font-bold rounded-md flex flex-col items-center justify-center">
-        <p class="text-rose-600 text-center text-2xl">{{hijriMonth}} মাসের 
-          <span class="block">আইয়ামে বীজের রোজা <span class="text-primary text-2xl">{{EngMonthName[englishMonth]}}</span> মাসের</span> 
-          <span class="block"><span class="text-5xl text-primary mx-2">{{aiyameBiz[0] | bengaliNumber}}</span>, <span class="text-5xl text-primary mx-2">{{aiyameBiz[1] | bengaliNumber}}</span>, <span class="text-5xl text-primary mx-2">{{aiyameBiz[2] | bengaliNumber}}</span> ইং তারিখ। </span> 
-          <span class="text-primary text-lg">{{englishDay[0].dateEn.day | bengaliDate}}&nbsp;&nbsp;&nbsp;&nbsp;, &nbsp;&nbsp; {{englishDay[1].dateEn.day | bengaliDate}}&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp; {{englishDay[2].dateEn.day | bengaliDate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
+        <p class="text-rose-600 text-center text-sm md:text-xl">{{hijriMonth}} মাসের আইয়ামে বীজের রোজা
+          <span class="block"><span class="text-xl md:text-2xl text-primary mx-2">{{arabic13[0]}}</span>, <span class="text-xl md:text-2xl text-primary mx-2">{{arabic14[0]}}</span>, <span class="text-xl md:text-2xl text-primary mx-2">{{arabic15[0]}}</span> ইং তারিখ। </span> 
+          <span class="text-primary text-xs md:text-sm md:mr-3">{{arabic13[1]}}&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp; {{arabic14[1]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp; {{arabic15[1]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
         </p>
       </div>
     }
+      
+
     </div>
       
   </section>

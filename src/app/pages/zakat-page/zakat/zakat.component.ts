@@ -1,16 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
-import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { ZakatService } from '../../../features/services/zakat.service';
-import { BengaliNumberPipe } from "../../../features/pipe/bengali-number.pipe";
+import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
+import { BanglaPipe } from "../../../features/pipe/bangla.pipe";
 
 @Component({
     selector: 'app-zakat',
     standalone: true,
     templateUrl: './zakat.component.html',
     styleUrl: './zakat.component.css',
-    imports: [BanglaPipe, FormsModule, BengaliDatePipe, BengaliNumberPipe]
+    imports: [FormsModule, BengaliDatePipe, BanglaPipe]
 })
 export class ZakatComponent {
   forayez: any;

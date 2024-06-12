@@ -36,6 +36,14 @@ export class BoyanService {
     );
   }
 
+  getBoyanByVideo(): Observable<any[]> {
+    return this.getAllBoyan().pipe(
+      map(data => {
+        return data.filter(boyan => boyan.type === "ইউটিউব ভিডিও");
+      })
+    );
+  }
+
   getBoyan(id: any): Observable<any>{
     return this.http.get<any>(`${environment.boyanApi}/GetBoyanById?id=${id}`);
   }
