@@ -53,7 +53,9 @@ export class HijriDateComponent {
   }
 
   getActualDateAfterSunSet(): any {
-    this.isSunset$ = this.sunsetService.isSunset();
+    const today = new Date();
+    const ddd = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
+    this.isSunset$ = this.sunsetService.isSunset(ddd);
     this.isSunset$.subscribe(value => {
       this.isSunset = value;
     })

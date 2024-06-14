@@ -45,10 +45,10 @@ export class SunsetService {
   }
 
 
-  getSunsetTime(): Promise<any> {
+  getSunsetTime(ddd: any): Promise<any> {
     return new Promise<void>((resolve, reject) => {
       if (!this.latitude || !this.longitude) {
-        const apiUrl = `https://api.sunrise-sunset.org/json?lat=${this.DEFAULT_LATITUDE}&lng=${this.DEFAULT_LONGITUDE}&formatted=0`;
+        const apiUrl = `https://api.sunrise-sunset.org/json?lat=${this.DEFAULT_LATITUDE}&lng=${this.DEFAULT_LONGITUDE}&date=${ddd}&formatted=0`;
         this.http.get(apiUrl).subscribe(
           (response: any) => {
             resolve(response);
@@ -58,7 +58,7 @@ export class SunsetService {
           }
         );
       } else {
-        const apiUrl = `https://api.sunrise-sunset.org/json?lat=${this.latitude}&lng=${this.longitude}&formatted=0`;
+        const apiUrl = `https://api.sunrise-sunset.org/json?lat=${this.latitude}&lng=${this.longitude}&date=${ddd}&formatted=0`;
         this.http.get(apiUrl).subscribe(
           (response: any) => {
             resolve(response);
@@ -71,21 +71,22 @@ export class SunsetService {
     });
   }
 
-  isSunset(): Observable<boolean> {
+  isSunset(ddd: any): Observable<boolean> {
     return from(
       new Promise<boolean>((resolve, reject) => {
-        this.getSunsetTime().then(
+        this.getSunsetTime(ddd).then(
           (response: any) => {
             const sunsetTimeUTC = new Date(response.results.sunset);
             const sunsetTimeBDT = new Date(sunsetTimeUTC.getTime());    //    + (this.BDT_OFFSET * 60000)
             // Create a Date object for the specific date
-            const specificDate = new Date();
+            const specificDate = new Date(ddd);
             // Get the current time
             const now = new Date();
             // Set the time of the specific date to the current time
             specificDate.setHours(now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
 
             const currentTimeBDT = specificDate;
+            // console.log(ddd, currentTimeBDT)
             // console.log(currentTimeBDT);
             // console.log(sunsetTimeBDT);
             resolve(currentTimeBDT > sunsetTimeBDT);
