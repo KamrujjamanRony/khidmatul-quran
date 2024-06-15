@@ -2,19 +2,19 @@
     <div class="mx-1 md:mx-2">
   
     <div
-      class="mt-4 bg-green-500 text-white w-full py-5 text-lg md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+      class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
     >
         <p [ngClass]="{ 'text-center': true, 'line-through': isSunset}">
           @if (hijriDate) {{{ hijriDate }}}
         </p>
         @if(isSunset){
-        <p>{{ hijriNextDay }}</p>
+        <p class="text-center">{{ hijriNextDay }}</p>
         }
       
     </div>
     @if (banglaDate) {
     <div
-      class="mt-4 bg-green-500 text-white w-full py-5 text-lg md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+      class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
     >
       <p class="text-center">
         {{ banglaDate }}
@@ -24,7 +24,7 @@
 
     @if (gregorianDate) {
       <div
-        class="mt-4 bg-green-500 text-white w-full py-5 text-lg md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+        class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
       >
         <p class="text-center">
           {{ gregorianDate }}

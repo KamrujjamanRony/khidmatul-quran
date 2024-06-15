@@ -36,7 +36,7 @@ export class HijriDateComponent {
   constructor() { }
 
   ngOnInit(): void {
-    this.getActualDateAfterSunSet()
+    this.getActualDateAfterSunSet();
     this.HijriDateAdjService.getHijriDate().subscribe(data => {
       this.gregorianDate = data?.gregorianDate;
       this.banglaDate = data?.banglaDate;
