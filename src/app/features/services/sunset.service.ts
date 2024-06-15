@@ -87,8 +87,8 @@ export class SunsetService {
 
             const currentTimeBDT = specificDate;
             // console.log(ddd, currentTimeBDT)
-            // console.log(currentTimeBDT);
-            // console.log(sunsetTimeBDT);
+            console.log(currentTimeBDT);
+            console.log(sunsetTimeBDT);
             resolve(currentTimeBDT > sunsetTimeBDT);
           },
           (error: any) => {

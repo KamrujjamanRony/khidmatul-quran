@@ -31,7 +31,7 @@ export class HijriDateComponent {
   arabic15: any;
   hijriMonth: any;
   gregorianMonth: any;
-  isSunset: boolean = true;
+  isSunset: boolean = false;
 
   constructor() { }
 
