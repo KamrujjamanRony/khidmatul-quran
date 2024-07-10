@@ -10,8 +10,8 @@ import { Card1Component } from "../../../components/shared/text/card1";
 })
 export class ShajaraComponent {
     download(): void {
-        const pdfUrl = '../../../../assets/shajara.docx';
-        const fileName = 'shajara.docx';
+        const pdfUrl = '../../../../assets/shajara.pdf';
+        const fileName = 'shajara.pdf';
     
         // Create an anchor element
         const a = document.createElement('a');
