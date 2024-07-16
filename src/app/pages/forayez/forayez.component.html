@@ -1,25 +1,626 @@
 <section class="container mx-auto p-2 md:p-5">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-5">
-        <!-- husband -->
-        <div class="relative">
-            <span class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2">husband</span>
-            <label class="input input-bordered flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-4 w-4 opacity-70">
-                    <path
-                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
-                </svg>
-                <input type="text" class="grow capitalize focus:border-none" placeholder="husband" />
-            </label>
-        </div>
-        <!-- wife -->
-        <label class="input input-bordered flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-4 w-4 opacity-70" viewBox="0 0 30 30"
-                fill="currentColor">
-                <path
-                    d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z">
-                </path>
-            </svg>
-            <input type="text" class="grow capitalize" placeholder="wife" />
+  <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+    <!-- Asset Description -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-5 px-2 pb-2 pt-8 border border-green-600 rounded-md relative mt-2"
+    >
+      <h1
+        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-xl md:text-2xl font-bold text-green-600 bg-white px-2"
+      >
+      সম্পদের বিবরণ
+      </h1>
+      <!-- asset -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >{{selectedUnit}}</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="asset">
+            <svg class="h-4 w-4 opacity-70" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 235.517 235.517" xml:space="preserve" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path style="fill:#000000;" d="M118.1,235.517c7.898,0,14.31-6.032,14.31-13.483c0-7.441,0-13.473,0-13.473 c39.069-3.579,64.932-24.215,64.932-57.785v-0.549c0-34.119-22.012-49.8-65.758-59.977V58.334c6.298,1.539,12.82,3.72,19.194,6.549 c10.258,4.547,22.724,1.697,28.952-8.485c6.233-10.176,2.866-24.47-8.681-29.654c-11.498-5.156-24.117-8.708-38.095-10.236V8.251 c0-4.552-6.402-8.251-14.305-8.251c-7.903,0-14.31,3.514-14.31,7.832c0,4.335,0,7.843,0,7.843 c-42.104,3.03-65.764,25.591-65.764,58.057v0.555c0,34.114,22.561,49.256,66.862,59.427v33.021 c-10.628-1.713-21.033-5.243-31.623-10.65c-11.281-5.755-25.101-3.72-31.938,6.385c-6.842,10.1-4.079,24.449,7.294,30.029 c16.709,8.208,35.593,13.57,54.614,15.518v13.755C103.79,229.36,110.197,235.517,118.1,235.517z M131.301,138.12 c14.316,4.123,18.438,8.257,18.438,15.681v0.555c0,7.979-5.776,12.651-18.438,14.033V138.12z M86.999,70.153v-0.549 c0-7.152,5.232-12.657,18.71-13.755v29.719C90.856,81.439,86.999,77.305,86.999,70.153z"></path> </g> </g></svg>
+          <input
+            id="asset"
+            name="asset"
+            type="number"
+            [(ngModel)]="model.asset"
+            class="grow capitalize w-full"
+            placeholder="asset amount"
+          />
         </label>
+      </div>
+      <!-- parameter -->
+      <div class="flex justify-center items-center font-bold my-2 text-md lg:text-2xl">
+        <h1 class="text-gray-600 mr-1">টাকা/শতাংশ নির্বাচন করুনঃ </h1>
+        <div class="form-control">
+          <label class="label cursor-pointer gap-1">
+            <input type="radio" name="unit" class="radio checked:bg-red-500" [(ngModel)]="selectedUnit" value="টাকা" />
+            <span class="label-text text-red-500 text-md lg:text-2xl">টাকা</span> 
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer gap-1">
+            <input type="radio" name="unit" class="radio checked:bg-blue-500" [(ngModel)]="selectedUnit" value="শতাংশ" />
+            <span class="label-text text-blue-500 text-md lg:text-2xl">শতাংশ</span> 
+          </label>
+        </div>
+      </div>
     </div>
+    <!-- List of Relatives -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-5 px-2 pb-2 pt-8 border border-green-600 rounded-md relative mt-5"
+    >
+      <h1
+        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-xl md:text-2xl font-bold text-green-600 bg-white px-2"
+      >
+      আত্মীয়-স্বজনের তালিকা
+      </h1>
+      <!-- son -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >পুত্র</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="son">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="son"
+            name="son"
+            type="number"
+            [(ngModel)]="model.son"
+            class="grow capitalize w-full"
+            placeholder="son"
+          />
+        </label>
+      </div>
+      <!-- daughter -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >কন্যা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="daughter"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="daughter"
+            name="daughter"
+            type="number"
+            [(ngModel)]="model.daughter"
+            class="grow capitalize w-full"
+            placeholder="daughter"
+          />
+        </label>
+      </div>
+      <!-- husband -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >স্বামী</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="husband"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="husband"
+            name="husband"
+            type="number"
+            [(ngModel)]="model.husband"
+            class="grow capitalize w-full"
+            placeholder="husband"
+          />
+        </label>
+      </div>
+      <!-- wife -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          > স্ত্রী
+          </span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="wife">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="wife"
+            name="wife"
+            type="number"
+            [(ngModel)]="model.wife"
+            class="grow capitalize w-full"
+            placeholder="wife"
+          />
+        </label>
+      </div>
+      <!-- father -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >পিতা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="father"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="father"
+            name="father"
+            type="number"
+            [(ngModel)]="model.father"
+            class="grow capitalize w-full"
+            placeholder="father"
+          />
+        </label>
+      </div>
+      <!-- mother -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >মাতা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="mother"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="mother"
+            name="mother"
+            type="number"
+            [(ngModel)]="model.mother"
+            class="grow capitalize w-full"
+            placeholder="mother"
+          />
+        </label>
+      </div>
+      <!-- brother -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >ভাই</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="brother"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="brother"
+            name="brother"
+            type="number"
+            [(ngModel)]="model.brother"
+            class="grow capitalize w-full"
+            placeholder="brother"
+          />
+        </label>
+      </div>
+      <!-- sister -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বোন</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="sister"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="sister"
+            name="sister"
+            type="number"
+            [(ngModel)]="model.sister"
+            class="grow capitalize w-full"
+            placeholder="sister"
+          />
+        </label>
+      </div>
+      <!-- grandfather -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >দাদা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="grandfather"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="grandfather"
+            name="grandfather"
+            type="number"
+            [(ngModel)]="model.grandfather"
+            class="grow capitalize w-full"
+            placeholder="grandfather"
+          />
+        </label>
+      </div>
+      <!-- grandmother -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >দাদী</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="grandmother"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="grandmother"
+            name="grandmother"
+            type="number"
+            [(ngModel)]="model.grandmother"
+            class="grow capitalize w-full"
+            placeholder="grandmother"
+          />
+        </label>
+      </div>
+      <!-- uncle -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >চাচা</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="uncle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="uncle"
+            name="uncle"
+            type="number"
+            [(ngModel)]="model.uncle"
+            class="grow capitalize w-full"
+            placeholder="uncle"
+          />
+        </label>
+      </div>
+      <!-- grandnanny -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >নানী</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="grandnanny"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="grandnanny"
+            name="grandnanny"
+            type="number"
+            [(ngModel)]="model.grandnanny"
+            class="grow capitalize w-full"
+            placeholder="grandnanny"
+          />
+        </label>
+      </div>
+      <!-- BmB -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈমাত্রের ভাই</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="BmB">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BmB"
+            name="BmB"
+            type="number"
+            [(ngModel)]="model.BmB"
+            class="grow capitalize w-full"
+            placeholder="vaimatreya brother"
+          />
+        </label>
+      </div>
+      <!-- BmS -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈমাত্রের বোন</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="BmS">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="BmS"
+            name="BmS"
+            type="number"
+            [(ngModel)]="model.BmS"
+            class="grow capitalize w-full"
+            placeholder="vaimatreya sister"
+          />
+        </label>
+      </div>
+      <!-- BpB -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈপিত্রের ভাই</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="BpB">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BpB"
+            name="BpB"
+            type="number"
+            [(ngModel)]="model.BpB"
+            class="grow capitalize w-full"
+            placeholder="vaipitra's brother"
+          />
+        </label>
+      </div>
+      <!-- BpS -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈপিত্রের বোন</span
+        >
+        <label class="input input-bordered flex items-center gap-2" for="BpS">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="BpS"
+            name="BpS"
+            type="number"
+            [(ngModel)]="model.BpS"
+            class="grow capitalize w-full"
+            placeholder="vaipitra's sister"
+          />
+        </label>
+      </div>
+      <!-- grandson -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >নাতি</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="grandson"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="grandson"
+            name="grandson"
+            type="number"
+            [(ngModel)]="model.grandson"
+            class="grow capitalize w-full"
+            placeholder="grandson"
+          />
+        </label>
+      </div>
+      <!-- granddaughter -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >নাতনী</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="granddaughter"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="granddaughter"
+            name="granddaughter"
+            type="number"
+            [(ngModel)]="model.granddaughter"
+            class="grow capitalize w-full"
+            placeholder="granddaughter"
+          />
+        </label>
+      </div>
+      <!-- cousin -->
+      <div class="relative mt-1">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >চাচাতো ভাই</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2"
+          for="cousin"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="cousin"
+            name="cousin"
+            type="number"
+            [(ngModel)]="model.cousin"
+            class="grow capitalize w-full"
+            placeholder="cousin"
+          />
+        </label>
+      </div>
+    </div>
+  </form>
 </section>
