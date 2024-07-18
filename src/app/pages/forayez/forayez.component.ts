@@ -38,7 +38,12 @@ export class ForayezComponent {
       }
 
     onFormSubmit() {
-        throw new Error('Method not implemented.');
+        const {asset, son, daughter, husband, wife, father, mother, brother, sister, grandfather, grandmother, uncle, grandnanny, BmB, BmS, BpB, BpS, grandson, granddaughter, cousin} = this.model;
+        if (asset && husband < 2 && wife < 5 && mother < 2 && father < 2 && grandfather < 2 && grandmother < 2) {
+            console.log("all ok")
+        } else {
+            console.log(asset, son, daughter, husband, wife, father, mother, brother, sister, grandfather, grandmother, uncle, grandnanny, BmB, BmS, BpB, BpS, grandson, granddaughter, cousin)
+        }
     }
 
     ngOnChanges() {

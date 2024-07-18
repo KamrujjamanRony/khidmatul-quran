@@ -141,6 +141,9 @@
             placeholder="husband"
           />
         </label>
+        @if (model.husband > 1) {
+          <small class="text-red-600 ml-5">Husband cannot be more than 1</small>
+        }
       </div>
       <!-- wife -->
       <div class="relative mt-1">
@@ -171,6 +174,9 @@
             placeholder="wife"
           />
         </label>
+        @if (model.wife > 4) {
+          <small class="text-red-600 ml-5">Wife cannot be more than 4</small>
+        }
       </div>
       <!-- father -->
       <div class="relative mt-1">
@@ -201,6 +207,9 @@
             placeholder="father"
           />
         </label>
+        @if (model.father > 1) {
+          <small class="text-red-600 ml-5">Father cannot be more than 1</small>
+        }
       </div>
       <!-- mother -->
       <div class="relative mt-1">
@@ -233,6 +242,9 @@
             placeholder="mother"
           />
         </label>
+        @if (model.mother > 1) {
+          <small class="text-red-600 ml-5">Mother cannot be more than 1</small>
+        }
       </div>
       <!-- brother -->
       <div class="relative mt-1">
@@ -325,6 +337,9 @@
             placeholder="grandfather"
           />
         </label>
+        @if (model.grandfather > 1) {
+          <small class="text-red-600 ml-5">Grandfather cannot be more than 1</small>
+        }
       </div>
       <!-- grandmother -->
       <div class="relative mt-1">
@@ -621,6 +636,9 @@
           />
         </label>
       </div>
+    </div>
+    <div class="mt-5">
+      <button type="submit" class="btn bg-green-500 hover:bg-green-600 text-white capitalize w-full">calculate</button>
     </div>
   </form>
 </section>
