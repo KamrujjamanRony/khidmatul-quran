@@ -5,19 +5,19 @@ import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { BanglaPipe } from "../../../features/pipe/bangla.pipe";
 
 @Component({
-    selector: 'app-zakat',
-    standalone: true,
-    templateUrl: './zakat.component.html',
-    styleUrl: './zakat.component.css',
-    imports: [FormsModule, BengaliDatePipe, BanglaPipe]
+  selector: 'app-zakat',
+  standalone: true,
+  templateUrl: './zakat.component.html',
+  styleUrl: './zakat.component.css',
+  imports: [FormsModule, BengaliDatePipe, BanglaPipe]
 })
 export class ZakatComponent {
   forayez: any;
   ZakatService = inject(ZakatService);
-  selectedUnit: string = 'ভরি';
+  asset: string = 'ভরি';
 
-  constructor(){}
-  
+  constructor() { }
+
   ngOnInit(): void {
     this.ZakatService.getZakat().subscribe(Response => {
       this.forayez = Response;
