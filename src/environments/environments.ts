@@ -9,5 +9,6 @@ export const environment = {
     hijriDateApi: 'https://khidmatul.supersoftbd.com/apiKh/HijriDateAdj',
     noticeApi: 'https://khidmatul.supersoftbd.com/apiKh/Notice',
     boyanApi: 'https://khidmatul.supersoftbd.com/apiKh/Boyan',
+    forayezApi: 'https://khidmatul.supersoftbd.com/api/Inheritance',
     location: 'Khidmatul Quran Madrasha, Dhaka, Bangladesh'
 };
