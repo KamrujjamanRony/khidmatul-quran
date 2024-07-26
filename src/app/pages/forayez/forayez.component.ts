@@ -102,9 +102,6 @@ export class ForayezComponent {
         alert('স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।');
         this.model.wife = '';
       }
-      if (this.model.wife == '') {
-        this.model.wife = '';
-      }
     }
 
     ngOnChanges() {
