@@ -26,20 +26,29 @@
             placeholder="asset amount"
           />
         </label>
+        @if (model.asset > 1) {
+          <small class="text-red-600 ml-5">Asset cannot be empty.</small>
+        }
       </div>
       <!-- parameter -->
-      <div class="flex justify-center items-center font-bold my-2 text-md lg:text-2xl">
-        <h1 class="text-gray-600 mr-1">টাকা/শতাংশ নির্বাচন করুনঃ </h1>
+      <div class="flex justify-center items-center font-bold my-2 text-sm md:text-md lg:text-2xl">
+        <h1 class="text-gray-600 mr-1">নির্বাচন করুনঃ </h1>
         <div class="form-control">
           <label class="label cursor-pointer gap-1">
             <input type="radio" name="unit" class="radio checked:bg-red-500" [(ngModel)]="selectedUnit" value="টাকা" />
-            <span class="label-text text-red-500 text-md lg:text-2xl">টাকা</span> 
+            <span class="label-text text-red-500 text-sm md:text-md lg:text-2xl">টাকা</span> 
           </label>
         </div>
         <div class="form-control">
           <label class="label cursor-pointer gap-1">
             <input type="radio" name="unit" class="radio checked:bg-blue-500" [(ngModel)]="selectedUnit" value="শতাংশ" />
-            <span class="label-text text-blue-500 text-md lg:text-2xl">শতাংশ</span> 
+            <span class="label-text text-blue-500 text-sm md:text-md lg:text-2xl">শতাংশ</span> 
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer gap-1">
+            <input type="radio" name="unit" class="radio checked:bg-yellow-500" [(ngModel)]="selectedUnit" value="অলংকার" />
+            <span class="label-text text-yellow-500 text-sm md:text-md lg:text-2xl">অলংকার</span> 
           </label>
         </div>
       </div>
@@ -142,7 +151,7 @@
           />
         </label>
         @if (model.husband > 1) {
-          <small class="text-red-600 ml-5">Husband cannot be more than 1</small>
+          <small class="text-red-600 ml-5">স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
         }
       </div>
       <!-- wife -->
@@ -175,7 +184,7 @@
           />
         </label>
         @if (model.wife > 4) {
-          <small class="text-red-600 ml-5">Wife cannot be more than 4</small>
+          <small class="text-red-600 ml-5">স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়।</small>
         }
       </div>
       <!-- father -->
@@ -208,7 +217,7 @@
           />
         </label>
         @if (model.father > 1) {
-          <small class="text-red-600 ml-5">Father cannot be more than 1</small>
+          <small class="text-red-600 ml-5">পিতা ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
         }
       </div>
       <!-- mother -->
@@ -243,7 +252,7 @@
           />
         </label>
         @if (model.mother > 1) {
-          <small class="text-red-600 ml-5">Mother cannot be more than 1</small>
+          <small class="text-red-600 ml-5">মাতা ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
         }
       </div>
       <!-- brother -->
@@ -338,7 +347,7 @@
           />
         </label>
         @if (model.grandfather > 1) {
-          <small class="text-red-600 ml-5">Grandfather cannot be more than 1</small>
+          <small class="text-red-600 ml-5">দাদা ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
         }
       </div>
       <!-- grandmother -->
@@ -636,6 +645,7 @@
           />
         </label>
       </div>
+      
     </div>
     <div class="mt-5">
       <button type="submit" class="btn bg-green-500 hover:bg-green-600 text-white capitalize w-full">calculate</button>
