@@ -8,7 +8,7 @@ export class BanglaPipe implements PipeTransform {
 
   transform(value: number): string {
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
-    const fixedValue = value.toFixed(2);
+    const fixedValue = value;
     const numStr = fixedValue.toString();
     let banglaStr = '';
     for (let i = 0; i < numStr.length; i++) {

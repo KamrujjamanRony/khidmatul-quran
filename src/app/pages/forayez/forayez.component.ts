@@ -4,12 +4,13 @@ import { ForayezService } from '../../features/services/forayez.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ConfirmModalComponent } from '../../components/shared/confirm-modal/confirm-modal.component';
+import { BanglaPipe } from '../../features/pipe/bangla.pipe';
 @Component({
     selector: 'app-forayez',
     standalone: true,
     templateUrl: './forayez.component.html',
     styleUrl: './forayez.component.css',
-    imports: [FormsModule, CommonModule, ConfirmModalComponent]
+    imports: [FormsModule, CommonModule, ConfirmModalComponent, BanglaPipe]
 })
 export class ForayezComponent {
     forayezService = inject(ForayezService);
