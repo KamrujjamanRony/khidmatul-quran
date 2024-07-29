@@ -1,4 +1,4 @@
-<section class="container mx-auto p-2 md:p-5">
+<section class="w-full lg:container mx-auto p-2 md:p-5">
   <form #form="ngForm" (ngSubmit)="onFormSubmit()">
     <!-- Asset Description -->
     <div
@@ -50,7 +50,7 @@
             type="number"
             [(ngModel)]="model.tk"
             class="grow capitalize w-full"
-            placeholder="Amount"
+            placeholder="পরিমাণ"
           />
         </label>
       </div>
@@ -682,13 +682,457 @@
         </label>
       </div>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 flex gap-5">
       <button
         type="submit"
-        class="btn bg-green-500 hover:bg-green-600 text-white capitalize w-full"
+        class="btn bg-green-500 hover:bg-green-600 text-white capitalize flex-1"
       >
         calculate
       </button>
+      <button
+        (click)="onClear($event)"
+        class="btn bg-rose-500 hover:bg-rose-600 text-white capitalize"
+      >
+        clear
+      </button>
     </div>
   </form>
+
+  @if (result?.rtSon || result?.rtDau || result?.rtHus || result?.rtWif || result?.rtFat || result?.rtMot || result?.rtBro || result?.rtSis || result?.rtGrF || result?.rtGrM || result?.rtGrN || result?.rtUnc || result?.rtuSo || result?.rtBmB || result?.rtBmS || result?.rtBpB || result?.rtBpS || result?.rtGrS || result?.rtGrD) {
+    <div class="flex flex-col md:flex-row justify-around mt-5 gap-5">
+      <div>
+        <h2 class="text-bold text-xl md:text-2xl text-center">অংশীদারদের মোট পরিমাণ</h2>
+        <div class="overflow-x-auto">
+          <table class="table table-xs lg:table-lg">
+            <!-- head -->
+            <thead>
+              <tr class="bg-base-200">
+                <th class="border">আত্মীয়</th>
+                <th class="border cp-0">সংখ্যা</th>
+                <th class="border">শতকরা %</th>
+                <th class="border">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- পুত্র -->
+               @if (result?.rtSon) {
+                <tr>
+                  <th class="border">পুত্র</th>
+                  <td class="border cp-0 text-center">{{result?.son}}</td>
+                  <td class="border">{{result?.rtSon}}</td>
+                  <td class="border">{{result?.rTkSon}}</td>
+                </tr>
+               }
+              
+              <!-- কন্যা -->
+               @if (result?.rtDau) {
+                <tr>
+                  <th class="border">কন্যা</th>
+                  <td class="border cp-0 text-center">{{result?.dau}}</td>
+                  <td class="border">{{result?.rtDau}}</td>
+                  <td class="border">{{result?.rTkDau}}</td>
+                </tr>
+               }
+              
+              <!-- স্বামী -->
+               @if (result?.rtHus) {
+                <tr>
+                  <th class="border">স্বামী</th>
+                  <td class="border cp-0 text-center">{{result?.hus}}</td>
+                  <td class="border">{{result?.rtHus}}</td>
+                  <td class="border">{{result?.rTkHus}}</td>
+                </tr>
+               }
+              
+              <!-- স্ত্রী -->
+               @if(result?.rtWif){
+                <tr>
+                  <th class="border">স্ত্রী</th>
+                  <td class="border cp-0 text-center">{{result?.wif}}</td>
+                  <td class="border">{{result?.rtWif}}</td>
+                  <td class="border">{{result?.rTkWif}}</td>
+                </tr>
+               }
+              
+              <!-- পিতা -->
+               @if(result?.rtFat){
+                <tr>
+                  <th class="border">পিতা</th>
+                  <td class="border cp-0 text-center">{{result?.fat}}</td>
+                  <td class="border">{{result?.rtFat}}</td>
+                  <td class="border">{{result?.rTkFat}}</td>
+                </tr>
+               }
+              
+              <!-- মাতা -->
+               @if(result?.rtMot){
+                <tr>
+                  <th class="border">মাতা</th>
+                  <td class="border cp-0 text-center">{{result?.mot}}</td>
+                  <td class="border">{{result?.rtMot}}</td>
+                  <td class="border">{{result?.rTkMot}}</td>
+                </tr>
+               }
+              
+              <!-- ভাই -->
+               @if(result?.rtBro){
+                <tr>
+                  <th class="border">ভাই</th>
+                  <td class="border cp-0 text-center">{{result?.bro}}</td>
+                  <td class="border">{{result?.rtBro}}</td>
+                  <td class="border">{{result?.rTkBro}}</td>
+                </tr>
+               }
+              
+              <!-- বোন -->
+               @if(result?.rtSis){
+                <tr>
+                  <th class="border">বোন</th>
+                  <td class="border cp-0 text-center">{{result?.sis}}</td>
+                  <td class="border">{{result?.rtSis}}</td>
+                  <td class="border">{{result?.rTkSis}}</td>
+                </tr>
+               }
+              
+              <!-- দাদা -->
+               @if(result?.rtGrF){
+                <tr>
+                  <th class="border">দাদা</th>
+                  <td class="border cp-0 text-center">{{result?.grF}}</td>
+                  <td class="border">{{result?.rtGrF}}</td>
+                  <td class="border">{{result?.rTkGrF}}</td>
+                </tr>
+               }
+              
+              <!-- দাদী -->
+               @if (result?.rtGrM) {
+                <tr>
+                  <th class="border">দাদী</th>
+                  <td class="border cp-0 text-center">{{result?.grM}}</td>
+                  <td class="border">{{result?.rtGrM}}</td>
+                  <td class="border">{{result?.rTkGrM}}</td>
+                </tr>
+               }
+              
+              <!-- নানী -->
+               @if (result?.rtGrN) {
+                <tr>
+                  <th class="border">নানী</th>
+                  <td class="border cp-0 text-center">{{result?.grN}}</td>
+                  <td class="border">{{result?.rtGrN}}</td>
+                  <td class="border">{{result?.rTkGrN}}</td>
+                </tr>
+               }
+              
+              <!-- চাচা -->
+               @if (result?.rtUnc) {
+                <tr>
+                  <th class="border">চাচা</th>
+                  <td class="border cp-0 text-center">{{result?.unc}}</td>
+                  <td class="border">{{result?.rtUnc}}</td>
+                  <td class="border">{{result?.rTkUnc}}</td>
+                </tr>
+               }
+              
+              <!-- চাচাতো ভাই -->
+               @if (result?.rtuSo) {
+                <tr>
+                  <th class="border">চাচাতো ভাই</th>
+                  <td class="border cp-0 text-center">{{result?.uSo}}</td>
+                  <td class="border">{{result?.rtuSo}}</td>
+                  <td class="border">{{result?.rTkUSo}}</td>
+                </tr>
+               }
+              
+              <!-- বৈমাত্রের ভাই -->
+               @if (result?.rtBmB) {
+                <tr>
+                  <th class="border">বৈমাত্রের ভাই</th>
+                  <td class="border cp-0 text-center">{{result?.bmB}}</td>
+                  <td class="border">{{result?.rtBmB}}</td>
+                  <td class="border">{{result?.rTkBmB}}</td>
+                </tr>
+               }
+    
+              <!-- বৈমাত্রের বোন -->
+               @if (result?.rtBmS) {
+                <tr>
+                  <th class="border">বৈমাত্রের বোন</th>
+                  <td class="border cp-0 text-center">{{result?.bmS}}</td>
+                  <td class="border">{{result?.rtBmS}}</td>
+                  <td class="border">{{result?.rTkBmS}}</td>
+                </tr>
+               }
+              
+              <!-- বৈপিত্রের ভাই -->
+               @if (result?.rtBpB) {
+                <tr>
+                  <th class="border">বৈপিত্রের ভাই</th>
+                  <td class="border cp-0 text-center">{{result?.bpB}}</td>
+                  <td class="border">{{result?.rtBpB}}</td>
+                  <td class="border">{{result?.rTkBpB}}</td>
+                </tr>
+               }
+    
+              <!-- বৈপিত্রের বোন -->
+               @if (result?.rtBpS) {
+                <tr>
+                  <th class="border">বৈপিত্রের বোন</th>
+                  <td class="border cp-0 text-center">{{result?.bpS}}</td>
+                  <td class="border">{{result?.rtBpS}}</td>
+                  <td class="border">{{result?.rTkBpS}}</td>
+                </tr>
+               }
+    
+              <!-- নাতি -->
+               @if (result?.rtGrS) {
+                <tr>
+                  <th class="border">নাতি</th>
+                  <td class="border cp-0 text-center">{{result?.grS}}</td>
+                  <td class="border">{{result?.rtGrS}}</td>
+                  <td class="border">{{result?.rTkGrS}}</td>
+                </tr>
+               }
+    
+              <!-- নাতনী -->
+               @if (result?.rtGrD) {
+                <tr>
+                  <th class="border">নাতনী</th>
+                  <td class="border cp-0 text-center">{{result?.grD}}</td>
+                  <td class="border">{{result?.rtGrD}}</td>
+                  <td class="border">{{result?.rTkGrD}}</td>
+                </tr>
+               }
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-bold text-xl md:text-2xl text-center">একজন অংশীদারের পরিমাণ</h2>
+      <div class="overflow-x-auto">
+        <table class="table table-xs lg:table-lg">
+          <!-- head -->
+          <thead>
+            <tr class="bg-base-200">
+              <th class="border">আত্মীয়</th>
+              <th class="border cp-0">সংখ্যা</th>
+              <th class="border">শতকরা %</th>
+              <th class="border">পরিমাণ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- পুত্র -->
+            @if (result?.rsSon) {
+              <tr>
+                <th class="border">পুত্র</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsSon}}</td>
+                <td class="border">{{result?.rSkSon}}</td>
+              </tr>
+             }
+            
+            <!-- কন্যা -->
+             @if (result?.rsDau) {
+              <tr>
+                <th class="border">কন্যা</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsDau}}</td>
+                <td class="border">{{result?.rSkDau}}</td>
+              </tr>
+             }
+            
+            <!-- স্বামী -->
+             @if (result?.rsHus) {
+              <tr>
+                <th class="border">স্বামী</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsHus}}</td>
+                <td class="border">{{result?.rSkHus}}</td>
+              </tr>
+             }
+            
+            <!-- স্ত্রী -->
+             @if(result?.rsWif){
+              <tr>
+                <th class="border">স্ত্রী</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsWif}}</td>
+                <td class="border">{{result?.rSkWif}}</td>
+              </tr>
+             }
+            
+            <!-- পিতা -->
+             @if(result?.rsFat){
+              <tr>
+                <th class="border">পিতা</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsFat}}</td>
+                <td class="border">{{result?.rSkFat}}</td>
+              </tr>
+             }
+            
+            <!-- মাতা -->
+             @if(result?.rsMot){
+              <tr>
+                <th class="border">মাতা</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsMot}}</td>
+                <td class="border">{{result?.rSkMot}}</td>
+              </tr>
+             }
+            
+            <!-- ভাই -->
+             @if(result?.rsBro){
+              <tr>
+                <th class="border">ভাই</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsBro}}</td>
+                <td class="border">{{result?.rSkBro}}</td>
+              </tr>
+             }
+            
+            <!-- বোন -->
+             @if(result?.rsSis){
+              <tr>
+                <th class="border">বোন</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsSis}}</td>
+                <td class="border">{{result?.rSkSis}}</td>
+              </tr>
+             }
+            
+            <!-- দাদা -->
+             @if(result?.rsGrF){
+              <tr>
+                <th class="border">দাদা</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsGrF}}</td>
+                <td class="border">{{result?.rSkGrF}}</td>
+              </tr>
+             }
+            
+            <!-- দাদী -->
+             @if (result?.rsGrM) {
+              <tr>
+                <th class="border">দাদী</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsGrM}}</td>
+                <td class="border">{{result?.rSkGrM}}</td>
+              </tr>
+             }
+            
+            <!-- নানী -->
+             @if (result?.rsGrN) {
+              <tr>
+                <th class="border">নানী</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsGrN}}</td>
+                <td class="border">{{result?.rSkGrN}}</td>
+              </tr>
+             }
+            
+            <!-- চাচা -->
+             @if (result?.rsUnc) {
+              <tr>
+                <th class="border">চাচা</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsUnc}}</td>
+                <td class="border">{{result?.rSkUnc}}</td>
+              </tr>
+             }
+            
+            <!-- চাচাতো ভাই -->
+             @if (result?.rsUSo) {
+              <tr>
+                <th class="border">চাচাতো ভাই</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsUSo}}</td>
+                <td class="border">{{result?.rSkUSo}}</td>
+              </tr>
+             }
+            
+            <!-- বৈমাত্রের ভাই -->
+             @if (result?.rsBmB) {
+              <tr>
+                <th class="border">বৈমাত্রের ভাই</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsBmB}}</td>
+                <td class="border">{{result?.rSkBmB}}</td>
+              </tr>
+             }
+  
+            <!-- বৈমাত্রের বোন -->
+             @if (result?.rsBmS) {
+              <tr>
+                <th class="border">বৈমাত্রের বোন</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsBmS}}</td>
+                <td class="border">{{result?.rSkBmS}}</td>
+              </tr>
+             }
+            
+            <!-- বৈপিত্রের ভাই -->
+             @if (result?.rsBpB) {
+              <tr>
+                <th class="border">বৈপিত্রের ভাই</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsBpB}}</td>
+                <td class="border">{{result?.rSkBpB}}</td>
+              </tr>
+             }
+  
+            <!-- বৈপিত্রের বোন -->
+             @if (result?.rsBpS) {
+              <tr>
+                <th class="border">বৈপিত্রের বোন</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsBpS}}</td>
+                <td class="border">{{result?.rSkBpS}}</td>
+              </tr>
+             }
+  
+            <!-- নাতি -->
+             @if (result?.rsGrS) {
+              <tr>
+                <th class="border">নাতি</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsGrS}}</td>
+                <td class="border">{{result?.rSkGrS}}</td>
+              </tr>
+             }
+  
+            <!-- নাতনী -->
+             @if (result?.rsGrD) {
+              <tr>
+                <th class="border">নাতনী</th>
+                <td class="border cp-0 text-center">1</td>
+                <td class="border">{{result?.rsGrD}}</td>
+                <td class="border">{{result?.rSkGrD}}</td>
+              </tr>
+             }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  }
+  
+  @if (result?.bbb.length > 0) {
+    <div class="text-rose-600 mt-5">
+      <h2 class="font-bold text-md">Calculation Steps:</h2>
+      <ol class="list-disc pl-6 text-sm">
+        @for (data of result?.bbb; track $index) {
+          <li>{{data}}</li>
+        }
+        
+      </ol>
+    </div>
+  }
 </section>
+
+
+
+@if(confirmModal){
+  <confirm-modal [title]="result?.notFound" url="" (closeModal)="closeModal()" />
+}

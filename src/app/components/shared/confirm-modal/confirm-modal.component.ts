@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'confirm-modal',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './confirm-modal.component.html',
   styleUrl: './confirm-modal.component.css'
 })
@@ -18,6 +19,8 @@ export class ConfirmModalComponent {
 
   closeThisModal(): void {
     this.closeModal.emit();
-    this.router.navigate([this.url]);
+    if (this.url) {
+      this.router.navigate([this.url]);
+    }
   }
 }
