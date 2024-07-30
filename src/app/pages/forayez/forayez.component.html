@@ -1188,9 +1188,9 @@
   </div>
   } 
   @if (result?.des.length > 0) {
-  <div class="mt-5">
-    <h2 class="font-bold text-md">বর্ণনাঃ-</h2>
-    <ol class="list-disc pl-6 text-sm">
+  <div class="mt-5 text-blue-800">
+    <h2 class="font-bold text-xl">বর্ণনাঃ-</h2>
+    <ol class="list-disc pl-6 text-md">
       @for (data of result?.des; track $index) {
       <li>{{ data }}</li>
       }
@@ -1199,8 +1199,8 @@
   }
   @if (result?.bbb.length > 0) {
   <div class="text-rose-600 mt-5">
-    <h2 class="font-bold text-md">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
-    <ol class="list-disc pl-6 text-sm">
+    <h2 class="font-bold text-xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
+    <ol class="list-disc pl-6 text-md">
       @for (data of result?.bbb; track $index) {
       <li>{{ data }}</li>
       }
@@ -1219,19 +1219,24 @@
 <confirm-modal title="স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।" url="" (closeModal)="closeModal()" />
 }
 @if(confirmModal3){
-<confirm-modal title="স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়।" url="" (closeModal)="closeModal()" />
+<confirm-modal title="স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং স্বামী ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
 }
 @if(confirmModal4){
-<confirm-modal title="স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়।" url="" (closeModal)="closeModal()" />
+<confirm-modal title="স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং স্ত্রী ৪ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
 }
 @if(confirmModal5){
-<confirm-modal title="পিতা ১ জনের বেশী গ্রহণযোগ্য নয়।" url="" (closeModal)="closeModal()" />
+<confirm-modal title="পিতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং পিতা ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
 }
 @if(confirmModal6){
-<confirm-modal title="মাতা ১ জনের বেশী গ্রহণযোগ্য নয়।" url="" (closeModal)="closeModal()" />
+<confirm-modal title="মাতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং মাতা ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
 }
 @if(confirmModal7){
-<confirm-modal title="দাদা ১ জনের বেশী গ্রহণযোগ্য নয়।" url="" (closeModal)="closeModal()" />
+<confirm-modal title="দাদা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং দাদা ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
 }
 @if(confirmModal8){
 <confirm-modal title="" url="" (closeModal)="closeModal()" />
