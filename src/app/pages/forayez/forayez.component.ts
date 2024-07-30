@@ -21,9 +21,27 @@ export class ForayezComponent {
     isWife: boolean = false;
     private forayezSubscription?: Subscription;
     confirmModal: boolean = false;
+    confirmModal1: boolean = false;
+    confirmModal2: boolean = false;
+    confirmModal3: boolean = false;
+    confirmModal4: boolean = false;
+    confirmModal5: boolean = false;
+    confirmModal6: boolean = false;
+    confirmModal7: boolean = false;
+    confirmModal8: boolean = false;
+    confirmModal9: boolean = false;
   
     closeModal() {
       this.confirmModal = false;
+      this.confirmModal1 = false;
+      this.confirmModal2 = false;
+      this.confirmModal3 = false;
+      this.confirmModal4 = false;
+      this.confirmModal5 = false;
+      this.confirmModal6 = false;
+      this.confirmModal7 = false;
+      this.confirmModal8 = false;
+      this.confirmModal9 = false;
     }
 
     constructor() {
@@ -88,6 +106,9 @@ export class ForayezComponent {
                 .subscribe({
                     next: (response) => {
                         this.result = response;
+                        // Scroll to the top of the page
+                        setTimeout(() => window.scroll({top: document.body.scrollHeight, behavior: 'smooth'}), 1000);
+                        
                         if (this.result?.notFound) {
                             this.confirmModal = true;
                         }
@@ -132,15 +153,42 @@ export class ForayezComponent {
 
     onHusbandChange() {
       if (this.model.wife > 0) {
-        alert('স্ত্রী উপস্থিত থাকলে স্বামী যোগ করা যাবে না।');
+        this.confirmModal1 = true;
         this.model.husband = '';
+      }
+      if (this.model.husband > 1) {
+        this.confirmModal3 = true;
+        this.model.husband = 1;
       }
     }
 
     onWifeChange() {
       if (this.model.husband > 0) {
-        alert('স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।');
+        this.confirmModal2 = true;
         this.model.wife = '';
+      }
+      if (this.model.wife > 4) {
+        this.confirmModal4 = true;
+        this.model.wife = 4;
+      }
+    }
+
+    onFatherChange() {
+      if (this.model.father > 1) {
+        this.confirmModal5 = true;
+        this.model.father = 1;
+      }
+    }
+    onMotherChange() {
+      if (this.model.mother > 1) {
+        this.confirmModal6 = true;
+        this.model.mother = 1;
+      }
+    }
+    onGrandfatherChange() {
+      if (this.model.grandfather > 1) {
+        this.confirmModal7 = true;
+        this.model.grandfather = 1;
       }
     }
 
