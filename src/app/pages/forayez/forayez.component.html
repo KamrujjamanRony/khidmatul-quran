@@ -1186,22 +1186,22 @@
       </div>
     </div>
   </div>
-  } 
-  @if (result?.des.length > 0) {
-  <div class="mt-5 text-blue-800">
-    <h2 class="font-bold text-xl">বর্ণনাঃ-</h2>
-    <ol class="list-disc pl-6 text-md">
-      @for (data of result?.des; track $index) {
-      <li>{{ data }}</li>
-      }
-    </ol>
-  </div>
   }
   @if (result?.bbb.length > 0) {
   <div class="text-rose-600 mt-5">
     <h2 class="font-bold text-xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
     <ol class="list-disc pl-6 text-md">
       @for (data of result?.bbb; track $index) {
+      <li>{{ data }}</li>
+      }
+    </ol>
+  </div>
+  } 
+  @if (result?.des.length > 0) {
+  <div class="mt-5 text-blue-800">
+    <h2 class="font-bold text-xl">বর্ণনাঃ-</h2>
+    <ol class="list-disc pl-6 text-md">
+      @for (data of result?.des; track $index) {
       <li>{{ data }}</li>
       }
     </ol>
