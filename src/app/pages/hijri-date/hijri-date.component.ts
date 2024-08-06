@@ -45,7 +45,7 @@ export class HijriDateComponent {
       this.arabic13 = [`${data?.arabic13[2]} ${data?.arabic13[1]}`, data?.arabic13[3]];
       this.arabic14 = [`${data?.arabic14[2]} ${data?.arabic14[1]}`, data?.arabic14[3]];
       this.arabic15 = [`${data?.arabic15[2]} ${data?.arabic15[1]}`, data?.arabic15[3]];
-      this.hijriMonth = this.hijriDate?.split(', ')[1];
+      this.hijriMonth = this.hijriNextDay?.split(', ')[1];
       this.gregorianMonth = data?.arabic13[1];
     })
     initTE({ Datepicker, Input },
