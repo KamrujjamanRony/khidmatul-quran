@@ -27,8 +27,12 @@ export class NavbarComponent {
 
   dropdownMenu1 = [
     {
-      title : "কিতাব",
-      link : "kitab"
+      title : "চল্লিশ দরুদ ও সালাম",
+      link : "forty-dorud"
+    },
+    {
+      title : "দোয়ায়ে আবু দারদা (রাঃ)",
+      link : "doyaye-abu-darda-ra"
     },
     {
       title : "নির্বাচিত প্রবন্ধসমূহ",

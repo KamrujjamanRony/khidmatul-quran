@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { ArabicComponent } from './pages/arabic/arabic.component';
 import { SalatTimesComponent } from './pages/salat-times/salat-times.component';
 import { HijriDateComponent } from './pages/hijri-date/hijri-date.component';
 import { ForayezComponent } from './pages/forayez/forayez.component';
@@ -30,6 +29,8 @@ import { BoyanAddComponent } from './pages/admin/boyan-add/boyan-add.component';
 import { NoticeListComponent } from './pages/admin/notice-list/notice-list.component';
 import { NoticeAddComponent } from './pages/admin/notice-add/notice-add.component';
 import { NoticeEditComponent } from './pages/admin/notice-edit/notice-edit.component';
+import { FortyDorudComponent } from './pages/bivhag/forty-dorud/forty-dorud.component';
+import { DoyayeAbuDardaRaComponent } from './pages/bivhag/doyaye-abu-darda-ra/doyaye-abu-darda-ra.component';
 
 export const routes: Routes = [
   {
@@ -69,8 +70,12 @@ export const routes: Routes = [
         component: Blog3Component
       },
       {
-        path: 'kitab',
-        component: KitabComponent
+        path: 'forty-dorud',
+        component: FortyDorudComponent
+      },
+      {
+        path: 'doyaye-abu-darda-ra',
+        component: DoyayeAbuDardaRaComponent
       },
       {
         path: 'selected-writings',
@@ -87,10 +92,6 @@ export const routes: Routes = [
       {
         path: 'selected-writings/4',
         component: Blog4Component
-      },
-      {
-        path: 'arabic',
-        component: ArabicComponent
       },
       {
         path: 'notice',

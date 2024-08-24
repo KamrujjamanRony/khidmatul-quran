@@ -1,18 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { JsonDataService } from '../../features/services/json-data.service';
+import { JsonDataService } from '../../../features/services/json-data.service';
 
 @Component({
-  selector: 'app-arabic',
+  selector: 'app-forty-dorud',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './arabic.component.html',
-  styleUrl: './arabic.component.css'
+  imports: [],
+  templateUrl: './forty-dorud.component.html',
+  styleUrl: './forty-dorud.component.css'
 })
-export class ArabicComponent {
+export class FortyDorudComponent {
   jsonDataService = inject(JsonDataService);
   arabicLanguage: any;
-  isPlay:boolean = false;
+  isPlay: boolean = false;
   selectedArabic: boolean = false;
   selectedBangla: boolean = false;
   selectedDescribe: boolean = false;

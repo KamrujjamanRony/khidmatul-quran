@@ -22,8 +22,8 @@
   @if (isOpen) {
     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
       @for (data of menu; track $index) {
-        <li class="pl-2 py-2 hover:bg-rose-600">
-          <a (click)="hideDropdown" [routerLink]="data?.link" class="ml-2" 
+        <li class="pl-2 py-2 hover:bg-rose-600 !hover:text-white">
+          <a (click)="hideDropdown()" [routerLink]="data?.link" class="text-inherit" 
           data-te-collapse-init
     data-te-target="#navbarSupportedContent12"
     >{{ data?.title }}</a>
