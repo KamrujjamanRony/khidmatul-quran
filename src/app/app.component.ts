@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import * as AOS from 'aos';
 import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 
@@ -10,7 +8,7 @@ import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimen
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, HttpClientModule, AngularQueryDevtools]
+    imports: [RouterOutlet, AngularQueryDevtools]
 })
 export class AppComponent implements OnInit {
   title = 'The khidmatul-quran';
