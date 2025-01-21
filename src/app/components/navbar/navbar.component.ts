@@ -9,11 +9,11 @@ import { DropdownMenuComponent } from "../shared/dropdown-menu/dropdown-menu.com
 import { DropdownMenu2Component } from "../shared/dropdown-menu2/dropdown-menu2.component";
 
 @Component({
-    selector: 'app-navbar',
-    standalone: true,
-    templateUrl: './navbar.component.html',
-    styleUrl: './navbar.component.css',
-    imports: [RouterLink, DropdownMenuComponent, DropdownMenu2Component]
+  selector: 'app-navbar',
+  standalone: true,
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css',
+  imports: [RouterLink, DropdownMenuComponent, DropdownMenu2Component]
 })
 export class NavbarComponent {
   @ViewChild('servicesDropdown') servicesDropdown!: ElementRef;
@@ -26,55 +26,55 @@ export class NavbarComponent {
   isServicesDropdownVisible = false;
 
   dropdownMenu1 = [
+    // {
+    //   title : "চল্লিশ দরুদ ও সালাম",
+    //   link : "forty-dorud"
+    // },
+    // {
+    //   title : "দোয়ায়ে আবু দারদা (রাঃ)",
+    //   link : "doyaye-abu-darda-ra"
+    // },
     {
-      title : "চল্লিশ দরুদ ও সালাম",
-      link : "forty-dorud"
-    },
-    {
-      title : "দোয়ায়ে আবু দারদা (রাঃ)",
-      link : "doyaye-abu-darda-ra"
-    },
-    {
-      title : "নির্বাচিত প্রবন্ধসমূহ",
-      link : "selected-writings"
+      title: "নির্বাচিত প্রবন্ধসমূহ",
+      link: "selected-writings"
     }
   ]
 
   dropdownMenu2 = [
     {
-      title : "স্বর্ণ ও রুপার দাম",
-      link : "gold-price"
+      title: "স্বর্ণ ও রুপার দাম",
+      link: "gold-price"
     },
     {
-      title : "যাকাত ক্যালকুলেটর",
-      link : "zakat-calculator"
+      title: "যাকাত ক্যালকুলেটর",
+      link: "zakat-calculator"
     },
     {
-      title : "যাকাত মাসআলা",
-      link : "zakat-masala"
+      title: "যাকাত মাসআলা",
+      link: "zakat-masala"
     },
   ]
 
   dropdownMenu3 = [
     {
-      title : "কুরআনের তাফসীর",
-      link : "audio/1"
+      title: "কুরআনের তাফসীর",
+      link: "audio/1"
     },
     {
-      title : "সংক্ষিপ্ত নসিয়ত",
-      link : "audio/2"
+      title: "সংক্ষিপ্ত নসিয়ত",
+      link: "audio/2"
     },
     {
-      title : "ইসলাহী মজলিশ",
-      link : "audio/3"
+      title: "ইসলাহী মজলিশ",
+      link: "audio/3"
     },
     {
-      title : "ইউটিউব অডিও",
-      link : "audio/4"
+      title: "ইউটিউব অডিও",
+      link: "audio/4"
     },
     {
-      title : "ইউটিউব ভিডিও",
-      link : "video"
+      title: "ইউটিউব ভিডিও",
+      link: "video"
     },
   ]
 
@@ -85,7 +85,7 @@ export class NavbarComponent {
     }
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
 
   ngOnInit(): void {
