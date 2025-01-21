@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import * as AOS from 'aos';
-import { AngularQueryDevtools } from '@tanstack/angular-query-devtools-experimental';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, AngularQueryDevtools]
+    imports: [RouterOutlet]
 })
 export class AppComponent implements OnInit {
   title = 'The khidmatul-quran';

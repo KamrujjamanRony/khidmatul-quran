@@ -1,3 +1,6 @@
+@if (loading()) {
+<app-loader></app-loader>
+} @else {
 <section class="w-full lg:container mx-auto p-2 md:p-5">
   <form #form="ngForm" (ngSubmit)="onFormSubmit()">
     <!-- Asset Description -->
@@ -21,7 +24,39 @@
           class="input input-bordered flex items-center gap-2 bg-white"
           for="asset"
         >
-        <svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" id="taka-square-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color h-4 w-4 opacity-70"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><rect id="primary" x="2" y="2" width="20" height="20" rx="2" style="fill: #000000;"></rect><path id="secondary" d="M16,11a1,1,0,0,0-1,1v2a2,2,0,0,1-4,0V12h1a1,1,0,0,0,0-2H11V9A3,3,0,0,0,8,6,1,1,0,0,0,8,8,1,1,0,0,1,9,9v1H8a1,1,0,0,0,0,2H9v2a4,4,0,0,0,8,0V12A1,1,0,0,0,16,11Z" style="fill: #ffffff;"></path></g></svg>
+          <svg
+            fill="#000000"
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            id="taka-square-2"
+            data-name="Flat Color"
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon flat-color h-4 w-4 opacity-70"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <rect
+                id="primary"
+                x="2"
+                y="2"
+                width="20"
+                height="20"
+                rx="2"
+                style="fill: #000000"
+              ></rect>
+              <path
+                id="secondary"
+                d="M16,11a1,1,0,0,0-1,1v2a2,2,0,0,1-4,0V12h1a1,1,0,0,0,0-2H11V9A3,3,0,0,0,8,6,1,1,0,0,0,8,8,1,1,0,0,1,9,9v1H8a1,1,0,0,0,0,2H9v2a4,4,0,0,0,8,0V12A1,1,0,0,0,16,11Z"
+                style="fill: #ffffff"
+              ></path>
+            </g>
+          </svg>
           <input
             id="tk"
             name="tk"
@@ -90,7 +125,7 @@
       <h1
         class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-xl md:text-2xl font-bold text-green-600 bg-white px-2"
       >
-      জীবিত আত্মীয়-স্বজনের তালিকা
+        জীবিত আত্মীয়-স্বজনের তালিকা
       </h1>
       <!-- son -->
       <div class="relative mt-1 bg-white">
@@ -524,7 +559,7 @@
       <div class="relative mt-1 bg-white">
         <span
           class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
-          >বৈমাত্রের ভাই</span
+          >বৈমাত্রেয় ভাই</span
         >
         <label
           class="input input-bordered flex items-center gap-2 bg-white"
@@ -554,7 +589,7 @@
       <div class="relative mt-1 bg-white">
         <span
           class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
-          >বৈমাত্রের বোন</span
+          >বৈমাত্রেয় বোন</span
         >
         <label
           class="input input-bordered flex items-center gap-2 bg-white"
@@ -586,7 +621,7 @@
       <div class="relative mt-1 bg-white">
         <span
           class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
-          >বৈপিত্রের ভাই</span
+          >বৈপিত্রেয় ভাই</span
         >
         <label
           class="input input-bordered flex items-center gap-2 bg-white"
@@ -616,7 +651,7 @@
       <div class="relative mt-1 bg-white">
         <span
           class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
-          >বৈপিত্রের বোন</span
+          >বৈপিত্রেয় বোন</span
         >
         <label
           class="input input-bordered flex items-center gap-2 bg-white"
@@ -641,6 +676,36 @@
             [(ngModel)]="model.BpS"
             class="grow capitalize w-full bg-white text-black"
             placeholder="vaipitra's sister"
+          />
+        </label>
+      </div>
+      <!-- BSo -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >ভাইয়ের পুত্র</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="BSo"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BSo"
+            name="BSo"
+            type="number"
+            [(ngModel)]="model.BSo"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="ভাইয়ের পুত্র"
           />
         </label>
       </div>
@@ -752,8 +817,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.son | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtSon | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkSon | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtSon | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkSon | bangla }}
+              </td>
             </tr>
             }
 
@@ -764,8 +833,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.dau | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtDau | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkDau | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtDau | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkDau | bangla }}
+              </td>
             </tr>
             }
 
@@ -776,8 +849,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.hus | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtHus | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkHus | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtHus | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkHus | bangla }}
+              </td>
             </tr>
             }
 
@@ -788,8 +865,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.wif | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtWif | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkWif | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtWif | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkWif | bangla }}
+              </td>
             </tr>
             }
 
@@ -800,8 +881,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.fat | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtFat | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkFat | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtFat | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkFat | bangla }}
+              </td>
             </tr>
             }
 
@@ -812,8 +897,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.mot | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtMot | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkMot | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtMot | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkMot | bangla }}
+              </td>
             </tr>
             }
 
@@ -824,8 +913,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.bro | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtBro | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkBro | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtBro | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBro | bangla }}
+              </td>
             </tr>
             }
 
@@ -836,8 +929,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.sis | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtSis | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkSis | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtSis | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkSis | bangla }}
+              </td>
             </tr>
             }
 
@@ -848,8 +945,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.grF | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtGrF | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkGrF | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtGrF | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkGrF | bangla }}
+              </td>
             </tr>
             }
 
@@ -860,8 +961,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.grM | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtGrM | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkGrM | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtGrM | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkGrM | bangla }}
+              </td>
             </tr>
             }
 
@@ -872,8 +977,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.grN | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtGrN | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkGrN | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtGrN | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkGrN | bangla }}
+              </td>
             </tr>
             }
 
@@ -884,8 +993,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.unc | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtUnc | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkUnc | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtUnc | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkUnc | bangla }}
+              </td>
             </tr>
             }
 
@@ -896,8 +1009,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.uSo | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtuSo | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkUSo | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtuSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkUSo | bangla }}
+              </td>
             </tr>
             }
 
@@ -908,8 +1025,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.bmB | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtBmB | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkBmB | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtBmB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBmB | bangla }}
+              </td>
             </tr>
             }
 
@@ -920,8 +1041,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.bmS | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtBmS | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkBmS | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtBmS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBmS | bangla }}
+              </td>
             </tr>
             }
 
@@ -932,8 +1057,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.bpB | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtBpB | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkBpB | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtBpB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBpB | bangla }}
+              </td>
             </tr>
             }
 
@@ -944,8 +1073,28 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.bpS | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtBpS | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkBpS | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtBpS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBpS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাইয়ের পুত্র -->
+            @if (result?.rtbSo) {
+            <tr>
+              <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result?.bSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtbSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkBSo | bangla }}
+              </td>
             </tr>
             }
 
@@ -956,8 +1105,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.grS | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtGrS | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkGrS | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtGrS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkGrS | bangla }}
+              </td>
             </tr>
             }
 
@@ -968,8 +1121,12 @@
               <td class="text-black cp-0 border text-center">
                 {{ result?.grD | bangla }}
               </td>
-              <td class="text-black cp-0 border">{{ result?.rtGrD | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rTkGrD | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rtGrD | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rTkGrD | bangla }}
+              </td>
             </tr>
             }
           </tbody>
@@ -997,8 +1154,12 @@
             <tr>
               <th class="text-black cp-0 border">পুত্র</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsSon | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkSon | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsSon | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkSon | bangla }}
+              </td>
             </tr>
             }
 
@@ -1007,8 +1168,12 @@
             <tr>
               <th class="text-black cp-0 border">কন্যা</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsDau | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkDau | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsDau | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkDau | bangla }}
+              </td>
             </tr>
             }
 
@@ -1017,8 +1182,12 @@
             <tr>
               <th class="text-black cp-0 border">স্বামী</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsHus | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkHus | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsHus | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkHus | bangla }}
+              </td>
             </tr>
             }
 
@@ -1027,8 +1196,12 @@
             <tr>
               <th class="text-black cp-0 border">স্ত্রী</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsWif | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkWif | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsWif | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkWif | bangla }}
+              </td>
             </tr>
             }
 
@@ -1037,8 +1210,12 @@
             <tr>
               <th class="text-black cp-0 border">পিতা</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsFat | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkFat | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsFat | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkFat | bangla }}
+              </td>
             </tr>
             }
 
@@ -1047,8 +1224,12 @@
             <tr>
               <th class="text-black cp-0 border">মাতা</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsMot | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkMot | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsMot | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkMot | bangla }}
+              </td>
             </tr>
             }
 
@@ -1057,8 +1238,12 @@
             <tr>
               <th class="text-black cp-0 border">ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsBro | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkBro | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsBro | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBro | bangla }}
+              </td>
             </tr>
             }
 
@@ -1067,8 +1252,12 @@
             <tr>
               <th class="text-black cp-0 border">বোন</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsSis | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkSis | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsSis | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkSis | bangla }}
+              </td>
             </tr>
             }
 
@@ -1077,8 +1266,12 @@
             <tr>
               <th class="text-black cp-0 border">দাদা</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsGrF | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkGrF | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsGrF | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkGrF | bangla }}
+              </td>
             </tr>
             }
 
@@ -1087,8 +1280,12 @@
             <tr>
               <th class="text-black cp-0 border">দাদী</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsGrM | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkGrM | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsGrM | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkGrM | bangla }}
+              </td>
             </tr>
             }
 
@@ -1097,8 +1294,12 @@
             <tr>
               <th class="text-black cp-0 border">নানী</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsGrN | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkGrN | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsGrN | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkGrN | bangla }}
+              </td>
             </tr>
             }
 
@@ -1107,8 +1308,12 @@
             <tr>
               <th class="text-black cp-0 border">চাচা</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsUnc | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkUnc | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsUnc | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkUnc | bangla }}
+              </td>
             </tr>
             }
 
@@ -1117,8 +1322,12 @@
             <tr>
               <th class="text-black cp-0 border">চাচাতো ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsUSo | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkUSo | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsUSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkUSo | bangla }}
+              </td>
             </tr>
             }
 
@@ -1127,8 +1336,12 @@
             <tr>
               <th class="text-black cp-0 border">বৈমাত্রের ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsBmB | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkBmB | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsBmB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBmB | bangla }}
+              </td>
             </tr>
             }
 
@@ -1137,8 +1350,12 @@
             <tr>
               <th class="text-black cp-0 border">বৈমাত্রের বোন</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsBmS | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkBmS | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsBmS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBmS | bangla }}
+              </td>
             </tr>
             }
 
@@ -1147,8 +1364,12 @@
             <tr>
               <th class="text-black cp-0 border">বৈপিত্রের ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsBpB | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkBpB | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsBpB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBpB | bangla }}
+              </td>
             </tr>
             }
 
@@ -1157,8 +1378,26 @@
             <tr>
               <th class="text-black cp-0 border">বৈপিত্রের বোন</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsBpS | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkBpS | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsBpS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBpS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাইয়ের পুত্র -->
+            @if (result?.rsbSo) {
+            <tr>
+              <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsbSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkBSo | bangla }}
+              </td>
             </tr>
             }
 
@@ -1167,8 +1406,12 @@
             <tr>
               <th class="text-black cp-0 border">নাতি</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsGrS | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkGrS | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsGrS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkGrS | bangla }}
+              </td>
             </tr>
             }
 
@@ -1177,8 +1420,12 @@
             <tr>
               <th class="text-black cp-0 border">নাতনী</th>
               <td class="text-black cp-0 border text-center">১</td>
-              <td class="text-black cp-0 border">{{ result?.rsGrD | bangla }}</td>
-              <td class="text-black cp-0 border">{{ result?.rSkGrD | bangla }}</td>
+              <td class="text-black cp-0 border">
+                {{ result?.rsGrD | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result?.rSkGrD | bangla }}
+              </td>
             </tr>
             }
           </tbody>
@@ -1186,8 +1433,7 @@
       </div>
     </div>
   </div>
-  }
-  @if (result?.bbb.length > 0) {
+  } @if (result?.bbb.length > 0) {
   <div class="text-rose-600 mt-5">
     <h2 class="font-bold text-xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
     <ol class="list-disc pl-6 text-md">
@@ -1196,8 +1442,7 @@
       }
     </ol>
   </div>
-  } 
-  @if (result?.des.length > 0) {
+  } @if (result?.des.length > 0) {
   <div class="mt-5 text-blue-800">
     <h2 class="font-bold text-xl">বর্ণনাঃ-</h2>
     <ol class="list-disc pl-6 text-md">
@@ -1208,39 +1453,57 @@
   </div>
   }
 </section>
-
-@if(confirmModal){
+} @if(confirmModal){
 <confirm-modal [title]="result?.notFound" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal1){
-<confirm-modal title="স্ত্রী উপস্থিত থাকলে স্বামী যোগ করা যাবে না।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal2){
-<confirm-modal title="স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal3){
-<confirm-modal title="স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়। 
- সুতরাং স্বামী ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal4){
-<confirm-modal title="স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়। 
- সুতরাং স্ত্রী ৪ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal5){
-<confirm-modal title="পিতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
- সুতরাং পিতা ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal6){
-<confirm-modal title="মাতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
- সুতরাং মাতা ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal7){
-<confirm-modal title="দাদা ১ জনের বেশী গ্রহণযোগ্য নয়। 
- সুতরাং দাদা ১ জন বসানো হলো।" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal8){
+} @if(confirmModal1){
+<confirm-modal
+  title="স্ত্রী উপস্থিত থাকলে স্বামী যোগ করা যাবে না।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal2){
+<confirm-modal
+  title="স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal3){
+<confirm-modal
+  title="স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং স্বামী ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal4){
+<confirm-modal
+  title="স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং স্ত্রী ৪ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal5){
+<confirm-modal
+  title="পিতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং পিতা ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal6){
+<confirm-modal
+  title="মাতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং মাতা ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal7){
+<confirm-modal
+  title="দাদা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং দাদা ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal8){
 <confirm-modal title="" url="" (closeModal)="closeModal()" />
-}
-@if(confirmModal9){
+} @if(confirmModal9){
 <confirm-modal title="" url="" (closeModal)="closeModal()" />
 }
