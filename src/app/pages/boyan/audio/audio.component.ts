@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-audio',
-    standalone: true,
     templateUrl: './audio.component.html',
     styleUrl: './audio.component.css',
     imports: [AudioCardComponent, CoverComponent, CommonModule, FormsModule]

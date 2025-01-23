@@ -9,11 +9,10 @@ import { AuthService } from '../../../features/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-jewelry-price',
-  standalone: true,
-  templateUrl: './jewelry-price.component.html',
-  styleUrl: './jewelry-price.component.css',
-  imports: [CoverComponent, ConfirmModalComponent, CustomInputComponent, FormsModule]
+    selector: 'app-jewelry-price',
+    templateUrl: './jewelry-price.component.html',
+    styleUrl: './jewelry-price.component.css',
+    imports: [CoverComponent, ConfirmModalComponent, CustomInputComponent, FormsModule]
 })
 export class JewelryPriceComponent {
   jewelryPrice: any;

@@ -8,7 +8,6 @@ import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
     selector: 'app-hijri-date-adj',
-    standalone: true,
     templateUrl: './hijri-date-adj.component.html',
     styleUrl: './hijri-date-adj.component.css',
     imports: [FormsModule, CoverComponent, ConfirmModalComponent]

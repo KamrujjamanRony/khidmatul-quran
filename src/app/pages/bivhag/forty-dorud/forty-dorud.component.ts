@@ -2,11 +2,10 @@ import { Component, inject } from '@angular/core';
 import { JsonDataService } from '../../../features/services/json-data.service';
 
 @Component({
-  selector: 'app-forty-dorud',
-  standalone: true,
-  imports: [],
-  templateUrl: './forty-dorud.component.html',
-  styleUrl: './forty-dorud.component.css'
+    selector: 'app-forty-dorud',
+    imports: [],
+    templateUrl: './forty-dorud.component.html',
+    styleUrl: './forty-dorud.component.css'
 })
 export class FortyDorudComponent {
   jsonDataService = inject(JsonDataService);

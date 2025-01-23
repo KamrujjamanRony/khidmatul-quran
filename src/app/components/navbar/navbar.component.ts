@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, signal, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {
   Collapse,
@@ -10,22 +10,21 @@ import { DropdownMenu2Component } from "../shared/dropdown-menu2/dropdown-menu2.
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
   imports: [RouterLink, DropdownMenuComponent, DropdownMenu2Component]
 })
 export class NavbarComponent {
-  @ViewChild('servicesDropdown') servicesDropdown!: ElementRef;
-  @ViewChild('tutorialsDropdown') tutorialsDropdown!: ElementRef;
-  @ViewChild('downloadsDropdown') downloadsDropdown!: ElementRef;
+  readonly servicesDropdown = viewChild.required<ElementRef>('servicesDropdown');
+  readonly tutorialsDropdown = viewChild.required<ElementRef>('tutorialsDropdown');
+  readonly downloadsDropdown = viewChild.required<ElementRef>('downloadsDropdown');
 
   // Create variables to track dropdown visibility
-  isTutorialsDropdownVisible = false;
-  isDownloadsDropdownVisible = false;
-  isServicesDropdownVisible = false;
+  isTutorialsDropdownVisible = signal(false);
+  isDownloadsDropdownVisible = signal(false);
+  isServicesDropdownVisible = signal(false);
 
-  dropdownMenu1 = [
+  dropdownMenu1 = signal([
     // {
     //   title : "চল্লিশ দরুদ ও সালাম",
     //   link : "forty-dorud"
@@ -38,9 +37,9 @@ export class NavbarComponent {
       title: "নির্বাচিত প্রবন্ধসমূহ",
       link: "selected-writings"
     }
-  ]
+  ]);
 
-  dropdownMenu2 = [
+  dropdownMenu2 = signal([
     {
       title: "স্বর্ণ ও রুপার দাম",
       link: "gold-price"
@@ -53,9 +52,9 @@ export class NavbarComponent {
       title: "যাকাত মাসআলা",
       link: "zakat-masala"
     },
-  ]
+  ]);
 
-  dropdownMenu3 = [
+  dropdownMenu3 = signal([
     {
       title: "কুরআনের তাফসীর",
       link: "audio/1"
@@ -76,7 +75,7 @@ export class NavbarComponent {
       title: "ইউটিউব ভিডিও",
       link: "video"
     },
-  ]
+  ]);
 
   hideNavMenu() {
     const navMenu = document.getElementById('menubar');
@@ -95,14 +94,14 @@ export class NavbarComponent {
 
   // Create methods to toggle dropdown visibility
   toggleServicesDropdown() {
-    this.isServicesDropdownVisible = !this.isServicesDropdownVisible;
+    this.isServicesDropdownVisible.set(!this.isServicesDropdownVisible);
   }
   toggleTutorialsDropdown() {
-    this.isTutorialsDropdownVisible = !this.isTutorialsDropdownVisible;
+    this.isTutorialsDropdownVisible.set(!this.isTutorialsDropdownVisible);
   }
 
   toggleDownloadsDropdown() {
-    this.isDownloadsDropdownVisible = !this.isDownloadsDropdownVisible;
+    this.isDownloadsDropdownVisible.set(!this.isDownloadsDropdownVisible);
   }
 
   navigateToContact() {

@@ -7,11 +7,10 @@ import { ConfirmModalComponent } from '../../components/shared/confirm-modal/con
 import { BanglaPipe } from '../../features/pipe/bangla.pipe';
 import { LoaderComponent } from "../../components/loader/loader.component";
 @Component({
-  selector: 'app-forayez',
-  standalone: true,
-  templateUrl: './forayez.component.html',
-  styleUrl: './forayez.component.css',
-  imports: [FormsModule, CommonModule, ConfirmModalComponent, BanglaPipe, LoaderComponent]
+    selector: 'app-forayez',
+    templateUrl: './forayez.component.html',
+    styleUrl: './forayez.component.css',
+    imports: [FormsModule, CommonModule, ConfirmModalComponent, BanglaPipe, LoaderComponent]
 })
 export class ForayezComponent {
   forayezService = inject(ForayezService);

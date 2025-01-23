@@ -5,11 +5,10 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 import { BannerComponent } from "../../components/banner/banner.component";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  imports: [BengaliNumberPipe, BannerComponent]
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    imports: [BengaliNumberPipe, BannerComponent]
 })
 export class HomeComponent {
   model: any = {

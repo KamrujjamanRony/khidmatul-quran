@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-video',
-    standalone: true,
     templateUrl: './video.component.html',
     styleUrl: './video.component.css',
     imports: [VideoCardComponent, CoverComponent, CommonModule]

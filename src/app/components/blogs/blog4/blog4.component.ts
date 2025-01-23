@@ -4,10 +4,9 @@ import { PComponent } from '../../shared/text/P';
 
 @Component({
     selector: 'app-blog4',
-    standalone: true,
     templateUrl: './blog4.component.html',
     styleUrl: './blog4.component.css',
-    imports: [Card1Component, PComponent]
+    imports: [Card1Component]
 })
 export class Blog4Component {
 

@@ -8,11 +8,10 @@ import { NoticeService } from '../../../features/services/notice.service';
 import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
-  selector: 'app-notice-edit',
-  standalone: true,
-  imports: [FormsModule, CoverComponent, ConfirmModalComponent],
-  templateUrl: './notice-edit.component.html',
-  styleUrl: './notice-edit.component.css'
+    selector: 'app-notice-edit',
+    imports: [FormsModule, CoverComponent, ConfirmModalComponent],
+    templateUrl: './notice-edit.component.html',
+    styleUrl: './notice-edit.component.css'
 })
 export class NoticeEditComponent {
   noticeService = inject(NoticeService);

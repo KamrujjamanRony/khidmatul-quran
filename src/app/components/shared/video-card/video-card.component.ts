@@ -1,17 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { VideoPopupComponent } from '../video-popup/video-popup.component';
 
 @Component({
-  selector: 'app-video-card',
-  standalone: true,
-  imports: [VideoPopupComponent],
-  templateUrl: './video-card.component.html',
-  styleUrl: './video-card.component.css'
+    selector: 'app-video-card',
+    imports: [VideoPopupComponent],
+    templateUrl: './video-card.component.html',
+    styleUrl: './video-card.component.css'
 })
 export class VideoCardComponent {
-  @Input() title!: any;
-  @Input() img!: any;
-  @Input() videoId!: any;
+  readonly title = input.required<any>();
+  readonly img = input.required<any>();
+  readonly videoId = input.required<any>();
   showVideoPopup = false;
 
   openVideo(): void {

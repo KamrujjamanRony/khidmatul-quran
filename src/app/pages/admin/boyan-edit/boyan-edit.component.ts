@@ -9,7 +9,6 @@ import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
     selector: 'app-boyan-edit',
-    standalone: true,
     templateUrl: './boyan-edit.component.html',
     styleUrl: './boyan-edit.component.css',
     imports: [FormsModule, CoverComponent, ConfirmModalComponent]

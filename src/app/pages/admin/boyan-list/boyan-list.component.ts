@@ -6,11 +6,10 @@ import { CoverComponent } from "../../../components/shared/cover/cover.component
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-boyan-list',
-  standalone: true,
-  templateUrl: './boyan-list.component.html',
-  styleUrl: './boyan-list.component.css',
-  imports: [CoverComponent, RouterLink, CommonModule]
+    selector: 'app-boyan-list',
+    templateUrl: './boyan-list.component.html',
+    styleUrl: './boyan-list.component.css',
+    imports: [CoverComponent, RouterLink, CommonModule]
 })
 export class BoyanListComponent {
   boyanService = inject(BoyanService);

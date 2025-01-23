@@ -6,11 +6,10 @@ import { Observable, Subscription } from 'rxjs';
 import { NoticeService } from '../../../features/services/notice.service';
 
 @Component({
-  selector: 'app-notice-list',
-  standalone: true,
-  imports: [CoverComponent, RouterLink, CommonModule],
-  templateUrl: './notice-list.component.html',
-  styleUrl: './notice-list.component.css'
+    selector: 'app-notice-list',
+    imports: [CoverComponent, RouterLink, CommonModule],
+    templateUrl: './notice-list.component.html',
+    styleUrl: './notice-list.component.css'
 })
 export class NoticeListComponent {
   noticeService = inject(NoticeService);

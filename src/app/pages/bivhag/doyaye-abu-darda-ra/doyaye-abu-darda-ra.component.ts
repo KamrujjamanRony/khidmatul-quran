@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-doyaye-abu-darda-ra',
-  standalone: true,
-  imports: [],
-  templateUrl: './doyaye-abu-darda-ra.component.html',
-  styleUrl: './doyaye-abu-darda-ra.component.css'
+    selector: 'app-doyaye-abu-darda-ra',
+    imports: [],
+    templateUrl: './doyaye-abu-darda-ra.component.html',
+    styleUrl: './doyaye-abu-darda-ra.component.css'
 })
 export class DoyayeAbuDardaRaComponent {
   arabicLanguage: any;

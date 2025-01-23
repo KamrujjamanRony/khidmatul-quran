@@ -3,7 +3,6 @@ import { Card2Component } from "../../../components/shared/text/card2";
 
 @Component({
     selector: 'app-zakat-masala',
-    standalone: true,
     templateUrl: './zakat-masala.component.html',
     styleUrl: './zakat-masala.component.css',
     imports: [Card2Component]

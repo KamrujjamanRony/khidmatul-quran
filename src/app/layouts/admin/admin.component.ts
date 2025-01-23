@@ -9,7 +9,6 @@ import { AuthService } from '../../features/services/auth.service';
 
 @Component({
     selector: 'app-admin',
-    standalone: true,
     templateUrl: './admin.component.html',
     styleUrl: './admin.component.css',
     imports: [FormsModule, CommonModule, RouterOutlet, ReactiveFormsModule, SidebarComponent]

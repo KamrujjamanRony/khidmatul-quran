@@ -12,11 +12,10 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 import { HijriDateAdjService } from '../../features/services/hijri-date-adj.service';
 
 @Component({
-  selector: 'app-hijri-date',
-  standalone: true,
-  templateUrl: './hijri-date.component.html',
-  styleUrl: './hijri-date.component.css',
-  imports: [CommonModule, FormsModule, BengaliNumberPipe]
+    selector: 'app-hijri-date',
+    templateUrl: './hijri-date.component.html',
+    styleUrl: './hijri-date.component.css',
+    imports: [CommonModule, FormsModule, BengaliNumberPipe]
 })
 export class HijriDateComponent {
   HijriDateAdjService = inject(HijriDateAdjService);

@@ -1,31 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'card2',
-    standalone: true,
     imports: [],
     template: `
     <div class="card lg:card-side bg-slate-100 shadow-xl font-bold">
         <div class="text-left w-full flex flex-col md:flex-row justify-between px-3 md:px-5 lg:px-10 py-5 md:py-7 lg:py-10">
           <div>
-          <h2 class="text-2xl text-primary">{{title}}</h2>
+          <h2 class="text-2xl text-primary">{{title()}}</h2>
           <p class="text-accent text-sm">@if(writer){ <span class="text-black">লেখকঃ</span> {{writer}}  }</p>
           <p class="text-accent text-sm">@if(publisher){ <span class="text-black">সংকলনঃ</span> {{publisher}}  }</p>
           </div>
           
           <div class="flex justify-center">
-            <button (click)="scrollToTopAndNavigate(link)" class="btn btn-success text-white text-xl uppercase rounded-sm monospace">বিস্তারিত</button>
+            <button (click)="scrollToTopAndNavigate(link())" class="btn btn-success text-white text-xl uppercase rounded-sm monospace">বিস্তারিত</button>
           </div>
         </div>
     </div>
   `
 })
 export class Card2Component {
-    @Input() title!: any;
+    readonly title = input.required<any>();
     @Input() writer!: any;
     @Input() publisher!: any;
-    @Input() link!: any;
+    readonly link = input.required<any>();
 
     constructor(private router: Router){}
     

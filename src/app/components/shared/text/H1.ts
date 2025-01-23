@@ -1,15 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
-  selector: 'H1',
-  standalone: true,
-  imports: [],
-  template: `
-    <h2 class="text-xl md:text-2xl font-bold py-2">{{text}}</h2>
+    selector: 'H1',
+    imports: [],
+    template: `
+    <h2 class="text-xl md:text-2xl font-bold py-2">{{text()}}</h2>
   `
 })
 export class Head1Component {
-  @Input() text!: any;
+  readonly text = input.required<any>();
   // @Output() closeModal = new EventEmitter<void>();
 
   // closeThisModal(): void {

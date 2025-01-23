@@ -5,7 +5,6 @@ import { Card1Component } from '../../shared/text/card1';
 
 @Component({
     selector: 'app-blog1',
-    standalone: true,
     templateUrl: './blog1.component.html',
     imports: [Head1Component, PComponent, Card1Component]
 })

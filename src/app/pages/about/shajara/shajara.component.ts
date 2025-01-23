@@ -3,7 +3,6 @@ import { Card1Component } from "../../../components/shared/text/card1";
 
 @Component({
     selector: 'app-shajara',
-    standalone: true,
     templateUrl: './shajara.component.html',
     styleUrl: './shajara.component.css',
     imports: [Card1Component]

@@ -8,7 +8,6 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 
 @Component({
     selector: 'app-salat-times',
-    standalone: true,
     templateUrl: './salat-times.component.html',
     styleUrl: './salat-times.component.css',
     imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]

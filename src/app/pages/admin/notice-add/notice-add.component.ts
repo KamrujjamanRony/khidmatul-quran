@@ -7,11 +7,10 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
-  selector: 'app-notice-add',
-  standalone: true,
-  imports: [CoverComponent, FormsModule, ConfirmModalComponent],
-  templateUrl: './notice-add.component.html',
-  styleUrl: './notice-add.component.css'
+    selector: 'app-notice-add',
+    imports: [CoverComponent, FormsModule, ConfirmModalComponent],
+    templateUrl: './notice-add.component.html',
+    styleUrl: './notice-add.component.css'
 })
 export class NoticeAddComponent {
   noticeService = inject(NoticeService);

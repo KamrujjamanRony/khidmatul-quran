@@ -4,7 +4,6 @@ import { Head1Component } from './H1';
 
 @Component({
     selector: 'card1',
-    standalone: true,
     imports: [Head1Component, PComponent],
     template: `
     <div>

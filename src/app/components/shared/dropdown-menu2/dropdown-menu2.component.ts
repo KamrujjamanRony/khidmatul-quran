@@ -1,17 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-dropdown-menu2',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './dropdown-menu2.component.html',
-  styleUrl: './dropdown-menu2.component.css'
+    selector: 'app-dropdown-menu2',
+    imports: [RouterLink],
+    templateUrl: './dropdown-menu2.component.html',
+    styleUrl: './dropdown-menu2.component.css'
 })
 export class DropdownMenu2Component {
 
-  @Input() head!: string;
-  @Input() menu!: any;
+  readonly head = input.required<string>();
+  readonly menu = input.required<any>();
   isOpen: boolean = false;
 
   openDropdown() {
