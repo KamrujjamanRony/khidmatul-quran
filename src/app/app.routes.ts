@@ -11,7 +11,6 @@ import { ZakatCalculatorComponent } from './pages/zakat-page/zakat-calculator/za
 import { ZakatMasalaComponent } from './pages/zakat-page/zakat-masala/zakat-masala.component';
 import { NoticeComponent } from './pages/notice/notice.component';
 import { Blog3Component } from './components/blogs/blog3/blog3.component';
-import { KitabComponent } from './pages/bivhag/kitab/kitab.component';
 import { AudioComponent } from './pages/boyan/audio/audio.component';
 import { VideoComponent } from './pages/boyan/video/video.component';
 import { AboutComponent } from './pages/about/about.component';

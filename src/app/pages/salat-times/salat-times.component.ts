@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { PrayTimesService } from '../../features/services/pray-times.service';
 import axios from 'axios';
 import { CommonModule } from '@angular/common';
@@ -7,10 +7,10 @@ import { ScrollComponent } from "../../components/scroll/scroll.component";
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 
 @Component({
-    selector: 'app-salat-times',
-    templateUrl: './salat-times.component.html',
-    styleUrl: './salat-times.component.css',
-    imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]
+  selector: 'app-salat-times',
+  templateUrl: './salat-times.component.html',
+  styleUrl: './salat-times.component.css',
+  imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]
 })
 export class SalatTimesComponent {
   model: any = {
@@ -21,11 +21,11 @@ export class SalatTimesComponent {
   dst: string = 'auto';
   method: string = 'Karachi';
   timeFormat: number = 12;
-  tableTitle: string = '';
+  tableTitle = signal<any>(null);
   currentDate: Date = new Date();
-  timetableData: any[] = [];
-  errorText: string | undefined = undefined;
-  locationName: any = null;
+  timetableData = signal<any[]>([]);
+  locationName = signal<any>(null);
+  errorText = signal<any>(null);
 
   constructor(private prayTimes: PrayTimesService) {
     this.update();
@@ -49,7 +49,7 @@ export class SalatTimesComponent {
     const month = this.currentDate.getMonth();
     const year = this.currentDate.getFullYear();
     const title = this.monthFullName(month) + " " + year;
-    this.tableTitle = title;
+    this.tableTitle.set(title);
     this.makeTable(year, month);
   }
 
@@ -59,7 +59,7 @@ export class SalatTimesComponent {
   }
 
   makeTable(year: number, month: number) {
-    this.timetableData = [];
+    this.timetableData.set([]);
 
     const startDate = new Date(year, month, 1);
     const endDate = new Date(year, month + 1, 1);
@@ -74,7 +74,7 @@ export class SalatTimesComponent {
         format
       );
       times['day'] = startDate.getDate().toFixed();
-      this.timetableData.push(times); // Push the day's data into the timetableData array
+      this.timetableData().push(times); // Push the day's data into the timetableData array
 
       startDate.setDate(startDate.getDate() + 1); // next day
     }
@@ -104,14 +104,15 @@ export class SalatTimesComponent {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
+          this.errorText.set(null);
           x.showExactPosition(position);
         },
         (error) => {
-          this.errorText = 'location not found!';
+          this.errorText.set('location not found!');
         }
       );
     } else {
-      this.errorText = 'location is not supported!';
+      this.errorText.set('location is not supported!');
     }
   }
 
@@ -129,13 +130,13 @@ export class SalatTimesComponent {
       .get(nominatimURL)
       .then((response) => {
         if (response.data.display_name) {
-          this.locationName = response.data;
+          this.locationName.set(response.data);
         } else {
-          this.locationName = 'Location not found';
+          this.locationName.set('Location not found');
         }
       })
       .catch((error) => {
-        this.locationName = 'Error fetching location: ' + error.message;
+        this.locationName.set('Error fetching location: ' + error.message);
       });
   }
 
