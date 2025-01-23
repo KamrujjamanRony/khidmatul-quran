@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
-import { Ripple, initTE } from "tw-elements";
 
 @Component({
-    selector: 'app-scroll',
-    imports: [],
-    templateUrl: './scroll.component.html',
-    styleUrl: './scroll.component.css'
+  selector: 'app-scroll',
+  imports: [],
+  templateUrl: './scroll.component.html',
+  styleUrl: './scroll.component.css'
 })
 export class ScrollComponent {
 
   constructor() { }
 
   ngOnInit(): void {
-    // Initialize TE and Ripple
-    initTE({ Ripple },
-      { allowReinits: true });
 
     // Get the button
     const myButton = document.getElementById("btn-back-to-top");

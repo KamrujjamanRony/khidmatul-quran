@@ -1,16 +1,17 @@
+@if (isLoading()) {
+<app-loader></app-loader>
+} @else {
 <section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto py-10">
-    <div class="mx-1 md:mx-2">
-  
+  <div class="mx-1 md:mx-2">
     <div
       class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
     >
-        <p [ngClass]="{ 'text-center': true, 'line-through': isSunset}">
-          @if (hijriDate) {{{ hijriDate }}}
-        </p>
-        @if(isSunset){
-        <p class="text-center">{{ hijriNextDay }}</p>
-        }
-      
+      <p [ngClass]="{ 'text-center': true, 'line-through': isSunset }">
+        @if (hijriDate) {{{ hijriDate }}}
+      </p>
+      @if(isSunset()){
+      <p class="text-center">{{ hijriNextDay }}</p>
+      }
     </div>
     @if (banglaDate) {
     <div
@@ -20,28 +21,44 @@
         {{ banglaDate }}
       </p>
     </div>
-    }
-
-    @if (gregorianDate) {
-      <div
-        class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
-      >
-        <p class="text-center">
-          {{ gregorianDate }}
-        </p>
-      </div>
-    }
-
-    @if (arabic13 && arabic14 && arabic15) {
-      <div class="mt-4 bg-rose-200 text-white w-full py-5 font-normal md:font-bold rounded-md flex flex-col items-center justify-center">
-        <p class="text-rose-600 text-center text-sm md:text-xl">{{hijriMonth}} মাসের আইয়ামে বীজের রোজা
-          <span class="block"><span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{arabic13[0]}}</span>, <span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{arabic14[0]}}</span>, <span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{arabic15[0]}}</span> ইং তারিখ। </span> 
-          <span class="text-primary text-xs md:text-sm md:mr-3">{{arabic13[1]}}&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp; {{arabic14[1]}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp; {{arabic15[1]}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  
-        </p>
-      </div>
-    }
-      
-
+    } @if (gregorianDate) {
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-center">
+        {{ gregorianDate }}
+      </p>
     </div>
-      
-  </section>
+    } @if (arabic13 && arabic14 && arabic15) {
+    <div
+      class="mt-4 bg-rose-200 text-white w-full py-5 font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-rose-600 text-center text-sm md:text-xl">
+        {{ hijriMonth }} মাসের আইয়ামে বীজের রোজা
+        <span class="block"
+          ><span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{
+            arabic13[0]
+          }}</span
+          >,
+          <span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{
+            arabic14[0]
+          }}</span
+          >,
+          <span class="text-xl md:text-2xl text-primary mr-1 md:mx-2">{{
+            arabic15[0]
+          }}</span>
+          ইং তারিখ।
+        </span>
+        <span class="text-primary text-xs md:text-sm md:mr-3"
+          >{{ arabic13[1] }}&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp;
+          {{ arabic14[1] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          {{ arabic15[1] }}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+        >
+      </p>
+    </div>
+    }
+  </div>
+</section>
+}

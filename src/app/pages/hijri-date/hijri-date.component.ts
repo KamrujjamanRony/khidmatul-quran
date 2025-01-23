@@ -1,21 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SunsetService } from '../../features/services/sunset.service';
-import {
-  Datepicker,
-  Input,
-  initTE,
-} from "tw-elements";
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 import { HijriDateAdjService } from '../../features/services/hijri-date-adj.service';
+import { LoaderComponent } from "../../components/loader/loader.component";
 
 @Component({
-    selector: 'app-hijri-date',
-    templateUrl: './hijri-date.component.html',
-    styleUrl: './hijri-date.component.css',
-    imports: [CommonModule, FormsModule, BengaliNumberPipe]
+  selector: 'app-hijri-date',
+  templateUrl: './hijri-date.component.html',
+  styleUrl: './hijri-date.component.css',
+  imports: [CommonModule, FormsModule, LoaderComponent]
 })
 export class HijriDateComponent {
   HijriDateAdjService = inject(HijriDateAdjService);
@@ -30,11 +25,13 @@ export class HijriDateComponent {
   arabic15: any;
   hijriMonth: any;
   gregorianMonth: any;
-  isSunset: boolean = false;
+  isSunset = signal(false);
+  isLoading = signal(false);
 
   constructor() { }
 
   ngOnInit(): void {
+    this.isLoading.set(true);
     this.getActualDateAfterSunSet();
     this.HijriDateAdjService.getHijriDate().subscribe(data => {
       this.gregorianDate = data?.gregorianDate;
@@ -46,9 +43,8 @@ export class HijriDateComponent {
       this.arabic15 = [`${data?.arabic15[2]} ${data?.arabic15[1]}`, data?.arabic15[3]];
       this.hijriMonth = this.hijriNextDay?.split(', ')[1];
       this.gregorianMonth = data?.arabic13[1];
+      this.isLoading.set(false);
     })
-    initTE({ Datepicker, Input },
-      { allowReinits: true });
   }
 
   getActualDateAfterSunSet(): any {
@@ -56,7 +52,7 @@ export class HijriDateComponent {
     const ddd = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
     this.isSunset$ = this.sunsetService.isSunset(ddd);
     this.isSunset$.subscribe(value => {
-      this.isSunset = value;
+      this.isSunset.set(value);
     })
   }
 

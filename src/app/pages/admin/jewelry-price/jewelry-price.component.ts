@@ -4,15 +4,14 @@ import { CoverComponent } from "../../../components/shared/cover/cover.component
 import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/confirm-modal.component";
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { CustomInputComponent } from '../../../components/shared/custom-input/custom-input.component';
 import { AuthService } from '../../../features/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-jewelry-price',
-    templateUrl: './jewelry-price.component.html',
-    styleUrl: './jewelry-price.component.css',
-    imports: [CoverComponent, ConfirmModalComponent, CustomInputComponent, FormsModule]
+  selector: 'app-jewelry-price',
+  templateUrl: './jewelry-price.component.html',
+  styleUrl: './jewelry-price.component.css',
+  imports: [CoverComponent, ConfirmModalComponent, FormsModule]
 })
 export class JewelryPriceComponent {
   jewelryPrice: any;
@@ -30,18 +29,18 @@ export class JewelryPriceComponent {
 
   constructor() {
     this.jewelryPrice = {
-      gold18k : "",
-      gold21k : "",
-      gold22k : "",
-      goldTd : "",
-      silver18k : "",
-      silver21k : "",
-      silver22k : "",
-      silverTd : "",
-      updateDate : "",
-      nisab : "",
-      note : "",
-      note1 : "",
+      gold18k: "",
+      gold21k: "",
+      gold22k: "",
+      goldTd: "",
+      silver18k: "",
+      silver21k: "",
+      silver22k: "",
+      silverTd: "",
+      updateDate: "",
+      nisab: "",
+      note: "",
+      note1: "",
       userName: ''
     }
   }
@@ -50,7 +49,7 @@ export class JewelryPriceComponent {
     this.user = this.authService.getUser();
     this.ZakatService.getZakat().subscribe(Response => {
       this.jewelryPrice = Response;
-      this.jewelryPrice.updateDate = `${this.date.getDate()}/${this.date.getMonth() > 9 ? this.date.getMonth()+1 : "0" +(this.date.getMonth()+1)}/${this.date.getFullYear()}`;
+      this.jewelryPrice.updateDate = `${this.date.getDate()}/${this.date.getMonth() > 9 ? this.date.getMonth() + 1 : "0" + (this.date.getMonth() + 1)}/${this.date.getFullYear()}`;
     })
   }
 

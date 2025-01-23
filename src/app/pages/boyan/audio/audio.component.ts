@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { AudioCardComponent } from '../../../components/shared/audio-card/audio-card.component';
 import { BoyanService } from '../../../features/services/boyan.service';
 import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -9,15 +8,15 @@ import { environment } from '../../../../environments/environments';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-audio',
-    templateUrl: './audio.component.html',
-    styleUrl: './audio.component.css',
-    imports: [AudioCardComponent, CoverComponent, CommonModule, FormsModule]
+  selector: 'app-audio',
+  templateUrl: './audio.component.html',
+  styleUrl: './audio.component.css',
+  imports: [CoverComponent, CommonModule, FormsModule]
 })
 export class AudioComponent {
   boyanService = inject(BoyanService);
   route = inject(ActivatedRoute);
-  title:any;
+  title: any;
   isAuthorized: boolean = false;
   pass: string = "";
   err: string = '';
@@ -67,7 +66,7 @@ export class AudioComponent {
   }
 
   onDownload(arg0: any) {
-  throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
 
   ngOnDestroy(): void {

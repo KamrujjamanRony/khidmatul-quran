@@ -1,10 +1,5 @@
 import { Component, ElementRef, signal, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import {
-  Collapse,
-  Dropdown,
-  initTE,
-} from 'tw-elements';
 import { DropdownMenuComponent } from "../shared/dropdown-menu/dropdown-menu.component";
 import { DropdownMenu2Component } from "../shared/dropdown-menu2/dropdown-menu2.component";
 
@@ -24,7 +19,7 @@ export class NavbarComponent {
   isDownloadsDropdownVisible = signal(false);
   isServicesDropdownVisible = signal(false);
 
-  dropdownMenu1 = signal([
+  dropdownMenu1 = [
     // {
     //   title : "চল্লিশ দরুদ ও সালাম",
     //   link : "forty-dorud"
@@ -37,9 +32,9 @@ export class NavbarComponent {
       title: "নির্বাচিত প্রবন্ধসমূহ",
       link: "selected-writings"
     }
-  ]);
+  ];
 
-  dropdownMenu2 = signal([
+  dropdownMenu2 = [
     {
       title: "স্বর্ণ ও রুপার দাম",
       link: "gold-price"
@@ -52,9 +47,9 @@ export class NavbarComponent {
       title: "যাকাত মাসআলা",
       link: "zakat-masala"
     },
-  ]);
+  ];
 
-  dropdownMenu3 = signal([
+  dropdownMenu3 = [
     {
       title: "কুরআনের তাফসীর",
       link: "audio/1"
@@ -75,7 +70,7 @@ export class NavbarComponent {
       title: "ইউটিউব ভিডিও",
       link: "video"
     },
-  ]);
+  ];
 
   hideNavMenu() {
     const navMenu = document.getElementById('menubar');
@@ -88,8 +83,6 @@ export class NavbarComponent {
 
 
   ngOnInit(): void {
-    initTE({ Collapse, Dropdown },
-      { allowReinits: true });
   }
 
   // Create methods to toggle dropdown visibility
