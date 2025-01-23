@@ -229,58 +229,59 @@
                             </tr>
                           </thead>
                           <tbody class="text-sm lg:text-xl">
-                            <ng-container *ngFor="let day of timetableData()">
-                              <tr
-                                class="border-b"
-                                [ngClass]="{ 'today-row': isToday(day) }"
+                            @for (day of timetableData(); track $index) {
+
+                            <tr
+                              class="border-b"
+                              [ngClass]="{ 'today-row': isToday(day) }"
+                            >
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4 font-medium"
                               >
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4 font-medium"
-                                >
-                                  {{ day.day | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.Shari | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.fajrT | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.sunrise | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.dhuhrT | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.asr | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.maghrib | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.isha | bengaliNumber }}
-                                </td>
-                                <td
-                                  class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
-                                >
-                                  {{ day.midnight | bengaliNumber }}
-                                </td>
-                              </tr>
-                            </ng-container>
+                                {{ day.day | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.Shari | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.fajrT | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.sunrise | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.dhuhrT | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.asr | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.maghrib | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.isha | bengaliNumber }}
+                              </td>
+                              <td
+                                class="whitespace-nowrap px-1 md:px-2 lg:px-5 py-4"
+                              >
+                                {{ day.midnight | bengaliNumber }}
+                              </td>
+                            </tr>
+                            }
                           </tbody>
                         </table>
                       </div>
