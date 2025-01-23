@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: "AlQalamQuranMajeed";
-  src: url("./assets/fonts/Al\ Qalam\ Quran\ Majeed\ Web\ Regular.ttf")
+  src: url("/fonts/Al\ Qalam\ Quran\ Majeed\ Web\ Regular.ttf")
     format("truetype");
   /* Add additional font styles if needed */
 }
