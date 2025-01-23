@@ -6,7 +6,7 @@
     <div
       class="mt-4 bg-green-500 text-white w-full py-5 text-xl md:text-2xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
     >
-      <p [ngClass]="{ 'text-center': true, 'line-through': isSunset }">
+      <p [ngClass]="{ 'text-center': true, 'line-through': isSunset() }">
         @if (hijriDate) {{{ hijriDate }}}
       </p>
       @if(isSunset()){
