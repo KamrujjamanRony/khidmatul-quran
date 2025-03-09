@@ -28,8 +28,6 @@ import { BoyanAddComponent } from './pages/admin/boyan-add/boyan-add.component';
 import { NoticeListComponent } from './pages/admin/notice-list/notice-list.component';
 import { NoticeAddComponent } from './pages/admin/notice-add/notice-add.component';
 import { NoticeEditComponent } from './pages/admin/notice-edit/notice-edit.component';
-import { FortyDorudComponent } from './pages/bivhag/forty-dorud/forty-dorud.component';
-import { DoyayeAbuDardaRaComponent } from './pages/bivhag/doyaye-abu-darda-ra/doyaye-abu-darda-ra.component';
 
 export const routes: Routes = [
   {
@@ -67,14 +65,6 @@ export const routes: Routes = [
       {
         path: 'zakat-masala/3',
         component: Blog3Component
-      },
-      {
-        path: 'forty-dorud',
-        component: FortyDorudComponent
-      },
-      {
-        path: 'doyaye-abu-darda-ra',
-        component: DoyayeAbuDardaRaComponent
       },
       {
         path: 'selected-writings',

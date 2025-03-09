@@ -9,7 +9,7 @@
     </p>
 
     <div class="flex justify-center items-center font-bold my-2 text-2xl">
-      <h1 class="text-gray-600 mr-1">ভরি/গ্রাম নির্বাচন করুনঃ</h1>
+      <h1 class="text-gray-700 mr-1">ভরি/গ্রাম নির্বাচন করুনঃ</h1>
       <div class="form-control">
         <label class="label cursor-pointer gap-1">
           <input
@@ -76,6 +76,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.gold_22 * forayez?.gold22k * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.gold_22 * forayez?.gold22k * 0.8 | bangla}}}
                 </span>
@@ -98,6 +102,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.gold_21 * forayez?.gold21k * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.gold_21 * forayez?.gold21k * 0.8 | bangla}}}
                 </span>
@@ -120,6 +128,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.gold_18 * forayez?.gold18k * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.gold_18 * forayez?.gold18k * 0.8 | bangla}}}
                 </span>
@@ -142,6 +154,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.gold_td * forayez?.goldTd * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else {{{model.gold_td * forayez?.goldTd * 0.8 | bangla}}}
                 </span>
               </label>
@@ -151,6 +167,10 @@
             </div>
             <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
               জুয়েলারি স্বর্ণের মূল্য @if(asset === "ভরি"){{{totalGold * 11.664 | bangla
+
+
+
+
               }}} @else {{{totalGold | bangla}}} টাকা
             </h1>
           </form>
@@ -194,6 +214,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.silver_22 * forayez?.silver22k * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.silver_22 * forayez?.silver22k * 0.8 | bangla}}}
                 </span>
@@ -216,6 +240,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.silver_21 * forayez?.silver21k * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.silver_21 * forayez?.silver21k * 0.8 | bangla}}}
                 </span>
@@ -238,6 +266,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.silver_18 * forayez?.silver18k * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.silver_18 * forayez?.silver18k * 0.8 | bangla}}}
                 </span>
@@ -260,6 +292,10 @@
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
                   @if(asset === "ভরি"){{{model.silver_td * forayez?.silverTd * 0.8 * 11.664 | bangla
+
+
+
+
                   }}} @else
                   {{{model.silver_td * forayez?.silverTd * 0.8 | bangla}}}
                 </span>
@@ -270,6 +306,10 @@
             </div>
             <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
               জুয়েলারি রূপার মূল্য @if(asset === "ভরি"){{{totalSilver * 11.664 | bangla
+
+
+
+
               }}} @else {{{totalSilver | bangla}}} টাকা
             </h1>
           </form>
@@ -419,7 +459,7 @@
         </div>
       </div>
     </div>
-    <div id="MakePdf">
+    <div id="MakePdf" class="max-w-3xl mx-auto">
       <div class="mx-auto py-5">
         <!-- card 06 -->
         <div
@@ -439,6 +479,10 @@
                   </td>
                   <td class="text-center text-xl lg:text-2xl">
                     @if(asset === "ভরি"){{{(totalGold + totalSilver) * 11.664 | bangla
+
+
+
+
                     }}} @else {{{totalGold + totalSilver | bangla}}}
                   </td>
                 </tr>
@@ -507,14 +551,30 @@
         >
           <h1 class="text-center text-xl lg:text-2xl pt-5">
             যাকাতের হিসাবযোগ্য সম্পদের পরিমান = @if(asset === "ভরি"){{{((totalGold + totalSilver) * 11.664) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt | bangla
+
+
+
+
             }}} @else
             {{{(totalGold + totalSilver) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt | bangla
+
+
+
+
             }}} টাকা
           </h1>
           <h1 class="text-center text-xl lg:text-2xl py-5">
             মোট যাকাত = @if(asset === "ভরি"){{{(((totalGold + totalSilver) * 11.664) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt) / 40 | bangla
+
+
+
+
             }}} @else
             {{{((totalGold + totalSilver) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt) / 40 | bangla
+
+
+
+
             }}} টাকা
           </h1>
         </div>

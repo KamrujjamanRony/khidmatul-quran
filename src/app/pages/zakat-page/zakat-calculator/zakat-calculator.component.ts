@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -6,16 +6,15 @@ import { BengaliNumberPipe } from "../../../features/pipe/bengali-number.pipe";
 
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas-pro';
-import 'jspdf-autotable';
 import { HttpClient } from '@angular/common/http';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { ZakatService } from '../../../features/services/zakat.service';
 
 @Component({
-    selector: 'app-zakat-calculator',
-    templateUrl: './zakat-calculator.component.html',
-    styleUrl: './zakat-calculator.component.css',
-    imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe]
+  selector: 'app-zakat-calculator',
+  templateUrl: './zakat-calculator.component.html',
+  styleUrl: './zakat-calculator.component.css',
+  imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe]
 })
 export class ZakatCalculatorComponent {
   datePipe: DatePipe = new DatePipe('en-US');
@@ -74,71 +73,6 @@ export class ZakatCalculatorComponent {
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });
   }
-
-  //   generatePDF(): void {
-  //     // Assuming `this.today` is a Date object
-  //     const bengaliNumberPipe = new BengaliNumberPipe(); // Instantiate the pipe
-  //     const formattedDate = bengaliNumberPipe.transform(this.today);
-
-  //     // Load font file and generate PDF after font is loaded
-  //     this.loadFontFile().then((fontData) => {
-  //         const doc = new jsPDF({filters: ['ASCIIHexEncode']});
-
-
-  //         // Add the font
-  //         doc.addFileToVFS('kalpurushANSI.ttf', fontData);
-  //         doc.addFont('kalpurushANSI.ttf', 'kalpurush', 'normal');
-  //         // Set font
-  //         doc.setFont('kalpurush', 'normal');
-  //         doc.setFontSize(10);
-
-  //         console.log(doc.getFontList());
-
-  //         const rows = [
-  //               ["যাকাত হিসাবের তারিখ", formattedDate],
-  //               ["মোট জুয়েলারি মূল্যঃ", formattedDate],
-  //               ["মোট ক্যাশ টাকাঃ", formattedDate],
-  //               ["মোট পাওনা টাকাঃ", formattedDate],
-  //               ["মোট ব্যবসায়িক সম্পদঃ", formattedDate],
-  //               ["ব্যাংক অ্যাকাউন্টে জমাঃ", formattedDate],
-  //               ["মোবাইল ব্যাংকিং এ জমাঃ", formattedDate],
-  //               ["বিয়োগযোগ্য ঋণ ও দায়ঃ", formattedDate],
-  //               ["যাকাতের হিসাবযোগ্য সম্পদের পরিমান = ০.০০ টাকা"],
-  //               ["মোট যাকাত = ০.০০ টাকা"],
-  //           ];
-
-
-
-  //         // Add table
-  //         (doc as any).autoTable({
-  //             head: [],
-  //             body: rows,
-  //             startY: 20,
-  //             theme: 'grid',
-  //         });
-
-  //         // Save the PDF
-  //         doc.save('table.pdf');
-  //     }).catch(error => {
-  //         console.error('Error loading font file:', error);
-  //     });
-  // }
-
-  //   // Function to load font file using HttpClient and convert it to base64
-  //   private loadFontFile(): Promise<string> {
-  //     const fontPath = 'assets/font/kalpurushANSI.ttf'; // Adjust the path to your font file
-  //     return new Promise((resolve, reject) => {
-  //         this.http.get(fontPath, { responseType: 'arraybuffer' }).subscribe(arrayBuffer => {
-  //             const uint8Array = new Uint8Array(arrayBuffer);
-  //             const binaryString = uint8Array.reduce((acc, byte) => acc + String.fromCharCode(byte), '');
-  //             const fontData = btoa(binaryString);
-  //             resolve(fontData);
-  //         }, error => {
-  //             console.error('Error loading font file:', error);
-  //             reject(error);
-  //         });
-  //     });
-  // }
 
 
 

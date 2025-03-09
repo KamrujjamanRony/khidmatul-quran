@@ -1,11 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap");
-
 @font-face {
-  font-family: "AlQalamQuranMajeed";
-  src: url("/fonts/Al\ Qalam\ Quran\ Majeed\ Web\ Regular.ttf")
-    format("truetype");
-  /* Add additional font styles if needed */
+  font-family: "SolaimanLipi";
+  src: url("/assets/fonts/SolaimanLipi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @tailwind base;
@@ -17,30 +14,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
-  font-family: "Noto Serif Bengali", serif;
-}
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
-
-.noto-serif {
-  font-family: "Noto Serif Bengali", serif;
+  font-family: "SolaimanLipi", "Noto Serif Bengali", sans-serif;
   font-optical-sizing: auto;
-}
-
-.quran-text {
-  font-family: "AlQalamQuranMajeed", sans-serif;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
