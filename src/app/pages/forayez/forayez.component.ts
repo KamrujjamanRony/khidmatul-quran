@@ -7,42 +7,42 @@ import { ConfirmModalComponent } from '../../components/shared/confirm-modal/con
 import { BanglaPipe } from '../../features/pipe/bangla.pipe';
 import { LoaderComponent } from "../../components/loader/loader.component";
 @Component({
-    selector: 'app-forayez',
-    templateUrl: './forayez.component.html',
-    styleUrl: './forayez.component.css',
-    imports: [FormsModule, CommonModule, ConfirmModalComponent, BanglaPipe, LoaderComponent]
+  selector: 'app-forayez',
+  templateUrl: './forayez.component.html',
+  styleUrl: './forayez.component.css',
+  imports: [FormsModule, CommonModule, ConfirmModalComponent, BanglaPipe, LoaderComponent]
 })
 export class ForayezComponent {
   forayezService = inject(ForayezService);
   model: any;
-  result: any;
-  asset: any = "1";
-  isHusband: boolean = false;
-  isWife: boolean = false;
-  loading = signal(false);
+  result = signal<any>(null);
+  asset = signal<any>("1");
+  isHusband = signal<boolean>(false);
+  isWife = signal<boolean>(false);
+  loading = signal<boolean>(false);
   private forayezSubscription?: Subscription;
-  confirmModal: boolean = false;
-  confirmModal1: boolean = false;
-  confirmModal2: boolean = false;
-  confirmModal3: boolean = false;
-  confirmModal4: boolean = false;
-  confirmModal5: boolean = false;
-  confirmModal6: boolean = false;
-  confirmModal7: boolean = false;
-  confirmModal8: boolean = false;
-  confirmModal9: boolean = false;
+  confirmModal = signal<boolean>(false);
+  confirmModal1 = signal<boolean>(false);
+  confirmModal2 = signal<boolean>(false);
+  confirmModal3 = signal<boolean>(false);
+  confirmModal4 = signal<boolean>(false);
+  confirmModal5 = signal<boolean>(false);
+  confirmModal6 = signal<boolean>(false);
+  confirmModal7 = signal<boolean>(false);
+  confirmModal8 = signal<boolean>(false);
+  confirmModal9 = signal<boolean>(false);
 
   closeModal() {
-    this.confirmModal = false;
-    this.confirmModal1 = false;
-    this.confirmModal2 = false;
-    this.confirmModal3 = false;
-    this.confirmModal4 = false;
-    this.confirmModal5 = false;
-    this.confirmModal6 = false;
-    this.confirmModal7 = false;
-    this.confirmModal8 = false;
-    this.confirmModal9 = false;
+    this.confirmModal.set(false);
+    this.confirmModal1.set(false);
+    this.confirmModal2.set(false);
+    this.confirmModal3.set(false);
+    this.confirmModal4.set(false);
+    this.confirmModal5.set(false);
+    this.confirmModal6.set(false);
+    this.confirmModal7.set(false);
+    this.confirmModal8.set(false);
+    this.confirmModal9.set(false);
   }
 
   constructor() {
@@ -81,7 +81,7 @@ export class ForayezComponent {
 
       const formData = new FormData();
 
-      formData.append('Asset', this.asset);
+      formData.append('Asset', this.asset());
       formData.append('TK', tk || '');
       formData.append('Son', son || '');
       formData.append('Dau', daughter || '');
@@ -109,12 +109,12 @@ export class ForayezComponent {
       this.forayezSubscription = this.forayezService.addForayez(formData)
         .subscribe({
           next: (response) => {
-            this.result = response;
+            this.result.set(response);
             // Scroll to the top of the page
             setTimeout(() => window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' }), 1000);
 
-            if (this.result?.notFound) {
-              this.confirmModal = true;
+            if (this.result()?.notFound) {
+              this.confirmModal.set(true);
             }
 
             this.loading.set(false);
@@ -157,46 +157,46 @@ export class ForayezComponent {
       Ex1: null,
       Ex2: null,
     };
-    this.result = null;
+    this.result.set(null);
   }
 
   onHusbandChange() {
     if (this.model.wife > 0) {
-      this.confirmModal1 = true;
+      this.confirmModal1.set(true);
       this.model.husband = '';
     }
     if (this.model.husband > 1) {
-      this.confirmModal3 = true;
+      this.confirmModal3.set(true);
       this.model.husband = 1;
     }
   }
 
   onWifeChange() {
     if (this.model.husband > 0) {
-      this.confirmModal2 = true;
+      this.confirmModal2.set(true);
       this.model.wife = '';
     }
     if (this.model.wife > 4) {
-      this.confirmModal4 = true;
+      this.confirmModal4.set(true);
       this.model.wife = 4;
     }
   }
 
   onFatherChange() {
     if (this.model.father > 1) {
-      this.confirmModal5 = true;
+      this.confirmModal5.set(true);
       this.model.father = 1;
     }
   }
   onMotherChange() {
     if (this.model.mother > 1) {
-      this.confirmModal6 = true;
+      this.confirmModal6.set(true);
       this.model.mother = 1;
     }
   }
   onGrandfatherChange() {
     if (this.model.grandfather > 1) {
-      this.confirmModal7 = true;
+      this.confirmModal7.set(true);
       this.model.grandfather = 1;
     }
   }

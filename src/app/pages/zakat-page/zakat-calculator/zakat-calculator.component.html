@@ -4,8 +4,8 @@
       যাকাত ক্যালকুলেটর
     </h1>
     <p class="text-center text-blue-700 font-semibold">
-      বাজুসের {{ forayez?.updateDate | bengaliDate }} তারিখের মূল্য অনুযায়ী
-      হিসাব করা হয়েছে।
+      বাজুসের {{ forayez()?.updateDate | bengaliDate }} তারিখের ক্রয়মূল্য থেকে
+      ২০% বাদ দিয়ে বিক্রয়মূল্য নির্ণয় করা হয়েছে।
     </p>
 
     <div class="flex justify-center items-center font-bold my-2 text-2xl">
@@ -51,7 +51,7 @@
                   >ক্যারেট</span
                 >
                 <span class="label-text text-xl lg:text-2xl text-black">{{
-                  asset
+                  asset()
                 }}</span>
                 <span class="label-text text-xl lg:text-2xl text-black"
                   >বিক্রয়মূল্য
@@ -75,13 +75,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.gold_22 * forayez?.gold22k * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.gold_22 * forayez()?.gold22k * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.gold_22 * forayez?.gold22k * 0.8 | bangla}}}
+                  {{{model.gold_22 * forayez()?.gold22k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -101,13 +131,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.gold_21 * forayez?.gold21k * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.gold_21 * forayez()?.gold21k * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.gold_21 * forayez?.gold21k * 0.8 | bangla}}}
+                  {{{model.gold_21 * forayez()?.gold21k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -127,13 +187,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.gold_18 * forayez?.gold18k * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.gold_18 * forayez()?.gold18k * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.gold_18 * forayez?.gold18k * 0.8 | bangla}}}
+                  {{{model.gold_18 * forayez()?.gold18k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -153,12 +243,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.gold_td * forayez?.goldTd * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.gold_td * forayez()?.goldTd * 0.8 * 11.664 | bangla
 
 
 
 
-                  }}} @else {{{model.gold_td * forayez?.goldTd * 0.8 | bangla}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  }}} @else
+                  {{{model.gold_td * forayez()?.goldTd * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -166,12 +287,42 @@
               <button class="btn btn-primary">Calculate</button>
             </div>
             <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
-              জুয়েলারি স্বর্ণের মূল্য @if(asset === "ভরি"){{{totalGold * 11.664 | bangla
+              জুয়েলারি স্বর্ণের মূল্য @if(asset() === "ভরি"){{{totalGold() * 11.664 | bangla
 
 
 
 
-              }}} @else {{{totalGold | bangla}}} টাকা
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else {{{totalGold() | bangla}}} টাকা
             </h1>
           </form>
         </div>
@@ -189,7 +340,7 @@
                   >ক্যারেট</span
                 >
                 <span class="label-text text-xl lg:text-2xl text-black">{{
-                  asset
+                  asset()
                 }}</span>
                 <span class="label-text text-xl lg:text-2xl text-black"
                   >বিক্রয়মূল্য
@@ -213,13 +364,35 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.silver_22 * forayez?.silver22k * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.silver_22 * forayez()?.silver22k * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.silver_22 * forayez?.silver22k * 0.8 | bangla}}}
+                  {{{model.silver_22 * forayez()?.silver22k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -239,13 +412,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.silver_21 * forayez?.silver21k * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.silver_21 * forayez()?.silver21k * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.silver_21 * forayez?.silver21k * 0.8 | bangla}}}
+                  {{{model.silver_21 * forayez()?.silver21k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -265,13 +468,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.silver_18 * forayez?.silver18k * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.silver_18 * forayez()?.silver18k * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.silver_18 * forayez?.silver18k * 0.8 | bangla}}}
+                  {{{model.silver_18 * forayez()?.silver18k * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -291,13 +524,43 @@
                 <span
                   class="label-text text-xl lg:text-2xl w-[120px] text-black ml-2"
                 >
-                  @if(asset === "ভরি"){{{model.silver_td * forayez?.silverTd * 0.8 * 11.664 | bangla
+                  @if(asset() === "ভরি"){{{model.silver_td * forayez()?.silverTd * 0.8 * 11.664 | bangla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
                   }}} @else
-                  {{{model.silver_td * forayez?.silverTd * 0.8 | bangla}}}
+                  {{{model.silver_td * forayez()?.silverTd * 0.8 | bangla}}}
                 </span>
               </label>
             </div>
@@ -305,12 +568,42 @@
               <button class="btn btn-primary">Calculate</button>
             </div>
             <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
-              জুয়েলারি রূপার মূল্য @if(asset === "ভরি"){{{totalSilver * 11.664 | bangla
+              জুয়েলারি রূপার মূল্য @if(asset() === "ভরি"){{{totalSilver() * 11.664 | bangla
 
 
 
 
-              }}} @else {{{totalSilver | bangla}}} টাকা
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else {{{totalSilver() | bangla}}} টাকা
             </h1>
           </form>
         </div>
@@ -320,10 +613,10 @@
     <div class="max-w-lg md:max-w-xl lg:max-w-5xl mx-auto">
       <!-- card 03 -->
       <div
-        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-green-200 mx-auto text-black"
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-green-200 mx-auto text-black my-5"
       >
         <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
-          টাকা-পয়সা+ব্যবসায়িক সম্পদ
+          টাকা-পয়সা
         </h1>
 
         <div class="overflow-x-auto">
@@ -331,10 +624,8 @@
             <tbody>
               <!-- row 1 -->
               <tr>
-                <td class="text-center text-xl lg:text-2xl">
-                  মোট ক্যাশ টাকাঃ
-                </td>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl !w-[130px]">মোট ক্যাশ টাকাঃ</td>
+                <td class="text-xl lg:text-2xl">
                   <input
                     type="number"
                     placeholder=""
@@ -347,10 +638,8 @@
               </tr>
               <!-- row 2 -->
               <tr>
-                <td class="text-center text-xl lg:text-2xl">
-                  মোট পাওনা টাকাঃ
-                </td>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl !w-[130px]">মোট পাওনা টাকাঃ</td>
+                <td class="text-xl lg:text-2xl">
                   <input
                     type="number"
                     placeholder=""
@@ -359,20 +648,74 @@
                     [(ngModel)]="model.totalPawnaTk"
                     (ngModelChange)="onInputChange($event)"
                   />
+                  <small class="text-fuchsia-800 text-sm my-0"
+                    >কর্জ/ঋণ দেওয়া বা আমানত রাখা (যা পাওয়ার আশা রয়েছে)
+                  </small>
                 </td>
               </tr>
-              <!-- row 3 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- card 04 -->
+      <div
+        class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl bg-green-200 mx-auto text-black my-5"
+      >
+        <h1 class="text-center text-xl lg:text-2xl text-primary pt-5">
+          ব্যবসায়িক সম্পদ
+        </h1>
+
+        <div class="overflow-x-auto">
+          <table class="table table-lg">
+            <tbody>
+              <!-- row 1 -->
               <tr>
-                <td class="text-center text-xl lg:text-2xl">
-                  ব্যবসায়িক সম্পদঃ
-                </td>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl !w-[130px]">ব্যবসায়িক পণ্যঃ</td>
+                <td class="text-xl lg:text-2xl">
                   <input
                     type="number"
                     placeholder=""
                     class="input input-bordered w-full bg-yellow-100 border-black"
-                    name="businessWealth"
-                    [(ngModel)]="model.businessWealth"
+                    name="businessPurposes"
+                    [(ngModel)]="model.businessPurposes"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                  <small class="text-fuchsia-800 text-sm my-0"
+                    >বিক্রয়ের উদ্দেশ্যে রাখা
+                  </small>
+                </td>
+              </tr>
+              <!-- row 2 -->
+              <tr>
+                <td class="text-xl lg:text-2xl !w-[130px]">
+                  বিক্রয় বাবদ বকেয়া মূল্যঃ
+                </td>
+                <td class="text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full bg-yellow-100 border-black"
+                    name="businessDue"
+                    [(ngModel)]="model.businessDue"
+                    (ngModelChange)="onInputChange($event)"
+                  />
+                  <small class="text-fuchsia-800 text-sm my-0"
+                    >ক্রেতাদের থেকে পাওনা
+                  </small>
+                </td>
+              </tr>
+              <!-- row 3 -->
+              <tr>
+                <td class="text-xl lg:text-2xl !w-[130px]">
+                  ব্যবসার নগদ টাকাঃ
+                </td>
+                <td class="text-xl lg:text-2xl">
+                  <input
+                    type="number"
+                    placeholder=""
+                    class="input input-bordered w-full bg-yellow-100 border-black"
+                    name="businessCash"
+                    [(ngModel)]="model.businessCash"
                     (ngModelChange)="onInputChange($event)"
                   />
                 </td>
@@ -382,7 +725,7 @@
         </div>
       </div>
 
-      <!-- card 04 -->
+      <!-- card 05 -->
       <div
         class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl text-black bg-green-200 mx-auto my-5"
       >
@@ -395,10 +738,10 @@
             <tbody>
               <!-- row 1 -->
               <tr>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl !w-[130px]">
                   ব্যাংক অ্যাকাউন্টঃ
                 </td>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl">
                   <input
                     type="number"
                     placeholder=""
@@ -407,14 +750,18 @@
                     [(ngModel)]="model.bankAccount"
                     (ngModelChange)="onInputChange($event)"
                   />
+                  <small class="text-fuchsia-800 text-sm my-0"
+                    >বাধ্যতা মূলক অংশ বাদ দিয়ে সকল ব্যাংক/বীমা/ঐচ্ছিক প্রাইভেট
+                    ফান্ড
+                  </small>
                 </td>
               </tr>
               <!-- row 2 -->
               <tr>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl !w-[130px]">
                   মোবাইল ব্যাংকিংঃ
                 </td>
-                <td class="text-center text-xl lg:text-2xl">
+                <td class="text-xl lg:text-2xl">
                   <input
                     type="number"
                     placeholder=""
@@ -429,7 +776,7 @@
           </table>
         </div>
       </div>
-      <!-- card 05 -->
+      <!-- card 06 -->
       <div
         class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl text-black bg-green-200 mx-auto my-5"
       >
@@ -442,7 +789,7 @@
             <tbody>
               <!-- row 1 -->
               <tr class="border-b-0">
-                <td class="text-center text-xl lg:text-2xl">ঋণ ও দায়ঃ</td>
+                <td class="text-xl lg:text-2xl !w-[130px]">ঋণ ও দায়ঃ</td>
                 <td>
                   <input
                     type="number"
@@ -461,102 +808,148 @@
     </div>
     <div id="MakePdf" class="max-w-3xl mx-auto">
       <div class="mx-auto py-5">
-        <!-- card 06 -->
+        <!-- card 07 -->
         <div
           class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto text-black bg-green-200"
         >
           <h1 class="text-center text-xl lg:text-2xl pt-5">
-            যাকাত হিসাবের তারিখ {{ today | bengaliNumber }}
+            যাকাত হিসাবের তারিখ {{ today | bengaliNumber }} ইং - ({{
+              hijriDate()
+            }})
           </h1>
 
           <div class="overflow-x-auto">
             <table class="table table-lg">
               <tbody>
                 <!-- row 1 -->
+                @if((totalGold() + totalSilver()) > 0 ){
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    মোট জুয়েলারি মূল্যঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
-                    @if(asset === "ভরি"){{{(totalGold + totalSilver) * 11.664 | bangla
+                  <td class="text-xl lg:text-2xl">মোট জুয়েলারি মূল্যঃ</td>
+                  <td class="text-xl lg:text-2xl">
+                    @if(asset() === "ভরি"){{{(totalGold() + totalSilver()) * 11.664 | bangla
 
 
 
 
-                    }}} @else {{{totalGold + totalSilver | bangla}}}
+
+
+
+
+
+
+
+
+
+                    }}} @else {{{totalGold() + totalSilver() | bangla}}}
                   </td>
                 </tr>
+                }
+
                 <!-- row 2 -->
+                @if (model.totalCashTk > 0) {
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    মোট ক্যাশ টাকাঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
+                  <td class="text-xl lg:text-2xl">মোট ক্যাশ টাকাঃ</td>
+                  <td class="text-xl lg:text-2xl">
                     {{ model.totalCashTk * 1 | bangla }}
                   </td>
                 </tr>
+                }
+
                 <!-- row 3 -->
+                @if (model.totalPawnaTk > 0) {
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    মোট পাওনা টাকাঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
+                  <td class="text-xl lg:text-2xl">মোট পাওনা টাকাঃ</td>
+                  <td class="text-xl lg:text-2xl">
                     {{ model.totalPawnaTk * 1 | bangla }}
                   </td>
                 </tr>
+                }
+
                 <!-- row 4 -->
+                @if (+model.businessPurposes + model.businessDue +
+                model.businessCash > 0) {
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    মোট ব্যবসায়িক সম্পদঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
-                    {{ model.businessWealth * 1 | bangla }}
+                  <td class="text-xl lg:text-2xl">মোট ব্যবসায়িক সম্পদঃ</td>
+                  <td class="text-xl lg:text-2xl">
+                    {{
+                      +model.businessPurposes +
+                        model.businessDue +
+                        model.businessCash | bangla
+                    }}
                   </td>
                 </tr>
+                }
+
                 <!-- row 5 -->
+                @if (model.bankAccount > 0) {
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    ব্যাংক অ্যাকাউন্টে জমাঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
+                  <td class="text-xl lg:text-2xl">ব্যাংক অ্যাকাউন্টে জমাঃ</td>
+                  <td class="text-xl lg:text-2xl">
                     {{ model.bankAccount * 1 | bangla }}
                   </td>
                 </tr>
+                }
+
                 <!-- row 6 -->
+                @if (model.mobileBanking > 0) {
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    মোবাইল ব্যাংকিং এ জমাঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
+                  <td class="text-xl lg:text-2xl">মোবাইল ব্যাংকিং এ জমাঃ</td>
+                  <td class="text-xl lg:text-2xl">
                     {{ model.mobileBanking * 1 | bangla }}
                   </td>
                 </tr>
+                }
+
                 <!-- row 7 -->
+                @if (model.debt > 0) {
                 <tr>
-                  <td class="text-center text-xl lg:text-2xl">
-                    বিয়োগযোগ্য ঋণ ও দায়ঃ
-                  </td>
-                  <td class="text-center text-xl lg:text-2xl">
+                  <td class="text-xl lg:text-2xl">বিয়োগযোগ্য ঋণ ও দায়ঃ</td>
+                  <td class="text-xl lg:text-2xl">
                     {{ model.debt * 1 | bangla }}
                   </td>
                 </tr>
+                }
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- card 05 -->
+        <!-- card 08 -->
         <div
           class="card shrink-0 w-full max-w-sm md:max-w-xl lg:max-w-5xl shadow-2xl mx-auto my-5 text-black bg-green-200"
         >
           <h1 class="text-center text-xl lg:text-2xl pt-5">
-            যাকাতের হিসাবযোগ্য সম্পদের পরিমান = @if(asset === "ভরি"){{{((totalGold + totalSilver) * 11.664) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt | bangla
+            যাকাতের হিসাবযোগ্য সম্পদের পরিমান = @if(asset() === "ভরি"){{{((totalGold() + totalSilver()) * 11.664) + model.totalCashTk + model.totalPawnaTk +model.businessPurposes +
+                        model.businessDue +
+                        model.businessCash + model.bankAccount + model.mobileBanking - model.debt | bangla
+
+
+
+
+
+
+
+
+
+
 
 
 
 
             }}} @else
-            {{{(totalGold + totalSilver) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt | bangla
+            {{{(totalGold() + totalSilver()) + model.totalCashTk + model.totalPawnaTk +model.businessPurposes +
+                        model.businessDue +
+                        model.businessCash + model.bankAccount + model.mobileBanking - model.debt | bangla
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -564,13 +957,35 @@
             }}} টাকা
           </h1>
           <h1 class="text-center text-xl lg:text-2xl py-5">
-            মোট যাকাত = @if(asset === "ভরি"){{{(((totalGold + totalSilver) * 11.664) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt) / 40 | bangla
+            মোট যাকাত = @if(asset() === "ভরি"){{{(((totalGold() + totalSilver()) * 11.664) + model.totalCashTk + model.totalPawnaTk +model.businessPurposes + model.businessDue + model.businessCash + model.bankAccount + model.mobileBanking - model.debt) / 40 | bangla
+
+
+
+
+
+
+
+
+
+
 
 
 
 
             }}} @else
-            {{{((totalGold + totalSilver) + model.totalCashTk + model.totalPawnaTk + model.businessWealth + model.bankAccount + model.mobileBanking - model.debt) / 40 | bangla
+            {{{((totalGold() + totalSilver()) + model.totalCashTk + model.totalPawnaTk +model.businessPurposes +
+                        model.businessDue +
+                        model.businessCash + model.bankAccount + model.mobileBanking - model.debt) / 40 | bangla
+
+
+
+
+
+
+
+
+
+
 
 
 

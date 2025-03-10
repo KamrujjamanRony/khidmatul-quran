@@ -9,7 +9,7 @@
         @if(locationName){
         <h1 class="text-center text-2xl">
           City :
-          <span class="roboto font-bold text-rose-500">{{
+          <span class="font-bold text-rose-500">{{
             locationName?.address?.city ||
               locationName?.address?.state ||
               "dhaka"
@@ -18,7 +18,7 @@
         } @else {
         <h1 class="text-center text-2xl">
           City :
-          <span class="roboto font-bold text-rose-500">Dhaka</span>
+          <span class="font-bold text-rose-500">Dhaka</span>
         </h1>
         }
         <span class="text-red-600 py-2">{{ errorText }}</span>

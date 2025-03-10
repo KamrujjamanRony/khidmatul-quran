@@ -5,10 +5,10 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 import { BannerComponent } from "../../components/banner/banner.component";
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.css',
-    imports: [BengaliNumberPipe, BannerComponent]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
+  imports: [BengaliNumberPipe, BannerComponent]
 })
 export class HomeComponent {
   model: any = {
@@ -72,7 +72,7 @@ export class HomeComponent {
         this.dst,
         format
       );
-      times['day'] = startDate.getDate().toFixed();
+      times['day'] = startDate.getDate()?.toFixed();
       this.timetableData.push(times); // Push the day's data into the timetableData array
 
       const today = new Date();

@@ -17,8 +17,8 @@
         <span
           class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
         >
-          @if (asset == "1") { টাকা } @if (asset == "2") { শতাংশ } @if (asset ==
-          "3") { গ্রাম }
+          @if (asset() == "1") { টাকা } @if (asset() == "2") { শতাংশ } @if
+          (asset() == "3") { গ্রাম }
         </span>
         <label
           class="input input-bordered flex items-center gap-2 bg-white"
@@ -788,11 +788,11 @@
     </div>
   </form>
 
-  @if (result?.rtSon || result?.rtDau || result?.rtHus || result?.rtWif ||
-  result?.rtFat || result?.rtMot || result?.rtBro || result?.rtSis ||
-  result?.rtGrF || result?.rtGrM || result?.rtGrN || result?.rtUnc ||
-  result?.rtuSo || result?.rtBmB || result?.rtBmS || result?.rtBpB ||
-  result?.rtBpS || result?.rtGrS || result?.rtGrD) {
+  @if (result()?.rtSon || result()?.rtDau || result()?.rtHus || result()?.rtWif
+  || result()?.rtFat || result()?.rtMot || result()?.rtBro || result()?.rtSis ||
+  result()?.rtGrF || result()?.rtGrM || result()?.rtGrN || result()?.rtUnc ||
+  result()?.rtuSo || result()?.rtBmB || result()?.rtBmS || result()?.rtBpB ||
+  result()?.rtBpS || result()?.rtGrS || result()?.rtGrD) {
   <div class="flex flex-col md:flex-row justify-around mt-5 gap-5">
     <div>
       <h2 class="text-bold text-xl md:text-2xl lg:3xl text-center text-black">
@@ -811,321 +811,321 @@
           </thead>
           <tbody>
             <!-- পুত্র -->
-            @if (result?.rtSon) {
+            @if (result()?.rtSon) {
             <tr>
               <th class="text-black cp-0 border">পুত্র</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.son | bangla }}
+                {{ result()?.son | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtSon | bangla }}
+                {{ result()?.rtSon | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkSon | bangla }}
+                {{ result()?.rTkSon | bangla }}
               </td>
             </tr>
             }
 
             <!-- কন্যা -->
-            @if (result?.rtDau) {
+            @if (result()?.rtDau) {
             <tr>
               <th class="text-black cp-0 border">কন্যা</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.dau | bangla }}
+                {{ result()?.dau | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtDau | bangla }}
+                {{ result()?.rtDau | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkDau | bangla }}
+                {{ result()?.rTkDau | bangla }}
               </td>
             </tr>
             }
 
             <!-- স্বামী -->
-            @if (result?.rtHus) {
+            @if (result()?.rtHus) {
             <tr>
               <th class="text-black cp-0 border">স্বামী</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.hus | bangla }}
+                {{ result()?.hus | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtHus | bangla }}
+                {{ result()?.rtHus | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkHus | bangla }}
+                {{ result()?.rTkHus | bangla }}
               </td>
             </tr>
             }
 
             <!-- স্ত্রী -->
-            @if(result?.rtWif){
+            @if(result()?.rtWif){
             <tr>
               <th class="text-black cp-0 border">স্ত্রী</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.wif | bangla }}
+                {{ result()?.wif | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtWif | bangla }}
+                {{ result()?.rtWif | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkWif | bangla }}
+                {{ result()?.rTkWif | bangla }}
               </td>
             </tr>
             }
 
             <!-- পিতা -->
-            @if(result?.rtFat){
+            @if(result()?.rtFat){
             <tr>
               <th class="text-black cp-0 border">পিতা</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.fat | bangla }}
+                {{ result()?.fat | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtFat | bangla }}
+                {{ result()?.rtFat | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkFat | bangla }}
+                {{ result()?.rTkFat | bangla }}
               </td>
             </tr>
             }
 
             <!-- মাতা -->
-            @if(result?.rtMot){
+            @if(result()?.rtMot){
             <tr>
               <th class="text-black cp-0 border">মাতা</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.mot | bangla }}
+                {{ result()?.mot | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtMot | bangla }}
+                {{ result()?.rtMot | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkMot | bangla }}
+                {{ result()?.rTkMot | bangla }}
               </td>
             </tr>
             }
 
             <!-- ভাই -->
-            @if(result?.rtBro){
+            @if(result()?.rtBro){
             <tr>
               <th class="text-black cp-0 border">ভাই</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.bro | bangla }}
+                {{ result()?.bro | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtBro | bangla }}
+                {{ result()?.rtBro | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkBro | bangla }}
+                {{ result()?.rTkBro | bangla }}
               </td>
             </tr>
             }
 
             <!-- বোন -->
-            @if(result?.rtSis){
+            @if(result()?.rtSis){
             <tr>
               <th class="text-black cp-0 border">বোন</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.sis | bangla }}
+                {{ result()?.sis | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtSis | bangla }}
+                {{ result()?.rtSis | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkSis | bangla }}
+                {{ result()?.rTkSis | bangla }}
               </td>
             </tr>
             }
 
             <!-- দাদা -->
-            @if(result?.rtGrF){
+            @if(result()?.rtGrF){
             <tr>
               <th class="text-black cp-0 border">দাদা</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.grF | bangla }}
+                {{ result()?.grF | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtGrF | bangla }}
+                {{ result()?.rtGrF | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkGrF | bangla }}
+                {{ result()?.rTkGrF | bangla }}
               </td>
             </tr>
             }
 
             <!-- দাদী -->
-            @if (result?.rtGrM) {
+            @if (result()?.rtGrM) {
             <tr>
               <th class="text-black cp-0 border">দাদী</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.grM | bangla }}
+                {{ result()?.grM | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtGrM | bangla }}
+                {{ result()?.rtGrM | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkGrM | bangla }}
+                {{ result()?.rTkGrM | bangla }}
               </td>
             </tr>
             }
 
             <!-- নানী -->
-            @if (result?.rtGrN) {
+            @if (result()?.rtGrN) {
             <tr>
               <th class="text-black cp-0 border">নানী</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.grN | bangla }}
+                {{ result()?.grN | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtGrN | bangla }}
+                {{ result()?.rtGrN | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkGrN | bangla }}
+                {{ result()?.rTkGrN | bangla }}
               </td>
             </tr>
             }
 
             <!-- চাচা -->
-            @if (result?.rtUnc) {
+            @if (result()?.rtUnc) {
             <tr>
               <th class="text-black cp-0 border">চাচা</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.unc | bangla }}
+                {{ result()?.unc | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtUnc | bangla }}
+                {{ result()?.rtUnc | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkUnc | bangla }}
+                {{ result()?.rTkUnc | bangla }}
               </td>
             </tr>
             }
 
             <!-- চাচাতো ভাই -->
-            @if (result?.rtuSo) {
+            @if (result()?.rtuSo) {
             <tr>
               <th class="text-black cp-0 border">চাচাতো ভাই</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.uSo | bangla }}
+                {{ result()?.uSo | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtuSo | bangla }}
+                {{ result()?.rtuSo | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkUSo | bangla }}
+                {{ result()?.rTkUSo | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈমাত্রের ভাই -->
-            @if (result?.rtBmB) {
+            @if (result()?.rtBmB) {
             <tr>
               <th class="text-black cp-0 border">বৈমাত্রের ভাই</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.bmB | bangla }}
+                {{ result()?.bmB | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtBmB | bangla }}
+                {{ result()?.rtBmB | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkBmB | bangla }}
+                {{ result()?.rTkBmB | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈমাত্রের বোন -->
-            @if (result?.rtBmS) {
+            @if (result()?.rtBmS) {
             <tr>
               <th class="text-black cp-0 border">বৈমাত্রের বোন</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.bmS | bangla }}
+                {{ result()?.bmS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtBmS | bangla }}
+                {{ result()?.rtBmS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkBmS | bangla }}
+                {{ result()?.rTkBmS | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈপিত্রের ভাই -->
-            @if (result?.rtBpB) {
+            @if (result()?.rtBpB) {
             <tr>
               <th class="text-black cp-0 border">বৈপিত্রের ভাই</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.bpB | bangla }}
+                {{ result()?.bpB | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtBpB | bangla }}
+                {{ result()?.rtBpB | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkBpB | bangla }}
+                {{ result()?.rTkBpB | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈপিত্রের বোন -->
-            @if (result?.rtBpS) {
+            @if (result()?.rtBpS) {
             <tr>
               <th class="text-black cp-0 border">বৈপিত্রের বোন</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.bpS | bangla }}
+                {{ result()?.bpS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtBpS | bangla }}
+                {{ result()?.rtBpS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkBpS | bangla }}
+                {{ result()?.rTkBpS | bangla }}
               </td>
             </tr>
             }
 
             <!-- ভাইয়ের পুত্র -->
-            @if (result?.rtbSo) {
+            @if (result()?.rtbSo) {
             <tr>
               <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.bSo | bangla }}
+                {{ result()?.bSo | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtbSo | bangla }}
+                {{ result()?.rtbSo | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkBSo | bangla }}
+                {{ result()?.rTkBSo | bangla }}
               </td>
             </tr>
             }
 
             <!-- নাতি -->
-            @if (result?.rtGrS) {
+            @if (result()?.rtGrS) {
             <tr>
               <th class="text-black cp-0 border">নাতি</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.grS | bangla }}
+                {{ result()?.grS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtGrS | bangla }}
+                {{ result()?.rtGrS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkGrS | bangla }}
+                {{ result()?.rTkGrS | bangla }}
               </td>
             </tr>
             }
 
             <!-- নাতনী -->
-            @if (result?.rtGrD) {
+            @if (result()?.rtGrD) {
             <tr>
               <th class="text-black cp-0 border">নাতনী</th>
               <td class="text-black cp-0 border text-center">
-                {{ result?.grD | bangla }}
+                {{ result()?.grD | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rtGrD | bangla }}
+                {{ result()?.rtGrD | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rTkGrD | bangla }}
+                {{ result()?.rTkGrD | bangla }}
               </td>
             </tr>
             }
@@ -1150,281 +1150,281 @@
           </thead>
           <tbody>
             <!-- পুত্র -->
-            @if (result?.rsSon) {
+            @if (result()?.rsSon) {
             <tr>
               <th class="text-black cp-0 border">পুত্র</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsSon | bangla }}
+                {{ result()?.rsSon | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkSon | bangla }}
+                {{ result()?.rSkSon | bangla }}
               </td>
             </tr>
             }
 
             <!-- কন্যা -->
-            @if (result?.rsDau) {
+            @if (result()?.rsDau) {
             <tr>
               <th class="text-black cp-0 border">কন্যা</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsDau | bangla }}
+                {{ result()?.rsDau | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkDau | bangla }}
+                {{ result()?.rSkDau | bangla }}
               </td>
             </tr>
             }
 
             <!-- স্বামী -->
-            @if (result?.rsHus) {
+            @if (result()?.rsHus) {
             <tr>
               <th class="text-black cp-0 border">স্বামী</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsHus | bangla }}
+                {{ result()?.rsHus | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkHus | bangla }}
+                {{ result()?.rSkHus | bangla }}
               </td>
             </tr>
             }
 
             <!-- স্ত্রী -->
-            @if(result?.rsWif){
+            @if(result()?.rsWif){
             <tr>
               <th class="text-black cp-0 border">স্ত্রী</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsWif | bangla }}
+                {{ result()?.rsWif | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkWif | bangla }}
+                {{ result()?.rSkWif | bangla }}
               </td>
             </tr>
             }
 
             <!-- পিতা -->
-            @if(result?.rsFat){
+            @if(result()?.rsFat){
             <tr>
               <th class="text-black cp-0 border">পিতা</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsFat | bangla }}
+                {{ result()?.rsFat | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkFat | bangla }}
+                {{ result()?.rSkFat | bangla }}
               </td>
             </tr>
             }
 
             <!-- মাতা -->
-            @if(result?.rsMot){
+            @if(result()?.rsMot){
             <tr>
               <th class="text-black cp-0 border">মাতা</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsMot | bangla }}
+                {{ result()?.rsMot | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkMot | bangla }}
+                {{ result()?.rSkMot | bangla }}
               </td>
             </tr>
             }
 
             <!-- ভাই -->
-            @if(result?.rsBro){
+            @if(result()?.rsBro){
             <tr>
               <th class="text-black cp-0 border">ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsBro | bangla }}
+                {{ result()?.rsBro | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkBro | bangla }}
+                {{ result()?.rSkBro | bangla }}
               </td>
             </tr>
             }
 
             <!-- বোন -->
-            @if(result?.rsSis){
+            @if(result()?.rsSis){
             <tr>
               <th class="text-black cp-0 border">বোন</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsSis | bangla }}
+                {{ result()?.rsSis | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkSis | bangla }}
+                {{ result()?.rSkSis | bangla }}
               </td>
             </tr>
             }
 
             <!-- দাদা -->
-            @if(result?.rsGrF){
+            @if(result()?.rsGrF){
             <tr>
               <th class="text-black cp-0 border">দাদা</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsGrF | bangla }}
+                {{ result()?.rsGrF | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkGrF | bangla }}
+                {{ result()?.rSkGrF | bangla }}
               </td>
             </tr>
             }
 
             <!-- দাদী -->
-            @if (result?.rsGrM) {
+            @if (result()?.rsGrM) {
             <tr>
               <th class="text-black cp-0 border">দাদী</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsGrM | bangla }}
+                {{ result()?.rsGrM | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkGrM | bangla }}
+                {{ result()?.rSkGrM | bangla }}
               </td>
             </tr>
             }
 
             <!-- নানী -->
-            @if (result?.rsGrN) {
+            @if (result()?.rsGrN) {
             <tr>
               <th class="text-black cp-0 border">নানী</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsGrN | bangla }}
+                {{ result()?.rsGrN | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkGrN | bangla }}
+                {{ result()?.rSkGrN | bangla }}
               </td>
             </tr>
             }
 
             <!-- চাচা -->
-            @if (result?.rsUnc) {
+            @if (result()?.rsUnc) {
             <tr>
               <th class="text-black cp-0 border">চাচা</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsUnc | bangla }}
+                {{ result()?.rsUnc | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkUnc | bangla }}
+                {{ result()?.rSkUnc | bangla }}
               </td>
             </tr>
             }
 
             <!-- চাচাতো ভাই -->
-            @if (result?.rsUSo) {
+            @if (result()?.rsUSo) {
             <tr>
               <th class="text-black cp-0 border">চাচাতো ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsUSo | bangla }}
+                {{ result()?.rsUSo | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkUSo | bangla }}
+                {{ result()?.rSkUSo | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈমাত্রের ভাই -->
-            @if (result?.rsBmB) {
+            @if (result()?.rsBmB) {
             <tr>
               <th class="text-black cp-0 border">বৈমাত্রের ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsBmB | bangla }}
+                {{ result()?.rsBmB | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkBmB | bangla }}
+                {{ result()?.rSkBmB | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈমাত্রের বোন -->
-            @if (result?.rsBmS) {
+            @if (result()?.rsBmS) {
             <tr>
               <th class="text-black cp-0 border">বৈমাত্রের বোন</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsBmS | bangla }}
+                {{ result()?.rsBmS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkBmS | bangla }}
+                {{ result()?.rSkBmS | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈপিত্রের ভাই -->
-            @if (result?.rsBpB) {
+            @if (result()?.rsBpB) {
             <tr>
               <th class="text-black cp-0 border">বৈপিত্রের ভাই</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsBpB | bangla }}
+                {{ result()?.rsBpB | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkBpB | bangla }}
+                {{ result()?.rSkBpB | bangla }}
               </td>
             </tr>
             }
 
             <!-- বৈপিত্রের বোন -->
-            @if (result?.rsBpS) {
+            @if (result()?.rsBpS) {
             <tr>
               <th class="text-black cp-0 border">বৈপিত্রের বোন</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsBpS | bangla }}
+                {{ result()?.rsBpS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkBpS | bangla }}
+                {{ result()?.rSkBpS | bangla }}
               </td>
             </tr>
             }
 
             <!-- ভাইয়ের পুত্র -->
-            @if (result?.rsbSo) {
+            @if (result()?.rsbSo) {
             <tr>
               <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsbSo | bangla }}
+                {{ result()?.rsbSo | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkBSo | bangla }}
+                {{ result()?.rSkBSo | bangla }}
               </td>
             </tr>
             }
 
             <!-- নাতি -->
-            @if (result?.rsGrS) {
+            @if (result()?.rsGrS) {
             <tr>
               <th class="text-black cp-0 border">নাতি</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsGrS | bangla }}
+                {{ result()?.rsGrS | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkGrS | bangla }}
+                {{ result()?.rSkGrS | bangla }}
               </td>
             </tr>
             }
 
             <!-- নাতনী -->
-            @if (result?.rsGrD) {
+            @if (result()?.rsGrD) {
             <tr>
               <th class="text-black cp-0 border">নাতনী</th>
               <td class="text-black cp-0 border text-center">১</td>
               <td class="text-black cp-0 border">
-                {{ result?.rsGrD | bangla }}
+                {{ result()?.rsGrD | bangla }}
               </td>
               <td class="text-black cp-0 border">
-                {{ result?.rSkGrD | bangla }}
+                {{ result()?.rSkGrD | bangla }}
               </td>
             </tr>
             }
@@ -1433,77 +1433,81 @@
       </div>
     </div>
   </div>
-  } @if (result?.bbb.length > 0) {
+  } @if (result()?.bbb.length > 0) {
   <div class="text-rose-600 mt-5">
     <h2 class="font-bold text-xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
     <ol class="list-disc pl-6 text-md">
-      @for (data of result?.bbb; track $index) {
+      @for (data of result()?.bbb; track $index) {
       <li>{{ data }}</li>
       }
     </ol>
   </div>
-  } @if (result?.des.length > 0) {
+  } @if (result()?.des.length > 0) {
   <div class="mt-5 text-blue-800">
     <h2 class="font-bold text-xl">বর্ণনাঃ-</h2>
     <ol class="list-disc pl-6 text-md">
-      @for (data of result?.des; track $index) {
+      @for (data of result()?.des; track $index) {
       <li>{{ data }}</li>
       }
     </ol>
   </div>
   }
 </section>
-} @if(confirmModal){
-<confirm-modal [title]="result?.notFound" url="" (closeModal)="closeModal()" />
-} @if(confirmModal1){
+} @if(confirmModal()){
+<confirm-modal
+  [title]="result()?.notFound"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal1()){
 <confirm-modal
   title="স্ত্রী উপস্থিত থাকলে স্বামী যোগ করা যাবে না।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal2){
+} @if(confirmModal2()){
 <confirm-modal
   title="স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal3){
+} @if(confirmModal3()){
 <confirm-modal
   title="স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়। 
  সুতরাং স্বামী ১ জন বসানো হলো।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal4){
+} @if(confirmModal4()){
 <confirm-modal
   title="স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়। 
  সুতরাং স্ত্রী ৪ জন বসানো হলো।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal5){
+} @if(confirmModal5()){
 <confirm-modal
   title="পিতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
  সুতরাং পিতা ১ জন বসানো হলো।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal6){
+} @if(confirmModal6()){
 <confirm-modal
   title="মাতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
  সুতরাং মাতা ১ জন বসানো হলো।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal7){
+} @if(confirmModal7()){
 <confirm-modal
   title="দাদা ১ জনের বেশী গ্রহণযোগ্য নয়। 
  সুতরাং দাদা ১ জন বসানো হলো।"
   url=""
   (closeModal)="closeModal()"
 />
-} @if(confirmModal8){
+} @if(confirmModal8()){
 <confirm-modal title="" url="" (closeModal)="closeModal()" />
-} @if(confirmModal9){
+} @if(confirmModal9()){
 <confirm-modal title="" url="" (closeModal)="closeModal()" />
 }

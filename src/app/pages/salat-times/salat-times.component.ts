@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PrayTimesService } from '../../features/services/pray-times.service';
 import axios from 'axios';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollComponent } from "../../components/scroll/scroll.component";
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
+import { ToastService } from '../../components/primeng/toast/toast.service';
 
 @Component({
   selector: 'app-salat-times',
@@ -13,6 +14,8 @@ import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
   imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]
 })
 export class SalatTimesComponent {
+  private toastService = inject(ToastService);
+  private prayTimes = inject(PrayTimesService);
   model: any = {
     latitude: 23.75,
     longitude: 90.383333,
@@ -26,8 +29,9 @@ export class SalatTimesComponent {
   timetableData = signal<any[]>([]);
   locationName = signal<any>(null);
   errorText = signal<any>(null);
+  showLocation = signal<boolean>(false);
 
-  constructor(private prayTimes: PrayTimesService) {
+  constructor() {
     this.update();
   }
   ngOnInit(): void {
@@ -73,7 +77,7 @@ export class SalatTimesComponent {
         this.dst,
         format
       );
-      times['day'] = startDate.getDate().toFixed();
+      times['day'] = startDate.getDate()?.toFixed();
       this.timetableData().push(times); // Push the day's data into the timetableData array
 
       startDate.setDate(startDate.getDate() + 1); // next day
@@ -109,10 +113,12 @@ export class SalatTimesComponent {
         },
         (error) => {
           this.errorText.set('location not found!');
+          this.toastService.showMessage('error', 'Error', 'Location not found');
         }
       );
     } else {
       this.errorText.set('location is not supported!');
+      this.toastService.showMessage('error', 'Error', 'location is not supported!');
     }
   }
 
@@ -131,12 +137,13 @@ export class SalatTimesComponent {
       .then((response) => {
         if (response.data.display_name) {
           this.locationName.set(response.data);
+          this.toastService.showMessage('success', 'Success', 'Location Update successfully');
         } else {
-          this.locationName.set('Location not found');
+          this.toastService.showMessage('error', 'Error', 'Location not found');
         }
       })
       .catch((error) => {
-        this.locationName.set('Error fetching location: ' + error.message);
+        this.toastService.showMessage('error', 'Error', error.message);
       });
   }
 

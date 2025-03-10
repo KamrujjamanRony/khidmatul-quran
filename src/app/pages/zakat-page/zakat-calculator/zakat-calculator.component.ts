@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas-pro';
 import { HttpClient } from '@angular/common/http';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { ZakatService } from '../../../features/services/zakat.service';
+import { HijriDateAdjService } from '../../../features/services/hijri-date-adj.service';
 
 @Component({
   selector: 'app-zakat-calculator',
@@ -17,14 +18,16 @@ import { ZakatService } from '../../../features/services/zakat.service';
   imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe]
 })
 export class ZakatCalculatorComponent {
-  datePipe: DatePipe = new DatePipe('en-US');
-  forayez: any;
   ZakatService = inject(ZakatService);
+  HijriDateAdjService = inject(HijriDateAdjService);
+  datePipe: DatePipe = new DatePipe('en-US');
+  forayez = signal<any>(null);
   model: any;
-  totalGold: number = 0;
-  totalSilver: number = 0;
+  totalGold = signal<any>(0);
+  totalSilver = signal<any>(0);
   today: any;
-  asset: string = 'ভরি';
+  asset = signal<string>('ভরি');
+  hijriDate = signal<any>(null);
 
 
   constructor(private readonly http: HttpClient) {
@@ -40,7 +43,9 @@ export class ZakatCalculatorComponent {
       silver_td: null,
       totalCashTk: null,
       totalPawnaTk: null,
-      businessWealth: null,
+      businessPurposes: null,
+      businessDue: null,
+      businessCash: null,
       bankAccount: null,
       mobileBanking: null,
       debt: null,
@@ -49,18 +54,19 @@ export class ZakatCalculatorComponent {
 
   ngOnInit(): void {
     this.ZakatService.getZakat().subscribe(Response => {
-      this.forayez = Response;
-    })
+      this.forayez.set(Response);
+    });
+    this.HijriDateAdjService.getHijriDate().subscribe(data => {
+      this.hijriDate.set(data?.hijriDate);
+    });
     this.today = this.datePipe.transform(new Date(), 'dd/MM/yyyy');
   }
 
   onInputChange(event: any) {
     const { gold_22, gold_21, gold_18, gold_td, silver_22, silver_21, silver_18, silver_td } = this.model;
-    const { gold22k, gold21k, gold18k, goldTd, silver22k, silver21k, silver18k, silverTd } = this.forayez;
-    this.totalGold = (gold_22 * gold22k * 0.8) + (gold_21 * gold21k * 0.8) + (gold_18 * gold18k * 0.8) + (gold_td * goldTd * 0.8);
-    this.totalSilver = (silver_22 * silver22k * 0.8) + (silver_21 * silver21k * 0.8) + (silver_18 * silver18k * 0.8) + (silver_td * silverTd * 0.8);
-    // this.totalWealth = (this.totalGold + this.totalSilver + totalCashTk + totalPawnaTk + businessWealth + bankAccount + mobileBanking) - debt;
-    // this.totalZakat = this.totalWealth / 40;
+    const { gold22k, gold21k, gold18k, goldTd, silver22k, silver21k, silver18k, silverTd } = this.forayez();
+    this.totalGold.set((gold_22 * gold22k * 0.8) + (gold_21 * gold21k * 0.8) + (gold_18 * gold18k * 0.8) + (gold_td * goldTd * 0.8));
+    this.totalSilver.set((silver_22 * silver22k * 0.8) + (silver_21 * silver21k * 0.8) + (silver_18 * silver18k * 0.8) + (silver_td * silverTd * 0.8));
   }
 
   generatePDF() {
@@ -93,8 +99,8 @@ export class ZakatCalculatorComponent {
       mobileBanking: 0,
       debt: 0,
     };
-    this.totalGold = 0,
-      this.totalSilver = 0
+    this.totalGold.set(0),
+      this.totalSilver.set(0)
   }
 
 }
