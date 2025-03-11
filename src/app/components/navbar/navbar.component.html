@@ -1,268 +1,131 @@
-<!-- Main navigation container -->
-<nav
-  class="flex-no-wrap sticky top-0 flex w-full items-center justify-between bg-transparent py-2 shadow-md shadow-black/5 lg:flex-wrap lg:justify-start z-50 bg-white lg:hidden"
->
-  <div
-    class="flex w-full flex-wrap items-center justify-between px-3 container mx-auto"
-  >
-    <!-- Hamburger button for mobile view -->
-    <button
-      class="block border-0 bg-transparent px-2 text-gray-700 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
-      type="button"
-      data-te-collapse-init
-      data-te-target="#navbarSupportedContent12"
-      aria-controls="navbarSupportedContent12"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <!-- Hamburger icon -->
-      <span class="[&>svg]:w-7">
+<div class="bg-red-500">
+  <div class="navbar container mx-auto rounded-md justify-between">
+    <div class="dropdown">
+      <!-- Hamburger Button -->
+      <label
+        tabindex="0"
+        class="btn btn-ghost text-white lg:hidden"
+        (click)="toggleMobileMenu()"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
           viewBox="0 0 24 24"
-          fill="currentColor"
-          class="h-7 w-7"
+          stroke="currentColor"
         >
           <path
-            fill-rule="evenodd"
-            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-            clip-rule="evenodd"
-          />
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          ></path>
         </svg>
-      </span>
-    </button>
+      </label>
 
-    <!-- Collapsible navigation container -->
-    <div
-      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-      id="navbarSupportedContent12"
-      data-te-collapse-item
-    >
-      <!-- Left navigation links -->
+      <!-- Mobile Menu -->
       <ul
-        class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row lg:max-w-full py-5 text-md"
-        data-te-navbar-nav-ref
+        *ngIf="isMobileMenuOpen"
+        class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-red-500 text-white rounded w-52 text-xl"
       >
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <!-- Home link -->
+        <li *ngFor="let item of menuItems">
+          <button *ngIf="item.subItems" (click)="toggleDropdown(item, $event)">
+            <span class="mr-5">{{ item.label }}</span>
+            <svg
+              [class.rotate-0]="!item.isOpen"
+              [class.-rotate-180]="item.isOpen"
+              class="transition-transform duration-200 transform absolute right-3 top-1/2 -mt-1 pointer-events-none"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 3L6 7L10 3"
+                [style.stroke]="'currentColor'"
+                [style.strokeWidth]="'2px'"
+                [style.strokeLinecap]="'round'"
+                [style.strokeLinejoin]="'round'"
+              ></path>
+            </svg>
+          </button>
           <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 font-bold uppercase"
-            routerLink="/"
-            data-te-nav-link-ref
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent12"
-            aria-controls="navbarSupportedContent12"
-            >হোম</a
+            *ngIf="!item.subItems"
+            [routerLink]="item.link"
+            (click)="closeMobileMenu()"
           >
-        </li>
-        <!-- salat times -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="salat-times"
-            data-te-nav-link-ref
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent12"
-            aria-controls="navbarSupportedContent12"
-            >সালাতের সময়</a
+            {{ item.label }}
+          </a>
+          <ul
+            *ngIf="item.isOpen"
+            class="absolute left-0 top-5 mt-2 w-60 bg-red-500 rounded-lg py-2 z-10"
           >
-        </li>
-        <!-- Hijri Date -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="hijri-date"
-            data-te-nav-link-ref
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent12"
-            aria-controls="navbarSupportedContent12"
-            >হিজরী তারিখ</a
-          >
-        </li>
-        <!-- ফরায়েজ -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="forayez"
-            data-te-nav-link-ref
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent12"
-            aria-controls="navbarSupportedContent12"
-            >ফরায়েজ</a
-          >
-        </li>
-        <!-- তাবলীগ -->
-        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="hijri-date"
-            data-te-nav-link-ref
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent12"
-            aria-controls="navbarSupportedContent12"
-            >তাবলীগ</a
-          >
-        </li>
-
-        <!-- বিভাগ -->
-        <app-dropdown-menu head="বিভাগ" [menu]="dropdownMenu1" />
-
-        <!-- যাকাত -->
-        <app-dropdown-menu head="যাকাত" [menu]="dropdownMenu2" />
-
-        <!-- বয়ান -->
-        <app-dropdown-menu head="বয়ান" [menu]="dropdownMenu3" />
-
-        <!-- নোটিশ -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="notice"
-            data-te-nav-link-ref
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent12"
-            aria-controls="navbarSupportedContent12"
-            >নোটিশ</a
-          >
+            <li *ngFor="let subItem of item.subItems">
+              <a [routerLink]="subItem.link" (click)="closeMobileMenu()">{{
+                subItem.label
+              }}</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
 
-    <!-- Right elements -->
-    <div class="relative flex items-center">
-      <!-- Second dropdown container -->
-      <button
-        (click)="navigateToContact()"
-        type="button"
-        class="inline-block text-md bg-red-500 px-6 py-2 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
-      >
-        পরিচিতি
-      </button>
-    </div>
-  </div>
-</nav>
-
-<nav
-  class="flex-no-wrap sticky top-0 lg:flex w-full items-center justify-between bg-transparent py-2 shadow-md shadow-black/5 lg:flex-wrap lg:justify-start z-50 bg-white hidden"
->
-  <div
-    class="flex w-full flex-wrap items-center justify-between px-3 container mx-auto"
-  >
-    <!-- Hamburger button for mobile view -->
-    <button
-      class="block border-0 bg-transparent px-2 text-gray-700 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
-      type="button"
-      data-te-collapse-init
-      data-te-target="#navbarSupportedContent12"
-      aria-controls="navbarSupportedContent12"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <!-- Hamburger icon -->
-      <span class="[&>svg]:w-7">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="h-7 w-7"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </span>
-    </button>
-
-    <!-- Collapsible navigation container -->
-    <div
-      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-      id="navbarSupportedContent12"
-      data-te-collapse-item
-    >
-      <!-- Left navigation links -->
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex">
       <ul
-        class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row lg:max-w-full py-5 text-lg"
-        data-te-navbar-nav-ref
+        class="menu menu-horizontal p-1 items-center rounded text-sm md:text-md lg:text-xl text-white"
       >
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <!-- Home link -->
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="/"
-            data-te-nav-link-ref
-            >হোম</a
+        @for (item of menuItems; track $index) {
+        <li
+          class="relative group"
+          (mouseenter)="onHover(item)"
+          (mouseleave)="onLeave(item)"
+        >
+          @if (item.subItems) {
+          <button>
+            <span class="mr-5">{{ item.label }}</span>
+            <svg
+              [class.rotate-0]="!item.isOpen"
+              [class.-rotate-180]="item.isOpen"
+              class="transition-transform duration-200 transform absolute right-3 top-1/2 -mt-1 pointer-events-none"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 3L6 7L10 3"
+                [style.stroke]="'currentColor'"
+                [style.strokeWidth]="'2px'"
+                [style.strokeLinecap]="'round'"
+                [style.strokeLinejoin]="'round'"
+              ></path>
+            </svg>
+          </button>
+          <ul
+            *ngIf="item.isOpen"
+            class="absolute left-0 top-5 mt-2 w-60 bg-red-500 rounded-lg py-2 z-10"
           >
+            <li *ngFor="let subItem of item.subItems">
+              <a [routerLink]="subItem.link">{{ subItem.label }}</a>
+            </li>
+          </ul>
+          } @else {
+          <a [routerLink]="item.link">{{ item.label }}</a>
+          }
         </li>
-        <!-- salat times -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="salat-times"
-            data-te-nav-link-ref
-            >সালাতের সময়</a
-          >
-        </li>
-        <!-- Hijri Date -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="hijri-date"
-            data-te-nav-link-ref
-            >হিজরী তারিখ</a
-          >
-        </li>
-        <!-- ফরায়েজ -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="forayez"
-            data-te-nav-link-ref
-            >ফরায়েজ</a
-          >
-        </li>
-        <!-- তাবলীগ -->
-        <li class="hidden mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="hijri-date"
-            data-te-nav-link-ref
-            >তাবলীগ</a
-          >
-        </li>
-
-        <!-- বিভাগ -->
-        <app-dropdown-menu2 head="বিভাগ" [menu]="dropdownMenu1" />
-
-        <!-- যাকাত -->
-        <app-dropdown-menu2 head="যাকাত" [menu]="dropdownMenu2" />
-
-        <!-- বয়ান -->
-        <app-dropdown-menu2 head="বয়ান" [menu]="dropdownMenu3" />
-
-        <!-- নোটিশ -->
-        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-          <a
-            class="text-gray-700 transition duration-200 hover:text-gray-900 hover:ease-in-out focus:text-gray-900 disabled:text-black/30 motion-reduce:transition-none lg:px-2 [&.active]:text-black/90 font-bold uppercase"
-            routerLink="notice"
-            data-te-nav-link-ref
-            >নোটিশ</a
-          >
-        </li>
+        }
       </ul>
     </div>
 
-    <!-- Right elements -->
-    <div class="relative flex items-center">
-      <!-- Second dropdown container -->
-      <button
-        (click)="navigateToContact()"
-        type="button"
-        class="inline-block text-md bg-red-500 px-6 py-2 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
-      >
-        পরিচিতি
-      </button>
-    </div>
+    <a
+      routerLink="/about"
+      type="button"
+      class="inline-block text-md bg-green-800 px-6 py-2 font-medium uppercase leading-normal text-white hover:bg-green-600"
+    >
+      পরিচিতি
+    </a>
   </div>
-</nav>
+</div>

@@ -1,104 +1,108 @@
-import { Component, ElementRef, signal, viewChild } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { DropdownMenuComponent } from "../shared/dropdown-menu/dropdown-menu.component";
-import { DropdownMenu2Component } from "../shared/dropdown-menu2/dropdown-menu2.component";
+import { Component } from '@angular/core';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
-  imports: [RouterLink, DropdownMenuComponent, DropdownMenu2Component]
+  imports: [RouterLink, CommonModule]
 })
 export class NavbarComponent {
-  readonly servicesDropdown = viewChild.required<ElementRef>('servicesDropdown');
-  readonly tutorialsDropdown = viewChild.required<ElementRef>('tutorialsDropdown');
-  readonly downloadsDropdown = viewChild.required<ElementRef>('downloadsDropdown');
-
-  // Create variables to track dropdown visibility
-  isTutorialsDropdownVisible = signal(false);
-  isDownloadsDropdownVisible = signal(false);
-  isServicesDropdownVisible = signal(false);
-
-  dropdownMenu1 = [
-    // {
-    //   title : "চল্লিশ দরুদ ও সালাম",
-    //   link : "forty-dorud"
-    // },
-    // {
-    //   title : "দোয়ায়ে আবু দারদা (রাঃ)",
-    //   link : "doyaye-abu-darda-ra"
-    // },
+  menuItems = [
+    { label: 'হোম', link: '/' },
+    { label: 'সালাতের সময়', link: '/salat-times' },
+    { label: 'হিজরী তারিখ', link: '/hijri-date' },
+    { label: 'ফরায়েজ', link: '/forayez' },
     {
-      title: "নির্বাচিত প্রবন্ধসমূহ",
-      link: "selected-writings"
-    }
+      label: 'বিভাগ',
+      isOpen: false,
+      subItems: [{ label: 'নির্বাচিত প্রবন্ধসমূহ', link: '/selected-writings' }],
+    },
+    {
+      label: 'যাকাত',
+      isOpen: false,
+      subItems: [
+        { label: 'স্বর্ণ ও রুপার দাম', link: '/gold-price' },
+        { label: 'যাকাত ক্যালকুলেটর', link: '/zakat-calculator' },
+        { label: 'যাকাত মাসআলা', link: '/zakat-masala' },
+      ],
+    },
+    {
+      label: 'বয়ান',
+      isOpen: false,
+      subItems: [
+        { label: 'কুরআনের তাফসীর', link: '/audio/1' },
+        { label: 'সংক্ষিপ্ত নসিয়ত', link: '/audio/2' },
+        { label: 'ইসলাহী মজলিশ', link: '/audio/3' },
+        { label: 'ইউটিউব অডিও', link: '/audio/4' },
+        { label: 'ইউটিউব ভিডিও', link: '/video' },
+      ],
+    },
+    { label: 'নোটিশ', link: '/notice' },
   ];
 
-  dropdownMenu2 = [
-    {
-      title: "স্বর্ণ ও রুপার দাম",
-      link: "gold-price"
-    },
-    {
-      title: "যাকাত ক্যালকুলেটর",
-      link: "zakat-calculator"
-    },
-    {
-      title: "যাকাত মাসআলা",
-      link: "zakat-masala"
-    },
-  ];
+  isMobileMenuOpen = false;
 
-  dropdownMenu3 = [
-    {
-      title: "কুরআনের তাফসীর",
-      link: "audio/1"
-    },
-    {
-      title: "সংক্ষিপ্ত নসিয়ত",
-      link: "audio/2"
-    },
-    {
-      title: "ইসলাহী মজলিশ",
-      link: "audio/3"
-    },
-    {
-      title: "ইউটিউব অডিও",
-      link: "audio/4"
-    },
-    {
-      title: "ইউটিউব ভিডিও",
-      link: "video"
-    },
-  ];
+  constructor(private router: Router) {
+    // Close menu on route change
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isMobileMenuOpen = false; // Close menu when route changes
+      }
+    });
+  }
 
-  hideNavMenu() {
-    const navMenu = document.getElementById('menubar');
-    if (navMenu) {
-      navMenu.classList.add('hidden');
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+
+    // Close all dropdowns when mobile menu closes
+    if (!this.isMobileMenuOpen) {
+      this.menuItems.forEach((item) => (item.isOpen = false));
     }
   }
 
-  constructor(private router: Router) { }
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
 
-
-  ngOnInit(): void {
+    // Close all dropdowns when mobile menu closes
+    if (!this.isMobileMenuOpen) {
+      this.menuItems.forEach((item) => (item.isOpen = false));
+    }
   }
 
-  // Create methods to toggle dropdown visibility
-  toggleServicesDropdown() {
-    this.isServicesDropdownVisible.set(!this.isServicesDropdownVisible);
-  }
-  toggleTutorialsDropdown() {
-    this.isTutorialsDropdownVisible.set(!this.isTutorialsDropdownVisible);
+
+  toggleDropdown(selectedItem: any, event: Event) {
+    // console.log("toggleDropdown", selectedItem);
+    event.stopPropagation(); // Prevents click event from propagating
+
+    this.menuItems.forEach((item) => {
+      if (item !== selectedItem) {
+        item.isOpen = false; // Close other dropdowns
+      }
+    });
+
+    selectedItem.isOpen = !selectedItem.isOpen; // Toggle the selected dropdown
   }
 
-  toggleDownloadsDropdown() {
-    this.isDownloadsDropdownVisible.set(!this.isDownloadsDropdownVisible);
+  onHover(item: any) {
+    // console.log("onHover", item);
+    if (window.innerWidth >= 1024) {
+      this.menuItems.forEach((menu) => {
+        if (menu !== item) {
+          menu.isOpen = false;
+        }
+      });
+      item.isOpen = true;
+    }
   }
 
-  navigateToContact() {
-    this.router.navigate(["about"]);
+  onLeave(item: any) {
+    // console.log("onLeave", item);
+    if (window.innerWidth >= 1024) {
+      item.isOpen = false;
+    }
   }
+
 
 }

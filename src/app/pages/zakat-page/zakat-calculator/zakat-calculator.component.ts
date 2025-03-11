@@ -10,12 +10,13 @@ import { HttpClient } from '@angular/common/http';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { ZakatService } from '../../../features/services/zakat.service';
 import { HijriDateAdjService } from '../../../features/services/hijri-date-adj.service';
+import { BanglaFixedPipe } from "../../../features/pipe/bangla-fixed.pipe";
 
 @Component({
   selector: 'app-zakat-calculator',
   templateUrl: './zakat-calculator.component.html',
   styleUrl: './zakat-calculator.component.css',
-  imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe]
+  imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe, BanglaFixedPipe]
 })
 export class ZakatCalculatorComponent {
   ZakatService = inject(ZakatService);
