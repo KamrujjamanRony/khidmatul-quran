@@ -16,14 +16,17 @@ import { ToastService } from '../../components/primeng/toast/toast.service';
 export class SalatTimesComponent {
   private toastService = inject(ToastService);
   private prayTimes = inject(PrayTimesService);
+
   model: any = {
     latitude: 23.75,
     longitude: 90.383333,
   };
+
   timezone: number = 6;
   dst: string = 'auto';
   method: string = 'Karachi';
   timeFormat: number = 12;
+
   tableTitle = signal<any>(null);
   currentDate: Date = new Date();
   timetableData = signal<any[]>([]);
@@ -34,8 +37,11 @@ export class SalatTimesComponent {
   constructor() {
     this.update();
   }
+
   ngOnInit(): void {
-    this.getPreciseLocation();
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+      this.toastService.showMessage('warn', 'Warning', 'Location services require HTTPS.');
+    }
   }
 
   onInputFocus(): void {
@@ -44,7 +50,7 @@ export class SalatTimesComponent {
 
   onFormSubmit(): void {
     this.update();
-    this.getLocationName(this.model.latitude, this.model.longitude)
+    this.getLocationName(this.model.latitude, this.model.longitude);
   }
 
   displayMonth(offset: number) {
@@ -85,7 +91,6 @@ export class SalatTimesComponent {
   }
 
   switchFormat(offset: number) {
-    const formats = ["24-hour", "12-hour"];
     this.timeFormat = (this.timeFormat + offset) % 2;
     this.update();
   }
@@ -104,22 +109,43 @@ export class SalatTimesComponent {
   }
 
   getPreciseLocation() {
-    const x = this;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          this.errorText.set(null);
-          x.showExactPosition(position);
-        },
-        (error) => {
-          this.errorText.set('location not found!');
-          this.toastService.showMessage('error', 'Error', 'Location not found');
-        }
-      );
-    } else {
-      this.errorText.set('location is not supported!');
-      this.toastService.showMessage('error', 'Error', 'location is not supported!');
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+      this.toastService.showMessage('error', 'Error', 'Location access requires HTTPS.');
+      return;
     }
+
+    if (!navigator.geolocation) {
+      this.errorText.set('Geolocation is not supported by this browser.');
+      this.toastService.showMessage('error', 'Error', this.errorText());
+      return;
+    }
+
+    this.toastService.showMessage('info', 'Info', 'Fetching location...');
+
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => {
+        this.errorText.set(null);
+        this.showExactPosition(position);
+      },
+      (error) => {
+        console.error('Geolocation error:', error);
+        let message = 'An unknown error occurred.';
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            message = 'User denied the request for Geolocation.';
+            break;
+          case error.POSITION_UNAVAILABLE:
+            message = 'Location information is unavailable.';
+            break;
+          case error.TIMEOUT:
+            message = 'The request to get user location timed out.';
+            break;
+        }
+        this.errorText.set(message);
+        this.toastService.showMessage('error', 'Error', message);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
   }
 
   showExactPosition(position: GeolocationPosition) {
@@ -137,7 +163,7 @@ export class SalatTimesComponent {
       .then((response) => {
         if (response.data.display_name) {
           this.locationName.set(response.data);
-          this.toastService.showMessage('success', 'Success', 'Location Update successfully');
+          this.toastService.showMessage('info', 'Success', 'Location updated successfully');
         } else {
           this.toastService.showMessage('error', 'Error', 'Location not found');
         }
@@ -146,5 +172,4 @@ export class SalatTimesComponent {
         this.toastService.showMessage('error', 'Error', error.message);
       });
   }
-
 }

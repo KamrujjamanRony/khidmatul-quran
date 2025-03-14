@@ -10,7 +10,7 @@ import { Head1Component } from './H1';
         @if(heading){<H1 class="text-center text-green-500 font-bold" [text]="heading"></H1>}
         @if(head){<H1 class="text-rose-600" [text]="head"></H1>}
         @if(title){<P [text]="title"></P>}
-        @if(arabic){<p class="text-right font-bold text-black text-xl py-1">{{arabic}}</p>}
+        @if(arabic){<p class="text-right font-bold text-black text-2xl py-1">{{arabic}}</p>}
         @if(bangla){<P [text]="bangla"></P>}
         @if(bangla1){<P [text]="bangla1"></P>}
         @if(bangla2){<P [text]="bangla2"></P>}

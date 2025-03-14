@@ -8,7 +8,7 @@
       class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-5 px-2 pb-2 pt-8 border border-green-600 rounded-md relative mt-2"
     >
       <h1
-        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-xl md:text-2xl font-bold text-green-600 bg-white px-2"
+        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-2xl md:text-3xl font-bold text-green-600 bg-white px-2"
       >
         সম্পদের বিবরণ
       </h1>
@@ -69,7 +69,7 @@
       </div>
       <!-- parameter -->
       <div
-        class="flex justify-center items-center font-bold my-2 text-sm md:text-md lg:text-2xl"
+        class="flex justify-center items-center font-bold my-2 text-md md:text-lg lg:text-3xl"
       >
         <h1 class="text-gray-700 mr-1">নির্বাচন করুনঃ</h1>
         <div class="form-control">
@@ -81,7 +81,7 @@
               [(ngModel)]="asset"
               value="1"
             />
-            <span class="label-text text-red-500 text-sm md:text-md lg:text-2xl"
+            <span class="label-text text-red-500 text-md md:text-lg lg:text-3xl"
               >টাকা</span
             >
           </label>
@@ -96,7 +96,7 @@
               value="2"
             />
             <span
-              class="label-text text-blue-500 text-sm md:text-md lg:text-2xl"
+              class="label-text text-blue-500 text-md md:text-lg lg:text-3xl"
               >শতাংশ</span
             >
           </label>
@@ -111,7 +111,7 @@
               value="3"
             />
             <span
-              class="label-text text-yellow-500 text-sm md:text-md lg:text-2xl"
+              class="label-text text-yellow-500 text-md md:text-lg lg:text-3xl"
               >অলংকার</span
             >
           </label>
@@ -123,7 +123,7 @@
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-5 px-2 pb-2 pt-8 border border-green-600 rounded-md relative mt-5"
     >
       <h1
-        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-xl md:text-2xl font-bold text-green-600 bg-white px-2"
+        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-2xl md:text-3xl font-bold text-green-600 bg-white px-2"
       >
         জীবিত আত্মীয়-স্বজনের তালিকা
       </h1>
@@ -795,14 +795,14 @@
   result()?.rtBpS || result()?.rtGrS || result()?.rtGrD) {
   <div class="flex flex-col md:flex-row justify-around mt-5 gap-5">
     <div>
-      <h2 class="text-bold text-xl md:text-2xl lg:3xl text-center text-black">
+      <h2 class="text-bold text-2xl md:text-3xl lg:3xl text-center text-black">
         অংশীদারদের মোট পরিমাণ
       </h2>
       <div class="overflow-x-auto">
-        <table class="table text-lg lg:text-xl text-center">
+        <table class="table text-xl lg:text-2xl text-center">
           <!-- head -->
-          <thead class="text-lg lg:text-xl">
-            <tr class="bg-gray-600 text-white text-md md:text-lg lg:text-xl">
+          <thead class="text-xl lg:text-2xl">
+            <tr class="bg-gray-600 text-white text-lg md:text-xl lg:text-2xl">
               <th class="border cp-0">আত্মীয়</th>
               <th class="border cp-0">সংখ্যা</th>
               <th class="border cp-0">শতকরা%</th>
@@ -1134,14 +1134,14 @@
       </div>
     </div>
     <div>
-      <h2 class="text-bold text-xl md:text-2xl lg:3xl text-center text-black">
+      <h2 class="text-bold text-2xl md:text-3xl lg:3xl text-center text-black">
         একজন অংশীদারের পরিমাণ
       </h2>
       <div class="overflow-x-auto">
-        <table class="table text-lg lg:text-xl text-center">
+        <table class="table text-xl lg:text-2xl text-center">
           <!-- head -->
-          <thead class="text-lg lg:text-xl">
-            <tr class="bg-gray-600 text-white text-md md:text-lg lg:text-xl">
+          <thead class="text-xl lg:text-2xl">
+            <tr class="bg-gray-600 text-white text-lg md:text-xl lg:text-2xl">
               <th class="border cp-0">আত্মীয়</th>
               <th class="border cp-0">সংখ্যা</th>
               <th class="border cp-0">শতকরা%</th>
@@ -1435,8 +1435,8 @@
   </div>
   } @if (result()?.bbb.length > 0) {
   <div class="text-rose-600 mt-5">
-    <h2 class="font-bold text-xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
-    <ol class="list-disc pl-6 text-md">
+    <h2 class="font-bold text-2xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
+    <ol class="list-disc pl-6 text-lg">
       @for (data of result()?.bbb; track $index) {
       <li>{{ data }}</li>
       }
@@ -1444,8 +1444,8 @@
   </div>
   } @if (result()?.des.length > 0) {
   <div class="mt-5 text-blue-800">
-    <h2 class="font-bold text-xl">বর্ণনাঃ-</h2>
-    <ol class="list-disc pl-6 text-md">
+    <h2 class="font-bold text-2xl">বর্ণনাঃ-</h2>
+    <ol class="list-disc pl-6 text-lg">
       @for (data of result()?.des; track $index) {
       <li>{{ data }}</li>
       }

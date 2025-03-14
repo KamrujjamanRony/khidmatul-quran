@@ -6,25 +6,25 @@
     (ngSubmit)="onFormSubmit()"
     class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
   >
-
-  
-  <div class="mb-4">
-    <label for="serial" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
-      >Serial</label
-    >
-    <input
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
-      id="serial"
-      name="serial"
-      type="text"
-      placeholder="Type here"
-      [(ngModel)]="model.serial"
-      required
-    />
-  </div>  
-  <div class="mb-4">
+    <div class="mb-4">
       <label
-        class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+        for="serial"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        >Serial</label
+      >
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
+        id="serial"
+        name="serial"
+        type="text"
+        placeholder="Type here"
+        [(ngModel)]="model.serial"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         for="title"
       >
         Title <span class="text-red-600">*</span>
@@ -42,7 +42,7 @@
 
     <div class="mb-4">
       <label
-        class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         for="description"
       >
         Description
@@ -57,22 +57,24 @@
         [(ngModel)]="model.description"
       ></textarea>
     </div>
-    
+
     <div class="mb-4">
-        <label for="note1" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
-          >note1</label
-        >
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
-          id="note1"
-          name="note1"
-          type="text"
-          placeholder="Type here"
-          [(ngModel)]="model.note1"
-          required
-        />
-      </div>
-      
+      <label
+        for="note1"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        >note1</label
+      >
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
+        id="note1"
+        name="note1"
+        type="text"
+        placeholder="Type here"
+        [(ngModel)]="model.note1"
+        required
+      />
+    </div>
+
     <input
       type="submit"
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
@@ -82,8 +84,9 @@
 </div>
 
 @if(confirmModal){
-  <confirm-modal title="Notice is successfully updated!" url="/a/notice-list" (closeModal)="closeModal()" />
+<confirm-modal
+  title="Notice is successfully updated!"
+  url="/a/notice-list"
+  (closeModal)="closeModal()"
+/>
 }
-
-
-

@@ -1,33 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { SalatTimesComponent } from './pages/salat-times/salat-times.component';
-import { HijriDateComponent } from './pages/hijri-date/hijri-date.component';
-import { ForayezComponent } from './pages/forayez/forayez.component';
-import { ZakatComponent } from './pages/zakat-page/zakat/zakat.component';
-import { Blog1Component } from './components/blogs/blog1/blog1.component';
-import { SelectedWritingComponent } from './pages/bivhag/selected-writing/selected-writing.component';
-import { Blog2Component } from './components/blogs/blog2/blog2.component';
-import { ZakatCalculatorComponent } from './pages/zakat-page/zakat-calculator/zakat-calculator.component';
-import { ZakatMasalaComponent } from './pages/zakat-page/zakat-masala/zakat-masala.component';
-import { NoticeComponent } from './pages/notice/notice.component';
-import { Blog3Component } from './components/blogs/blog3/blog3.component';
-import { AudioComponent } from './pages/boyan/audio/audio.component';
-import { VideoComponent } from './pages/boyan/video/video.component';
-import { AboutComponent } from './pages/about/about.component';
-import { KhankaComponent } from './pages/about/khanka/khanka.component';
-import { ShayekComponent } from './pages/about/shayek/shayek.component';
-import { ShajaraComponent } from './pages/about/shajara/shajara.component';
-import { Blog4Component } from './components/blogs/blog4/blog4.component';
 import { MainComponent } from './layouts/main/main.component';
 import { AdminComponent } from './layouts/admin/admin.component';
-import { JewelryPriceComponent } from './pages/admin/jewelry-price/jewelry-price.component';
-import { HijriDateAdjComponent } from './pages/admin/hijri-date-adj/hijri-date-adj.component';
-import { BoyanListComponent } from './pages/admin/boyan-list/boyan-list.component';
-import { BoyanEditComponent } from './pages/admin/boyan-edit/boyan-edit.component';
-import { BoyanAddComponent } from './pages/admin/boyan-add/boyan-add.component';
-import { NoticeListComponent } from './pages/admin/notice-list/notice-list.component';
-import { NoticeAddComponent } from './pages/admin/notice-add/notice-add.component';
-import { NoticeEditComponent } from './pages/admin/notice-edit/notice-edit.component';
 
 export const routes: Routes = [
   {
@@ -36,79 +9,79 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
       },
       {
         path: 'salat-times',
-        component: SalatTimesComponent
+        loadComponent: () => import('./pages/salat-times/salat-times.component').then(m => m.SalatTimesComponent),
       },
       {
         path: 'hijri-date',
-        component: HijriDateComponent
+        loadComponent: () => import('./pages/hijri-date/hijri-date.component').then(m => m.HijriDateComponent),
       },
       {
         path: 'forayez',
-        component: ForayezComponent
+        loadComponent: () => import('./pages/forayez/forayez.component').then(m => m.ForayezComponent),
       },
       {
         path: 'gold-price',
-        component: ZakatComponent
+        loadComponent: () => import('./pages/zakat-page/zakat/zakat.component').then(m => m.ZakatComponent),
       },
       {
         path: 'zakat-calculator',
-        component: ZakatCalculatorComponent
+        loadComponent: () => import('./pages/zakat-page/zakat-calculator/zakat-calculator.component').then(m => m.ZakatCalculatorComponent),
       },
       {
         path: 'zakat-masala',
-        component: ZakatMasalaComponent
+        loadComponent: () => import('./pages/zakat-page/zakat-masala/zakat-masala.component').then(m => m.ZakatMasalaComponent),
       },
       {
         path: 'zakat-masala/3',
-        component: Blog3Component
+        loadComponent: () => import('./components/blogs/blog3/blog3.component').then(m => m.Blog3Component),
       },
       {
         path: 'selected-writings',
-        component: SelectedWritingComponent
+        loadComponent: () => import('./pages/bivhag/selected-writing/selected-writing.component').then(m => m.SelectedWritingComponent),
       },
       {
         path: 'selected-writings/1',
-        component: Blog1Component
+        loadComponent: () => import('./components/blogs/blog1/blog1.component').then(m => m.Blog1Component),
       },
       {
         path: 'selected-writings/2',
-        component: Blog2Component
+        loadComponent: () => import('./components/blogs/blog2/blog2.component').then(m => m.Blog2Component),
       },
       {
         path: 'selected-writings/4',
-        component: Blog4Component
+        loadComponent: () => import('./components/blogs/blog4/blog4.component').then(m => m.Blog4Component),
       },
       {
         path: 'notice',
-        component: NoticeComponent
+        loadComponent: () => import('./pages/notice/notice.component').then(m => m.NoticeComponent),
       },
       {
         path: 'audio/:type',
-        component: AudioComponent
+        loadComponent: () => import('./pages/boyan/audio/audio.component').then(m => m.AudioComponent),
       },
       {
         path: 'video',
-        component: VideoComponent
+        loadComponent: () => import('./pages/boyan/video/video.component').then(m => m.VideoComponent),
       },
       {
         path: 'about',
-        component: AboutComponent
+        loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
       },
       {
         path: 'about/খানকার_পরিচয়',
-        component: KhankaComponent
+        loadComponent: () => import('./pages/about/khanka/khanka.component').then(m => m.KhankaComponent),
       },
       {
         path: 'about/শায়খের_জীবনী',
-        component: ShayekComponent
+        loadComponent: () => import('./pages/about/shayek/shayek.component').then(m => m.ShayekComponent),
       },
       {
         path: 'about/শাজারা',
-        component: ShajaraComponent
+        loadComponent: () => import('./pages/about/shajara/shajara.component').then(m => m.ShajaraComponent),
       },
     ]
   },
@@ -119,35 +92,35 @@ export const routes: Routes = [
       { path: '', redirectTo: 'jewelry-price', pathMatch: 'full' },
       {
         path: 'jewelry-price',
-        component: JewelryPriceComponent
+        loadComponent: () => import('./pages/admin/jewelry-price/jewelry-price.component').then(m => m.JewelryPriceComponent),
       },
       {
         path: 'hijri-date-adj',
-        component: HijriDateAdjComponent
+        loadComponent: () => import('./pages/admin/hijri-date-adj/hijri-date-adj.component').then(m => m.HijriDateAdjComponent),
       },
       {
         path: 'boyan-list',
-        component: BoyanListComponent
+        loadComponent: () => import('./pages/admin/boyan-list/boyan-list.component').then(m => m.BoyanListComponent),
       },
       {
         path: 'boyan-list/add',
-        component: BoyanAddComponent
+        loadComponent: () => import('./pages/admin/boyan-add/boyan-add.component').then(m => m.BoyanAddComponent),
       },
       {
         path: 'boyan-list/edit/:id',
-        component: BoyanEditComponent
+        loadComponent: () => import('./pages/admin/boyan-edit/boyan-edit.component').then(m => m.BoyanEditComponent),
       },
       {
         path: 'notice-list',
-        component: NoticeListComponent
+        loadComponent: () => import('./pages/admin/notice-list/notice-list.component').then(m => m.NoticeListComponent),
       },
       {
         path: 'notice-list/add',
-        component: NoticeAddComponent
+        loadComponent: () => import('./pages/admin/notice-add/notice-add.component').then(m => m.NoticeAddComponent),
       },
       {
         path: 'notice-list/edit/:id',
-        component: NoticeEditComponent
+        loadComponent: () => import('./pages/admin/notice-edit/notice-edit.component').then(m => m.NoticeEditComponent),
       },
     ]
   },

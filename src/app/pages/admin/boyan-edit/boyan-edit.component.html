@@ -6,25 +6,25 @@
     (ngSubmit)="onFormSubmit()"
     class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
   >
-
-  
-  <div class="mb-4">
-    <label for="serial" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
-      >Serial</label
-    >
-    <input
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
-      id="serial"
-      name="serial"
-      type="text"
-      placeholder="Type here"
-      [(ngModel)]="model.serial"
-      required
-    />
-  </div>  
-  <div class="mb-4">
+    <div class="mb-4">
       <label
-        class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+        for="serial"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        >Serial</label
+      >
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
+        id="serial"
+        name="serial"
+        type="text"
+        placeholder="Type here"
+        [(ngModel)]="model.serial"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         for="title"
       >
         Title <span class="text-red-600">*</span>
@@ -40,7 +40,9 @@
       />
     </div>
     <div class="mb-4">
-      <label for="type" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+      <label
+        for="type"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         >Type</label
       >
       <select
@@ -52,16 +54,18 @@
         [(ngModel)]="model.type"
         required
       >
-      <option value="" disabled>Select Type</option>
-      <option value="কুরআনের তাফসীর" >কুরআনের তাফসীর</option>
-      <option value="সংক্ষিপ্ত নসিয়ত" >সংক্ষিপ্ত নসিয়ত</option>
-      <option value="ইসলাহী মজলিশ" >ইসলাহী মজলিশ</option>
-      <option value="ইউটিউব অডিও" >ইউটিউব অডিও</option>
-      <option value="ইউটিউব ভিডিও" >ইউটিউব ভিডিও</option>
+        <option value="" disabled>Select Type</option>
+        <option value="কুরআনের তাফসীর">কুরআনের তাফসীর</option>
+        <option value="সংক্ষিপ্ত নসিয়ত">সংক্ষিপ্ত নসিয়ত</option>
+        <option value="ইসলাহী মজলিশ">ইসলাহী মজলিশ</option>
+        <option value="ইউটিউব অডিও">ইউটিউব অডিও</option>
+        <option value="ইউটিউব ভিডিও">ইউটিউব ভিডিও</option>
       </select>
     </div>
     <div class="mb-4">
-      <label for="url" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+      <label
+        for="url"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         >File URL</label
       >
       <input
@@ -77,7 +81,7 @@
 
     <div class="mb-4">
       <label
-        class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         for="description"
       >
         Description
@@ -92,9 +96,11 @@
         [(ngModel)]="model.description"
       ></textarea>
     </div>
-    
+
     <div class="mb-4">
-      <label for="imageUrl" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+      <label
+        for="imageUrl"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         >image Url</label
       >
       <input
@@ -107,9 +113,11 @@
         required
       />
     </div>
-    
+
     <div class="mb-4">
-      <label for="others" class="block text-gray-700 text-sm font-bold mb-2 capitalize"
+      <label
+        for="others"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
         >others</label
       >
       <input
@@ -131,7 +139,9 @@
 </div>
 
 @if(confirmModal){
-  <confirm-modal title="Boyan is successfully updated!" url="/a/boyan-list" (closeModal)="closeModal()" />
+<confirm-modal
+  title="Boyan is successfully updated!"
+  url="/a/boyan-list"
+  (closeModal)="closeModal()"
+/>
 }
-
-

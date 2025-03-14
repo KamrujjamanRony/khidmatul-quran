@@ -17,7 +17,7 @@
         <table class="w-full">
           <thead>
             <tr
-              class="text-xs font-semibold tracking-wide text-left text-gray-700 uppercase border-b bg-gray-50"
+              class="text-sm font-semibold tracking-wide text-left text-gray-700 uppercase border-b bg-gray-50"
             >
               <th class="px-4 py-3">SI</th>
               <th class="px-4 py-3">Title</th>
@@ -30,14 +30,14 @@
           <tbody class="bg-white divide-y">
             @for (boyan of sortItems(allBoyan$ | async); track $index) {
             <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700">
-              <td class="px-4 py-3 text-xs">{{ boyan.serial }}</td>
-              <td class="px-4 py-3 text-xs">{{ boyan.title }}</td>
-              <td class="px-4 py-3 text-sm">
+              <td class="px-4 py-3 text-sm">{{ boyan.serial }}</td>
+              <td class="px-4 py-3 text-sm">{{ boyan.title }}</td>
+              <td class="px-4 py-3 text-md">
                 {{ boyan?.description?.slice(0, 100) }}
               </td>
-              <td class="px-4 py-3 text-xs">{{ boyan.type }}</td>
-              <td class="px-4 py-3 text-xs">{{ boyan.url }}</td>
-              <td class="px-4 py-3 text-sm">
+              <td class="px-4 py-3 text-sm">{{ boyan.type }}</td>
+              <td class="px-4 py-3 text-sm">{{ boyan.url }}</td>
+              <td class="px-4 py-3 text-md">
                 <a
                   [routerLink]="['edit', boyan.id]"
                   class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded mr-2 inline-block my-2"
@@ -56,7 +56,7 @@
             <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700">
               <td class="px-4 py-3"></td>
               <td class="px-4 py-3">
-                <h1 class="text-center text-2xl text-rose-600">
+                <h1 class="text-center text-3xl text-rose-600">
                   No Boyan Found!
                 </h1>
               </td>
@@ -68,7 +68,7 @@
         </table>
       </div>
       <div
-        class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-700 uppercase border-t bg-gray-50 sm:grid-cols-9"
+        class="grid px-4 py-3 text-sm font-semibold tracking-wide text-gray-700 uppercase border-t bg-gray-50 sm:grid-cols-9"
       ></div>
     </div>
     }

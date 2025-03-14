@@ -1,5 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { BanglaPipe } from '../../../features/pipe/bangla.pipe';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
 import { BengaliNumberPipe } from "../../../features/pipe/bengali-number.pipe";
@@ -16,7 +15,7 @@ import { BanglaFixedPipe } from "../../../features/pipe/bangla-fixed.pipe";
   selector: 'app-zakat-calculator',
   templateUrl: './zakat-calculator.component.html',
   styleUrl: './zakat-calculator.component.css',
-  imports: [BanglaPipe, FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe, BanglaFixedPipe]
+  imports: [FormsModule, BengaliNumberPipe, CommonModule, BengaliDatePipe, BanglaFixedPipe]
 })
 export class ZakatCalculatorComponent {
   ZakatService = inject(ZakatService);
