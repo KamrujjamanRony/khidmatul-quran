@@ -1,6 +1,8 @@
-<footer class="bg-green-700 text-white p-10">
-  <div class="footer container mx-auto px-10">
-    <nav>
+<footer class="bg-green-700 text-white p-4 lg:p-10">
+  <div
+    class="grid grid-cols-2 lg:grid-cols-4 gap-2 grid-flow-col container mx-auto px-4 lg:px-10"
+  >
+    <nav class="hidden lg:block">
       <img
         src="../../../assets/images/logo.png"
         class="w-full md:w-56 lg:w-60"
@@ -8,29 +10,33 @@
       />
     </nav>
     <nav>
-      <h6 class="footer-title">মেন্যু</h6>
-      <a routerLink="/salat-times" class="link link-hover">সালাতের সময়</a>
-      <a routerLink="/hijri-date" class="link link-hover">হিজরী তারিখ</a>
-      <a routerLink="/forayez" class="link link-hover">ফরায়েজ</a>
-      <a routerLink="/notice" class="link link-hover">নোটিশ</a>
-      <a routerLink="/about" class="link link-hover">পরিচিতি</a>
+      <h6 class="mb-2 font-bold uppercase opacity-90">মেন্যু</h6>
+      <a routerLink="/salat-times" class="link link-hover block">সালাতের সময়</a>
+      <a routerLink="/hijri-date" class="link link-hover block">হিজরী তারিখ</a>
+      <a routerLink="/forayez" class="link link-hover block">ফরায়েজ</a>
+      <a routerLink="/notice" class="link link-hover block">নোটিশ</a>
+      <a routerLink="/about" class="link link-hover block">পরিচিতি</a>
+    </nav>
+    <nav class="hidden lg:grid">
+      <h6 class="mb-2 font-bold uppercase opacity-90">বয়ান</h6>
+      <a routerLink="/audio/1" class="link link-hover block">কুরআনের তাফসীর</a>
+      <a routerLink="/audio/2" class="link link-hover block">সংক্ষিপ্ত নসিয়ত</a>
+      <a routerLink="/audio/3" class="link link-hover block">ইসলাহী মজলিশ</a>
+      <a routerLink="/audio/4" class="link link-hover block">ইউটিউব অডিও</a>
+      <a routerLink="/video" class="link link-hover block">ইউটিউব ভিডিও</a>
     </nav>
     <nav>
-      <h6 class="footer-title">বয়ান</h6>
-      <a routerLink="/audio/1" class="link link-hover">কুরআনের তাফসীর</a>
-      <a routerLink="/audio/2" class="link link-hover">সংক্ষিপ্ত নসিয়ত</a>
-      <a routerLink="/audio/3" class="link link-hover">ইসলাহী মজলিশ</a>
-      <a routerLink="/audio/4" class="link link-hover">ইউটিউব অডিও</a>
-      <a routerLink="/video" class="link link-hover">ইউটিউব ভিডিও</a>
-    </nav>
-    <nav>
-      <h6 class="footer-title">যাকাত</h6>
-      <a routerLink="/gold-price" class="link link-hover">স্বর্ণ ও রুপার দাম</a>
-      <a routerLink="/zakat-calculator" class="link link-hover"
+      <h6 class="mb-2 font-bold uppercase opacity-90">যাকাত</h6>
+      <a routerLink="/gold-price" class="link link-hover block"
+        >স্বর্ণ ও রুপার দাম</a
+      >
+      <a routerLink="/zakat-calculator" class="link link-hover block"
         >যাকাত ক্যালকুলেটর</a
       >
-      <a routerLink="/zakat-masala" class="link link-hover">যাকাত মাসআলা</a>
-      <h6 class="footer-title">Social</h6>
+      <a routerLink="/zakat-masala" class="link link-hover block"
+        >যাকাত মাসআলা</a
+      >
+      <h6 class="mb-2 font-bold uppercase opacity-90">Social</h6>
       <div class="grid grid-flow-col gap-4">
         <a href="https://www.facebook.com/profile.php?id=61554245320569">
           <svg
