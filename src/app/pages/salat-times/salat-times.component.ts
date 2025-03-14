@@ -18,8 +18,8 @@ export class SalatTimesComponent {
   private prayTimes = inject(PrayTimesService);
 
   model: any = {
-    latitude: 23.75,
-    longitude: 90.383333,
+    latitude: 23.75,  // Default latitude (Dhaka, Bangladesh)
+    longitude: 90.383333, // Default longitude (Dhaka, Bangladesh)
   };
 
   timezone: number = 6;
@@ -41,7 +41,11 @@ export class SalatTimesComponent {
   ngOnInit(): void {
     if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
       this.toastService.showMessage('warn', 'Warning', 'Location services require HTTPS.');
+      return;
     }
+
+    // ✅ Automatically fetch location when page loads
+    this.getPreciseLocation();
   }
 
   onInputFocus(): void {
