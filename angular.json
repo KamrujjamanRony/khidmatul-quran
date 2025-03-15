@@ -13,7 +13,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": ["@canvasjs/charts"],
+            "allowedCommonJsDependencies": [
+              "@canvasjs/charts",
+              "core-js",
+              "raf",
+              "rgbcolor",
+              "html2canvas-pro",
+              "html2canvas",
+              "canvg",
+              "jspdf"
+            ],
             "outputPath": "www",
             "index": "src/index.html",
             "browser": "src/main.ts",

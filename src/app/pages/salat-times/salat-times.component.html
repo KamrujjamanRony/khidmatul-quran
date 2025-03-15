@@ -135,7 +135,7 @@
                   }
                   <h1 *ngIf="locationName">
                     Address :
-                    <span class="font-bold text-lg">{{
+                    <span class="font-bold">{{
                       locationName()?.display_name
                     }}</span>
                   </h1>
@@ -203,94 +203,98 @@
                   </button>
                 </div>
                 <div class="flex flex-col overflow-x-auto justify-center">
-                  <div class="sm:-mx-2 lg:-mx-8 mx-auto w-full">
-                    <div
-                      class="inline-block py-2 sm:px-1 md:px-2 lg:px-8 w-full"
-                    >
-                      <div class="overflow-x-auto h-[80vh] flex justify-center">
-                        <table class="text-md font-light text-center">
-                          <thead
-                            class="border-b font-medium text-lg sticky top-0 z-10"
-                            style="
-                              background: linear-gradient(
-                                to right,
-                                #267402,
-                                #3fa027,
-                                #1a5c46
-                              );
-                            "
-                          >
-                            <tr>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                তারিখ
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                সাহরী
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                ফজর
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                সূর্যোদয়
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                যুহর
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                আসর
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                মাগরিব
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                ইশা
-                              </th>
-                              <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
-                                মধ্যরাত
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody class="text-lg lg:text-2xl">
-                            @for (day of timetableData(); track $index) {
-
-                            <tr
-                              class="border-b"
-                              [ngClass]="{ 'today-row': isToday(day) }"
+                  <div class="inline-block py-2 sm:px-0 md:px-2 lg:px-8 w-full">
+                    <div class="overflow-x-auto h-[80vh] flex justify-center">
+                      <table class="text-md font-light text-center">
+                        <thead
+                          class="border-b font-medium text-lg sticky top-0 z-10"
+                          style="
+                            background: linear-gradient(
+                              to right,
+                              #267402,
+                              #3fa027,
+                              #1a5c46
+                            );
+                          "
+                        >
+                          <tr>
+                            <th
+                              scope="col"
+                              class="px-1 pl-36 !xs:pl-10 md:px-2 lg:px-5 py-4"
                             >
-                              <td
-                                class="whitespace-nowrap px-1 md:px-2 py-4 font-medium"
-                              >
-                                {{ day.day | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.Shari | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.fajrT | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.sunrise | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.dhuhrT | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.asr | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.maghrib | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.isha | bengaliNumber }}
-                              </td>
-                              <td class="whitespace-nowrap px-1 md:px-2 py-4">
-                                {{ day.midnight | bengaliNumber }}
-                              </td>
-                            </tr>
-                            }
-                          </tbody>
-                        </table>
-                      </div>
+                              তারিখ
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              সাহরী
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              ফজর
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              সূর্যোদয়
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              যুহর
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              আসর
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              মাগরিব
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5 py-4">
+                              ইশা
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-1 pr-2 md:px-2 lg:px-5 py-4"
+                            >
+                              মধ্যরাত
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-lg lg:text-2xl">
+                          @for (day of timetableData(); track $index) {
+
+                          <tr
+                            class="border-b"
+                            [ngClass]="{ 'today-row': isToday(day) }"
+                          >
+                            <td
+                              class="whitespace-nowrap pl-36 !xs:pl-10 px-1 md:px-2 py-4 font-medium"
+                            >
+                              {{ day.day | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.Shari | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.fajrT | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.sunrise | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.dhuhrT | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.asr | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.maghrib | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2 py-4">
+                              {{ day.isha | bengaliNumber }}
+                            </td>
+                            <td
+                              class="whitespace-nowrap pr-2 px-1 md:px-2 py-4"
+                            >
+                              {{ day.midnight | bengaliNumber }}
+                            </td>
+                          </tr>
+                          }
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>

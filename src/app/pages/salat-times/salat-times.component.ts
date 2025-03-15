@@ -167,7 +167,7 @@ export class SalatTimesComponent {
       .then((response) => {
         if (response.data.display_name) {
           this.locationName.set(response.data);
-          this.toastService.showMessage('info', 'Success', 'Location updated successfully');
+          this.toastService.showMessage('info', 'Success', 'লোকেশন আপডেড হয়েছে!');
         } else {
           this.toastService.showMessage('error', 'Error', 'Location not found');
         }
