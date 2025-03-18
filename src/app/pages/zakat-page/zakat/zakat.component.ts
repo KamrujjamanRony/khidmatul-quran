@@ -3,12 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { ZakatService } from '../../../features/services/zakat.service';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { BanglaFixedPipe } from '../../../features/pipe/bangla-fixed.pipe';
+import { LoaderComponent } from "../../../components/loader/loader.component";
 
 @Component({
   selector: 'app-zakat',
   templateUrl: './zakat.component.html',
   styleUrl: './zakat.component.css',
-  imports: [FormsModule, BengaliDatePipe, BanglaFixedPipe]
+  imports: [FormsModule, BengaliDatePipe, BanglaFixedPipe, LoaderComponent]
 })
 export class ZakatComponent {
   forayez = signal<any>(null);
