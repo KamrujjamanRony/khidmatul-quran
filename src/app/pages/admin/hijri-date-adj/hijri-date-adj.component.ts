@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { HijriDateAdjService } from '../../../features/services/hijri-date-adj.service';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -7,16 +7,17 @@ import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/
 import { AuthService } from '../../../features/services/auth.service';
 
 @Component({
-    selector: 'app-hijri-date-adj',
-    templateUrl: './hijri-date-adj.component.html',
-    styleUrl: './hijri-date-adj.component.css',
-    imports: [FormsModule, CoverComponent, ConfirmModalComponent]
+  selector: 'app-hijri-date-adj',
+  templateUrl: './hijri-date-adj.component.html',
+  styleUrl: './hijri-date-adj.component.css',
+  imports: [FormsModule, CoverComponent, ConfirmModalComponent]
 })
 export class HijriDateAdjComponent {
   authService = inject(AuthService);
+  cdRef = inject(ChangeDetectorRef);
+  HijriDateAdjService = inject(HijriDateAdjService);
   user: any;
   hijriDate: any;
-  HijriDateAdjService = inject(HijriDateAdjService);
   confirmModal: boolean = false;
   private updateSubscription?: Subscription;
 
@@ -45,6 +46,8 @@ export class HijriDateAdjComponent {
     this.user = this.authService.getUser();
     this.HijriDateAdjService.getHijriDateAdj().subscribe(Response => {
       this.hijriDate = Response;
+      // Manually triggering change detection
+      this.cdRef.markForCheck();
     })
   }
 

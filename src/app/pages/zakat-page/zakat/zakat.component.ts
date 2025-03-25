@@ -4,6 +4,7 @@ import { ZakatService } from '../../../features/services/zakat.service';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { BanglaFixedPipe } from '../../../features/pipe/bangla-fixed.pipe';
 import { LoaderComponent } from "../../../components/loader/loader.component";
+import { JsonDataService } from '../../../features/services/json-data.service';
 
 @Component({
   selector: 'app-zakat',
@@ -13,16 +14,23 @@ import { LoaderComponent } from "../../../components/loader/loader.component";
 })
 export class ZakatComponent {
   forayez = signal<any>(null);
+  jsonDataService = inject(JsonDataService);
   ZakatService = inject(ZakatService);
   asset: string = 'ভরি';
 
   constructor() { }
 
   ngOnInit(): void {
-    this.ZakatService.getZakat().subscribe(Response => {
-      this.forayez.set(Response);
-      // console.log(this.forayez())
-    })
+    this.jsonDataService.getZakatData().subscribe(data => {
+      if (data?.gold22k) {
+        this.forayez.set(data);
+      } else {
+        this.ZakatService.getZakat().subscribe(Response => {
+          this.forayez.set(Response);
+        })
+      }
+      console.log(this.forayez())
+    });
   }
 
 }

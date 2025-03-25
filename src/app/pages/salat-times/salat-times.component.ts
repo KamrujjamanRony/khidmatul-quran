@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ScrollComponent } from "../../components/scroll/scroll.component";
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 import { ToastService } from '../../components/primeng/toast/toast.service';
+import { SharedSalatTimeService } from '../../features/services/shared-salat-time.service';
 
 @Component({
   selector: 'app-salat-times',
@@ -16,6 +17,7 @@ import { ToastService } from '../../components/primeng/toast/toast.service';
 export class SalatTimesComponent {
   private toastService = inject(ToastService);
   private prayTimes = inject(PrayTimesService);
+  private sharedSalatTimeService = inject(SharedSalatTimeService);
 
   model: any = {
     latitude: 23.75,  // Default latitude (Dhaka, Bangladesh)
@@ -33,6 +35,7 @@ export class SalatTimesComponent {
   locationName = signal<any>(null);
   errorText = signal<any>(null);
   showLocation = signal<boolean>(false);
+  today = new Date();
 
   constructor() {
     this.update();
@@ -65,11 +68,13 @@ export class SalatTimesComponent {
     const title = this.monthFullName(month) + " " + year;
     this.tableTitle.set(title);
     this.makeTable(year, month);
+    const todaySalatTime = this.timetableData()[this.today.getDate() - 1];
+    console.log(todaySalatTime.maghrib);
+    this.sharedSalatTimeService.setTodaySalatTime(todaySalatTime);
   }
 
   isToday(day: any): boolean {
-    const today = new Date();
-    return day && day.day == today.getDate() && today.getMonth() === this.currentDate.getMonth();
+    return day && day.day == this.today.getDate() && this.today.getMonth() === this.currentDate.getMonth();
   }
 
   makeTable(year: number, month: number) {

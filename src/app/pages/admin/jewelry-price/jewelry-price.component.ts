@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { ZakatService } from '../../../features/services/zakat.service';
 import { CoverComponent } from "../../../components/shared/cover/cover.component";
 import { ConfirmModalComponent } from "../../../components/shared/confirm-modal/confirm-modal.component";
@@ -17,6 +17,7 @@ export class JewelryPriceComponent {
   jewelryPrice: any;
   ZakatService = inject(ZakatService);
   authService = inject(AuthService);
+  cdRef = inject(ChangeDetectorRef);
   router = inject(Router);
   user: any;
   date: any = new Date();
@@ -50,6 +51,8 @@ export class JewelryPriceComponent {
     this.ZakatService.getZakat().subscribe(Response => {
       this.jewelryPrice = Response;
       this.jewelryPrice.updateDate = `${this.date.getDate()}/${this.date.getMonth() > 9 ? this.date.getMonth() + 1 : "0" + (this.date.getMonth() + 1)}/${this.date.getFullYear()}`;
+      // Manually triggering change detection
+      this.cdRef.markForCheck();
     })
   }
 
