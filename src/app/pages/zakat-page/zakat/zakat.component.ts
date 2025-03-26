@@ -21,16 +21,16 @@ export class ZakatComponent {
   constructor() { }
 
   ngOnInit(): void {
-    this.jsonDataService.getZakatData().subscribe(data => {
-      if (data?.gold22k) {
-        this.forayez.set(data);
-      } else {
-        this.ZakatService.getZakat().subscribe(Response => {
-          this.forayez.set(Response);
-        })
-      }
-      console.log(this.forayez())
-    });
+    // this.jsonDataService.getZakatData().subscribe(data => {
+    //   if (data?.gold22k) {
+    //     this.forayez.set(data);
+    //   } else {
+    this.ZakatService.getZakat().subscribe(Response => {
+      this.forayez.set(Response);
+    })
+    //   }
+    //   console.log(this.forayez())
+    // });
   }
 
 }
