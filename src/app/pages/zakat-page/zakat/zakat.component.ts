@@ -29,7 +29,6 @@ export class ZakatComponent {
           this.forayez.set(Response);
         })
       }
-      console.log(this.forayez())
     });
   }
 

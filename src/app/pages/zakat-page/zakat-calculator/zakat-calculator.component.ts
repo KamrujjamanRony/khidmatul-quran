@@ -22,6 +22,7 @@ import { DateUtilService } from '../../../features/services/date-util.service';
 export class ZakatCalculatorComponent {
   ZakatService = inject(ZakatService);
   dateUtil = inject(DateUtilService);
+  jsonDataService = inject(JsonDataService);
   // HijriDateAdjService = inject(HijriDateAdjService);
   dataService = inject(JsonDataService);
   datePipe: DatePipe = new DatePipe('en-US');
@@ -57,8 +58,14 @@ export class ZakatCalculatorComponent {
   }
 
   ngOnInit(): void {
-    this.ZakatService.getZakat().subscribe(Response => {
-      this.forayez.set(Response);
+    this.jsonDataService.getZakatData().subscribe(data => {
+      if (data?.gold22k) {
+        this.forayez.set(data);
+      } else {
+        this.ZakatService.getZakat().subscribe(Response => {
+          this.forayez.set(Response);
+        })
+      }
     });
     this.dataService.getHijriDateAdjData().subscribe(data => {
       const dateAdj = data?.dateAdj | 0;
