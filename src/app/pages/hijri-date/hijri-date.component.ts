@@ -3,10 +3,11 @@ import { Observable } from 'rxjs';
 import { SunsetService } from '../../features/services/sunset.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HijriDateAdjService } from '../../features/services/hijri-date-adj.service';
+// import { HijriDateAdjService } from '../../features/services/hijri-date-adj.service';
 import { LoaderComponent } from "../../components/loader/loader.component";
 import { DateUtilService } from '../../features/services/date-util.service';
 import { BanglaPipe } from "../../features/pipe/bangla.pipe";
+import { JsonDataService } from '../../features/services/json-data.service';
 
 @Component({
   selector: 'app-hijri-date',
@@ -15,7 +16,8 @@ import { BanglaPipe } from "../../features/pipe/bangla.pipe";
   imports: [CommonModule, FormsModule, LoaderComponent, BanglaPipe]
 })
 export class HijriDateComponent {
-  HijriDateAdjService = inject(HijriDateAdjService);
+  // HijriDateAdjService = inject(HijriDateAdjService);
+  dataService = inject(JsonDataService);
   dateUtil = inject(DateUtilService);
   sunsetService = inject(SunsetService);
   isSunset$!: Observable<boolean>;
@@ -55,15 +57,21 @@ export class HijriDateComponent {
     //   this.gregorianMonth = data?.arabic13[1];
     //   this.isLoading.set(false);
     // })
-    this.dateUtil.getHijriDate(); // Compute Hijri details
-    this.gregorianDate = this.dateUtil.getGregorianDate();
-    this.hijriDate = this.dateUtil.getHijriDate();
-    this.hijriDate && this.isLoading.set(false);
-    this.hijriNextDay = this.dateUtil.getHijriNextDay();
-    this.banglaDate = this.dateUtil.getBanglaDate();
-    this.arabic13 = this.dateUtil.hijri13;
-    this.arabic14 = this.dateUtil.hijri14;
-    this.arabic15 = this.dateUtil.hijri15;
+
+
+
+    this.dataService.getHijriDateAdjData().subscribe(data => {
+      const dateAdj = data?.dateAdj | 0;
+      this.gregorianDate = this.dateUtil.getGregorianDate();
+      this.hijriDate = this.dateUtil.getHijriDate(dateAdj);
+      this.hijriDate && this.isLoading.set(false);
+      this.hijriNextDay = this.dateUtil.getHijriNextDay(dateAdj);
+      this.banglaDate = this.dateUtil.getBanglaDate();
+      this.arabic13 = this.dateUtil.hijri13;
+      this.arabic14 = this.dateUtil.hijri14;
+      this.arabic15 = this.dateUtil.hijri15;
+    })
+
 
 
     this.today = new Date();

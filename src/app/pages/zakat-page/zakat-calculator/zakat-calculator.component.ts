@@ -8,8 +8,10 @@ import html2canvas from 'html2canvas-pro';
 import { HttpClient } from '@angular/common/http';
 import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { ZakatService } from '../../../features/services/zakat.service';
-import { HijriDateAdjService } from '../../../features/services/hijri-date-adj.service';
+// import { HijriDateAdjService } from '../../../features/services/hijri-date-adj.service';
 import { BanglaFixedPipe } from "../../../features/pipe/bangla-fixed.pipe";
+import { JsonDataService } from '../../../features/services/json-data.service';
+import { DateUtilService } from '../../../features/services/date-util.service';
 
 @Component({
   selector: 'app-zakat-calculator',
@@ -19,7 +21,9 @@ import { BanglaFixedPipe } from "../../../features/pipe/bangla-fixed.pipe";
 })
 export class ZakatCalculatorComponent {
   ZakatService = inject(ZakatService);
-  HijriDateAdjService = inject(HijriDateAdjService);
+  dateUtil = inject(DateUtilService);
+  // HijriDateAdjService = inject(HijriDateAdjService);
+  dataService = inject(JsonDataService);
   datePipe: DatePipe = new DatePipe('en-US');
   forayez = signal<any>(null);
   model: any;
@@ -56,9 +60,13 @@ export class ZakatCalculatorComponent {
     this.ZakatService.getZakat().subscribe(Response => {
       this.forayez.set(Response);
     });
-    this.HijriDateAdjService.getHijriDate().subscribe(data => {
-      this.hijriDate.set(data?.hijriDate);
-    });
+    this.dataService.getHijriDateAdjData().subscribe(data => {
+      const dateAdj = data?.dateAdj | 0;
+      this.hijriDate.set(this.dateUtil.getHijriDate(dateAdj));
+    })
+    // this.HijriDateAdjService.getHijriDate().subscribe(data => {
+    //   this.hijriDate.set(data?.hijriDate);
+    // });
     this.today = this.datePipe.transform(new Date(), 'dd/MM/yyyy');
   }
 

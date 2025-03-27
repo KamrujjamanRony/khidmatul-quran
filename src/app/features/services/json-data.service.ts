@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -23,10 +23,18 @@ export class JsonDataService {
   }
 
   getHijriDateAdjData(): Observable<any> {
-    return this.http.get<any>(this.hijriDateAdjUrl);
+    const headers = new HttpHeaders()
+      .set('Cache-Control', 'no-cache, no-store, must-revalidate')
+      .set('Pragma', 'no-cache')
+      .set('Expires', '0');
+    return this.http.get<any>(this.hijriDateAdjUrl, { headers });
   }
 
   getZakatData(): Observable<any> {
-    return this.http.get<any>(this.zakatDataUrl);
+    const headers = new HttpHeaders()
+      .set('Cache-Control', 'no-cache, no-store, must-revalidate')
+      .set('Pragma', 'no-cache')
+      .set('Expires', '0');
+    return this.http.get<any>(this.zakatDataUrl, { headers });
   }
 }

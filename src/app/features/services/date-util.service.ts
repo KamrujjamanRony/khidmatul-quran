@@ -1,42 +1,24 @@
-import { inject, Injectable } from '@angular/core';
-import { JsonDataService } from './json-data.service';
+import { Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DateUtilService {
-    dataService = inject(JsonDataService);
     hijri13!: Date;
     hijri14!: Date;
     hijri15!: Date;
-    jsonData = new JsonDataService;
-    dateAdj!: any;
-
-    // constructor() {
-    //     this.getDateAdjData();
-    // }
-
-    // getDateAdjData() {
-    //     this.dataService.getHijriDateAdjData().subscribe(data => {
-    //         this.dateAdj = data?.dateAdj | 0;
-    //         this.getHijriDate()
-    //         console.log(data)
-    //     })
-    // }
 
     getGregorianDate(): string {
-        console.log(this.jsonData)
         const today = new Date();
         return today.toLocaleDateString('bn-BD', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' খ্রিস্টাব্দ';
     }
 
-    getHijriDate(): string {
-        console.log(this.jsonData)
+    getHijriDate(dayAdj: number): string {
         const today: any = new Date();
-        today.setDate(today.getDate() + 0);
-        console.log(this.dateAdj)
+        today.setDate(today.getDate() + dayAdj);
         const firstDay: any = new Date();
         const hijriDate = this.gregorianToHijri(today);
+        console.log(hijriDate)
         firstDay.setDate(firstDay.getDate() - hijriDate.day + 13);
         this.hijri13 = firstDay.toLocaleDateString('bn-BD', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         // console.log("hijri 13th day: " + this.hijri13);
@@ -49,26 +31,51 @@ export class DateUtilService {
         return `${hijriDate.day}, ${hijriDate.month}, ${hijriDate.year} হিঃ`;
     }
 
-    getHijriNextDay(): string {
+    getHijriNextDay(dayAdj: number): string {
         const today = new Date();
-        today.setDate(today.getDate() + 1); // Add 1 day
+        today.setDate(today.getDate() + 1 + dayAdj); // Add 1 day
         const hijriDate = this.gregorianToHijri(today);
         return `${hijriDate.day}, ${hijriDate.month}, ${hijriDate.year} হিঃ`;
     }
 
     private gregorianToHijri(date: Date) {
-        const hijriStart = new Date(622, 6, 16);
-        const diff = date.getTime() - hijriStart.getTime();
-        const oneHijriYear = 354.367 * 24 * 60 * 60 * 1000;
-        const hijriYear = 1 + Math.floor(diff / oneHijriYear);
-        const hijriDay = 1 + Math.floor((diff % oneHijriYear) / (24 * 60 * 60 * 1000));
-        const hijriMonthIndex = Math.floor(hijriDay / 29.5) + 1;
-        return { year: hijriYear, month: this.getHijriMonth(hijriMonthIndex), monthIndex: hijriMonthIndex, day: hijriDay % 30 };
+        const gd = date.getDate();
+        const gm = date.getMonth() + 1;
+        const gy = date.getFullYear();
+
+        let jd = this.gregorianToJulianDay(gy, gm, gd);
+
+        // Calculate Hijri date from Julian day
+        jd = Math.floor(jd);
+        let l = jd - 1948440 + 10632;
+        let n = Math.floor((l - 1) / 10631);
+        l = l - 10631 * n + 354;
+        let j = (Math.floor((10985 - l) / 5316)) * (Math.floor((50 * l) / 17719)) + (Math.floor(l / 5670)) * (Math.floor((43 * l) / 15238));
+        l = l - (Math.floor((30 - j) / 15)) * (Math.floor((17719 * j) / 50)) - (Math.floor(j / 16)) * (Math.floor((15238 * j) / 43)) + 29;
+
+        let m = Math.floor((24 * l) / 709);
+        let d = l - Math.floor((709 * m) / 24);
+        let y = 30 * n + j - 30;
+
+        return {
+            year: y,
+            month: this.getHijriMonth(m - 1),
+            monthIndex: m - 1,
+            day: d
+        };
+    }
+
+    private gregorianToJulianDay(gy: number, gm: number, gd: number) {
+        let jd = (1461 * (gy + 4800 + Math.floor((gm - 14) / 12))) / 4;
+        jd += (367 * (gm - 2 - 12 * Math.floor((gm - 14) / 12))) / 12;
+        jd -= (3 * Math.floor((gy + 4900 + Math.floor((gm - 14) / 12)) / 100)) / 4;
+        jd += gd - 32075;
+        return jd;
     }
 
     private getHijriMonth(index: number): string {
         const months = ['মুহাররম', 'সফর', 'রবিউল আউয়াল', 'রবিউস সানি', 'জমাদিউল আউয়াল', 'জমাদিউস সানি', 'রজব', 'শাবান', 'রমজান', 'শাওয়াল', 'জিলকদ', 'জিলহজ'];
-        return months[index - 1] || 'রমজান';
+        return months[index] || 'রমজান';
     }
 
 

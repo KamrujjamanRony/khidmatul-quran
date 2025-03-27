@@ -82,6 +82,7 @@
 
 
 
+
                   }}} @else
                   {{{model.gold_22 * forayez()?.gold22k * 0.8 | banglaFixed}}}
                 </span>
@@ -104,6 +105,7 @@
                   class="label-text text-2xl lg:text-3xl w-[120px] text-black ml-2"
                 >
                   @if(asset() === "ভরি"){{{model.gold_21 * forayez()?.gold21k * 0.8 * 11.664 | banglaFixed
+
 
 
 
@@ -138,6 +140,7 @@
 
 
 
+
                   }}} @else
                   {{{model.gold_18 * forayez()?.gold18k * 0.8 | banglaFixed}}}
                 </span>
@@ -164,6 +167,7 @@
 
 
 
+
                   }}} @else
                   {{{model.gold_td * forayez()?.goldTd * 0.8 | banglaFixed}}}
                 </span>
@@ -174,6 +178,7 @@
             </div>
             <h1 class="text-center text-2xl lg:text-3xl text-primary pt-5">
               জুয়েলারি স্বর্ণের মূল্য @if(asset() === "ভরি"){{{totalGold() * 11.664 | banglaFixed
+
 
 
 
@@ -225,8 +230,10 @@
 
 
 
+
                   }}} @else
                   {{{model.silver_22 * forayez()?.silver22k * 0.8 | banglaFixed
+
 
 
 
@@ -256,8 +263,10 @@
 
 
 
+
                   }}} @else
                   {{{model.silver_21 * forayez()?.silver21k * 0.8 | banglaFixed
+
 
 
 
@@ -287,8 +296,10 @@
 
 
 
+
                   }}} @else
                   {{{model.silver_18 * forayez()?.silver18k * 0.8 | banglaFixed
+
 
 
 
@@ -318,8 +329,10 @@
 
 
 
+
                   }}} @else
                   {{{model.silver_td * forayez()?.silverTd * 0.8 | banglaFixed
+
 
 
 
@@ -333,6 +346,7 @@
             </div>
             <h1 class="text-center text-2xl lg:text-3xl text-primary pt-5">
               জুয়েলারি রূপার মূল্য @if(asset() === "ভরি"){{{totalSilver() * 11.664 | banglaFixed
+
 
 
 
@@ -555,7 +569,7 @@
         >
           <h1 class="text-center text-2xl lg:text-3xl">
             যাকাত হিসাবের তারিখ {{ today | bengaliNumber }} ইং - ({{
-              hijriDate()
+              hijriDate() | bengaliNumber
             }})
           </h1>
 
@@ -568,6 +582,7 @@
                   <td class="text-2xl lg:text-3xl">মোট জুয়েলারি মূল্যঃ</td>
                   <td class="text-2xl lg:text-3xl">
                     @if(asset() === "ভরি"){{{(totalGold() + totalSilver()) * 11.664 | banglaFixed
+
 
 
 
@@ -658,10 +673,12 @@
 
 
 
+
             }}} @else
             {{{(totalGold() + totalSilver()) + model.totalCashTk + model.totalPawnaTk +model.businessPurposes +
                         model.businessDue +
                         model.businessCash + model.bankAccount + model.mobileBanking - model.debt | banglaFixed
+
 
 
 
@@ -674,10 +691,12 @@
 
 
 
+
             }}} @else
             {{{((totalGold() + totalSilver()) + model.totalCashTk + model.totalPawnaTk +model.businessPurposes +
                         model.businessDue +
                         model.businessCash + model.bankAccount + model.mobileBanking - model.debt) / 40 | banglaFixed
+
 
 
 
