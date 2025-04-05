@@ -71,7 +71,7 @@ export class HijriDateAdjComponent {
     this.updateSubscription = this.HijriDateAdjService.updateHijriDateAdj(formData)
       .subscribe({
         next: (response) => {
-          console.log(response)
+          // console.log(response)
           // toast
           this.confirmModal = true;
         },

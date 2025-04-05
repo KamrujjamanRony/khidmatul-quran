@@ -112,34 +112,42 @@ export const routes: Routes = [
       {
         path: 'jewelry-price',
         loadComponent: () => import('./pages/admin/jewelry-price/jewelry-price.component').then(m => m.JewelryPriceComponent),
+        data: { preload: true },
       },
       {
         path: 'hijri-date-adj',
         loadComponent: () => import('./pages/admin/hijri-date-adj/hijri-date-adj.component').then(m => m.HijriDateAdjComponent),
+        data: { preload: true },
       },
       {
         path: 'boyan-list',
         loadComponent: () => import('./pages/admin/boyan-list/boyan-list.component').then(m => m.BoyanListComponent),
+        data: { preload: true },
       },
       {
         path: 'boyan-list/add',
         loadComponent: () => import('./pages/admin/boyan-add/boyan-add.component').then(m => m.BoyanAddComponent),
+        data: { preload: true },
       },
       {
         path: 'boyan-list/edit/:id',
         loadComponent: () => import('./pages/admin/boyan-edit/boyan-edit.component').then(m => m.BoyanEditComponent),
+        data: { preload: true },
       },
       {
         path: 'notice-list',
         loadComponent: () => import('./pages/admin/notice-list/notice-list.component').then(m => m.NoticeListComponent),
+        data: { preload: true },
       },
       {
         path: 'notice-list/add',
         loadComponent: () => import('./pages/admin/notice-add/notice-add.component').then(m => m.NoticeAddComponent),
+        data: { preload: true },
       },
       {
         path: 'notice-list/edit/:id',
         loadComponent: () => import('./pages/admin/notice-edit/notice-edit.component').then(m => m.NoticeEditComponent),
+        data: { preload: true },
       },
     ]
   },

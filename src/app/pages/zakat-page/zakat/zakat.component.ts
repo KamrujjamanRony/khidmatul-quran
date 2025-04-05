@@ -5,12 +5,13 @@ import { BengaliDatePipe } from "../../../features/pipe/bengali-date.pipe";
 import { BanglaFixedPipe } from '../../../features/pipe/bangla-fixed.pipe';
 import { LoaderComponent } from "../../../components/loader/loader.component";
 import { JsonDataService } from '../../../features/services/json-data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-zakat',
   templateUrl: './zakat.component.html',
   styleUrl: './zakat.component.css',
-  imports: [FormsModule, BengaliDatePipe, BanglaFixedPipe, LoaderComponent]
+  imports: [FormsModule, BengaliDatePipe, BanglaFixedPipe, LoaderComponent, CommonModule]
 })
 export class ZakatComponent {
   forayez = signal<any>(null);

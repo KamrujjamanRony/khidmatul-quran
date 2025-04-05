@@ -31,7 +31,7 @@
   </div>
 
   <p class="text-center text-blue-700 font-bold text-2xl">
-    সর্বশেষ আপডেট : {{ forayez()?.updateDate | bengaliDate }}
+    সর্বশেষ আপডেট : {{ forayez().updateDate | bengaliDate }}
   </p>
 
   <div
@@ -60,7 +60,7 @@
           <tr class="bg-yellow-200 text-black !text-xl !lg:text-2xl">
             <th>২২ ক্যারেট</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.gold22k * 11.664 | banglaFixed
+              @if(asset === "ভরি" && forayez()){{{forayez()?.gold22k * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
@@ -69,10 +69,56 @@
 
 
 
-              }}} @else {{{forayez()?.gold22k | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold22k | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.gold22k * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().gold22k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
@@ -81,14 +127,60 @@
 
 
 
-              }}} @else {{{forayez()?.gold22k * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold22k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
           <!-- row 2 -->
           <tr class="bg-yellow-300 text-black !text-xl !lg:text-2xl">
             <th>২১ ক্যারেট</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.gold21k * 11.664 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().gold21k * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
@@ -97,10 +189,56 @@
 
 
 
-              }}} @else {{{forayez()?.gold21k | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold21k | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.gold21k * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().gold21k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
@@ -109,14 +247,60 @@
 
 
 
-              }}} @else {{{forayez()?.gold21k * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold21k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
           <!-- row 3 -->
           <tr class="bg-yellow-200 text-black !text-xl !lg:text-2xl">
             <th>১৮ ক্যারেট</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.gold18k * 11.664 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().gold18k * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
@@ -125,10 +309,56 @@
 
 
 
-              }}} @else {{{forayez()?.gold18k | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold18k | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.gold18k * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().gold18k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
@@ -137,7 +367,53 @@
 
 
 
-              }}} @else {{{forayez()?.gold18k * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold18k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
           <!-- row 4 -->
@@ -146,11 +422,13 @@
           >
             <th>সনাতনী</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.goldTd * 11.664 | banglaFixed}}}
-              @else {{{forayez()?.goldTd | banglaFixed}}}/-
+              @if(asset === "ভরি"){{{forayez().goldTd * 11.664 | number: "1.1-2" | banglaFixed
+
+
+              }}} @else {{{forayez().goldTd | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.goldTd * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().goldTd * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
@@ -159,7 +437,53 @@
 
 
 
-              }}} @else {{{forayez()?.goldTd * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().goldTd * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
         </tbody>
@@ -193,7 +517,7 @@
           <tr class="bg-gray-200 text-black !text-xl !lg:text-2xl">
             <th>২২ ক্যারেট</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silver22k * 11.664 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silver22k * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
@@ -228,10 +552,56 @@
 
 
 
-              }}} @else {{{forayez()?.silver22k | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver22k | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silver22k * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silver22k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
@@ -266,47 +636,277 @@
 
 
 
-              }}} @else {{{forayez()?.silver22k * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver22k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
           <!-- row 2 -->
           <tr class="bg-gray-300 text-black !text-xl !lg:text-2xl">
             <th>২১ ক্যারেট</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silver21k * 11.664 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silver21k * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
 
-              }}} @else {{{forayez()?.silver21k | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver21k | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silver21k * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silver21k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
 
-              }}} @else {{{forayez()?.silver21k * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver21k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
           <!-- row 3 -->
           <tr class="bg-gray-200 text-black !text-xl !lg:text-2xl">
             <th>১৮ ক্যারেট</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silver18k * 11.664 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silver18k * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
 
-              }}} @else {{{forayez()?.silver18k | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver18k | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silver18k * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silver18k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
 
-              }}} @else {{{forayez()?.silver18k * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver18k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
           <!-- row 4 -->
@@ -315,20 +915,112 @@
           >
             <th>সনাতনী</th>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silverTd * 11.664 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silverTd * 11.664 | number: "1.1-2" | banglaFixed
 
 
 
 
-              }}} @else {{{forayez()?.silverTd | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silverTd | number: "1.1-2" | banglaFixed}}}/-
             </td>
             <td>
-              @if(asset === "ভরি"){{{forayez()?.silverTd * 11.664 * 0.8 | banglaFixed
+              @if(asset === "ভরি"){{{forayez().silverTd * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
 
 
 
 
-              }}} @else {{{forayez()?.silverTd * 0.8 | banglaFixed}}}/-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silverTd * 0.8 | number: "1.1-2" | banglaFixed}}}/-
             </td>
           </tr>
         </tbody>

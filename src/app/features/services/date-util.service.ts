@@ -18,7 +18,7 @@ export class DateUtilService {
         today.setDate(today.getDate() + dayAdj);
         const firstDay: any = new Date();
         const hijriDate = this.gregorianToHijri(today);
-        console.log(hijriDate)
+        // console.log(hijriDate)
         firstDay.setDate(firstDay.getDate() - hijriDate.day + 13);
         this.hijri13 = firstDay.toLocaleDateString('bn-BD', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         // console.log("hijri 13th day: " + this.hijri13);

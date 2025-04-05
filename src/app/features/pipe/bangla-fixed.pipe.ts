@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BanglaFixedPipe implements PipeTransform {
 
-    transform(value: number): string {
+    transform(value: any): string {
         const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
-        const fixedValue = value?.toFixed(2);
+        const fixedValue = value;
         const numStr = fixedValue.toString();
         let banglaStr = '';
         for (let i = 0; i < numStr.length; i++) {

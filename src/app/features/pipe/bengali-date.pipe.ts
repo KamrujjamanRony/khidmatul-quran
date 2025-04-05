@@ -29,7 +29,7 @@ export class BengaliDatePipe implements PipeTransform {
   };
 
   transform(value: string): string {
-    console.log(value)
+    // console.log(value)
     const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
     let bengaliDate: string = value;
