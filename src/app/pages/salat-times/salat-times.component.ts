@@ -7,12 +7,14 @@ import { ScrollComponent } from "../../components/scroll/scroll.component";
 import { BengaliNumberPipe } from "../../features/pipe/bengali-number.pipe";
 import { ToastService } from '../../components/primeng/toast/toast.service';
 import { SharedSalatTimeService } from '../../features/services/shared-salat-time.service';
+import { BanglaPipe } from "../../features/pipe/bangla.pipe";
+import { b } from '@angular/core/navigation_types.d-u4EOrrdZ';
 
 @Component({
   selector: 'app-salat-times',
   templateUrl: './salat-times.component.html',
   styleUrl: './salat-times.component.css',
-  imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe]
+  imports: [CommonModule, FormsModule, ScrollComponent, BengaliNumberPipe, BanglaPipe]
 })
 export class SalatTimesComponent {
   private toastService = inject(ToastService);
@@ -20,8 +22,8 @@ export class SalatTimesComponent {
   private sharedSalatTimeService = inject(SharedSalatTimeService);
 
   model: any = {
-    latitude: 23.75,  // Default latitude (Dhaka, Bangladesh)
-    longitude: 90.383333, // Default longitude (Dhaka, Bangladesh)
+    latitude: 23.75,
+    longitude: 90.383333,
   };
 
   timezone: number = 6;
@@ -36,19 +38,41 @@ export class SalatTimesComponent {
   errorText = signal<any>(null);
   showLocation = signal<boolean>(false);
   today = new Date();
+  todaySalatTime: any;
+  isShow: boolean = true;
 
   constructor() {
+    const savedLocation = localStorage.getItem('salatLocation');
+    if (savedLocation) {
+      const parsed = JSON.parse(savedLocation);
+      this.model.latitude = parsed.latitude;
+      this.model.longitude = parsed.longitude;
+      if (parsed.locationName) {
+        this.locationName.set(parsed.locationName);
+      }
+    } else {
+      this.getPreciseLocation();
+    }
     this.update();
   }
 
   ngOnInit(): void {
-    if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-      this.toastService.showMessage('warn', 'Warning', 'Location services require HTTPS.');
-      return;
+    const savedLocation = localStorage.getItem('salatLocation');
+    if (savedLocation) {
+      const parsed = JSON.parse(savedLocation);
+      this.model.latitude = parsed.latitude;
+      this.model.longitude = parsed.longitude;
+      if (parsed.locationName) {
+        this.locationName.set(parsed.locationName);
+      }
+    } else {
+      if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+        this.toastService.showMessage('warn', 'Warning', 'Location services require HTTPS.');
+        return;
+      }
+      this.getPreciseLocation();
     }
-
-    // ✅ Automatically fetch location when page loads
-    this.getPreciseLocation();
+    this.update();
   }
 
   onInputFocus(): void {
@@ -57,6 +81,7 @@ export class SalatTimesComponent {
 
   onFormSubmit(): void {
     this.update();
+    this.saveLocation();
     this.getLocationName(this.model.latitude, this.model.longitude);
   }
 
@@ -68,9 +93,8 @@ export class SalatTimesComponent {
     const title = this.monthFullName(month) + " " + year;
     this.tableTitle.set(title);
     this.makeTable(year, month);
-    const todaySalatTime = this.timetableData()[this.today.getDate() - 1];
-    console.log(todaySalatTime.maghrib);
-    this.sharedSalatTimeService.setTodaySalatTime(todaySalatTime);
+    this.todaySalatTime = this.timetableData()[this.today.getDate() - 1];
+    this.sharedSalatTimeService.setTodaySalatTime(this.todaySalatTime);
   }
 
   isToday(day: any): boolean {
@@ -79,7 +103,6 @@ export class SalatTimesComponent {
 
   makeTable(year: number, month: number) {
     this.timetableData.set([]);
-
     const startDate = new Date(year, month, 1);
     const endDate = new Date(year, month + 1, 1);
     const format = this.timeFormat ? "12hNS" : "24h";
@@ -93,9 +116,8 @@ export class SalatTimesComponent {
         format
       );
       times['day'] = startDate.getDate()?.toFixed();
-      this.timetableData().push(times); // Push the day's data into the timetableData array
-
-      startDate.setDate(startDate.getDate() + 1); // next day
+      this.timetableData().push(times);
+      startDate.setDate(startDate.getDate() + 1);
     }
   }
 
@@ -162,6 +184,7 @@ export class SalatTimesComponent {
     this.model.longitude = position.coords.longitude;
     this.update();
     this.getLocationName(this.model.latitude, this.model.longitude);
+    this.saveLocation();
   }
 
   getLocationName(latitude: any, longitude: any) {
@@ -172,6 +195,7 @@ export class SalatTimesComponent {
       .then((response) => {
         if (response.data.display_name) {
           this.locationName.set(response.data);
+          this.saveLocation();
           this.toastService.showMessage('info', 'Success', 'লোকেশন আপডেড হয়েছে!');
         } else {
           this.toastService.showMessage('error', 'Error', 'Location not found');
@@ -180,5 +204,14 @@ export class SalatTimesComponent {
       .catch((error) => {
         this.toastService.showMessage('error', 'Error', error.message);
       });
+  }
+
+  saveLocation(): void {
+    const locationData = {
+      latitude: this.model.latitude,
+      longitude: this.model.longitude,
+      locationName: this.locationName()
+    };
+    localStorage.setItem('salatLocation', JSON.stringify(locationData));
   }
 }

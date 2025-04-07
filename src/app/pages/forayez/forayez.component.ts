@@ -132,7 +132,7 @@ export class ForayezComponent {
           }
         });
     } else {
-      console.log("validation failed")
+      console.error("validation failed")
       this.loading.set(false);
     }
   }

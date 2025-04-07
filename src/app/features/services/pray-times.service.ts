@@ -83,7 +83,6 @@ export class PrayTimesService {
   }
 
   getTimes(date: any, coords: number[], timezone: string | number, dst: string | number, format: string) {
-    console.log(coords)
     this.lat = 1 * coords[0];
     this.lng = 1 * coords[1];
     this.elv = coords[2] ? 1 * coords[2] : 0;
