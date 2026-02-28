@@ -1,0 +1,18 @@
+.table-xss :not(thead):not(tfoot) tr {
+    font-size: 0.95rem;
+    line-height: 1rem/* 16px */;
+}
+.table-xss :where(th, td) {
+    width: 200px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0.25rem/* 4px */;
+    padding-bottom: 0.25rem/* 4px */;
+}
+.table :where(th, td) {
+    padding-left: 0/* 16px */ !important;
+    padding-right: 0/* 16px */ !important;
+    padding-top: 0.75rem/* 12px */;
+    padding-bottom: 0.75rem/* 12px */;
+    vertical-align: middle;
+}

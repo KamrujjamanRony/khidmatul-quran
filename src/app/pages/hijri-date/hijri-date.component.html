@@ -1,0 +1,120 @@
+@if (isLoading()) {
+<app-loader></app-loader>
+} @else {
+<section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto py-10">
+  <div class="mx-1 md:mx-2">
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl md:text-3xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p [ngClass]="{ 'text-center': true, 'line-through': isSunset() }">
+        @if (hijriDate) {{{ hijriDate | bangla }}}
+      </p>
+      @if(isSunset()){
+      <p class="text-center">{{ hijriNextDay | bangla }}</p>
+      }
+    </div>
+    @if (banglaDate) {
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl md:text-3xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-center">
+        {{ banglaDate | bangla }}
+      </p>
+    </div>
+    } @if (gregorianDate) {
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl md:text-3xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-center">
+        {{ gregorianDate | bangla }}
+      </p>
+    </div>
+    } @if (arabic13 && arabic14 && arabic15 && !hijriDate.includes("রমজান")) {
+    <div
+      class="mt-4 bg-rose-200 text-white w-full py-5 font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <div class="text-rose-600 text-center text-md md:text-2xl">
+        {{ hijriDate.split(",")[1] }} মাসের আইয়ামে বীজের রোজা
+        <div class="block">
+          <p class="text-2xl md:text-3xl text-primary mr-1 md:mx-2">
+            {{ arabic13 }}
+          </p>
+          <p class="text-2xl md:text-3xl text-primary mr-1 md:mx-2">
+            {{ arabic14 }}
+          </p>
+          <p class="text-2xl md:text-3xl text-primary mr-1 md:mx-2">
+            {{ arabic15 }}
+          </p>
+          ইং তারিখ।
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+}
+
+<!-- @if (isLoading()) {
+<app-loader></app-loader>
+} @else {
+<section class="max-w-md md:max-w-xl lg:max-w-4xl mx-auto py-10">
+  <div class="mx-1 md:mx-2">
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl md:text-3xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p [ngClass]="{ 'text-center': true, 'line-through': isSunset() }">
+        @if (hijriDate) {{{ hijriDate | bangla }}}
+      </p>
+      @if(isSunset()){
+      <p class="text-center">{{ hijriNextDay | bangla }}</p>
+      }
+    </div>
+    @if (banglaDate) {
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl md:text-3xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-center">
+        {{ banglaDate | bangla }}
+      </p>
+    </div>
+    } @if (gregorianDate) {
+    <div
+      class="mt-4 bg-green-500 text-white w-full py-5 text-2xl md:text-3xl font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-center">
+        {{ gregorianDate | bangla }}
+      </p>
+    </div>
+    } @if (arabic13 && arabic14 && arabic15 && !hijriDate.includes("রমজান")) {
+    <div
+      class="mt-4 bg-rose-200 text-white w-full py-5 font-normal md:font-bold rounded-md flex flex-col items-center justify-center"
+    >
+      <p class="text-rose-600 text-center text-md md:text-2xl">
+        {{ hijriMonth }} মাসের আইয়ামে বীজের রোজা
+        <span class="block"
+          ><span class="text-2xl md:text-3xl text-primary mr-1 md:mx-2">{{
+            arabic13[0]
+          }}</span
+          >,
+          <span class="text-2xl md:text-3xl text-primary mr-1 md:mx-2">{{
+            arabic14[0]
+          }}</span
+          >,
+          <span class="text-2xl md:text-3xl text-primary mr-1 md:mx-2">{{
+            arabic15[0]
+          }}</span>
+          ইং তারিখ।
+        </span>
+        <span class="text-primary text-sm md:text-md md:mr-3"
+          >{{ arabic13[1] }}&nbsp;&nbsp;, &nbsp;&nbsp;&nbsp;&nbsp;
+          {{ arabic14[1] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          {{ arabic15[1] }}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span
+        >
+      </p>
+    </div>
+    }
+  </div>
+</section>
+} -->

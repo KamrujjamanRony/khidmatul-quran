@@ -1,0 +1,232 @@
+<app-cover
+  title="Hijri Date Adjustment"
+  sub1="Dashboard"
+  sub2="jewelry price"
+></app-cover>
+
+<div class="w-full max-w-7xl mx-auto">
+  <form
+    #form="ngForm"
+    (ngSubmit)="onFormSubmit()"
+    class="bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+  >
+    <div>
+      <!-- dateAdj -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="dateAdj"
+        >
+          date Adjustment
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="dateAdj"
+          name="dateAdj"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.dateAdj"
+          required
+        />
+      </div>
+      <!-- heading -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="heading"
+        >
+          Note1
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="heading"
+          name="heading"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.heading"
+          required
+        />
+      </div>
+      <!-- description -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="description"
+        >
+          description
+        </label>
+        <textarea
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="description"
+          name="description"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.description"
+          required
+        >
+        </textarea>
+      </div>
+      <!-- heading2 -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="heading2"
+        >
+          heading2
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="heading2"
+          name="heading2"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.heading2"
+          required
+        />
+      </div>
+      <!-- description2 -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="description2"
+        >
+          description2
+        </label>
+        <textarea
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="description2"
+          name="description2"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.description2"
+          required
+        >
+        </textarea>
+      </div>
+      <!-- heading3 -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="heading3"
+        >
+          heading3
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="heading3"
+          name="heading3"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.heading3"
+          required
+        />
+      </div>
+      <!-- description3 -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="description3"
+        >
+          description3
+        </label>
+        <textarea
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="description3"
+          name="description3"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.description3"
+          required
+        >
+        </textarea>
+      </div>
+      <!-- bidath -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="bidath"
+        >
+          bidath
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="bidath"
+          name="bidath"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.bidath"
+          required
+        />
+      </div>
+      <!-- bidathDescription -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="bidathDescription"
+        >
+          bidathDescription
+        </label>
+        <textarea
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="bidathDescription"
+          name="bidathDescription"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.bidathDescription"
+          required
+        >
+        </textarea>
+      </div>
+      <!-- audioUrl -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="audioUrl"
+        >
+          audioUrl
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="audioUrl"
+          name="audioUrl"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.audioUrl"
+          required
+        />
+      </div>
+      <!-- others -->
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-md font-bold mb-2 capitalize"
+          for="others"
+        >
+          others
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+          id="others"
+          name="others"
+          type="text"
+          placeholder="Type here"
+          [(ngModel)]="hijriDate.others"
+          required
+        />
+      </div>
+    </div>
+
+    <input
+      type="submit"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      value="Adjust"
+    />
+  </form>
+</div>
+
+@if(confirmModal){
+<confirm-modal
+  title="Hijri Date is Successfully Adjust!"
+  url="hijri-date"
+  (closeModal)="closeModal()"
+/>
+}

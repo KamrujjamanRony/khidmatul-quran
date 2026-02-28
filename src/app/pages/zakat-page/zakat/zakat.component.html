@@ -1,0 +1,1048 @@
+@if (forayez()) {
+<section class="md-container mx-auto my-2 ml-2 mr-2">
+  <div class="flex justify-center items-center font-bold my-2 text-3xl">
+    <h1 class="text-gray-700 mr-1">ভরি/গ্রাম নির্বাচন করুনঃ</h1>
+    <div class="form-control">
+      <label class="label cursor-pointer gap-1">
+        <input
+          type="radio"
+          name="unit"
+          class="radio checked:bg-red-500"
+          [(ngModel)]="asset"
+          value="ভরি"
+        />
+        <span class="label-text !text-xl !lg:text-2xl text-red-500">ভরি</span>
+      </label>
+    </div>
+    <div class="form-control">
+      <label class="label cursor-pointer gap-1">
+        <input
+          type="radio"
+          name="unit"
+          class="radio checked:bg-blue-500"
+          [(ngModel)]="asset"
+          value="গ্রাম"
+        />
+        <span class="label-text !text-xl !lg:text-2xl text-blue-500"
+          >গ্রাম</span
+        >
+      </label>
+    </div>
+  </div>
+
+  <p class="text-center text-blue-700 font-bold text-2xl">
+    সর্বশেষ আপডেট : {{ forayez().updateDate | bengaliDate }}
+  </p>
+
+  <div
+    class="max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto my-5 md:my-5"
+  >
+    <div
+      class="flex justify-center items-center h-12 md:h-20 lg:h-28 rounded-t-lg bg-yellow-600"
+    >
+      <h1 class="text-3xl md:text-4xl lg:text-6xl text-white">
+        স্বর্ণের যাকাত হিসাব
+      </h1>
+    </div>
+    <!-- gold table -->
+    <div class="overflow-x-auto">
+      <table class="table text-center table-xs md:table-md lg:table-lg gap-0">
+        <!-- head -->
+        <thead>
+          <tr class="bg-slate-900 text-yellow-600 !text-2xl !lg:text-3xl">
+            <th>প্রতি {{ asset }}</th>
+            <th>ক্রয় মূল্য</th>
+            <th>বিক্রি মূল্য</th>
+          </tr>
+        </thead>
+        <tbody class="font-bold">
+          <!-- row 1 -->
+          <tr class="bg-yellow-200 text-black !text-xl !lg:text-2xl">
+            <th>২২ ক্যারেট</th>
+            <td>
+              @if(asset === "ভরি" && forayez()){{{forayez()?.gold22k * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold22k | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().gold22k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold22k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+          <!-- row 2 -->
+          <tr class="bg-yellow-300 text-black !text-xl !lg:text-2xl">
+            <th>২১ ক্যারেট</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().gold21k * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold21k | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().gold21k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold21k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+          <!-- row 3 -->
+          <tr class="bg-yellow-200 text-black !text-xl !lg:text-2xl">
+            <th>১৮ ক্যারেট</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().gold18k * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold18k | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().gold18k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().gold18k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+          <!-- row 4 -->
+          <tr
+            class="bg-yellow-300 text-black border-b border-black !text-xl !lg:text-2xl"
+          >
+            <th>সনাতনী</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().goldTd * 11.664 | number: "1.1-2" | banglaFixed
+
+
+              }}} @else {{{forayez().goldTd | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().goldTd * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().goldTd * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div
+    class="max-w-md md:max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto my-2 md:my-5"
+  >
+    <div
+      class="flex justify-center items-center h-12 md:h-20 lg:h-28 rounded-t-lg bg-gray-500"
+    >
+      <h1 class="text-3xl md:text-4xl lg:text-6xl text-white">
+        রুপার যাকাত হিসাব
+      </h1>
+    </div>
+    <!-- silver table -->
+    <div class="overflow-x-auto">
+      <table class="table text-center table-xs md:table-md lg:table-lg">
+        <!-- head -->
+        <thead>
+          <tr class="bg-slate-900 text-yellow-600 !text-2xl !lg:text-3xl">
+            <th>প্রতি {{ asset }}</th>
+            <th>ক্রয় মূল্য</th>
+            <th>বিক্রি মূল্য</th>
+          </tr>
+        </thead>
+        <tbody class="font-bold">
+          <!-- row 1 -->
+          <tr class="bg-gray-200 text-black !text-xl !lg:text-2xl">
+            <th>২২ ক্যারেট</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silver22k * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver22k | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silver22k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver22k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+          <!-- row 2 -->
+          <tr class="bg-gray-300 text-black !text-xl !lg:text-2xl">
+            <th>২১ ক্যারেট</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silver21k * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver21k | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silver21k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver21k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+          <!-- row 3 -->
+          <tr class="bg-gray-200 text-black !text-xl !lg:text-2xl">
+            <th>১৮ ক্যারেট</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silver18k * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver18k | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silver18k * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silver18k * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+          <!-- row 4 -->
+          <tr
+            class="bg-gray-300 text-black border-b border-black !text-xl !lg:text-2xl"
+          >
+            <th>সনাতনী</th>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silverTd * 11.664 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silverTd | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+            <td>
+              @if(asset === "ভরি"){{{forayez().silverTd * 11.664 * 0.8 | number: "1.1-2" | banglaFixed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              }}} @else
+              {{{forayez().silverTd * 0.8 | number: "1.1-2" | banglaFixed}}}/-
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="text-center font-semibold">
+    স্বর্ণ এবং রূপার বর্তমান বাজার মূল্য
+    <a href="https://www.bajus.org/gold-price" class="text-blue-700"
+      >বাজুসের ওয়েবসাইট</a
+    >
+    থেকে নেওয়া।
+  </p>
+  <p class="text-center font-semibold">
+    ক্রয়মূল্য থেকে ২০% বাদ দিয়ে বিক্রয়মূল্য ধরা হয়েছে।
+  </p>
+
+  <p class="text-center text-rose-700 font-semibold">
+    সার্বিক তত্ত্বাবধানে - মুফতি যুবাইর বিন এরশাদ (হাফিঃ)
+  </p>
+</section>
+} @else {
+<app-loader></app-loader>
+}

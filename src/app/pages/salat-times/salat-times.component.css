@@ -1,0 +1,10 @@
+.today-row{
+    background-color: brown;
+}
+
+.table-container {
+    max-height: 80vh; /* Set maximum height to enable scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: relative; /* Relative positioning for the table container */
+  }
+  

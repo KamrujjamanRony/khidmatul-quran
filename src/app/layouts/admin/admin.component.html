@@ -1,0 +1,50 @@
+@if (isSubmitted) {
+<div
+  class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-blue-200 text-black"
+>
+  <app-sidebar />
+  <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+} @else {
+<div class="hero min-h-screen bg-primary">
+  <div class="hero-content">
+    <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <form class="card-body" [formGroup]="userForm" (submit)="onSubmit()">
+        <!-- password Input -->
+        <label class="form-control w-full !mt-0">
+          <h1 class="text-6xl font-bold">Login now!</h1>
+          <input
+            type="password"
+            formControlName="password"
+            [class.invalid]="
+              userForm.get('password')?.invalid &&
+              (userForm.get('password')?.dirty ||
+                userForm.get('password')?.touched ||
+                isSubmitted)
+            "
+            placeholder="Enter password..."
+            class="input input-bordered w-full input-md outline-none mt-5"
+            required
+          />
+          @if(userForm.get('password')?.hasError('required') &&
+          (userForm.get('password')?.dirty || userForm.get('password')?.touched
+          || isSubmitted)){
+          <div class="label !py-0">
+            <span class="label-text-alt text-rose-600"
+              >Password is required</span
+            >
+          </div>
+          }
+        </label>
+        @if (err) {<span class="label-text-alt text-rose-600">{{ err }}</span
+        >}
+        <div class="form-control mt-6">
+          <button class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+}

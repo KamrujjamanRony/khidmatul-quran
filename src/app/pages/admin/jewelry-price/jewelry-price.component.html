@@ -1,0 +1,238 @@
+@if (hasRole("jewelry")) {
+<section>
+  <app-cover
+    title="update jewelry price"
+    sub1="Dashboard"
+    sub2="jewelry price"
+  ></app-cover>
+
+  <div class="w-full max-w-7xl mx-auto">
+    <form
+      #form="ngForm"
+      (ngSubmit)="onFormSubmit()"
+      class="bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    >
+      <!-- Gold -->
+      <div>
+        <h3 class="block text-gray-700 text-lg font-bold mb-2">Gold Price</h3>
+        <div class="bg-amber-400 shadow-md rounded px-8 pt-6 pb-4 mb-4">
+          <!-- gold22k -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="gold22k"
+            >
+              22k
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="gold22k"
+              name="gold22k"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.gold22k"
+              required
+            />
+          </div>
+          <!-- gold21k -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="gold21k"
+            >
+              21k
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="gold21k"
+              name="gold21k"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.gold21k"
+              required
+            />
+          </div>
+          <!-- gold18k -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="gold18k"
+            >
+              18k
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="gold18k"
+              name="gold18k"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.gold18k"
+              required
+            />
+          </div>
+          <!-- goldTd -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="goldTd"
+            >
+              Traditional
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="goldTd"
+              name="goldTd"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.goldTd"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Silver -->
+      <div>
+        <h3 class="block text-gray-700 text-lg font-bold mb-2">Silver Price</h3>
+        <div class="bg-zinc-300 shadow-md rounded px-8 pt-6 pb-4 mb-4">
+          <!-- silver22k -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="silver22k"
+            >
+              22k
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="silver22k"
+              name="silver22k"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.silver22k"
+              required
+            />
+          </div>
+          <!-- silver21k -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="silver21k"
+            >
+              21k
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="silver21k"
+              name="silver21k"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.silver21k"
+              required
+            />
+          </div>
+          <!-- silver18k -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="silver18k"
+            >
+              18k
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="silver18k"
+              name="silver18k"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.silver18k"
+              required
+            />
+          </div>
+          <!-- silverTd -->
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-md font-bold mb-2"
+              for="silverTd"
+            >
+              Traditional
+            </label>
+            <input
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+              id="silverTd"
+              name="silverTd"
+              type="text"
+              placeholder="Type here"
+              [(ngModel)]="jewelryPrice.silverTd"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Others -->
+      <div>
+        <!-- nisab -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-md font-bold mb-2" for="nisab">
+            Nisab
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+            id="nisab"
+            name="nisab"
+            type="text"
+            placeholder="Type here"
+            [(ngModel)]="jewelryPrice.nisab"
+            required
+          />
+        </div>
+        <!-- note -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-md font-bold mb-2" for="note">
+            Note
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+            id="note"
+            name="note"
+            type="text"
+            placeholder="Type here"
+            [(ngModel)]="jewelryPrice.note"
+            required
+          />
+        </div>
+        <!-- note1 -->
+        <div class="mb-4">
+          <label class="block text-gray-700 text-md font-bold mb-2" for="note1">
+            Note1
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-blue-100 leading-tight focus:outline-none focus:shadow-outline"
+            id="note1"
+            name="note1"
+            type="text"
+            placeholder="Type here"
+            [(ngModel)]="jewelryPrice.note1"
+            required
+          />
+        </div>
+      </div>
+
+      <input
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        value="Update"
+      />
+    </form>
+  </div>
+</section>
+} @else {
+<div class="container mx-auto px-4 flex justify-center items-center">
+  <h1 class="text-3xl text-rose-500">You Haven't Permission to See The Page</h1>
+</div>
+} @if(confirmModal){
+<confirm-modal
+  title="Jewelry Price is successfully updated!"
+  url="gold-price"
+  (closeModal)="closeModal()"
+/>
+}

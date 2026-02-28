@@ -1,0 +1,161 @@
+@if (title == "ইসলাহী মজলিশ") { @if (!isAuthorized) {
+<div class="hero min-h-screen bg-gradient-to-r from-sky-200 to-indigo-200">
+  <div class="hero-content">
+    <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-slate-100 mx-auto">
+      <h1 class="text-2xl md:text-3xl lg:text-4xl text-center font-bold pt-5">
+        ইসলাহী মজলিশ
+      </h1>
+      <form (submit)="onSubmitAuth($event)" class="card-body">
+        <label for="password">Enter Security Key:</label>
+        <input
+          type="password"
+          id="password"
+          class="input input-bordered bg-white"
+          required
+          [(ngModel)]="pass"
+          name="pass"
+        />
+        <label class="label">
+          <span class="label-text-alt text-red-500">{{ err }}</span>
+        </label>
+        <div>
+          <input
+            type="submit"
+            id="authorizeBtn"
+            value="Authorize"
+            class="btn btn-primary btn-md mt-2 w-full py-2 text-white"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+} @else {
+<section>
+  <app-cover [title]="title" sub1="হোম" sub2="বয়ান"></app-cover>
+
+  <div class="mt-4 mx-4">
+    @if (allBoyan$) {
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+      <div class="w-full overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr
+              class="text-sm font-semibold tracking-wide text-left text-gray-700 uppercase border-b bg-gray-50"
+            >
+              <th class="px-4 py-3">SI</th>
+              <th class="px-4 py-3">Title</th>
+              <th class="px-4 py-3">Url</th>
+              <th class="px-4 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y">
+            @for (boyan of sortItems(allBoyan$ | async); track $index) {
+            <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700">
+              <td class="px-4 py-3 text-sm">{{ boyan.serial }}</td>
+              <td class="px-4 py-3 text-sm">{{ boyan.title }}</td>
+              <td class="px-4 py-3 text-sm">{{ boyan.url }}</td>
+              <td class="px-4 py-3 text-md">
+                @if (boyan?.url) {
+                <a
+                  [href]="
+                    'https://drive.google.com/uc?export=download&id=' +
+                    boyan.url
+                  "
+                  target="_blank"
+                  download
+                  rel="noopener noreferrer"
+                  class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded inline-block"
+                >
+                  Download
+                </a>
+                }
+              </td>
+            </tr>
+            } @empty {
+            <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700">
+              <td class="px-4 py-3"></td>
+              <td class="px-4 py-3">
+                <h1 class="text-center text-3xl text-rose-600">
+                  No Boyan Found!
+                </h1>
+              </td>
+              <td class="px-4 py-3"></td>
+              <td class="px-4 py-3"></td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="grid px-4 py-3 text-sm font-semibold tracking-wide text-gray-700 uppercase border-t bg-gray-50 sm:grid-cols-9"
+      ></div>
+    </div>
+    }
+  </div>
+</section>
+} } @else {
+<section>
+  <app-cover [title]="title" sub1="হোম" sub2="বয়ান"></app-cover>
+
+  <div class="mt-4 mx-4">
+    @if (allBoyan$) {
+    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+      <div class="w-full overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr
+              class="text-sm font-semibold tracking-wide text-left text-gray-700 uppercase border-b bg-gray-50"
+            >
+              <th class="px-4 py-3">SI</th>
+              <th class="px-4 py-3">Title</th>
+              <th class="px-4 py-3">Url</th>
+              <th class="px-4 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y">
+            @for (boyan of sortItems(allBoyan$ | async); track $index) {
+            <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700">
+              <td class="px-4 py-3 text-sm">{{ boyan.serial }}</td>
+              <td class="px-4 py-3 text-sm">{{ boyan.title }}</td>
+              <td class="px-4 py-3 text-sm">{{ boyan.url }}</td>
+              <td class="px-4 py-3 text-md">
+                @if (boyan?.url) {
+                <a
+                  [href]="
+                    'https://drive.google.com/uc?export=download&id=' +
+                    boyan.url
+                  "
+                  target="_blank"
+                  download
+                  rel="noopener noreferrer"
+                  class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded inline-block"
+                >
+                  Download
+                </a>
+                }
+              </td>
+            </tr>
+            } @empty {
+            <tr class="bg-gray-50 hover:bg-gray-100 text-gray-700">
+              <td class="px-4 py-3"></td>
+              <td class="px-4 py-3">
+                <h1 class="text-center text-3xl text-rose-600">
+                  No Boyan Found!
+                </h1>
+              </td>
+              <td class="px-4 py-3"></td>
+              <td class="px-4 py-3"></td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="grid px-4 py-3 text-sm font-semibold tracking-wide text-gray-700 uppercase border-t bg-gray-50 sm:grid-cols-9"
+      ></div>
+    </div>
+    }
+  </div>
+</section>
+}

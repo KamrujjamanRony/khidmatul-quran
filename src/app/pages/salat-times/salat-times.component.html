@@ -1,0 +1,380 @@
+<section class="gradient-form h-fit bg-gray-200">
+  <div class="max-w-7xl mx-auto h-full lg:p-10 md:p-6 p-2">
+    <div
+      class="g-6 flex h-full flex-wrap items-center justify-center text-gray-800"
+    >
+      <div class="w-full">
+        <div class="block rounded-lg bg-white shadow-lg">
+          <div class="g-0 lg:flex">
+            <!-- Left column container-->
+            <div class="px-4 md:px-0 xl:w-3/12 lg:w-4/5 mx-auto">
+              <div class="md:mx-6 md:p-12">
+                <!--Logo-->
+                <div class="text-center hidden md:block">
+                  <img
+                    class="mx-auto w-48"
+                    src="https://i.ibb.co/hR80cLB/Pngtree-islamic-logo-6182193.png"
+                    alt="logo"
+                  />
+                  <h4 class="mb-12 mt-1 pb-1 text-2xl font-semibold">
+                    Find Salat Times In Your Location
+                  </h4>
+                </div>
+
+                <!--Location Buttons-->
+                <div>
+                  <div class="pb-6 font-bold">
+                    <p class="mb-0 mr-2">অবস্থান শনাক্ত করুনঃ</p>
+                    <button
+                      type="button"
+                      class="inline-block rounded border-2 border-orange px-1 md:px-2 pb-[6px] pt-2 text-md font-medium uppercase leading-normal text-orange transition duration-150 ease-in-out hover:border-orange-600 bg-orange-300 hover:bg-gray-500 hover:bg-opacity-10 hover:text-orange-600 focus:border-orange-600 focus:text-orange-600 focus:outline-none focus:ring-0 active:border-orange-700 active:text-orange-700 m-2"
+                      data-te-ripple-init
+                      data-te-ripple-color="light"
+                      (click)="getPreciseLocation()"
+                    >
+                      Get Location
+                    </button>
+                    <!-- <button
+                      type="button"
+                      class="inline-block rounded border-2 border-teal px-1 md:px-2 pb-[6px] pt-2 text-md font-medium uppercase leading-normal text-teal transition duration-150 ease-in-out hover:border-teal-600 bg-teal-300 hover:bg-gray-500 hover:bg-opacity-10 hover:text-teal-600 focus:border-teal-600 focus:text-teal-600 focus:outline-none focus:ring-0 active:border-teal-700 active:text-teal-700 m-2"
+                      data-te-ripple-init
+                      data-te-ripple-color="light"
+                      (click)="showLocation.set(!showLocation())"
+                    >
+                      {{ showLocation() ? "Hide" : "Set" }} Manual Location
+                    </button> -->
+                  </div>
+                  <span class="text-red-600 py-2">{{ errorText() }}</span>
+                </div>
+
+                <!--Set Location Manually-->
+                @if (showLocation()) {
+                <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+                  <!-- <p class="mb-4">Please enter your location</p> -->
+                  <p class="mb-4 font-bold">মেনুয়াল সেটআপঃ</p>
+
+                  <!--latitude input-->
+                  <div class="relative mb-4" data-te-input-wrapper-init>
+                    <label
+                      for="latitude"
+                      class="block text-lg font-medium leading-6 text-gray-900"
+                      >Latitude</label
+                    >
+                    <div class="relative mt-2 rounded-md shadow-sm">
+                      <input
+                        type="number"
+                        [(ngModel)]="model.latitude"
+                        id="latitude"
+                        name="latitude"
+                        (blur)="onInputFocus()"
+                        (focus)="onInputFocus()"
+                        class="block w-full bg-white rounded-md border-0 py-1.5 pl-7 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-lg sm:leading-6"
+                        placeholder="0.00"
+                      />
+                    </div>
+                  </div>
+                  <!--longitude input-->
+                  <div class="relative mb-4" data-te-input-wrapper-init>
+                    <label
+                      for="longitude"
+                      class="block text-lg font-medium leading-6 text-gray-900"
+                      >Longitude</label
+                    >
+                    <div class="relative mt-2 rounded-md shadow-sm">
+                      <input
+                        type="number"
+                        [(ngModel)]="model.longitude"
+                        id="longitude"
+                        name="longitude"
+                        (blur)="onInputFocus()"
+                        (focus)="onInputFocus()"
+                        class="block w-full bg-white rounded-md border-0 py-1.5 pl-7 pr-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-lg sm:leading-6"
+                        placeholder="0.00"
+                      />
+                    </div>
+                  </div>
+
+                  <!--Submit button-->
+                  <div class="mb-12 pb-1 pt-1 text-center">
+                    <button
+                      class="mb-3 inline-block w-full rounded px-1 md:px-2 pb-2 pt-2.5 text-md font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                      type="submit"
+                      data-te-ripple-init
+                      data-te-ripple-color="light"
+                      style="
+                        background: linear-gradient(
+                          to right,
+                          #ee7724,
+                          #d8363a,
+                          #dd3675,
+                          #b44593
+                        );
+                      "
+                    >
+                      Update Location
+                    </button>
+                  </div>
+                </form>
+                }
+                <!--Location Display-->
+                <div>
+                  @if(locationName()){
+                  <h1 class="">
+                    City :
+                    <span class="font-bold text-rose-500">{{
+                      locationName()?.address?.city ||
+                        locationName()?.address?.state ||
+                        "dhaka"
+                    }}</span>
+                  </h1>
+                  } @else {
+                  <h1 class="">
+                    City :
+                    <span class="font-bold text-rose-500">Dhaka</span>
+                  </h1>
+                  }
+                  <h1 *ngIf="locationName">
+                    Address :
+                    <span class="font-bold">{{
+                      locationName()?.display_name
+                    }}</span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right column container with background and description-->
+            <div
+              class="lg:flex items-center lg:justify-center"
+              [ngClass]="{
+                'w-full rounded-lg': !showLocation(),
+                'xl:w-9/12 rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none':
+                  showLocation()
+              }"
+              style="
+                background: linear-gradient(
+                  to right,
+                  #267402,
+                  #3fa027,
+                  #1a5c46
+                );
+              "
+            >
+              @if (isShow) {
+              <div class="px-4 py-6 text-white md:mx-6 md:p-12 w-full">
+                <div class="flex flex-wrap justify-between items-center mb-4">
+                  <h1 class="text-xl lg:text-2xl font-bold">
+                    আজকের সালাতের সময়সূচীঃ-
+                  </h1>
+                  <button
+                    class="btn btn-secondary text-gray-50 text-xl"
+                    (click)="isShow = false"
+                  >
+                    মাসিক সময়সূচী
+                  </button>
+                </div>
+                <div
+                  class="overflow-x-auto rounded-box border border-base-content/5 text-gray-50"
+                >
+                  <table class="table text-xl w-full text-center bg-slate-800">
+                    <!-- head -->
+                    <thead class="bg-slate-900 text-gray-50 text-2xl">
+                      <tr>
+                        <th>সালাত</th>
+                        <th>সময়</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- row 1 -->
+                      <tr>
+                        <th>সাহরী</th>
+                        <th>{{ todaySalatTime?.Shari | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>ফজর</th>
+                        <th>{{ todaySalatTime?.fajrT | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>সূর্যোদয়</th>
+                        <th>{{ todaySalatTime?.sunrise | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>যুহর</th>
+                        <th>{{ todaySalatTime?.dhuhrT | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>আসর</th>
+                        <th>{{ todaySalatTime?.asr | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>মাগরিব</th>
+                        <th>{{ todaySalatTime?.maghrib | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>ইশা</th>
+                        <th>{{ todaySalatTime?.isha | bangla }}</th>
+                      </tr>
+                      <tr>
+                        <th>মধ্যরাত</th>
+                        <th>{{ todaySalatTime?.midnight | bangla }}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              } @else {
+              <div class="px-4 py-6 text-white md:mx-6 md:p-12 w-full">
+                <div class="flex flex-wrap justify-between items-center mb-4">
+                  <!-- @if(locationName()){
+                  <h1 class="text-center text-xl">
+                    City :
+                    <span class="font-bold">{{
+                      locationName()?.address?.city ||
+                        locationName()?.address?.state
+                    }}</span>
+                  </h1>
+                  } @else {
+                  <h1 class="text-center text-xl">
+                    City :
+                    <span class="font-bold text-rose-500">Dhaka</span>
+                  </h1>
+                  } -->
+
+                  <h1 class="text-xl lg:text-2xl font-bold">
+                    সালাতের সময়সূচীঃ (মাসিক)
+                  </h1>
+                  <button
+                    class="btn btn-secondary text-gray-50 text-xl"
+                    (click)="isShow = true"
+                  >
+                    আজকের সময়সূচী
+                  </button>
+                </div>
+                <div class="flex justify-center pt-5" role="group">
+                  <button
+                    (click)="displayMonth(-1)"
+                    type="button"
+                    class="inline-block rounded-l border-2 border-primary px-2 lg:text-xl md:text-lg text-md uppercase leading-normal font-semibold text-white transition duration-150 ease-in-out hover:border-primary-600 hover:bg-gray-500 hover:bg-opacity-10 hover:text-primary-600 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                  >
+                    <<<
+                  </button>
+                  <h1
+                    class="-ml-0.5 inline-block border-2 border-primary lg:px-5 md:px-4 px-2 pb-[6px] pt-2 lg:text-2xl md:text-xl text-md uppercase leading-normal font-semibold text-white"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                  >
+                    {{ tableTitle() }}
+                  </h1>
+                  <button
+                    (click)="displayMonth(+1)"
+                    type="button"
+                    class="-ml-0.5 inline-block rounded-r border-2 border-primary px-2 lg:text-xl md:text-lg text-md uppercase leading-normal font-semibold text-white transition duration-150 ease-in-out hover:border-primary-600 hover:bg-gray-500 hover:bg-opacity-10 hover:text-primary-600 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                  >
+                    >>>
+                  </button>
+                </div>
+                <div class="flex flex-col overflow-x-auto justify-center">
+                  <div class="inline-block py-2 sm:px-0 md:px-2 lg:px-8 w-full">
+                    <div class="overflow-x-auto flex justify-center">
+                      <table class="text-md font-light text-center">
+                        <thead
+                          class="border-b font-medium text-lg sticky top-0 z-10"
+                          style="
+                            background: linear-gradient(
+                              to right,
+                              #267402,
+                              #3fa027,
+                              #1a5c46
+                            );
+                          "
+                        >
+                          <tr>
+                            <th
+                              scope="col"
+                              class="px-1 pl-36 !xs:pl-10 md:px-2 lg:px-5"
+                            >
+                              তারিখ
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              সাহরী
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              ফজর
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              সূর্যোদয়
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              যুহর
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              আসর
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              মাগরিব
+                            </th>
+                            <th scope="col" class="px-1 md:px-2 lg:px-5">
+                              ইশা
+                            </th>
+                            <th scope="col" class="px-1 pr-2 md:px-2 lg:px-5">
+                              মধ্যরাত
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-lg lg:text-2xl">
+                          @for (day of timetableData(); track $index) {
+
+                          <tr
+                            class="border-b"
+                            [ngClass]="{ 'today-row': isToday(day) }"
+                          >
+                            <td
+                              class="whitespace-nowrap pl-36 !xs:pl-10 px-1 md:px-2 font-medium"
+                            >
+                              {{ day.day | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.Shari | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.fajrT | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.sunrise | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.dhuhrT | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.asr | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.maghrib | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.isha | bengaliNumber }}
+                            </td>
+                            <td class="whitespace-nowrap px-1 md:px-2">
+                              {{ day.midnight | bengaliNumber }}
+                            </td>
+                          </tr>
+                          }
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-scroll />

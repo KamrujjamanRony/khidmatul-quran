@@ -1,0 +1,9 @@
+<section class="container mx-auto py-5">
+    <app-cover title="ইউটিউব ভিডিও" sub1="হোম" sub2="বয়ান"></app-cover>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        @for (boyan of sortItems(allBoyan$ | async); track $index) {
+            <app-video-card [title]="boyan.title" [img]="boyan.imageUrl" [videoId]="boyan.url" />
+        }
+    </div>
+</section>

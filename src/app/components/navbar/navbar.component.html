@@ -1,0 +1,131 @@
+<div class="bg-red-500">
+  <div class="navbar container mx-auto rounded-md justify-between">
+    <div class="dropdown">
+      <!-- Hamburger Button -->
+      <label
+        tabindex="0"
+        class="btn btn-ghost text-white lg:hidden"
+        (click)="toggleMobileMenu()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          ></path>
+        </svg>
+      </label>
+
+      <!-- Mobile Menu -->
+      <ul
+        *ngIf="isMobileMenuOpen"
+        class="menu menu-lg dropdown-content mt-3 z-50 p-2 shadow bg-red-500 text-white rounded w-52 text-2xl"
+      >
+        <li *ngFor="let item of menuItems">
+          <button *ngIf="item.subItems" (click)="toggleDropdown(item, $event)">
+            <span class="mr-5">{{ item.label }}</span>
+            <svg
+              [class.rotate-0]="!item.isOpen"
+              [class.-rotate-180]="item.isOpen"
+              class="transition-transform duration-200 transform absolute right-3 top-1/2 -mt-1 pointer-events-none"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 3L6 7L10 3"
+                [style.stroke]="'currentColor'"
+                [style.strokeWidth]="'2px'"
+                [style.strokeLinecap]="'round'"
+                [style.strokeLinejoin]="'round'"
+              ></path>
+            </svg>
+          </button>
+          <a
+            *ngIf="!item.subItems"
+            [routerLink]="item.link"
+            (click)="closeMobileMenu()"
+          >
+            {{ item.label }}
+          </a>
+          <ul
+            *ngIf="item.isOpen"
+            class="absolute left-0 top-5 mt-2 w-60 bg-red-500 rounded-lg py-2 z-10"
+          >
+            <li *ngFor="let subItem of item.subItems">
+              <a [routerLink]="subItem.link" (click)="closeMobileMenu()">{{
+                subItem.label
+              }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex">
+      <ul
+        class="menu menu-horizontal p-1 items-center rounded text-md md:text-lg lg:text-2xl text-white"
+      >
+        @for (item of menuItems; track $index) {
+        <li
+          class="relative group"
+          (mouseenter)="onHover(item)"
+          (mouseleave)="onLeave(item)"
+        >
+          @if (item.subItems) {
+          <button>
+            <span class="mr-5">{{ item.label }}</span>
+            <svg
+              [class.rotate-0]="!item.isOpen"
+              [class.-rotate-180]="item.isOpen"
+              class="transition-transform duration-200 transform absolute right-3 top-1/2 -mt-1 pointer-events-none"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2 3L6 7L10 3"
+                [style.stroke]="'currentColor'"
+                [style.strokeWidth]="'2px'"
+                [style.strokeLinecap]="'round'"
+                [style.strokeLinejoin]="'round'"
+              ></path>
+            </svg>
+          </button>
+          <ul
+            *ngIf="item.isOpen"
+            class="absolute left-0 top-5 mt-2 w-60 bg-red-500 rounded-lg py-2 z-10"
+          >
+            <li *ngFor="let subItem of item.subItems">
+              <a [routerLink]="subItem.link">{{ subItem.label }}</a>
+            </li>
+          </ul>
+          } @else {
+          <a [routerLink]="item.link">{{ item.label }}</a>
+          }
+        </li>
+        }
+      </ul>
+    </div>
+
+    <a
+      routerLink="/about"
+      type="button"
+      class="inline-block text-lg bg-green-800 px-6 py-2 font-medium uppercase leading-normal text-white hover:bg-green-600"
+    >
+      পরিচিতি
+    </a>
+  </div>
+</div>

@@ -1,0 +1,1531 @@
+@if (loading()) {
+<app-loader></app-loader>
+} @else {
+<section class="w-full lg:container mx-auto p-2 md:p-5">
+  <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+    <!-- Asset Description -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-5 px-2 pb-2 pt-8 border border-green-600 rounded-md relative mt-2"
+    >
+      <h1
+        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-2xl md:text-3xl font-bold text-green-600 bg-white px-2"
+      >
+        সম্পদের বিবরণ
+      </h1>
+      <!-- tk -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+        >
+          @if (asset() == "1") { টাকা } @if (asset() == "2") { শতাংশ } @if
+          (asset() == "3") { গ্রাম }
+        </span>
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="asset"
+        >
+          <svg
+            fill="#000000"
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            id="taka-square-2"
+            data-name="Flat Color"
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon flat-color h-4 w-4 opacity-70"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <rect
+                id="primary"
+                x="2"
+                y="2"
+                width="20"
+                height="20"
+                rx="2"
+                style="fill: #000000"
+              ></rect>
+              <path
+                id="secondary"
+                d="M16,11a1,1,0,0,0-1,1v2a2,2,0,0,1-4,0V12h1a1,1,0,0,0,0-2H11V9A3,3,0,0,0,8,6,1,1,0,0,0,8,8,1,1,0,0,1,9,9v1H8a1,1,0,0,0,0,2H9v2a4,4,0,0,0,8,0V12A1,1,0,0,0,16,11Z"
+                style="fill: #ffffff"
+              ></path>
+            </g>
+          </svg>
+          <input
+            id="tk"
+            name="tk"
+            type="number"
+            [(ngModel)]="model.tk"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="পরিমাণ"
+          />
+        </label>
+      </div>
+      <!-- parameter -->
+      <div
+        class="flex justify-center items-center font-bold my-2 text-md md:text-lg lg:text-3xl"
+      >
+        <h1 class="text-gray-700 mr-1">নির্বাচন করুনঃ</h1>
+        <div class="form-control">
+          <label class="label cursor-pointer gap-1">
+            <input
+              type="radio"
+              name="unit"
+              class="radio checked:bg-red-500"
+              [(ngModel)]="asset"
+              value="1"
+            />
+            <span class="label-text text-red-500 text-md md:text-lg lg:text-3xl"
+              >টাকা</span
+            >
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer gap-1">
+            <input
+              type="radio"
+              name="unit"
+              class="radio checked:bg-blue-500"
+              [(ngModel)]="asset"
+              value="2"
+            />
+            <span
+              class="label-text text-blue-500 text-md md:text-lg lg:text-3xl"
+              >শতাংশ</span
+            >
+          </label>
+        </div>
+        <div class="form-control">
+          <label class="label cursor-pointer gap-1">
+            <input
+              type="radio"
+              name="unit"
+              class="radio checked:bg-yellow-500"
+              [(ngModel)]="asset"
+              value="3"
+            />
+            <span
+              class="label-text text-yellow-500 text-md md:text-lg lg:text-3xl"
+              >অলংকার</span
+            >
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- List of Relatives -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-5 px-2 pb-2 pt-8 border border-green-600 rounded-md relative mt-5"
+    >
+      <h1
+        class="absolute -top-3 md:-top-4 left-5 md:left-7 lg:left-10 text-2xl md:text-3xl font-bold text-green-600 bg-white px-2"
+      >
+        জীবিত আত্মীয়-স্বজনের তালিকা
+      </h1>
+      <!-- son -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >পুত্র</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="son"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="son"
+            name="son"
+            type="number"
+            [(ngModel)]="model.son"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="son"
+          />
+        </label>
+      </div>
+      <!-- daughter -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >কন্যা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="daughter"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="daughter"
+            name="daughter"
+            type="number"
+            [(ngModel)]="model.daughter"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="daughter"
+          />
+        </label>
+      </div>
+      <!-- husband -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+        >
+          স্বামী
+        </span>
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="husband"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="husband"
+            name="husband"
+            type="number"
+            [(ngModel)]="model.husband"
+            #husband="ngModel"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="husband"
+            (ngModelChange)="onHusbandChange()"
+          />
+        </label>
+        <small *ngIf="model.husband > 1" class="text-red-600 ml-5">
+          স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়।
+        </small>
+      </div>
+
+      <!-- wife -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+        >
+          স্ত্রী
+        </span>
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="wife"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="wife"
+            name="wife"
+            type="number"
+            [(ngModel)]="model.wife"
+            #wife="ngModel"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="wife"
+            (ngModelChange)="onWifeChange()"
+          />
+        </label>
+        <small *ngIf="model.wife > 4" class="text-red-600 ml-5">
+          স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়।
+        </small>
+      </div>
+
+      <!-- father -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >পিতা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="father"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="father"
+            name="father"
+            type="number"
+            [(ngModel)]="model.father"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="father"
+            (ngModelChange)="onFatherChange()"
+          />
+        </label>
+        @if (model.father > 1) {
+        <small class="text-red-600 ml-5">পিতা ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
+        }
+      </div>
+      <!-- mother -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >মাতা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="mother"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="mother"
+            name="mother"
+            type="number"
+            [(ngModel)]="model.mother"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="mother"
+            (ngModelChange)="onMotherChange()"
+          />
+        </label>
+        @if (model.mother > 1) {
+        <small class="text-red-600 ml-5">মাতা ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
+        }
+      </div>
+      <!-- brother -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >ভাই</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="brother"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="brother"
+            name="brother"
+            type="number"
+            [(ngModel)]="model.brother"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="brother"
+          />
+        </label>
+      </div>
+      <!-- sister -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বোন</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="sister"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="sister"
+            name="sister"
+            type="number"
+            [(ngModel)]="model.sister"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="sister"
+          />
+        </label>
+      </div>
+      <!-- grandfather -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >দাদা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="grandfather"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="grandfather"
+            name="grandfather"
+            type="number"
+            [(ngModel)]="model.grandfather"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="grandfather"
+            (ngModelChange)="onGrandfatherChange()"
+          />
+        </label>
+        @if (model.grandfather > 1) {
+        <small class="text-red-600 ml-5">দাদা ১ জনের বেশী গ্রহণযোগ্য নয়।</small>
+        }
+      </div>
+      <!-- grandmother -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >দাদী</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="grandmother"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="grandmother"
+            name="grandmother"
+            type="number"
+            [(ngModel)]="model.grandmother"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="grandmother"
+          />
+        </label>
+      </div>
+      <!-- grandnanny -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >নানী</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="grandnanny"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="grandnanny"
+            name="grandnanny"
+            type="number"
+            [(ngModel)]="model.grandnanny"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="grandnanny"
+          />
+        </label>
+      </div>
+      <!-- uncle -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >চাচা</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="uncle"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="uncle"
+            name="uncle"
+            type="number"
+            [(ngModel)]="model.uncle"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="uncle"
+          />
+        </label>
+      </div>
+      <!-- cousin -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >চাচাতো ভাই</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="cousin"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="cousin"
+            name="cousin"
+            type="number"
+            [(ngModel)]="model.cousin"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="cousin"
+          />
+        </label>
+      </div>
+      <!-- BmB -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈমাত্রেয় ভাই</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="BmB"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BmB"
+            name="BmB"
+            type="number"
+            [(ngModel)]="model.BmB"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="vaimatreya brother"
+          />
+        </label>
+      </div>
+      <!-- BmS -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈমাত্রেয় বোন</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="BmS"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="BmS"
+            name="BmS"
+            type="number"
+            [(ngModel)]="model.BmS"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="vaimatreya sister"
+          />
+        </label>
+      </div>
+      <!-- BpB -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈপিত্রেয় ভাই</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="BpB"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BpB"
+            name="BpB"
+            type="number"
+            [(ngModel)]="model.BpB"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="vaipitra's brother"
+          />
+        </label>
+      </div>
+      <!-- BpS -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >বৈপিত্রেয় বোন</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="BpS"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="BpS"
+            name="BpS"
+            type="number"
+            [(ngModel)]="model.BpS"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="vaipitra's sister"
+          />
+        </label>
+      </div>
+      <!-- BSo -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >ভাইয়ের পুত্র</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="BSo"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="BSo"
+            name="BSo"
+            type="number"
+            [(ngModel)]="model.BSo"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="ভাইয়ের পুত্র"
+          />
+        </label>
+      </div>
+      <!-- grandson -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >পুত্রের পুত্র (নাতি)</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="grandson"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+            />
+          </svg>
+          <input
+            id="grandson"
+            name="grandson"
+            type="number"
+            [(ngModel)]="model.grandson"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="grandson"
+          />
+        </label>
+      </div>
+      <!-- granddaughter -->
+      <div class="relative mt-1 bg-white">
+        <span
+          class="capitalize bg-white tracking-wider absolute -top-3 left-5 px-2 text-green-600"
+          >পুত্রের কন্যা (নাতনী)</span
+        >
+        <label
+          class="input input-bordered flex items-center gap-2 bg-white"
+          for="granddaughter"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            class="h-4 w-4 opacity-70"
+            viewBox="0 0 30 30"
+            fill="currentColor"
+          >
+            <path
+              d="M5,27c0-5,6.957-4.174,8-6.999V19c-3.778,0-5.914-1.884-5.914-1.884C9.06,15.473,6.326,4.043,13.049,4.043 c0,0,0.907-1.043,2.08-1.043c8.218,0,5.51,12.41,7.635,14.154c0,0-1.968,1.846-5.765,1.846v1.001C18.043,22.826,25,22,25,27H5z"
+            ></path>
+          </svg>
+          <input
+            id="granddaughter"
+            name="granddaughter"
+            type="number"
+            [(ngModel)]="model.granddaughter"
+            class="grow capitalize w-full bg-white text-black"
+            placeholder="granddaughter"
+          />
+        </label>
+      </div>
+    </div>
+    <div class="mt-5 flex gap-5">
+      <button
+        type="submit"
+        class="btn bg-green-500 hover:bg-green-600 text-white capitalize flex-1"
+      >
+        calculate
+      </button>
+      <button
+        (click)="onClear($event)"
+        class="btn bg-rose-500 hover:bg-rose-600 text-white capitalize"
+      >
+        clear
+      </button>
+    </div>
+  </form>
+
+  @if (result()?.rtSon || result()?.rtDau || result()?.rtHus || result()?.rtWif
+  || result()?.rtFat || result()?.rtMot || result()?.rtBro || result()?.rtSis ||
+  result()?.rtGrF || result()?.rtGrM || result()?.rtGrN || result()?.rtUnc ||
+  result()?.rtuSo || result()?.rtBmB || result()?.rtBmS || result()?.rtBpB ||
+  result()?.rtBpS || result()?.rtGrS || result()?.rtGrD) {
+  <div class="flex flex-col md:flex-row justify-around mt-5 gap-5">
+    <div>
+      <h2 class="text-bold text-2xl md:text-3xl lg:3xl text-center text-black">
+        অংশীদারদের মোট পরিমাণ
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="table text-xl lg:text-2xl text-center">
+          <!-- head -->
+          <thead class="text-xl lg:text-2xl">
+            <tr class="bg-gray-600 text-white text-lg md:text-xl lg:text-2xl">
+              <th class="border cp-0">আত্মীয়</th>
+              <th class="border cp-0">সংখ্যা</th>
+              <th class="border cp-0">শতকরা%</th>
+              <th class="border cp-0">পরিমাণ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- পুত্র -->
+            @if (result()?.rtSon) {
+            <tr>
+              <th class="text-black cp-0 border">পুত্র</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.son | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtSon | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkSon | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- কন্যা -->
+            @if (result()?.rtDau) {
+            <tr>
+              <th class="text-black cp-0 border">কন্যা</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.dau | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtDau | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkDau | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- স্বামী -->
+            @if (result()?.rtHus) {
+            <tr>
+              <th class="text-black cp-0 border">স্বামী</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.hus | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtHus | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkHus | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- স্ত্রী -->
+            @if(result()?.rtWif){
+            <tr>
+              <th class="text-black cp-0 border">স্ত্রী</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.wif | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtWif | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkWif | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- পিতা -->
+            @if(result()?.rtFat){
+            <tr>
+              <th class="text-black cp-0 border">পিতা</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.fat | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtFat | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkFat | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- মাতা -->
+            @if(result()?.rtMot){
+            <tr>
+              <th class="text-black cp-0 border">মাতা</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.mot | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtMot | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkMot | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাই -->
+            @if(result()?.rtBro){
+            <tr>
+              <th class="text-black cp-0 border">ভাই</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.bro | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtBro | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkBro | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বোন -->
+            @if(result()?.rtSis){
+            <tr>
+              <th class="text-black cp-0 border">বোন</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.sis | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtSis | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkSis | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- দাদা -->
+            @if(result()?.rtGrF){
+            <tr>
+              <th class="text-black cp-0 border">দাদা</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.grF | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtGrF | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkGrF | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- দাদী -->
+            @if (result()?.rtGrM) {
+            <tr>
+              <th class="text-black cp-0 border">দাদী</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.grM | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtGrM | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkGrM | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- নানী -->
+            @if (result()?.rtGrN) {
+            <tr>
+              <th class="text-black cp-0 border">নানী</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.grN | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtGrN | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkGrN | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- চাচা -->
+            @if (result()?.rtUnc) {
+            <tr>
+              <th class="text-black cp-0 border">চাচা</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.unc | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtUnc | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkUnc | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- চাচাতো ভাই -->
+            @if (result()?.rtuSo) {
+            <tr>
+              <th class="text-black cp-0 border">চাচাতো ভাই</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.uSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtuSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkUSo | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈমাত্রের ভাই -->
+            @if (result()?.rtBmB) {
+            <tr>
+              <th class="text-black cp-0 border">বৈমাত্রের ভাই</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.bmB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtBmB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkBmB | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈমাত্রের বোন -->
+            @if (result()?.rtBmS) {
+            <tr>
+              <th class="text-black cp-0 border">বৈমাত্রের বোন</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.bmS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtBmS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkBmS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈপিত্রের ভাই -->
+            @if (result()?.rtBpB) {
+            <tr>
+              <th class="text-black cp-0 border">বৈপিত্রের ভাই</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.bpB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtBpB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkBpB | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈপিত্রের বোন -->
+            @if (result()?.rtBpS) {
+            <tr>
+              <th class="text-black cp-0 border">বৈপিত্রের বোন</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.bpS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtBpS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkBpS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাইয়ের পুত্র -->
+            @if (result()?.rtbSo) {
+            <tr>
+              <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.bSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtbSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkBSo | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- নাতি -->
+            @if (result()?.rtGrS) {
+            <tr>
+              <th class="text-black cp-0 border">নাতি</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.grS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtGrS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkGrS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- নাতনী -->
+            @if (result()?.rtGrD) {
+            <tr>
+              <th class="text-black cp-0 border">নাতনী</th>
+              <td class="text-black cp-0 border text-center">
+                {{ result()?.grD | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rtGrD | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rTkGrD | bangla }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-bold text-2xl md:text-3xl lg:3xl text-center text-black">
+        একজন অংশীদারের পরিমাণ
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="table text-xl lg:text-2xl text-center">
+          <!-- head -->
+          <thead class="text-xl lg:text-2xl">
+            <tr class="bg-gray-600 text-white text-lg md:text-xl lg:text-2xl">
+              <th class="border cp-0">আত্মীয়</th>
+              <th class="border cp-0">সংখ্যা</th>
+              <th class="border cp-0">শতকরা%</th>
+              <th class="border cp-0">পরিমাণ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- পুত্র -->
+            @if (result()?.rsSon) {
+            <tr>
+              <th class="text-black cp-0 border">পুত্র</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsSon | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkSon | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- কন্যা -->
+            @if (result()?.rsDau) {
+            <tr>
+              <th class="text-black cp-0 border">কন্যা</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsDau | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkDau | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- স্বামী -->
+            @if (result()?.rsHus) {
+            <tr>
+              <th class="text-black cp-0 border">স্বামী</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsHus | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkHus | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- স্ত্রী -->
+            @if(result()?.rsWif){
+            <tr>
+              <th class="text-black cp-0 border">স্ত্রী</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsWif | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkWif | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- পিতা -->
+            @if(result()?.rsFat){
+            <tr>
+              <th class="text-black cp-0 border">পিতা</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsFat | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkFat | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- মাতা -->
+            @if(result()?.rsMot){
+            <tr>
+              <th class="text-black cp-0 border">মাতা</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsMot | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkMot | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাই -->
+            @if(result()?.rsBro){
+            <tr>
+              <th class="text-black cp-0 border">ভাই</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsBro | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkBro | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বোন -->
+            @if(result()?.rsSis){
+            <tr>
+              <th class="text-black cp-0 border">বোন</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsSis | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkSis | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- দাদা -->
+            @if(result()?.rsGrF){
+            <tr>
+              <th class="text-black cp-0 border">দাদা</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsGrF | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkGrF | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- দাদী -->
+            @if (result()?.rsGrM) {
+            <tr>
+              <th class="text-black cp-0 border">দাদী</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsGrM | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkGrM | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- নানী -->
+            @if (result()?.rsGrN) {
+            <tr>
+              <th class="text-black cp-0 border">নানী</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsGrN | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkGrN | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- চাচা -->
+            @if (result()?.rsUnc) {
+            <tr>
+              <th class="text-black cp-0 border">চাচা</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsUnc | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkUnc | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- চাচাতো ভাই -->
+            @if (result()?.rsUSo) {
+            <tr>
+              <th class="text-black cp-0 border">চাচাতো ভাই</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsUSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkUSo | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈমাত্রের ভাই -->
+            @if (result()?.rsBmB) {
+            <tr>
+              <th class="text-black cp-0 border">বৈমাত্রের ভাই</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsBmB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkBmB | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈমাত্রের বোন -->
+            @if (result()?.rsBmS) {
+            <tr>
+              <th class="text-black cp-0 border">বৈমাত্রের বোন</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsBmS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkBmS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈপিত্রের ভাই -->
+            @if (result()?.rsBpB) {
+            <tr>
+              <th class="text-black cp-0 border">বৈপিত্রের ভাই</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsBpB | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkBpB | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- বৈপিত্রের বোন -->
+            @if (result()?.rsBpS) {
+            <tr>
+              <th class="text-black cp-0 border">বৈপিত্রের বোন</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsBpS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkBpS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- ভাইয়ের পুত্র -->
+            @if (result()?.rsbSo) {
+            <tr>
+              <th class="text-black cp-0 border">ভাইয়ের পুত্র</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsbSo | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkBSo | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- নাতি -->
+            @if (result()?.rsGrS) {
+            <tr>
+              <th class="text-black cp-0 border">নাতি</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsGrS | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkGrS | bangla }}
+              </td>
+            </tr>
+            }
+
+            <!-- নাতনী -->
+            @if (result()?.rsGrD) {
+            <tr>
+              <th class="text-black cp-0 border">নাতনী</th>
+              <td class="text-black cp-0 border text-center">১</td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rsGrD | bangla }}
+              </td>
+              <td class="text-black cp-0 border">
+                {{ result()?.rSkGrD | bangla }}
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  } @if (result()?.bbb.length > 0) {
+  <div class="text-rose-600 mt-5">
+    <h2 class="font-bold text-2xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ- api</h2>
+    <ol class="list-disc pl-6 text-lg">
+      @for (data of result()?.bbb; track $index) {
+      <li>{{ data }}</li>
+      }
+    </ol>
+  </div>
+  }@if (result()?.des.length > 0) {
+  <div class="mt-5 text-blue-800">
+    <h2 class="font-bold text-2xl">বর্ণনাঃ- api</h2>
+    <ol class="list-disc pl-6 text-lg">
+      @for (data of result()?.des; track $index) {
+      <li>{{ data }}</li>
+      }
+    </ol>
+  </div>
+  } @if (blockRules().length > 0) {
+  <div class="text-rose-600 mt-5">
+    <h2 class="font-bold text-2xl">আত্মীয় বঞ্চিত হওয়ার কারণঃ-</h2>
+    <ol class="list-disc pl-6 text-lg">
+      @for (data of blockRules(); track $index) {
+      <li>{{ data }}</li>
+      }
+    </ol>
+  </div>
+  } @if (acceptRules().length > 0) {
+  <div class="mt-5 text-blue-800">
+    <h2 class="font-bold text-2xl">বর্ণনাঃ-</h2>
+    <ol class="list-disc pl-6 text-lg">
+      @for (data of acceptRules(); track $index) {
+      <li>{{ data }}</li>
+      }
+    </ol>
+  </div>
+  }
+</section>
+} @if(confirmModal()){
+<confirm-modal
+  [title]="result()?.notFound"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal1()){
+<confirm-modal
+  title="স্ত্রী উপস্থিত থাকলে স্বামী যোগ করা যাবে না।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal2()){
+<confirm-modal
+  title="স্বামী উপস্থিত থাকলে স্ত্রী যোগ করা যাবে না।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal3()){
+<confirm-modal
+  title="স্বামী ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং স্বামী ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal4()){
+<confirm-modal
+  title="স্ত্রী ৪ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং স্ত্রী ৪ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal5()){
+<confirm-modal
+  title="পিতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং পিতা ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal6()){
+<confirm-modal
+  title="মাতা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং মাতা ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal7()){
+<confirm-modal
+  title="দাদা ১ জনের বেশী গ্রহণযোগ্য নয়। 
+ সুতরাং দাদা ১ জন বসানো হলো।"
+  url=""
+  (closeModal)="closeModal()"
+/>
+} @if(confirmModal8()){
+<confirm-modal title="" url="" (closeModal)="closeModal()" />
+} @if(confirmModal9()){
+<confirm-modal title="" url="" (closeModal)="closeModal()" />
+}

@@ -1,0 +1,92 @@
+<app-cover title="add a Notice" sub1="Dashboard" sub2="Add Notice"></app-cover>
+
+<div class="w-full max-w-7xl mx-auto">
+  <form
+    #form="ngForm"
+    (ngSubmit)="onFormSubmit()"
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+  >
+    <div class="mb-4">
+      <label
+        for="serial"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        >Serial</label
+      >
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
+        id="serial"
+        name="serial"
+        type="text"
+        placeholder="Type here"
+        [(ngModel)]="model.serial"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        for="title"
+      >
+        Title <span class="text-red-600">*</span>
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
+        id="title"
+        name="title"
+        type="text"
+        placeholder="Enter your title here"
+        [(ngModel)]="model.title"
+        required
+      />
+    </div>
+
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        for="description"
+      >
+        Description
+      </label>
+      <textarea
+        name="description"
+        id="description"
+        class="shadow appearance-none border border-base-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100 border-none"
+        cols="30"
+        rows="10"
+        placeholder="Enter your description here"
+        [(ngModel)]="model.description"
+      ></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label
+        for="note1"
+        class="block text-gray-700 text-md font-bold mb-2 capitalize"
+        >note1</label
+      >
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-blue-100"
+        id="note1"
+        name="note1"
+        type="text"
+        placeholder="Type here"
+        [(ngModel)]="model.note1"
+        required
+      />
+    </div>
+
+    <input
+      type="submit"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+      value="Add"
+    />
+  </form>
+</div>
+
+@if(confirmModal){
+<confirm-modal
+  title="Notice is successfully added!"
+  url="/a/notice-list"
+  (closeModal)="closeModal()"
+/>
+}

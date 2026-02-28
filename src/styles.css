@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "SolaimanLipi";
+  src: url("/assets/fonts/SolaimanLipi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "SolaimanLipi", "Noto Serif Bengali", sans-serif;
+  font-optical-sizing: auto;
+}

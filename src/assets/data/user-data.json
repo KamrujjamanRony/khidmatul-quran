@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "person01",
+    "password": "allahhu12345",
+    "roles": ["jewelry", "hijri", "boyan", "notice"]
+  },
+  {
+    "id": 2,
+    "name": "person01",
+    "password": "allahhu123",
+    "roles": ["jewelry", "hijri", "boyan", "notice"]
+  }
+]
