@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+interface MenuItem {
+  label: string;
+  link?: string;
+  subItems?: MenuItem[];
+  isOpen?: boolean; // For dropdown state
+}
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +16,7 @@ import { CommonModule } from '@angular/common';
   imports: [RouterLink, CommonModule]
 })
 export class NavbarComponent {
-  menuItems = [
+  menuItems: MenuItem[] = [
     // { label: 'হোম', link: '/' },
     // { label: 'সালাতের সময়', link: '/salat-times' },
     // { label: 'হিজরী তারিখ', link: '/hijri-date' },
@@ -19,15 +26,15 @@ export class NavbarComponent {
     //   isOpen: false,
     //   subItems: [{ label: 'নির্বাচিত প্রবন্ধসমূহ', link: '/selected-writings' }],
     // },
-    {
-      label: 'যাকাত',
-      isOpen: false,
-      subItems: [
+    // {
+    //   label: 'যাকাত',
+    //   isOpen: false,
+    //   subItems: [
         { label: 'স্বর্ণ ও রুপার দাম', link: '/gold-price' },
         { label: 'যাকাত ক্যালকুলেটর', link: '/zakat-calculator' },
         { label: 'যাকাত মাসআলা', link: '/zakat-masala' },
-      ],
-    },
+    //   ],
+    // },
     // {
     //   label: 'বয়ান',
     //   isOpen: false,
@@ -39,7 +46,7 @@ export class NavbarComponent {
     //     { label: 'ইউটিউব ভিডিও', link: '/video' },
     //   ],
     // },
-    { label: 'নোটিশ', link: '/notice' },
+    // { label: 'নোটিশ', link: '/notice' },
   ];
 
   isMobileMenuOpen = false;
