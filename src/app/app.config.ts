@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
-import { provideRouter, withHashLocation, withPreloading } from '@angular/router';
+import { provideRouter, RouteReuseStrategy, withHashLocation, withPreloading } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
@@ -9,12 +9,14 @@ import bn from '@angular/common/locales/bn';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { CustomPreLoadingStrategy } from './features/services/custom.preloading';
+import { CustomReuseStrategy } from './features/services/route-reuse.strategy';
 
 registerLocaleData(bn); // Register Bangla locale globally
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withHashLocation(), withPreloading(CustomPreLoadingStrategy)),
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
     provideHttpClient(withFetch()),
     provideExperimentalZonelessChangeDetection(),
     provideAnimations(),
