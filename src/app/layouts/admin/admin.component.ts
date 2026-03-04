@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../../components/shared/sidebar/sidebar.component';
 import { JsonDataService } from '../../features/services/json-data.service';
@@ -10,7 +10,7 @@ import { AuthService } from '../../features/services/auth.service';
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
-  imports: [FormsModule, CommonModule, RouterOutlet, ReactiveFormsModule, SidebarComponent]
+  imports: [FormsModule, RouterOutlet, ReactiveFormsModule, SidebarComponent]
 })
 export class AdminComponent {
   jsonDataService = inject(JsonDataService);

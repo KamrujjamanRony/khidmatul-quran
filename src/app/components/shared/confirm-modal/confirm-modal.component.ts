@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject, input, output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'confirm-modal',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './confirm-modal.component.html',
     styleUrl: './confirm-modal.component.css'
 })

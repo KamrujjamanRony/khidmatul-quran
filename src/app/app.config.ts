@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, RouteReuseStrategy, withHashLocation, withPreloading } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { providePrimeNG } from 'primeng/config';
@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withHashLocation(), withPreloading(CustomPreLoadingStrategy)),
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
     provideHttpClient(withFetch()),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideAnimations(),
     MessageService,
     providePrimeNG({

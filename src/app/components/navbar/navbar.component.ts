@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+
 
 interface MenuItem {
   label: string;
@@ -13,7 +13,7 @@ interface MenuItem {
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
-  imports: [RouterLink, CommonModule]
+  imports: [RouterLink]
 })
 export class NavbarComponent {
   menuItems: MenuItem[] = [
