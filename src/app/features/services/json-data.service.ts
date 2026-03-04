@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 export class JsonDataService {
   http = inject(HttpClient);
 
-  private userDataUrl = '../../../assets/data/user-data.json';
-  private arabicDataUrl = '../../../assets/data/arabic-data.json';
-  private hijriDateAdjUrl = '../../../assets/data/hijri-date-adj.json';
-  private zakatDataUrl = '../../../assets/data/zakat-data.json';
+  private userDataUrl = 'data/user-data.json';
+  private arabicDataUrl = 'data/arabic-data.json';
+  private hijriDateAdjUrl = 'data/hijri-date-adj.json';
+  private zakatDataUrl = 'data/zakat-data.json';
 
   // Method to fetch JSON data
   getUserData(): Observable<any> {
